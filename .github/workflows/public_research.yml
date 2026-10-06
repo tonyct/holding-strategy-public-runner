@@ -6,11 +6,9 @@ on:
     branches: [main]
     paths:
       - 'trigger-public-run.txt'
-  schedule:
-    - cron: '10 0,8 * * 1-5'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   collect:
@@ -47,13 +45,14 @@ jobs:
         continue-on-error: true
         run: |
           mkdir -p output/quotes
-          python engine/collect_quotes.py --output output/quotes/QUOTE_RECEIPT.json --delay 0.6
+          python -m engine.collect_quotes --output output/quotes/QUOTE_RECEIPT.json --delay 0.6
 
       - name: Build public-safe manifest
         shell: bash
         run: |
           python - <<'PY'
-          import hashlib, json
+          import hashlib, json, os
+          from datetime import datetime, timezone
           from pathlib import Path
           root=Path("output")
           root.mkdir(exist_ok=True)
@@ -65,6 +64,11 @@ jobs:
           out={
               "schema":"E36_PUBLIC_RESEARCH_BUNDLE/v1",
               "privacy_class":"PUBLIC_MARKET_DATA_ONLY",
+              "source_repository":os.environ.get("GITHUB_REPOSITORY"),
+              "source_run_id":os.environ.get("GITHUB_RUN_ID"),
+              "source_run_attempt":os.environ.get("GITHUB_RUN_ATTEMPT"),
+              "source_commit_sha":os.environ.get("GITHUB_SHA"),
+              "completed_at_utc":datetime.now(timezone.utc).isoformat(),
               "contains_account_state":False,
               "contains_portfolio_decision":False,
               "files":files,
@@ -75,11 +79,47 @@ jobs:
       - name: Public-safety gate
         shell: bash
         run: |
-          if grep -RniE 'actual_held|account_state|portfolio_decision|tracking_only|position_size|cost_basis|cash_nav|drive_bootstrap_id|user_screenshot|XUEQIU_COOKIE' output; then
-            echo "Private/account semantic detected in public output" >&2
-            exit 1
+          python - <<'PY'
+          import json, re
+          from pathlib import Path
+          prohibited = re.compile(r'actual_held|account_state|portfolio_decision|tracking_only|position_size|cost_basis|cash_nav|drive_bootstrap_id|user_screenshot|XUEQIU_COOKIE', re.I)
+          root=Path("output")
+          failures=[]
+          for p in root.rglob("*"):
+              if not p.is_file() or p.name=="PUBLIC_RESEARCH_BUNDLE.json":
+                  continue
+              try:
+                  text=p.read_text(errors="ignore")
+              except Exception:
+                  continue
+              if prohibited.search(text):
+                  failures.append(str(p))
+          manifest=json.loads(Path("output/PUBLIC_RESEARCH_BUNDLE.json").read_text())
+          assert manifest.get("contains_account_state") is False
+          assert manifest.get("contains_portfolio_decision") is False
+          if failures:
+              raise SystemExit("Private/account semantic detected in public output: "+", ".join(failures))
+          print("PUBLIC_OUTPUT_PRIVACY_PASS")
+          PY
+
+      - name: Persist latest public JSON bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf runtime/latest
+          mkdir -p runtime/latest
+          find output -type f -name '*.json' -print0 | while IFS= read -r -d '' src; do
+            rel="${src#output/}"
+            mkdir -p "runtime/latest/$(dirname "$rel")"
+            cp "$src" "runtime/latest/$rel"
+          done
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runtime/latest
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish public research bundle $GITHUB_RUN_ID/$GITHUB_RUN_ATTEMPT"
+            git push origin HEAD:main
           fi
-          echo "PUBLIC_OUTPUT_PRIVACY_PASS"
 
       - uses: actions/upload-artifact@v4
         with:
