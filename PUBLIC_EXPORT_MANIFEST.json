@@ -1,0 +1,92 @@
+{
+  "schema": "E36_PUBLIC_RUNNER_EXPORT_MANIFEST/v1",
+  "purpose": "Sanitized public GitHub Actions runner for public-market data collection only",
+  "source_repository": "PRIVATE_SOURCE_REPOSITORY",
+  "target_repository_suggested": "tonyct/holding-strategy-public-runner",
+  "privacy_contract": {
+    "public_semantics": "RESEARCH_COVERAGE_UNIVERSE_ONLY",
+    "prohibited": [
+      "ACTUAL_HOLDINGS",
+      "TRACKING_ONLY_ACCOUNT_SEMANTICS",
+      "POSITION_SIZE",
+      "QUANTITY",
+      "COST_BASIS",
+      "CASH",
+      "NAV",
+      "FILLS",
+      "BROKER_ACCOUNT",
+      "PORTFOLIO_DECISION",
+      "HOLD_ADD_REDUCE_EXIT",
+      "GOOGLE_DRIVE_IDS",
+      "USER_SCREENSHOT_DERIVED_FACTS",
+      "MAIN_RUNTIME_STATE",
+      "SHADOW_PRIVATE_RUNTIME_STATE"
+    ],
+    "public_artifacts_must_be_public_safe": true
+  },
+  "allowlist": {
+    "files": [
+      "engine/requirements.txt",
+      "engine/financial_adapter.py",
+      "engine/run_financials.py",
+      "engine/collect_announcements.py",
+      "engine/direct_cninfo.py",
+      "engine/announcement_secondary.py",
+      "engine/collect_hk_financials.py",
+      "engine/collect_quotes.py",
+      "engine/fetch_official_filings.py",
+      "engine/fetch_hk_official.py",
+      "engine/reconcile_original.py",
+      "engine/reconcile_hk_core.py",
+      "engine/extract_report_notes.py",
+      "engine/audit_acquisition.py",
+      "engine/audit_provenance.py"
+    ],
+    "generated_public_files": [
+      "README.md",
+      "config/research_universe.json",
+      ".github/workflows/public_research.yml",
+      "engine/universe.py"
+    ]
+  },
+  "denylist_prefixes": [
+    "runtime/",
+    "receipts/",
+    "research/main/",
+    "research/policies/",
+    "research/audits/",
+    "evidence/"
+  ],
+  "denylist_files": [
+    "engine/scan_xueqiu.py"
+  ],
+  "secret_policy": {
+    "repository_secrets_allowed": false,
+    "personal_cookies_allowed": false,
+    "github_token_use": "DEFAULT_READ_ONLY_OR_ARTIFACT_UPLOAD_ONLY",
+    "no_private_repo_write_token": true
+  },
+  "output_contract": {
+    "allowed": [
+      "PUBLIC_SOURCE_URLS",
+      "PUBLIC_SOURCE_SHA256",
+      "REPORT_PERIOD",
+      "PUBLIC_FINANCIAL_FACTS",
+      "PUBLIC_ANNOUNCEMENTS",
+      "PUBLIC_QUOTES",
+      "PARSER_DIAGNOSTICS",
+      "SOURCE_PROVENANCE"
+    ],
+    "prohibited": [
+      "ACCOUNT_STATE",
+      "ACTUAL_HELD",
+      "PORTFOLIO_ACTION",
+      "USER_DECISION",
+      "PRIVATE_VALUATION_DECISION"
+    ]
+  },
+  "source_history_policy": "DO_NOT_FORK_PRIVATE_REPO; CREATE_FRESH_PUBLIC_REPOSITORY_WITH_NEW_HISTORY",
+  "notes": [
+    "engine/universe.py must use the generated public-safe loader from public_runner_export/engine/universe.py, not the private source version."
+  ]
+}
