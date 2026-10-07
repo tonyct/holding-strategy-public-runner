@@ -3,7 +3,7 @@
   "strategy_id": "HOLDING_STRATEGY",
   "version": "4.8.0",
   "epoch": 36,
-  "checked_at_utc": "2026-10-07T08:14:24.938824+00:00",
+  "checked_at_utc": "2026-10-07T09:24:41.958548+00:00",
   "universe_sha256": "951695d407c5a3ad05838363654aa57d9edf7c51a978e7ca3815dae792abc82c",
   "rows": [
     {
@@ -13,19 +13,20 @@
       "currency": "CNY",
       "market_session_date": "2026-09-30",
       "source_timestamp_utc": "2026-09-30T08:14:47+00:00",
-      "fetched_at_utc": "2026-10-07T08:14:24.938824+00:00",
+      "fetched_at_utc": "2026-10-07T09:24:41.958548+00:00",
       "source": "TENCENT_PUBLIC_QUOTES_NON_EXECUTABLE",
       "exchange_close_independently_certified": false
     },
     {
       "ticker": "148.HK",
       "status": "HISTORICAL_PROVIDER_QUOTE",
-      "close": 60.54999923706055,
+      "close": 60.8,
       "currency": "HKD",
       "market_session_date": "2026-10-07",
-      "source_timestamp_utc": "2026-10-07T01:30:00+00:00",
-      "fetched_at_utc": "2026-10-07T08:14:24.938824+00:00",
-      "source": "YAHOO_HISTORICAL_DELAYED_NON_EXECUTABLE",
+      "source_timestamp_utc": "2026-10-07T08:08:50+00:00",
+      "source_timestamp_role": "PROVIDER_PRICE_OBSERVATION",
+      "fetched_at_utc": "2026-10-07T09:24:41.958548+00:00",
+      "source": "YAHOO_DELAYED_MARKET_OBSERVATION_NON_EXECUTABLE",
       "exchange_close_independently_certified": false
     },
     {
@@ -35,7 +36,7 @@
       "currency": "CNY",
       "market_session_date": "2026-09-30",
       "source_timestamp_utc": "2026-09-30T08:14:45+00:00",
-      "fetched_at_utc": "2026-10-07T08:14:24.938824+00:00",
+      "fetched_at_utc": "2026-10-07T09:24:41.958548+00:00",
       "source": "TENCENT_PUBLIC_QUOTES_NON_EXECUTABLE",
       "exchange_close_independently_certified": false
     },
@@ -46,41 +47,44 @@
       "currency": "CNY",
       "market_session_date": "2026-09-30",
       "source_timestamp_utc": "2026-09-30T08:14:37+00:00",
-      "fetched_at_utc": "2026-10-07T08:14:24.938824+00:00",
+      "fetched_at_utc": "2026-10-07T09:24:41.958548+00:00",
       "source": "TENCENT_PUBLIC_QUOTES_NON_EXECUTABLE",
       "exchange_close_independently_certified": false
     },
     {
       "ticker": "2233.HK",
       "status": "HISTORICAL_PROVIDER_QUOTE",
-      "close": 1.7899999618530273,
+      "close": 1.805,
       "currency": "HKD",
       "market_session_date": "2026-10-07",
-      "source_timestamp_utc": "2026-10-07T01:30:00+00:00",
-      "fetched_at_utc": "2026-10-07T08:14:24.938824+00:00",
-      "source": "YAHOO_HISTORICAL_DELAYED_NON_EXECUTABLE",
+      "source_timestamp_utc": "2026-10-07T08:08:50+00:00",
+      "source_timestamp_role": "PROVIDER_PRICE_OBSERVATION",
+      "fetched_at_utc": "2026-10-07T09:24:41.958548+00:00",
+      "source": "YAHOO_DELAYED_MARKET_OBSERVATION_NON_EXECUTABLE",
       "exchange_close_independently_certified": false
     },
     {
       "ticker": "3933.HK",
       "status": "HISTORICAL_PROVIDER_QUOTE",
-      "close": 7.619999885559082,
+      "close": 7.61,
       "currency": "HKD",
       "market_session_date": "2026-10-07",
-      "source_timestamp_utc": "2026-10-07T01:30:00+00:00",
-      "fetched_at_utc": "2026-10-07T08:14:24.938824+00:00",
-      "source": "YAHOO_HISTORICAL_DELAYED_NON_EXECUTABLE",
+      "source_timestamp_utc": "2026-10-07T08:08:50+00:00",
+      "source_timestamp_role": "PROVIDER_PRICE_OBSERVATION",
+      "fetched_at_utc": "2026-10-07T09:24:41.958548+00:00",
+      "source": "YAHOO_DELAYED_MARKET_OBSERVATION_NON_EXECUTABLE",
       "exchange_close_independently_certified": false
     },
     {
       "ticker": "9926.HK",
       "status": "HISTORICAL_PROVIDER_QUOTE",
-      "close": 109.19999694824219,
+      "close": 109.1,
       "currency": "HKD",
       "market_session_date": "2026-10-07",
-      "source_timestamp_utc": "2026-10-07T01:30:00+00:00",
-      "fetched_at_utc": "2026-10-07T08:14:24.938824+00:00",
-      "source": "YAHOO_HISTORICAL_DELAYED_NON_EXECUTABLE",
+      "source_timestamp_utc": "2026-10-07T08:08:50+00:00",
+      "source_timestamp_role": "PROVIDER_PRICE_OBSERVATION",
+      "fetched_at_utc": "2026-10-07T09:24:41.958548+00:00",
+      "source": "YAHOO_DELAYED_MARKET_OBSERVATION_NON_EXECUTABLE",
       "exchange_close_independently_certified": false
     },
     {
@@ -90,7 +94,7 @@
       "currency": "CNY",
       "market_session_date": "2026-09-30",
       "source_timestamp_utc": "2026-09-30T08:14:53+00:00",
-      "fetched_at_utc": "2026-10-07T08:14:24.938824+00:00",
+      "fetched_at_utc": "2026-10-07T09:24:41.958548+00:00",
       "source": "TENCENT_PUBLIC_QUOTES_NON_EXECUTABLE",
       "exchange_close_independently_certified": false
     },
@@ -101,7 +105,7 @@
       "currency": "CNY",
       "market_session_date": "2026-09-30",
       "source_timestamp_utc": "2026-09-30T08:15:00+00:00",
-      "fetched_at_utc": "2026-10-07T08:14:24.938824+00:00",
+      "fetched_at_utc": "2026-10-07T09:24:41.958548+00:00",
       "source": "TENCENT_PUBLIC_QUOTES_NON_EXECUTABLE",
       "exchange_close_independently_certified": false
     },
@@ -112,7 +116,7 @@
       "currency": "CNY",
       "market_session_date": "2026-09-30",
       "source_timestamp_utc": "2026-09-30T08:15:00+00:00",
-      "fetched_at_utc": "2026-10-07T08:14:24.938824+00:00",
+      "fetched_at_utc": "2026-10-07T09:24:41.958548+00:00",
       "source": "TENCENT_PUBLIC_QUOTES_NON_EXECUTABLE",
       "exchange_close_independently_certified": false
     },
@@ -123,7 +127,7 @@
       "currency": "CNY",
       "market_session_date": "2026-09-30",
       "source_timestamp_utc": "2026-09-30T08:14:53+00:00",
-      "fetched_at_utc": "2026-10-07T08:14:24.938824+00:00",
+      "fetched_at_utc": "2026-10-07T09:24:41.958548+00:00",
       "source": "TENCENT_PUBLIC_QUOTES_NON_EXECUTABLE",
       "exchange_close_independently_certified": false
     }
