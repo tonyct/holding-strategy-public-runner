@@ -59,23 +59,33 @@ jobs:
           source_board_mismatch_count=int(q.get("source_board_mismatch_count") or 0)
           qualified_coverage=(len(qualified_symbols)==11 and q.get("target_specific_coverage_ok") is True)
           target_rows=[r for r in q.get("rows",[]) if r.get("qualified_for_target_specific_shadow_verification")]
-          target_rows_integrity=(all(r.get("target_board_match") is True and
-                                     r.get("discovery_relation")=="DIRECT_BOARD" and
-                                     r.get("source_board_code")==r.get("market_code") and
-                                     r.get("post_content_status")=="TITLE_ONLY_BODY_NOT_FETCHED" and
-                                     r.get("raw_post_verified") is False and
-                                     isinstance(r.get("url"),str) and r.get("post_id") in r.get("url")
-                                     for r in target_rows) and len(target_rows)==target_specific_count)
-          board_metadata_complete=all(bool(r.get("source_board_code") and r.get("source_board_name") and
-                                           isinstance(r.get("url"),str) and
-                                           r.get("source_board_code") in r.get("url") and
-                                           r.get("post_id") in r.get("url") and
-                                           r.get("post_content_status")=="TITLE_ONLY_BODY_NOT_FETCHED" and
-                                           r.get("raw_post_verified") is False)
-                                      for r in rows)
+          target_rows_integrity=(all(
+              ((r.get("discovery_relation")=="DIRECT_BOARD" and
+                r.get("target_board_match") is True and
+                r.get("source_board_code")==r.get("market_code") and
+                r.get("target_name_mentioned") is False) or
+               (r.get("discovery_relation")=="TITLE_ENTITY_MENTION" and
+                r.get("target_board_match") is False and
+                r.get("target_name_mentioned") is True)) and
+              r.get("post_content_status")=="TITLE_ONLY_BODY_NOT_FETCHED" and
+              r.get("raw_post_verified") is False and
+              isinstance(r.get("url"),str) and r.get("post_id") in r.get("url") and
+              r.get("source_board_code") in r.get("url")
+              for r in target_rows) and len(target_rows)==target_specific_count)
+          board_metadata_complete=all(
+              r.get("discovery_relation") in ("DIRECT_BOARD","TITLE_ENTITY_MENTION","CROSS_BOARD","BOARD_UNKNOWN") and
+              isinstance(r.get("post_content_status"),str) and
+              r.get("raw_post_verified") is False and
+              (bool(r.get("source_board_code") and
+                    isinstance(r.get("url"),str) and
+                    r.get("source_board_code") in r.get("url") and
+                    r.get("post_id") in r.get("url")) or
+               (r.get("discovery_relation")=="BOARD_UNKNOWN" and r.get("url") is None))
+              for r in rows
+          )
           useful=(leads>0 and len(a_found)==7 and len(hk_found)==4 and hk_code_ok and a_code_ok and board_metadata_complete and qualified_count>0 and target_specific_count>0 and qualified_coverage and target_rows_integrity)
           out={
-            "schema":"E36_COMMUNITY_ACCEPTANCE/v5",
+            "schema":"E36_COMMUNITY_ACCEPTANCE/v6",
             "source":"EASTMONEY_GUBA_DIRECT",
             "checks_complete":complete,
             "symbols_checked":s.get("symbols_checked"),
@@ -89,6 +99,7 @@ jobs:
             "qualified_count":qualified_count,
             "target_specific_qualified_count":target_specific_count,
             "source_board_mismatch_count":source_board_mismatch_count,
+            "title_entity_mention_count":int(q.get("title_entity_mention_count") or 0),
             "qualified_symbols":sorted(qualified_symbols),
             "qualified_coverage_ok":qualified_coverage,
             "target_rows_integrity_ok":target_rows_integrity,
