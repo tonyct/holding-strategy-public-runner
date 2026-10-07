@@ -104,6 +104,8 @@ def main():
               'report_period_end':args.period,'runner_exit_code':returncode,'runner_error':runner_error,'ticker_count':len(a_shares),
               'core_three_statement_count':coverage,'complete_original_filing_verified':0,'research_generation_created':False,
               'production_integration_verified':False,'tickers':rows,
+              'runner_stdout_tail':out[-4000:] if returncode!=0 else None,
+              'runner_stderr_tail':err[-4000:] if returncode!=0 else None,
               'status':'CORE_FIELDS_FETCHED_UNVERIFIED' if coverage==len(a_shares) and returncode==0 else 'DATA_PARTIAL_OR_BLOCKED'}
     (root/'ACQUISITION_RECEIPT.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
     print(json.dumps({'status':manifest['status'],'core_three_statement_count':coverage,'total':len(a_shares),'receipt':str(root/'ACQUISITION_RECEIPT.json')},ensure_ascii=False))
