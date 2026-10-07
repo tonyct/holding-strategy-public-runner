@@ -42,6 +42,59 @@ def code_for(symbol):
         return "hk" + code.zfill(5)
     return code
 
+def normalize_board_code(value):
+    """Normalize Eastmoney stockbar_code without replacing the source's own board identity."""
+    raw = str(value or "").strip().lower()
+    if raw.endswith(".hk"):
+        raw = "hk" + raw[:-3]
+    if raw.startswith("hk"):
+        digits = raw[2:]
+        return "hk" + digits.zfill(5) if digits.isdigit() else None
+    m = re.fullmatch(r"(\d{1,6})(?:\.(?:sh|sz))?", raw)
+    return m.group(1) if m else None
+
+def build_post_record(symbol, requested_code, item):
+    title = str(item.get("post_title") or item.get("title") or "").strip()
+    post_id = str(item.get("post_id") or item.get("id") or "").strip()
+    source_board = normalize_board_code(item.get("stockbar_code"))
+    requested_board = normalize_board_code(requested_code)
+    board_match = bool(source_board and requested_board and source_board == requested_board)
+    qualified, category, priority, signal_score, matched_terms, sentiment_terms = qualify(
+        title, item.get("post_click_count"), item.get("post_comment_count"))
+    url = ("https://guba.eastmoney.com/news," + source_board + "," + post_id + ".html"
+           if source_board and post_id else None)
+    return {
+        "symbol": symbol,
+        "target_symbol": symbol,
+        "source": "EASTMONEY_GUBA_DIRECT",
+        "post_id": post_id or None,
+        "title": title[:500],
+        "published_at": item.get("post_publish_time") or item.get("publish_time"),
+        "updated_at": item.get("post_last_time") or item.get("last_time"),
+        "author": item.get("user_nickname") or item.get("user_name"),
+        "click_count": item.get("post_click_count"),
+        "comment_count": item.get("post_comment_count"),
+        "like_count": item.get("post_like_count"),
+        "url": url,
+        "market_code": requested_board,
+        "source_board_code": source_board,
+        "source_board_name": item.get("stockbar_name"),
+        "target_board_match": board_match,
+        "discovery_relation": "DIRECT_BOARD" if board_match else ("CROSS_BOARD" if source_board else "BOARD_UNKNOWN"),
+        "post_content_status": "TITLE_ONLY_BODY_NOT_FETCHED",
+        "verification_state": "UNVERIFIED_DISCOVERY",
+        "raw_post_verified": False,
+        "issuer_fact_verified": False,
+        "may_directly_change_main_or_trade": False,
+        "quality_category": category,
+        "shadow_verification_priority": priority,
+        "signal_score": signal_score,
+        "matched_research_terms": matched_terms,
+        "matched_sentiment_terms": sentiment_terms,
+        "qualified_for_shadow_verification": qualified,
+        "qualified_for_target_specific_shadow_verification": qualified and board_match,
+    }
+
 def parse_json_response(resp):
     try:
         return resp.json()
@@ -88,35 +141,10 @@ def collect(universe_file,output,limit=20,delay=0.8,session=None):
                 before=len(rows)
                 for item in items:
                     if not isinstance(item,dict): continue
-                    title=str(item.get("post_title") or item.get("title") or "").strip()
-                    post_id=str(item.get("post_id") or item.get("id") or "").strip()
-                    if not title: continue
-                    qualified,category,priority,signal_score,matched_terms,sentiment_terms=qualify(
-                        title,item.get("post_click_count"),item.get("post_comment_count"))
-                    rows.append({
-                        "symbol":symbol,
-                        "source":"EASTMONEY_GUBA_DIRECT",
-                        "post_id":post_id or None,
-                        "title":title[:500],
-                        "published_at":item.get("post_publish_time") or item.get("publish_time"),
-                        "updated_at":item.get("post_last_time") or item.get("last_time"),
-                        "author":item.get("user_nickname") or item.get("user_name"),
-                        "click_count":item.get("post_click_count"),
-                        "comment_count":item.get("post_comment_count"),
-                        "like_count":item.get("post_like_count"),
-                        "url":("https://guba.eastmoney.com/news,"+code+","+post_id+".html") if post_id else None,
-                        "market_code": code,
-                        "verification_state":"UNVERIFIED_DISCOVERY",
-                        "raw_post_verified":False,
-                        "issuer_fact_verified":False,
-                        "may_directly_change_main_or_trade":False,
-                        "quality_category":category,
-                        "shadow_verification_priority":priority,
-                        "signal_score":signal_score,
-                        "matched_research_terms":matched_terms,
-                        "matched_sentiment_terms":sentiment_terms,
-                        "qualified_for_shadow_verification":qualified,
-                    })
+                    record = build_post_record(symbol, code, item)
+                    if not record["title"]:
+                        continue
+                    rows.append(record)
                 rec["candidate_count"]=len(rows)-before
                 rec["status"]="DIRECT_POSTS_FOUND" if rec["candidate_count"] else "DIRECT_EMPTY_OR_UNSUPPORTED"
                 if isinstance(obj,dict):
@@ -144,15 +172,20 @@ def collect(universe_file,output,limit=20,delay=0.8,session=None):
     }
     (out/"COMMUNITY_DIRECT_DISCOVERY.json").write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     qualified=[r for r in rows if r.get("qualified_for_shadow_verification")]
+    target_specific=[r for r in qualified if r.get("qualified_for_target_specific_shadow_verification")]
+    source_board_mismatches=[r for r in qualified if not r.get("target_board_match")]
     queue={
-        "schema":"E36_COMMUNITY_QUALIFIED_QUEUE/v1",
+        "schema":"E36_COMMUNITY_QUALIFIED_QUEUE/v2",
         "generated_utc":result["generated_utc"],
         "research_only":True,
         "may_directly_change_main_or_trade":False,
         "requires_shadow_verification":True,
         "source":result["source"],
         "qualified_count":len(qualified),
-        "symbols_with_qualified_leads":sorted({r["symbol"] for r in qualified}),
+        "target_specific_qualified_count":len(target_specific),
+        "source_board_mismatch_count":len(source_board_mismatches),
+        "symbols_with_qualified_leads":sorted({r["symbol"] for r in target_specific}),
+        "target_specific_coverage_ok":len({r["symbol"] for r in target_specific})==len(u["active"]),
         "rows":sorted(qualified,key=lambda r:(r.get("signal_score") or 0),reverse=True)
     }
     (out/"COMMUNITY_QUALIFIED_QUEUE.json").write_text(json.dumps(queue,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
