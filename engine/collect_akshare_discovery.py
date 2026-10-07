@@ -4,6 +4,8 @@ from datetime import datetime,timezone
 from pathlib import Path
 from universe import load_universe
 
+NAMES={"600941.SH":"中国移动","148.HK":"建滔集团","001286.SZ":"陕西能源","603993.SH":"洛阳钼业","2233.HK":"西部水泥","3933.HK":"联邦制药","9926.HK":"康方生物","600499.SH":"科达制造","600795.SH":"国电电力","603871.SH":"嘉友国际","601857.SH":"中国石油"}
+
 def scalar(v):
     if v is None: return None
     try:
@@ -33,8 +35,10 @@ def collect(universe_file,output,limit=20):
         rec={"symbol":symbol,"news":{"status":"API_UNAVAILABLE","rows":[]},"community":{"status":"API_UNAVAILABLE","rows":[]}}
         if result["news_api_available"]:
             try:
-                rows=frame_rows(ak.stock_news_em(symbol=code),limit)
-                rec["news"]={"status":"PUBLIC_ROWS_FETCHED" if rows else "NO_ROWS","rows":rows,
+                rows=frame_rows(ak.stock_news_em(symbol=code),limit*3)
+                name=NAMES[symbol]
+                rows=[row for row in rows if name in json.dumps(row,ensure_ascii=False)][:limit]
+                rec["news"]={"status":"PUBLIC_ROWS_FETCHED" if rows else "NO_RELEVANT_ROWS","rows":rows,
                              "verification_state":"UNVERIFIED_DISCOVERY","source":"AKSHARE_STOCK_NEWS_EM"}
             except Exception as e:
                 rec["news"]={"status":"REQUEST_FAILED","error_type":type(e).__name__,"rows":[]}
