@@ -2,6 +2,9 @@ name: Public company research acquisition
 
 on:
   workflow_dispatch:
+  schedule:
+    # Public data refresh only. 07:20 / 20:20 Asia/Shanghai = 23:20 / 12:20 UTC.
+    - cron: '20 23,12 * * *'
   push:
     branches: [main]
     paths:
