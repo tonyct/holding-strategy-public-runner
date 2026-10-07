@@ -82,7 +82,7 @@ jobs:
         continue-on-error: true
         run: |
           mkdir -p output/community
-          python engine/collect_community_public_index.py --output output/community --per-query 5 --delay 0.6
+          python engine/collect_community_direct.py --output output/community --limit 20 --delay 0.6
 
       - name: Collect public news discovery
         continue-on-error: true
@@ -116,18 +116,20 @@ jobs:
           from pathlib import Path
 
           hard_failures=[]
-          soft_gaps=[]
+          degraded_reasons=[]
           checks={}
 
-          def load(path):
+          def load(path, required=True):
               p=Path(path)
               if not p.is_file():
-                  hard_degraded.append("MISSING:"+path)
+                  if required:
+                      hard_failures.append("MISSING:"+path)
                   return {}
               try:
                   return json.loads(p.read_text())
               except Exception as e:
-                  hard_degraded.append("INVALID_JSON:"+path+":"+type(e).__name__)
+                  if required:
+                      hard_failures.append("INVALID_JSON:"+path+":"+type(e).__name__)
                   return {}
 
           fin=load("output/a_financials/ACQUISITION_RECEIPT.json")
@@ -137,7 +139,7 @@ jobs:
           checks["a_share_financials"]={"ok":fin_ok,"status":fin.get("status"),
               "core_three_statement_count":fin.get("core_three_statement_count"),
               "ticker_count":fin.get("ticker_count"),"runner_exit_code":fin.get("runner_exit_code")}
-          if not fin_ok: soft_gaps.append("A_SHARE_FINANCIALS_INCOMPLETE")
+          if not fin_ok: degraded_reasons.append("A_SHARE_FINANCIALS_INCOMPLETE")
 
           ann=load("output/a/ANNOUNCEMENT_RECEIPT.json")
           allowed_ann={"LINKS_FETCHED_UNVERIFIED_ORIGIN","NO_NEW_PUBLICATION_IN_WINDOW_HISTORY_VERIFIED"}
@@ -145,48 +147,71 @@ jobs:
           bad_ann=[r.get("symbol") for r in ann_rows if r.get("status") not in allowed_ann]
           ann_ok=(len(ann_rows)==7 and not bad_ann)
           checks["a_share_announcements"]={"ok":ann_ok,"row_count":len(ann_rows),"bad_symbols":bad_ann}
-          if not ann_ok: hard_degraded.append("A_SHARE_ANNOUNCEMENTS_INCOMPLETE")
+          if not ann_ok: degraded_reasons.append("A_SHARE_ANNOUNCEMENTS_INCOMPLETE")
 
           hk=load("output/hk_financials/HK_FINANCIAL_RECEIPT.json")
           hk_rows=hk.get("rows") or []
           hk_ok=(len(hk_rows)==4 and all(r.get("status")=="RAW_THREE_STATEMENTS_FETCHED_UNVERIFIED" for r in hk_rows))
           checks["hk_financials"]={"ok":hk_ok,"row_count":len(hk_rows)}
-          if not hk_ok: hard_degraded.append("HK_FINANCIALS_INCOMPLETE")
+          if not hk_ok: degraded_reasons.append("HK_FINANCIALS_INCOMPLETE")
 
-          community=load("output/community/PUBLIC_INDEX_SCAN_RECEIPT.json")
-          rows=community.get("rows") or []
-          raw_total=sum(int(r.get("raw_items") or 0) for r in rows)
-          wrong_total=sum(int(r.get("filtered_wrong_host") or 0) for r in rows)
-          accepted_total=sum(int(r.get("accepted_before_dedup") or 0) for r in rows)
-          complete=(community.get("checks_completed")==community.get("checks_expected") and len(rows)==community.get("checks_expected"))
-          resolver_broken=(raw_total>0 and accepted_total==0 and wrong_total>=raw_total)
-          community_ok=complete and not resolver_broken
-          checks["community_discovery"]={"ok":community_ok,"checks_completed":community.get("checks_completed"),
-              "checks_expected":community.get("checks_expected"),"raw_items":raw_total,
-              "filtered_wrong_host":wrong_total,"accepted_before_dedup":accepted_total,
-              "lead_count":community.get("lead_count"),"resolver_broken":resolver_broken}
-          if not community_ok: soft_gaps.append("COMMUNITY_DISCOVERY_UNUSABLE")
+          community=load("output/community/COMMUNITY_DIRECT_DISCOVERY.json")
+          community_rows=community.get("rows") or []
+          community_checks=community.get("checks") or []
+          community_ok=(community.get("source")=="EASTMONEY_GUBA_DIRECT"
+                        and community.get("symbols_checked")==11
+                        and community.get("symbols_with_posts")==11
+                        and len(community_rows)>0
+                        and len(community_checks)==11)
+          mapping_ok=True
+          for r in community_rows:
+              symbol=str(r.get("symbol") or "")
+              market_code=str(r.get("market_code") or "")
+              if symbol.endswith(".HK"):
+                  expected="hk"+symbol.split(".")[0].zfill(5)
+              else:
+                  expected=symbol.split(".")[0]
+              if market_code!=expected:
+                  mapping_ok=False
+                  break
+          community_ok=community_ok and mapping_ok
+          qualified=sum(1 for r in community_rows if r.get("qualified_for_shadow_verification"))
+          checks["community_discovery"]={"ok":community_ok,
+              "source":community.get("source"),
+              "symbols_checked":community.get("symbols_checked"),
+              "symbols_with_posts":community.get("symbols_with_posts"),
+              "lead_count":community.get("lead_count"),
+              "qualified_for_shadow_verification":qualified,
+              "market_code_mapping_ok":mapping_ok}
+          if not community_ok: degraded_reasons.append("COMMUNITY_DISCOVERY_INCOMPLETE")
 
           news=load("output/news/NEWS_DISCOVERY.json")
           news_ok=(news.get("schema")=="E36_PUBLIC_NEWS_DISCOVERY/v1" and isinstance(news.get("rows"),list))
           checks["news_discovery"]={"ok":news_ok,"lead_count":news.get("lead_count")}
-          if not news_ok: hard_degraded.append("NEWS_DISCOVERY_INVALID")
+          if not news_ok: degraded_reasons.append("NEWS_DISCOVERY_INVALID")
 
           ir=load("output/ir/IR_DISCOVERY.json")
           ir_ok=(ir.get("schema")=="E36_PUBLIC_IR_DISCOVERY/v1" and isinstance(ir.get("rows"),list))
           checks["ir_discovery"]={"ok":ir_ok,"lead_count":ir.get("lead_count")}
-          if not ir_ok: hard_degraded.append("IR_DISCOVERY_INVALID")
+          if not ir_ok: degraded_reasons.append("IR_DISCOVERY_INVALID")
+
+          ak=load("output/discovery/AKSHARE_DISCOVERY.json", required=False)
+          ak_ok=(ak.get("schema")=="E36_AKSHARE_PUBLIC_DISCOVERY/v1" and isinstance(ak.get("rows"),list))
+          checks["akshare_discovery"]={"ok":ak_ok,"news_symbol_count":ak.get("news_symbol_count"),
+              "news_row_count":ak.get("news_row_count"),"community_row_count":ak.get("community_row_count")}
+          if not ak_ok: degraded_reasons.append("AKSHARE_DISCOVERY_UNAVAILABLE")
 
           quotes=load("output/quotes/QUOTE_RECEIPT.json")
           quote_ok=(quotes.get("quotes_with_source_session")==11)
           checks["quotes"]={"ok":quote_ok,"quotes_with_source_session":quotes.get("quotes_with_source_session")}
-          if not quote_ok: hard_degraded.append("QUOTE_COVERAGE_INCOMPLETE")
+          if not quote_ok: degraded_reasons.append("QUOTE_COVERAGE_INCOMPLETE")
 
-          status="FAIL" if hard_failures else ("PASS_WITH_SOFT_GAPS" if soft_gaps else "PASS")
-          out={"schema":"E36_PUBLIC_ACQUISITION_HEALTH/v1",
+          status="HARD_FAIL" if hard_failures else ("DEGRADED" if degraded_reasons else "PASS")
+          out={"schema":"E36_PUBLIC_ACQUISITION_HEALTH/v2",
                "status":status,
                "hard_failures":hard_failures,
-               "soft_gaps":soft_gaps,
+               "degraded_reasons":degraded_reasons,
+               "semantics":"SOURCE_GAPS_DEGRADE_BUT_DO_NOT_INVALIDATE_AN_INTEGRITY_SAFE_BUNDLE",
                "checks":checks}
           Path("output/ACQUISITION_HEALTH.json").write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n")
           print(json.dumps(out,ensure_ascii=False))
@@ -238,7 +263,7 @@ jobs:
               except Exception:
                   continue
               if prohibited.search(text):
-                  degraded.append(str(p))
+                  failures.append(str(p))
           manifest=json.loads(Path("output/PUBLIC_RESEARCH_BUNDLE.json").read_text())
           assert manifest.get("contains_account_state") is False
           assert manifest.get("contains_portfolio_decision") is False
