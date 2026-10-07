@@ -15,7 +15,12 @@ NAMES={"600941.SH":"中国移动","148.HK":"建滔集团","001286.SZ":"陕西能
 "603993.SH":"洛阳钼业","2233.HK":"西部水泥","3933.HK":"联邦制药",
 "9926.HK":"康方生物","600499.SH":"科达制造","600795.SH":"国电电力",
 "603871.SH":"嘉友国际","601857.SH":"中国石油"}
-DOMAINS={"xueqiu":"xueqiu.com","eastmoney":"guba.eastmoney.com"}
+DOMAINS={
+    "xueqiu":"xueqiu.com",
+    "eastmoney":"guba.eastmoney.com",
+    "weibo":"weibo.com",
+    "futu":"futunn.com",
+}
 RSS="https://www.bing.com/search"
 
 def parse_rss(data,source,symbol,limit=5,diagnostics=None):
