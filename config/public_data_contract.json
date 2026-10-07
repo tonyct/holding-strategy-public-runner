@@ -32,7 +32,10 @@
     "quotes",
     "announcements",
     "financials",
-    "official_filings"
+    "official_filings",
+    "community_discovery",
+    "news_discovery",
+    "ir_discovery"
   ],
   "output_requirements": [
     "source",
@@ -43,5 +46,11 @@
   ],
   "no_private_repo_dependency": true,
   "no_investment_decision_logic": true,
-  "no_trade_logic": true
+  "no_trade_logic": true,
+  "discovery_semantics": {
+    "verification_state": "UNVERIFIED_DISCOVERY",
+    "research_only": true,
+    "may_directly_change_main_or_trade": false,
+    "requires_shadow_primary_source_verification": true
+  }
 }
