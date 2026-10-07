@@ -22,6 +22,12 @@ PURE_SENTIMENT_TERMS=(
     "梭哈","抄底","主力","洗盘","吸筹","看涨","看跌","太牛","好难熬","何时到底",
     "割肉","加仓","清仓","目标价","涨停","跌停","退市"
 )
+COMPANY_NAMES={
+    "600941.SH":"中国移动","148.HK":"建滔集团","001286.SZ":"陕西能源",
+    "603993.SH":"洛阳钼业","2233.HK":"西部水泥","3933.HK":"联邦制药",
+    "9926.HK":"康方生物","600499.SH":"科达制造","600795.SH":"国电电力",
+    "603871.SH":"嘉友国际","601857.SH":"中国石油",
+}
 
 def qualify(title,click_count=None,comment_count=None):
     text=str(title or "")
@@ -51,7 +57,10 @@ def normalize_board_code(value):
         digits = raw[2:]
         return "hk" + digits.zfill(5) if digits.isdigit() else None
     m = re.fullmatch(r"(\d{1,6})(?:\.(?:sh|sz))?", raw)
-    return m.group(1) if m else None
+    if m:
+        return m.group(1)
+    # Non-equity Eastmoney boards such as cfhpl are source identities too.
+    return raw if re.fullmatch(r"[a-z][a-z0-9]{2,15}", raw) else None
 
 def build_post_record(symbol, requested_code, item):
     title = str(item.get("post_title") or item.get("title") or "").strip()
@@ -59,10 +68,15 @@ def build_post_record(symbol, requested_code, item):
     source_board = normalize_board_code(item.get("stockbar_code"))
     requested_board = normalize_board_code(requested_code)
     board_match = bool(source_board and requested_board and source_board == requested_board)
+    target_name = COMPANY_NAMES.get(symbol)
+    target_name_mentioned = bool(target_name and target_name in title)
     qualified, category, priority, signal_score, matched_terms, sentiment_terms = qualify(
         title, item.get("post_click_count"), item.get("post_comment_count"))
     url = ("https://guba.eastmoney.com/news," + source_board + "," + post_id + ".html"
            if source_board and post_id else None)
+    relation = ("DIRECT_BOARD" if board_match else
+                "TITLE_ENTITY_MENTION" if target_name_mentioned else
+                "CROSS_BOARD" if source_board else "BOARD_UNKNOWN")
     return {
         "symbol": symbol,
         "target_symbol": symbol,
@@ -80,7 +94,8 @@ def build_post_record(symbol, requested_code, item):
         "source_board_code": source_board,
         "source_board_name": item.get("stockbar_name"),
         "target_board_match": board_match,
-        "discovery_relation": "DIRECT_BOARD" if board_match else ("CROSS_BOARD" if source_board else "BOARD_UNKNOWN"),
+        "target_name_mentioned": target_name_mentioned,
+        "discovery_relation": relation,
         "post_content_status": "TITLE_ONLY_BODY_NOT_FETCHED",
         "verification_state": "UNVERIFIED_DISCOVERY",
         "raw_post_verified": False,
@@ -92,7 +107,7 @@ def build_post_record(symbol, requested_code, item):
         "matched_research_terms": matched_terms,
         "matched_sentiment_terms": sentiment_terms,
         "qualified_for_shadow_verification": qualified,
-        "qualified_for_target_specific_shadow_verification": qualified and board_match,
+        "qualified_for_target_specific_shadow_verification": qualified and (board_match or target_name_mentioned),
     }
 
 def parse_json_response(resp):
@@ -174,6 +189,7 @@ def collect(universe_file,output,limit=20,delay=0.8,session=None):
     qualified=[r for r in rows if r.get("qualified_for_shadow_verification")]
     target_specific=[r for r in qualified if r.get("qualified_for_target_specific_shadow_verification")]
     source_board_mismatches=[r for r in qualified if not r.get("target_board_match")]
+    title_entity_mentions=[r for r in qualified if r.get("discovery_relation")=="TITLE_ENTITY_MENTION"]
     queue={
         "schema":"E36_COMMUNITY_QUALIFIED_QUEUE/v2",
         "generated_utc":result["generated_utc"],
@@ -184,6 +200,7 @@ def collect(universe_file,output,limit=20,delay=0.8,session=None):
         "qualified_count":len(qualified),
         "target_specific_qualified_count":len(target_specific),
         "source_board_mismatch_count":len(source_board_mismatches),
+        "title_entity_mention_count":len(title_entity_mentions),
         "symbols_with_qualified_leads":sorted({r["symbol"] for r in target_specific}),
         "target_specific_coverage_ok":len({r["symbol"] for r in target_specific})==len(u["active"]),
         "rows":sorted(qualified,key=lambda r:(r.get("signal_score") or 0),reverse=True)
