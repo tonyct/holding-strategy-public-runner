@@ -37,8 +37,8 @@
     "removed": [],
     "retained": []
   },
-  "run_started_utc": "2026-10-07T03:38:08.409231+00:00",
-  "run_ended_utc": "2026-10-07T03:38:09.683486+00:00",
+  "run_started_utc": "2026-10-07T03:41:09.223873+00:00",
+  "run_ended_utc": "2026-10-07T03:41:10.415559+00:00",
   "report_period_end": "2026-06-30",
   "runner_exit_code": 1,
   "runner_error": null,
@@ -91,5 +91,7 @@
       "snapshot_history_count": 0
     }
   ],
+  "runner_stdout_tail": "",
+  "runner_stderr_tail": "Traceback (most recent call last):\n  File \"/home/runner/work/holding-strategy-public-runner/holding-strategy-public-runner/engine/financial_adapter.py\", line 363, in <module>\n    if __name__=='__main__':raise SystemExit(main())\n                                             ^^^^^^\n  File \"/home/runner/work/holding-strategy-public-runner/holding-strategy-public-runner/engine/financial_adapter.py\", line 343, in main\n    from direct_eastmoney import DirectEastmoneyProvider\nModuleNotFoundError: No module named 'direct_eastmoney'\n",
   "status": "DATA_PARTIAL_OR_BLOCKED"
 }

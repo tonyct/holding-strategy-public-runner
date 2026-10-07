@@ -1,0 +1,48 @@
+{
+  "schema": "E36_PUBLIC_ACQUISITION_HEALTH/v1",
+  "status": "FAIL",
+  "failures": [
+    "A_SHARE_FINANCIALS_INCOMPLETE",
+    "COMMUNITY_DISCOVERY_UNUSABLE"
+  ],
+  "checks": {
+    "a_share_financials": {
+      "ok": false,
+      "status": "DATA_PARTIAL_OR_BLOCKED",
+      "core_three_statement_count": 0,
+      "ticker_count": 7,
+      "runner_exit_code": 1
+    },
+    "a_share_announcements": {
+      "ok": true,
+      "row_count": 7,
+      "bad_symbols": []
+    },
+    "hk_financials": {
+      "ok": true,
+      "row_count": 4
+    },
+    "community_discovery": {
+      "ok": false,
+      "checks_completed": 44,
+      "checks_expected": 44,
+      "raw_items": 399,
+      "filtered_wrong_host": 399,
+      "accepted_before_dedup": 0,
+      "lead_count": 0,
+      "resolver_broken": true
+    },
+    "news_discovery": {
+      "ok": true,
+      "lead_count": 5
+    },
+    "ir_discovery": {
+      "ok": true,
+      "lead_count": 7
+    },
+    "quotes": {
+      "ok": true,
+      "quotes_with_source_session": 11
+    }
+  }
+}
