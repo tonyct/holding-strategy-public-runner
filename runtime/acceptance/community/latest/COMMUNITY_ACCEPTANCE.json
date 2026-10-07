@@ -1,5 +1,5 @@
 {
-  "schema": "E36_COMMUNITY_ACCEPTANCE/v5",
+  "schema": "E36_COMMUNITY_ACCEPTANCE/v6",
   "source": "EASTMONEY_GUBA_DIRECT",
   "checks_complete": true,
   "symbols_checked": 11,
@@ -21,11 +21,12 @@
   "a_share_coverage_ok": true,
   "hk_coverage_ok": true,
   "market_code_mapping_ok": true,
-  "source_board_metadata_complete": false,
+  "source_board_metadata_complete": true,
   "accepted_count": 220,
   "qualified_count": 60,
-  "target_specific_qualified_count": 31,
+  "target_specific_qualified_count": 36,
   "source_board_mismatch_count": 29,
+  "title_entity_mention_count": 5,
   "qualified_symbols": [
     "001286.SZ",
     "148.HK",
@@ -36,10 +37,11 @@
     "600941.SH",
     "601857.SH",
     "603871.SH",
-    "603993.SH"
+    "603993.SH",
+    "9926.HK"
   ],
-  "qualified_coverage_ok": false,
-  "target_rows_integrity_ok": true,
+  "qualified_coverage_ok": true,
+  "target_rows_integrity_ok": false,
   "restricted_or_failed_symbols": [],
   "research_only": true,
   "live_platform_coverage": false,
