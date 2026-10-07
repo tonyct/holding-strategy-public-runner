@@ -85,6 +85,8 @@ def parse_rss(data,source,symbol,limit=5,diagnostics=None):
         url=unwrap_search_url((item.findtext("link") or "").strip())
         if classify(url)!=source:
             wrong_host+=1
+            if len(wrong_host_samples)<3:
+                wrong_host_samples.append({"raw_url":raw_url[:1000],"unwrapped_url":url[:1000],"classified_as":classify(url)})
             continue
         if not specific_lead_url(source,url):
             generic+=1
