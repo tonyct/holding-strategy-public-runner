@@ -80,9 +80,10 @@ def parse_rss(data,source,symbol,limit=5,diagnostics=None):
     rows=[]
     items=root.findall("./channel/item")
     if diagnostics is not None:diagnostics["raw_items"]=len(items)
-    wrong_host=0;generic=0;empty=0
+    wrong_host=0;generic=0;empty=0;wrong_host_samples=[]
     for item in items:
-        url=unwrap_search_url((item.findtext("link") or "").strip())
+        raw_url=(item.findtext("link") or "").strip()
+        url=unwrap_search_url(raw_url)
         if classify(url)!=source:
             wrong_host+=1
             if len(wrong_host_samples)<3:
@@ -102,7 +103,7 @@ def parse_rss(data,source,symbol,limit=5,diagnostics=None):
             "evidence_scope":"PUBLIC_INDEX_SNIPPET"})
         if len(rows)>=limit:break
     if diagnostics is not None:
-        diagnostics.update(filtered_wrong_host=wrong_host,filtered_generic_landing=generic,filtered_empty=empty,accepted_before_dedup=len(rows))
+        diagnostics.update(filtered_wrong_host=wrong_host,filtered_generic_landing=generic,filtered_empty=empty,accepted_before_dedup=len(rows),wrong_host_samples=wrong_host_samples)
     return rows
 
 def collect(universe_file,output,per_query=5,delay=1.0,session=None):
