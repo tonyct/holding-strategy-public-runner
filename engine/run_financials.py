@@ -1,6 +1,11 @@
 """External E36 financial collector. Never claims original filing verification.
 Runtime: GitHub Actions/private repository or any persistent networked Linux worker.
 """
+try:
+    from .financial_period import resolve_period
+except ImportError:
+    from financial_period import resolve_period
+
 import argparse
 from datetime import datetime, timezone
 import json
@@ -26,7 +31,7 @@ def select_current_run_snapshot(all_files, before_files):
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument('--period', default='2026-06-30')
+    p.add_argument('--period', default='auto')
     p.add_argument('--output', default='output')
     p.add_argument('--offline-only', action='store_true')
     p.add_argument('--input-dir', default=None)
@@ -34,6 +39,7 @@ def main():
     p.add_argument('--previous-receipt',default=None)
     p.add_argument('--retries',type=int,default=1)
     args = p.parse_args()
+    args.period=resolve_period(args.period,"A")
     if args.offline_only and not args.input_dir:
         p.error('--input-dir is necessary for offline mode')
     root = Path(args.output)

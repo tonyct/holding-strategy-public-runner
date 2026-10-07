@@ -64,7 +64,7 @@ jobs:
         continue-on-error: true
         run: |
           mkdir -p output/a_financials
-          python engine/run_financials.py --period 2026-06-30 --output output/a_financials
+          python engine/run_financials.py --period auto --output output/a_financials
 
       - name: Collect public announcements
         continue-on-error: true
@@ -76,7 +76,7 @@ jobs:
         continue-on-error: true
         run: |
           mkdir -p output/hk_financials
-          python engine/collect_hk_financials.py --period 2026-06-30 --output output/hk_financials
+          python engine/collect_hk_financials.py --period auto --output output/hk_financials
 
       - name: Collect public community discovery
         continue-on-error: true
@@ -115,6 +115,12 @@ jobs:
           import json
           from pathlib import Path
 
+          universe=json.loads(Path("config/research_universe.json").read_text())
+          active=[x["symbol"] for x in universe["stocks"] if x.get("active")]
+          assert active and len(active)==len(set(active)),"INVALID_ACTIVE_UNIVERSE"
+          a_scope={x for x in active if not x.endswith(".HK")}
+          hk_scope=set(active)-a_scope
+          n=len(active)
           hard_failures=[]
           degraded_reasons=[]
           checks={}
@@ -145,13 +151,13 @@ jobs:
           allowed_ann={"LINKS_FETCHED_UNVERIFIED_ORIGIN","NO_NEW_PUBLICATION_IN_WINDOW_HISTORY_VERIFIED"}
           ann_rows=ann.get("rows") or []
           bad_ann=[r.get("symbol") for r in ann_rows if r.get("status") not in allowed_ann]
-          ann_ok=(len(ann_rows)==7 and not bad_ann)
+          ann_ok=(len(ann_rows)==len(a_scope) and {r.get("symbol") for r in ann_rows}==a_scope and not bad_ann)
           checks["a_share_announcements"]={"ok":ann_ok,"row_count":len(ann_rows),"bad_symbols":bad_ann}
           if not ann_ok: degraded_reasons.append("A_SHARE_ANNOUNCEMENTS_INCOMPLETE")
 
           hk=load("output/hk_financials/HK_FINANCIAL_RECEIPT.json")
           hk_rows=hk.get("rows") or []
-          hk_ok=(len(hk_rows)==4 and all(r.get("status")=="RAW_THREE_STATEMENTS_FETCHED_UNVERIFIED" for r in hk_rows))
+          hk_ok=(len(hk_rows)==len(hk_scope) and {r.get("symbol") for r in hk_rows}==hk_scope and all(r.get("status")=="RAW_THREE_STATEMENTS_FETCHED_UNVERIFIED" for r in hk_rows))
           checks["hk_financials"]={"ok":hk_ok,"row_count":len(hk_rows)}
           if not hk_ok: degraded_reasons.append("HK_FINANCIALS_INCOMPLETE")
 
@@ -159,10 +165,10 @@ jobs:
           community_rows=community.get("rows") or []
           community_checks=community.get("checks") or []
           community_ok=(community.get("source")=="EASTMONEY_GUBA_DIRECT"
-                        and community.get("symbols_checked")==11
-                        and community.get("symbols_with_posts")==11
+                        and community.get("symbols_checked")==n
+                        and community.get("symbols_with_posts")==n
                         and len(community_rows)>0
-                        and len(community_checks)==11)
+                        and len(community_checks)==n)
           mapping_ok=True
           for r in community_rows:
               symbol=str(r.get("symbol") or "")
@@ -202,7 +208,7 @@ jobs:
           if not ak_ok: degraded_reasons.append("AKSHARE_DISCOVERY_UNAVAILABLE")
 
           quotes=load("output/quotes/QUOTE_RECEIPT.json")
-          quote_ok=(quotes.get("quotes_with_source_session")==11)
+          quote_ok=(quotes.get("quotes_with_source_session")==n)
           checks["quotes"]={"ok":quote_ok,"quotes_with_source_session":quotes.get("quotes_with_source_session")}
           if not quote_ok: degraded_reasons.append("QUOTE_COVERAGE_INCOMPLETE")
 

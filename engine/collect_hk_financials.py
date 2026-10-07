@@ -1,6 +1,11 @@
 """Fetch HK three statements from AKShare/Eastmoney without inventing field mappings.
 Raw report-period rows are preserved; original HKEX filings remain independently required.
 """
+try:
+    from .financial_period import resolve_period
+except ImportError:
+    from financial_period import resolve_period
+
 import argparse
 import hashlib
 import json
@@ -37,10 +42,11 @@ def records_for_period(frame, period):
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--universe-file",default="config/research_universe.json")
-    ap.add_argument("--period",default="2026-06-30")
+    ap.add_argument("--period",default="auto")
     ap.add_argument("--output",default="output/hk_financials")
     ap.add_argument("--retries",type=int,default=2)
     args=ap.parse_args()
+    args.period=resolve_period(args.period,"HK")
     out=Path(args.output);out.mkdir(parents=True,exist_ok=True)
     universe=load_universe(args.universe_file)
     try:
