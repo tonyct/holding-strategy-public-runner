@@ -11,6 +11,7 @@ import math
 import os
 from pathlib import Path
 import random
+import sys
 import re
 import time
 from datetime import datetime, timezone
@@ -340,11 +341,22 @@ def main():
         class UnavailableProvider:
             def fetch(self,source,statement,symbol):raise SourceUnavailable('akshare_not_installed')
         provider=UnavailableProvider()
-    from direct_eastmoney import DirectEastmoneyProvider
+    direct_provider=None
+    direct_provider_state="NOT_REQUESTED"
+    if args.direct_eastmoney:
+        try:
+            from direct_eastmoney import DirectEastmoneyProvider
+            direct_provider=DirectEastmoneyProvider()
+            direct_provider_state="AVAILABLE"
+        except ModuleNotFoundError as exc:
+            if exc.name != "direct_eastmoney":
+                raise
+            direct_provider_state="OPTIONAL_MODULE_MISSING_AKSHARE_FALLBACK"
+            print(json.dumps({"warning":"DIRECT_EASTMONEY_MODULE_UNAVAILABLE","fallback":"AKSHARE_SINA_AND_EASTMONEY"}),file=sys.stderr)
     adapter=FinancialAdapter(providers=provider,limiter=RateLimiter(0 if args.offline_only else args.delay),
                              retries=max(0,min(args.retries,4)),
                              local_provider=LocalFinancialProvider(args.input_dir) if args.input_dir else None,
-                             direct_provider=DirectEastmoneyProvider() if args.direct_eastmoney else None,offline_only=args.offline_only)
+                             direct_provider=direct_provider,offline_only=args.offline_only)
     result=[]
     for symbol in args.symbols:
         try:
@@ -357,7 +369,8 @@ def main():
                           'statements':data.get('fetched_statements',0),
                           'snapshot_path':data.get('snapshot_path')},ensure_ascii=False))
     print(json.dumps({'total':len(result),'three_statements':sum(d['status']=='CORE_THREE_STATEMENTS_UNVERIFIED' for d in result),
-                      'partial':sum(d['status']=='DATA_PARTIAL' for d in result)},ensure_ascii=False))
+                      'partial':sum(d['status']=='DATA_PARTIAL' for d in result),
+                      'direct_eastmoney_provider':direct_provider_state},ensure_ascii=False))
     return 0 if all(d['status']=='CORE_THREE_STATEMENTS_UNVERIFIED' for d in result) else 1
 
 if __name__=='__main__':raise SystemExit(main())
