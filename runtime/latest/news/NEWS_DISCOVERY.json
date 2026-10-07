@@ -1,12 +1,42 @@
 {
   "schema": "E36_PUBLIC_NEWS_DISCOVERY/v1",
-  "generated_utc": "2026-10-07T03:45:55.833474+00:00",
+  "generated_utc": "2026-10-07T03:53:19.177510+00:00",
   "universe_sha256": "951695d407c5a3ad05838363654aa57d9edf7c51a978e7ca3815dae792abc82c",
   "research_only": true,
   "live_news_coverage_complete": false,
   "may_directly_change_main_or_trade": false,
-  "lead_count": 1,
+  "lead_count": 6,
   "rows": [
+    {
+      "symbol": "600941.SH",
+      "source": "PUBLIC_WEB_INDEX",
+      "url": "https://shop.10086.cn/mall_100_100.html",
+      "title": "网上营业厅 - 中国移动网上商城",
+      "snippet": "新闻中心 | 诚聘英才 | 采购信息 | 企业合作 | 联系我们 | 站点导航 | 友情链接 | 打击传销 掌上营业厅： wap.10086.cn 语音自助服务：10086 短信营业厅：10086 自助终端 营业厅 手机营业厅下载 京ICP备05002571号 中国移动通信版权所有",
+      "published_at": "Mon, 05 Oct 2026 21:46:00 GMT",
+      "verification_state": "UNVERIFIED_DISCOVERY",
+      "may_directly_change_main_or_trade": false
+    },
+    {
+      "symbol": "600941.SH",
+      "source": "PUBLIC_WEB_INDEX",
+      "url": "https://job.10086.cn/",
+      "title": "10086 - 中国移动招聘网站",
+      "snippet": "中国移动通信集团山西有限公司2027校园招聘公告 2026-09-08 中国移动北京公司2027校园招聘火热进行中 2026-09-04 中国移动通信集团海南有限公司2027年校园招聘启事 2026-09-04 中国移动四川公司2027秋季校园招聘公告 2026-09-04",
+      "published_at": "Tue, 06 Oct 2026 05:17:00 GMT",
+      "verification_state": "UNVERIFIED_DISCOVERY",
+      "may_directly_change_main_or_trade": false
+    },
+    {
+      "symbol": "600941.SH",
+      "source": "PUBLIC_WEB_INDEX",
+      "url": "https://www.chinamobileltd.com/sc/global/home.php",
+      "title": "中国移动有限公司 - China Mobile Limited",
+      "snippet": "2026年中期业绩 公告 (港股) 公告 (A股) 新闻稿 推介材料 网上广播 营运数据2026年二季度单位 (千户) 移动客户数 1,011,046 5G网络客户数 686,740 宽带联网客户数 336,920 物联网卡连接数",
+      "published_at": "Wed, 07 Oct 2026 02:03:00 GMT",
+      "verification_state": "UNVERIFIED_DISCOVERY",
+      "may_directly_change_main_or_trade": false
+    },
     {
       "symbol": "601857.SH",
       "source": "PUBLIC_WEB_INDEX",
@@ -16,21 +46,41 @@
       "published_at": "Mon, 05 Oct 2026 16:45:00 GMT",
       "verification_state": "UNVERIFIED_DISCOVERY",
       "may_directly_change_main_or_trade": false
+    },
+    {
+      "symbol": "601857.SH",
+      "source": "PUBLIC_WEB_INDEX",
+      "url": "https://www.petrochina.com.cn/",
+      "title": "PetroChina - 中国石油天然气股份有限公司",
+      "snippet": "©2025 版权所有 中国石油天然气股份有限公司 联系我们 | 网站地图 | 法律声明 | 京ICP证：14044136-2 | 京公网安备：110401400007",
+      "published_at": "Wed, 07 Oct 2026 00:44:00 GMT",
+      "verification_state": "UNVERIFIED_DISCOVERY",
+      "may_directly_change_main_or_trade": false
+    },
+    {
+      "symbol": "601857.SH",
+      "source": "PUBLIC_WEB_INDEX",
+      "url": "https://www.cnpc.com.cn/cnpc/jtjj/jtjj_index.shtml",
+      "title": "集团简介 - CNPC",
+      "snippet": "中国石油天然气集团有限公司（简称“中国石油”，英文缩写：CNPC）是国有重要骨干企业和全球主要的油气生产商和供应商之一，是集油气勘探开发和新能源、炼化销售和新材料、支持和服务、资本和金融等业务于一体的综合性国际能源与化工公司。",
+      "published_at": "Tue, 06 Oct 2026 08:38:00 GMT",
+      "verification_state": "UNVERIFIED_DISCOVERY",
+      "may_directly_change_main_or_trade": false
     }
   ],
   "checks": [
     {
       "symbol": "600941.SH",
       "query": "\"中国移动\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-07T03:45:47.616664+00:00",
+      "checked_utc": "2026-10-07T03:53:11.279313+00:00",
       "http_status": 200,
-      "status": "SEARCH_RETURNED_NO_RESULTS",
-      "candidates": 0
+      "status": "INDEXED_LEADS_FOUND",
+      "candidates": 3
     },
     {
       "symbol": "148.HK",
       "query": "\"建滔集团\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-07T03:45:48.382982+00:00",
+      "checked_utc": "2026-10-07T03:53:12.091935+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -38,7 +88,7 @@
     {
       "symbol": "001286.SZ",
       "query": "\"陕西能源\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-07T03:45:49.150434+00:00",
+      "checked_utc": "2026-10-07T03:53:12.838669+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -46,7 +96,7 @@
     {
       "symbol": "603993.SH",
       "query": "\"洛阳钼业\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-07T03:45:49.879622+00:00",
+      "checked_utc": "2026-10-07T03:53:13.551016+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -54,7 +104,7 @@
     {
       "symbol": "2233.HK",
       "query": "\"西部水泥\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-07T03:45:50.632780+00:00",
+      "checked_utc": "2026-10-07T03:53:14.274569+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -62,7 +112,7 @@
     {
       "symbol": "3933.HK",
       "query": "\"联邦制药\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-07T03:45:51.347629+00:00",
+      "checked_utc": "2026-10-07T03:53:15.004582+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -70,7 +120,7 @@
     {
       "symbol": "9926.HK",
       "query": "\"康方生物\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-07T03:45:52.073066+00:00",
+      "checked_utc": "2026-10-07T03:53:15.697260+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -78,7 +128,7 @@
     {
       "symbol": "600499.SH",
       "query": "\"科达制造\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-07T03:45:52.838503+00:00",
+      "checked_utc": "2026-10-07T03:53:16.384519+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -86,7 +136,7 @@
     {
       "symbol": "600795.SH",
       "query": "\"国电电力\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-07T03:45:53.551087+00:00",
+      "checked_utc": "2026-10-07T03:53:17.068906+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -94,7 +144,7 @@
     {
       "symbol": "603871.SH",
       "query": "\"嘉友国际\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-07T03:45:54.323950+00:00",
+      "checked_utc": "2026-10-07T03:53:17.771638+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -102,10 +152,10 @@
     {
       "symbol": "601857.SH",
       "query": "\"中国石油\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-07T03:45:55.103412+00:00",
+      "checked_utc": "2026-10-07T03:53:18.478446+00:00",
       "http_status": 200,
       "status": "INDEXED_LEADS_FOUND",
-      "candidates": 1
+      "candidates": 3
     }
   ]
 }

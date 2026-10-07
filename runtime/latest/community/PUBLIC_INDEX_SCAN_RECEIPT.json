@@ -1,6 +1,6 @@
 {
   "schema": "E36_COMMUNITY_PUBLIC_INDEX_SCAN/v1",
-  "generated_utc": "2026-10-07T03:45:47.511373+00:00",
+  "generated_utc": "2026-10-07T03:53:11.130914+00:00",
   "universe_sha256": "951695d407c5a3ad05838363654aa57d9edf7c51a978e7ca3815dae792abc82c",
   "checks_expected": 44,
   "checks_completed": 44,
@@ -19,7 +19,7 @@
       "symbol": "600941.SH",
       "source": "xueqiu",
       "query": "site:xueqiu.com \"中国移动\" 股票 讨论",
-      "checked_utc": "2026-10-07T03:45:14.600994+00:00",
+      "checked_utc": "2026-10-07T03:52:41.019847+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -27,13 +27,30 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.10086.cn/index/bj/index_100_100.html",
+          "unwrapped_url": "https://www.10086.cn/index/bj/index_100_100.html",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.10086.cn/index/sh/index_210_210.html",
+          "unwrapped_url": "https://www.10086.cn/index/sh/index_210_210.html",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://shop.10086.cn/",
+          "unwrapped_url": "https://shop.10086.cn/",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "600941.SH",
       "source": "eastmoney",
       "query": "site:guba.eastmoney.com/news \"中国移动\"",
-      "checked_utc": "2026-10-07T03:45:15.369352+00:00",
+      "checked_utc": "2026-10-07T03:52:41.763407+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -41,13 +58,30 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.10086.cn/index/bj/index_100_100.html",
+          "unwrapped_url": "https://www.10086.cn/index/bj/index_100_100.html",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.10086.cn/index/sh/index_210_210.html",
+          "unwrapped_url": "https://www.10086.cn/index/sh/index_210_210.html",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://shop.10086.cn/",
+          "unwrapped_url": "https://shop.10086.cn/",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "600941.SH",
       "source": "weibo",
       "query": "site:weibo.com \"中国移动\" 股票",
-      "checked_utc": "2026-10-07T03:45:16.122379+00:00",
+      "checked_utc": "2026-10-07T03:52:42.466788+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -55,13 +89,30 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.10086.cn/index/bj/index_100_100.html",
+          "unwrapped_url": "https://www.10086.cn/index/bj/index_100_100.html",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.10086.cn/index/sh/index_210_210.html",
+          "unwrapped_url": "https://www.10086.cn/index/sh/index_210_210.html",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://shop.10086.cn/",
+          "unwrapped_url": "https://shop.10086.cn/",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "600941.SH",
       "source": "futu",
       "query": "site:futunn.com/post \"中国移动\"",
-      "checked_utc": "2026-10-07T03:45:16.864209+00:00",
+      "checked_utc": "2026-10-07T03:52:43.162419+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -69,13 +120,30 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.10086.cn/index/bj/index_100_100.html",
+          "unwrapped_url": "https://www.10086.cn/index/bj/index_100_100.html",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.10086.cn/index/sh/index_210_210.html",
+          "unwrapped_url": "https://www.10086.cn/index/sh/index_210_210.html",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://shop.10086.cn/",
+          "unwrapped_url": "https://shop.10086.cn/",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "148.HK",
       "source": "xueqiu",
       "query": "site:xueqiu.com \"建滔集团\" 股票 讨论",
-      "checked_utc": "2026-10-07T03:45:17.626937+00:00",
+      "checked_utc": "2026-10-07T03:52:43.880396+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -83,13 +151,30 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://houstongardencenters.com/",
+          "unwrapped_url": "https://houstongardencenters.com/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.vanwilgens.com/",
+          "unwrapped_url": "https://www.vanwilgens.com/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.homedepot.com/b/Outdoors-Garden-Center/N-5yc1vZbx6k",
+          "unwrapped_url": "https://www.homedepot.com/b/Outdoors-Garden-Center/N-5yc1vZbx6k",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "148.HK",
       "source": "eastmoney",
       "query": "site:guba.eastmoney.com/news \"建滔集团\"",
-      "checked_utc": "2026-10-07T03:45:18.404615+00:00",
+      "checked_utc": "2026-10-07T03:52:44.583470+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -97,13 +182,30 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://en.m.wikipedia.org/wiki/Veterinarian",
+          "unwrapped_url": "https://en.m.wikipedia.org/wiki/Veterinarian",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.careerexplorer.com/careers/veterinarian/",
+          "unwrapped_url": "https://www.careerexplorer.com/careers/veterinarian/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.merriam-webster.com/dictionary/veterinarian",
+          "unwrapped_url": "https://www.merriam-webster.com/dictionary/veterinarian",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "148.HK",
       "source": "weibo",
       "query": "site:weibo.com \"建滔集团\" 股票",
-      "checked_utc": "2026-10-07T03:45:19.137070+00:00",
+      "checked_utc": "2026-10-07T03:52:45.279205+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -111,13 +213,30 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://tools.usps.com/go/TrackConfirmAction!input.action",
+          "unwrapped_url": "https://tools.usps.com/go/TrackConfirmAction!input.action",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.usps.com/",
+          "unwrapped_url": "https://www.usps.com/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://m.usps.com/m/TrackConfirmAction_input",
+          "unwrapped_url": "https://m.usps.com/m/TrackConfirmAction_input",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "148.HK",
       "source": "futu",
       "query": "site:futunn.com/post \"建滔集团\"",
-      "checked_utc": "2026-10-07T03:45:19.878404+00:00",
+      "checked_utc": "2026-10-07T03:52:45.994213+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -125,13 +244,30 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.reddit.com/r/NZXT/comments/u5ur7u/cooler_replacements_for_nzxt_h1/",
+          "unwrapped_url": "https://www.reddit.com/r/NZXT/comments/u5ur7u/cooler_replacements_for_nzxt_h1/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.reddit.com/r/techsupport/comments/nvn1dq/is_nzxt_cam_inaccurate_does_anyone_have/",
+          "unwrapped_url": "https://www.reddit.com/r/techsupport/comments/nvn1dq/is_nzxt_cam_inaccurate_does_anyone_have/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.techpowerup.com/346260/hp-does-an-nzxt-with-usd-49-99-129-99-month-omen-gaming-laptop-subscription",
+          "unwrapped_url": "https://www.techpowerup.com/346260/hp-does-an-nzxt-with-usd-49-99-129-99-month-omen-gaming-laptop-subscription",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "001286.SZ",
       "source": "xueqiu",
       "query": "site:xueqiu.com \"陕西能源\" 股票 讨论",
-      "checked_utc": "2026-10-07T03:45:20.630868+00:00",
+      "checked_utc": "2026-10-07T03:52:46.713826+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -139,27 +275,61 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://quizly.co/mars-quiz/",
+          "unwrapped_url": "https://quizly.co/mars-quiz/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.proprofs.com/quiz-school/quizzes/planet-mars-quiz",
+          "unwrapped_url": "https://www.proprofs.com/quiz-school/quizzes/planet-mars-quiz",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://mastersoftrivia.com/en/all-quizzes/history/inventions-discoveries/space-exploration/mars/",
+          "unwrapped_url": "https://mastersoftrivia.com/en/all-quizzes/history/inventions-discoveries/space-exploration/mars/",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "001286.SZ",
       "source": "eastmoney",
       "query": "site:guba.eastmoney.com/news \"陕西能源\"",
-      "checked_utc": "2026-10-07T03:45:21.398505+00:00",
+      "checked_utc": "2026-10-07T03:52:47.383977+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
-      "raw_items": 8,
-      "filtered_wrong_host": 8,
+      "raw_items": 10,
+      "filtered_wrong_host": 10,
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.microsoft.com/en-us/",
+          "unwrapped_url": "https://www.microsoft.com/en-us/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.microsoft.com/",
+          "unwrapped_url": "https://www.microsoft.com/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://account.microsoft.com/account",
+          "unwrapped_url": "https://account.microsoft.com/account",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "001286.SZ",
       "source": "weibo",
       "query": "site:weibo.com \"陕西能源\" 股票",
-      "checked_utc": "2026-10-07T03:45:22.107071+00:00",
+      "checked_utc": "2026-10-07T03:52:48.055949+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -167,13 +337,30 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://chatgpt.com/",
+          "unwrapped_url": "https://chatgpt.com/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://chatgpt.com/features",
+          "unwrapped_url": "https://chatgpt.com/features",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://openai.com/index/chatgpt/",
+          "unwrapped_url": "https://openai.com/index/chatgpt/",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "001286.SZ",
       "source": "futu",
       "query": "site:futunn.com/post \"陕西能源\"",
-      "checked_utc": "2026-10-07T03:45:22.869516+00:00",
+      "checked_utc": "2026-10-07T03:52:48.728204+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -181,13 +368,30 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.imdb.com/title/tt4574334",
+          "unwrapped_url": "https://www.imdb.com/title/tt4574334",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.imdb.com/title/tt4574334/fullcredits/",
+          "unwrapped_url": "https://www.imdb.com/title/tt4574334/fullcredits/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.imdb.com/list/ls565878285/",
+          "unwrapped_url": "https://www.imdb.com/list/ls565878285/",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "603993.SH",
       "source": "xueqiu",
       "query": "site:xueqiu.com \"洛阳钼业\" 股票 讨论",
-      "checked_utc": "2026-10-07T03:45:23.577673+00:00",
+      "checked_utc": "2026-10-07T03:52:49.393469+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -195,13 +399,417 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.goodhousekeeping.com/what-to-buy/g29386021/best-toys-gifts-for-6-year-old-girls/",
+          "unwrapped_url": "https://www.goodhousekeeping.com/what-to-buy/g29386021/best-toys-gifts-for-6-year-old-girls/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.nytimes.com/wirecutter/gifts/best-toys-gifts-for-6-year-olds/",
+          "unwrapped_url": "https://www.nytimes.com/wirecutter/gifts/best-toys-gifts-for-6-year-olds/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://geekbitz.com/best-gifts-for-6-year-old-girls/",
+          "unwrapped_url": "https://geekbitz.com/best-gifts-for-6-year-old-girls/",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "603993.SH",
       "source": "eastmoney",
       "query": "site:guba.eastmoney.com/news \"洛阳钼业\"",
-      "checked_utc": "2026-10-07T03:45:24.287661+00:00",
+      "checked_utc": "2026-10-07T03:52:50.058305+00:00",
+      "status": "SEARCH_RESULTS_FILTERED",
+      "http_status": 200,
+      "raw_items": 10,
+      "filtered_wrong_host": 10,
+      "filtered_generic_landing": 0,
+      "filtered_empty": 0,
+      "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.carters.com/",
+          "unwrapped_url": "https://www.carters.com/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.carters.com/c/clearance",
+          "unwrapped_url": "https://www.carters.com/c/clearance",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.carters.com/c/baby-girl-clothes-deals",
+          "unwrapped_url": "https://www.carters.com/c/baby-girl-clothes-deals",
+          "classified_as": null
+        }
+      ],
+      "candidates": 0
+    },
+    {
+      "symbol": "603993.SH",
+      "source": "weibo",
+      "query": "site:weibo.com \"洛阳钼业\" 股票",
+      "checked_utc": "2026-10-07T03:52:50.747456+00:00",
+      "status": "SEARCH_RESULTS_FILTERED",
+      "http_status": 200,
+      "raw_items": 10,
+      "filtered_wrong_host": 10,
+      "filtered_generic_landing": 0,
+      "filtered_empty": 0,
+      "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://support.microsoft.com/en-us/surface/introducing-microsoft-ink-canvas",
+          "unwrapped_url": "https://support.microsoft.com/en-us/surface/introducing-microsoft-ink-canvas",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://support.microsoft.com/en-gb/contactus",
+          "unwrapped_url": "https://support.microsoft.com/en-gb/contactus",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://techcommunity.microsoft.com/category/winhec-online/blog/hardware-dev-center",
+          "unwrapped_url": "https://techcommunity.microsoft.com/category/winhec-online/blog/hardware-dev-center",
+          "classified_as": null
+        }
+      ],
+      "candidates": 0
+    },
+    {
+      "symbol": "603993.SH",
+      "source": "futu",
+      "query": "site:futunn.com/post \"洛阳钼业\"",
+      "checked_utc": "2026-10-07T03:52:51.430527+00:00",
+      "status": "SEARCH_RESULTS_FILTERED",
+      "http_status": 200,
+      "raw_items": 10,
+      "filtered_wrong_host": 10,
+      "filtered_generic_landing": 0,
+      "filtered_empty": 0,
+      "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://m.imdb.com/title/tt41814550/fullcredits/",
+          "unwrapped_url": "https://m.imdb.com/title/tt41814550/fullcredits/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://m.imdb.com/title/tt41814550/",
+          "unwrapped_url": "https://m.imdb.com/title/tt41814550/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://en.m.wikipedia.org/wiki/NCIS:_New_York",
+          "unwrapped_url": "https://en.m.wikipedia.org/wiki/NCIS:_New_York",
+          "classified_as": null
+        }
+      ],
+      "candidates": 0
+    },
+    {
+      "symbol": "2233.HK",
+      "source": "xueqiu",
+      "query": "site:xueqiu.com \"西部水泥\" 股票 讨论",
+      "checked_utc": "2026-10-07T03:52:52.100434+00:00",
+      "status": "SEARCH_RESULTS_FILTERED",
+      "http_status": 200,
+      "raw_items": 10,
+      "filtered_wrong_host": 10,
+      "filtered_generic_landing": 0,
+      "filtered_empty": 0,
+      "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.reddit.com/r/pihole/comments/hi4g08/tiktok_list/",
+          "unwrapped_url": "https://www.reddit.com/r/pihole/comments/hi4g08/tiktok_list/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.reddit.com/r/tiktokthots/comments/zlgd1p/tiktok_baddie/",
+          "unwrapped_url": "https://www.reddit.com/r/tiktokthots/comments/zlgd1p/tiktok_baddie/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.zhihu.com/tardis/zm/art/573476219",
+          "unwrapped_url": "https://www.zhihu.com/tardis/zm/art/573476219",
+          "classified_as": null
+        }
+      ],
+      "candidates": 0
+    },
+    {
+      "symbol": "2233.HK",
+      "source": "eastmoney",
+      "query": "site:guba.eastmoney.com/news \"西部水泥\"",
+      "checked_utc": "2026-10-07T03:52:52.765826+00:00",
+      "status": "SEARCH_RESULTS_FILTERED",
+      "http_status": 200,
+      "raw_items": 10,
+      "filtered_wrong_host": 10,
+      "filtered_generic_landing": 0,
+      "filtered_empty": 0,
+      "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.autotrader.com/",
+          "unwrapped_url": "https://www.autotrader.com/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.carmax.com/",
+          "unwrapped_url": "https://www.carmax.com/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.galpin.com/",
+          "unwrapped_url": "https://www.galpin.com/",
+          "classified_as": null
+        }
+      ],
+      "candidates": 0
+    },
+    {
+      "symbol": "2233.HK",
+      "source": "weibo",
+      "query": "site:weibo.com \"西部水泥\" 股票",
+      "checked_utc": "2026-10-07T03:52:53.434174+00:00",
+      "status": "SEARCH_RESULTS_FILTERED",
+      "http_status": 200,
+      "raw_items": 10,
+      "filtered_wrong_host": 10,
+      "filtered_generic_landing": 0,
+      "filtered_empty": 0,
+      "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.reddit.com/r/movies/comments/1cpaatl/thoughts_on_sydney_sweeney_as_an_actress/",
+          "unwrapped_url": "https://www.reddit.com/r/movies/comments/1cpaatl/thoughts_on_sydney_sweeney_as_an_actress/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.reddit.com/r/WatchItForThePlot/comments/sgqvhv/sydney_sweeney_from_euphoria_s02e04/",
+          "unwrapped_url": "https://www.reddit.com/r/WatchItForThePlot/comments/sgqvhv/sydney_sweeney_from_euphoria_s02e04/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.reddit.com/r/redscarepod/comments/132g9vk/shut_up_about_sydney_sweeney/",
+          "unwrapped_url": "https://www.reddit.com/r/redscarepod/comments/132g9vk/shut_up_about_sydney_sweeney/",
+          "classified_as": null
+        }
+      ],
+      "candidates": 0
+    },
+    {
+      "symbol": "2233.HK",
+      "source": "futu",
+      "query": "site:futunn.com/post \"西部水泥\"",
+      "checked_utc": "2026-10-07T03:52:54.119639+00:00",
+      "status": "SEARCH_RESULTS_FILTERED",
+      "http_status": 200,
+      "raw_items": 10,
+      "filtered_wrong_host": 10,
+      "filtered_generic_landing": 0,
+      "filtered_empty": 0,
+      "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://help.twitch.tv/s/article/twitch-merchandise-store-support-faq",
+          "unwrapped_url": "https://help.twitch.tv/s/article/twitch-merchandise-store-support-faq",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://help.twitch.tv/s/twitch-ingest-recommendation?language=en_US",
+          "unwrapped_url": "https://help.twitch.tv/s/twitch-ingest-recommendation?language=en_US",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.reddit.com/r/Twitch/comments/199cx8p/how_do_i_remove_my_phone_number_from_a_lost/",
+          "unwrapped_url": "https://www.reddit.com/r/Twitch/comments/199cx8p/how_do_i_remove_my_phone_number_from_a_lost/",
+          "classified_as": null
+        }
+      ],
+      "candidates": 0
+    },
+    {
+      "symbol": "3933.HK",
+      "source": "xueqiu",
+      "query": "site:xueqiu.com \"联邦制药\" 股票 讨论",
+      "checked_utc": "2026-10-07T03:52:54.819462+00:00",
+      "status": "SEARCH_RESULTS_FILTERED",
+      "http_status": 200,
+      "raw_items": 10,
+      "filtered_wrong_host": 10,
+      "filtered_generic_landing": 0,
+      "filtered_empty": 0,
+      "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://chatgpt.com/",
+          "unwrapped_url": "https://chatgpt.com/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://chatgpt.com/features",
+          "unwrapped_url": "https://chatgpt.com/features",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://openai.com/index/chatgpt/",
+          "unwrapped_url": "https://openai.com/index/chatgpt/",
+          "classified_as": null
+        }
+      ],
+      "candidates": 0
+    },
+    {
+      "symbol": "3933.HK",
+      "source": "eastmoney",
+      "query": "site:guba.eastmoney.com/news \"联邦制药\"",
+      "checked_utc": "2026-10-07T03:52:55.499532+00:00",
+      "status": "SEARCH_RESULTS_FILTERED",
+      "http_status": 200,
+      "raw_items": 10,
+      "filtered_wrong_host": 10,
+      "filtered_generic_landing": 0,
+      "filtered_empty": 0,
+      "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.indeed.com/q-Junior-Cyber-Security-Auditor-jobs.html",
+          "unwrapped_url": "https://www.indeed.com/q-Junior-Cyber-Security-Auditor-jobs.html",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.indeed.com/q-Junior-Cyber-Security-Analyst-jobs.html",
+          "unwrapped_url": "https://www.indeed.com/q-Junior-Cyber-Security-Analyst-jobs.html",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.linkedin.com/jobs/junior-cyber-security-analyst-jobs",
+          "unwrapped_url": "https://www.linkedin.com/jobs/junior-cyber-security-analyst-jobs",
+          "classified_as": null
+        }
+      ],
+      "candidates": 0
+    },
+    {
+      "symbol": "3933.HK",
+      "source": "weibo",
+      "query": "site:weibo.com \"联邦制药\" 股票",
+      "checked_utc": "2026-10-07T03:52:56.177390+00:00",
+      "status": "SEARCH_RESULTS_FILTERED",
+      "http_status": 200,
+      "raw_items": 3,
+      "filtered_wrong_host": 3,
+      "filtered_generic_landing": 0,
+      "filtered_empty": 0,
+      "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://translate.google.com/?hl=km",
+          "unwrapped_url": "https://translate.google.com/?hl=km",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://translate.google.com/intl/km/about/",
+          "unwrapped_url": "https://translate.google.com/intl/km/about/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://translate.google.com/?key",
+          "unwrapped_url": "https://translate.google.com/?key",
+          "classified_as": null
+        }
+      ],
+      "candidates": 0
+    },
+    {
+      "symbol": "3933.HK",
+      "source": "futu",
+      "query": "site:futunn.com/post \"联邦制药\"",
+      "checked_utc": "2026-10-07T03:52:56.875727+00:00",
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "http_status": 200,
+      "raw_items": 0,
+      "filtered_wrong_host": 0,
+      "filtered_generic_landing": 0,
+      "filtered_empty": 0,
+      "accepted_before_dedup": 0,
+      "wrong_host_samples": [],
+      "candidates": 0
+    },
+    {
+      "symbol": "9926.HK",
+      "source": "xueqiu",
+      "query": "site:xueqiu.com \"康方生物\" 股票 讨论",
+      "checked_utc": "2026-10-07T03:52:57.534829+00:00",
+      "status": "SEARCH_RESULTS_FILTERED",
+      "http_status": 200,
+      "raw_items": 10,
+      "filtered_wrong_host": 10,
+      "filtered_generic_landing": 0,
+      "filtered_empty": 0,
+      "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.fragrantica.com/perfume/Avon/Forever-Spring-76004.html",
+          "unwrapped_url": "https://www.fragrantica.com/perfume/Avon/Forever-Spring-76004.html",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://scentsignal.com/fragrance/avon-forever-spring",
+          "unwrapped_url": "https://scentsignal.com/fragrance/avon-forever-spring",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://fraganceswiki.com/avon/forever",
+          "unwrapped_url": "https://fraganceswiki.com/avon/forever",
+          "classified_as": null
+        }
+      ],
+      "candidates": 0
+    },
+    {
+      "symbol": "9926.HK",
+      "source": "eastmoney",
+      "query": "site:guba.eastmoney.com/news \"康方生物\"",
+      "checked_utc": "2026-10-07T03:52:58.199296+00:00",
+      "status": "SEARCH_RESULTS_FILTERED",
+      "http_status": 200,
+      "raw_items": 10,
+      "filtered_wrong_host": 10,
+      "filtered_generic_landing": 0,
+      "filtered_empty": 0,
+      "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.houstondynamofc.com/",
+          "unwrapped_url": "https://www.houstondynamofc.com/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.houstondynamofc.com/tickets/",
+          "unwrapped_url": "https://www.houstondynamofc.com/tickets/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.houstondynamofc.com/schedule/matches",
+          "unwrapped_url": "https://www.houstondynamofc.com/schedule/matches",
+          "classified_as": null
+        }
+      ],
+      "candidates": 0
+    },
+    {
+      "symbol": "9926.HK",
+      "source": "weibo",
+      "query": "site:weibo.com \"康方生物\" 股票",
+      "checked_utc": "2026-10-07T03:52:58.857758+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 7,
@@ -209,195 +817,30 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
-      "candidates": 0
-    },
-    {
-      "symbol": "603993.SH",
-      "source": "weibo",
-      "query": "site:weibo.com \"洛阳钼业\" 股票",
-      "checked_utc": "2026-10-07T03:45:24.997507+00:00",
-      "status": "SEARCH_RESULTS_FILTERED",
-      "http_status": 200,
-      "raw_items": 10,
-      "filtered_wrong_host": 10,
-      "filtered_generic_landing": 0,
-      "filtered_empty": 0,
-      "accepted_before_dedup": 0,
-      "candidates": 0
-    },
-    {
-      "symbol": "603993.SH",
-      "source": "futu",
-      "query": "site:futunn.com/post \"洛阳钼业\"",
-      "checked_utc": "2026-10-07T03:45:25.720493+00:00",
-      "status": "SEARCH_RESULTS_FILTERED",
-      "http_status": 200,
-      "raw_items": 10,
-      "filtered_wrong_host": 10,
-      "filtered_generic_landing": 0,
-      "filtered_empty": 0,
-      "accepted_before_dedup": 0,
-      "candidates": 0
-    },
-    {
-      "symbol": "2233.HK",
-      "source": "xueqiu",
-      "query": "site:xueqiu.com \"西部水泥\" 股票 讨论",
-      "checked_utc": "2026-10-07T03:45:26.427950+00:00",
-      "status": "SEARCH_RESULTS_FILTERED",
-      "http_status": 200,
-      "raw_items": 10,
-      "filtered_wrong_host": 10,
-      "filtered_generic_landing": 0,
-      "filtered_empty": 0,
-      "accepted_before_dedup": 0,
-      "candidates": 0
-    },
-    {
-      "symbol": "2233.HK",
-      "source": "eastmoney",
-      "query": "site:guba.eastmoney.com/news \"西部水泥\"",
-      "checked_utc": "2026-10-07T03:45:27.180698+00:00",
-      "status": "SEARCH_RESULTS_FILTERED",
-      "http_status": 200,
-      "raw_items": 5,
-      "filtered_wrong_host": 5,
-      "filtered_generic_landing": 0,
-      "filtered_empty": 0,
-      "accepted_before_dedup": 0,
-      "candidates": 0
-    },
-    {
-      "symbol": "2233.HK",
-      "source": "weibo",
-      "query": "site:weibo.com \"西部水泥\" 股票",
-      "checked_utc": "2026-10-07T03:45:27.885657+00:00",
-      "status": "SEARCH_RESULTS_FILTERED",
-      "http_status": 200,
-      "raw_items": 14,
-      "filtered_wrong_host": 14,
-      "filtered_generic_landing": 0,
-      "filtered_empty": 0,
-      "accepted_before_dedup": 0,
-      "candidates": 0
-    },
-    {
-      "symbol": "2233.HK",
-      "source": "futu",
-      "query": "site:futunn.com/post \"西部水泥\"",
-      "checked_utc": "2026-10-07T03:45:28.595572+00:00",
-      "status": "SEARCH_RESULTS_FILTERED",
-      "http_status": 200,
-      "raw_items": 10,
-      "filtered_wrong_host": 10,
-      "filtered_generic_landing": 0,
-      "filtered_empty": 0,
-      "accepted_before_dedup": 0,
-      "candidates": 0
-    },
-    {
-      "symbol": "3933.HK",
-      "source": "xueqiu",
-      "query": "site:xueqiu.com \"联邦制药\" 股票 讨论",
-      "checked_utc": "2026-10-07T03:45:29.352414+00:00",
-      "status": "SEARCH_RESULTS_FILTERED",
-      "http_status": 200,
-      "raw_items": 10,
-      "filtered_wrong_host": 10,
-      "filtered_generic_landing": 0,
-      "filtered_empty": 0,
-      "accepted_before_dedup": 0,
-      "candidates": 0
-    },
-    {
-      "symbol": "3933.HK",
-      "source": "eastmoney",
-      "query": "site:guba.eastmoney.com/news \"联邦制药\"",
-      "checked_utc": "2026-10-07T03:45:30.088138+00:00",
-      "status": "SEARCH_RESULTS_FILTERED",
-      "http_status": 200,
-      "raw_items": 10,
-      "filtered_wrong_host": 10,
-      "filtered_generic_landing": 0,
-      "filtered_empty": 0,
-      "accepted_before_dedup": 0,
-      "candidates": 0
-    },
-    {
-      "symbol": "3933.HK",
-      "source": "weibo",
-      "query": "site:weibo.com \"联邦制药\" 股票",
-      "checked_utc": "2026-10-07T03:45:30.899903+00:00",
-      "status": "SEARCH_RESULTS_FILTERED",
-      "http_status": 200,
-      "raw_items": 10,
-      "filtered_wrong_host": 10,
-      "filtered_generic_landing": 0,
-      "filtered_empty": 0,
-      "accepted_before_dedup": 0,
-      "candidates": 0
-    },
-    {
-      "symbol": "3933.HK",
-      "source": "futu",
-      "query": "site:futunn.com/post \"联邦制药\"",
-      "checked_utc": "2026-10-07T03:45:31.645633+00:00",
-      "status": "SEARCH_RESULTS_FILTERED",
-      "http_status": 200,
-      "raw_items": 10,
-      "filtered_wrong_host": 10,
-      "filtered_generic_landing": 0,
-      "filtered_empty": 0,
-      "accepted_before_dedup": 0,
-      "candidates": 0
-    },
-    {
-      "symbol": "9926.HK",
-      "source": "xueqiu",
-      "query": "site:xueqiu.com \"康方生物\" 股票 讨论",
-      "checked_utc": "2026-10-07T03:45:32.405027+00:00",
-      "status": "SEARCH_RESULTS_FILTERED",
-      "http_status": 200,
-      "raw_items": 10,
-      "filtered_wrong_host": 10,
-      "filtered_generic_landing": 0,
-      "filtered_empty": 0,
-      "accepted_before_dedup": 0,
-      "candidates": 0
-    },
-    {
-      "symbol": "9926.HK",
-      "source": "eastmoney",
-      "query": "site:guba.eastmoney.com/news \"康方生物\"",
-      "checked_utc": "2026-10-07T03:45:33.234428+00:00",
-      "status": "SEARCH_RESULTS_FILTERED",
-      "http_status": 200,
-      "raw_items": 10,
-      "filtered_wrong_host": 10,
-      "filtered_generic_landing": 0,
-      "filtered_empty": 0,
-      "accepted_before_dedup": 0,
-      "candidates": 0
-    },
-    {
-      "symbol": "9926.HK",
-      "source": "weibo",
-      "query": "site:weibo.com \"康方生物\" 股票",
-      "checked_utc": "2026-10-07T03:45:33.942063+00:00",
-      "status": "SEARCH_RESULTS_FILTERED",
-      "http_status": 200,
-      "raw_items": 10,
-      "filtered_wrong_host": 10,
-      "filtered_generic_landing": 0,
-      "filtered_empty": 0,
-      "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://kevinworthington.com/gmail-is-slow-again-2026-troubleshooting-guide/",
+          "unwrapped_url": "https://kevinworthington.com/gmail-is-slow-again-2026-troubleshooting-guide/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://emailanalytics.com/how-to-make-gmail-faster-15-hacks-you-need-to-know/",
+          "unwrapped_url": "https://emailanalytics.com/how-to-make-gmail-faster-15-hacks-you-need-to-know/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://support.google.com/mail/answer/7074871?hl=en",
+          "unwrapped_url": "https://support.google.com/mail/answer/7074871?hl=en",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "9926.HK",
       "source": "futu",
       "query": "site:futunn.com/post \"康方生物\"",
-      "checked_utc": "2026-10-07T03:45:34.709353+00:00",
+      "checked_utc": "2026-10-07T03:52:59.528572+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -405,13 +848,30 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.usajobs.gov/",
+          "unwrapped_url": "https://www.usajobs.gov/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.usajobs.gov/?reserved=0",
+          "unwrapped_url": "https://www.usajobs.gov/?reserved=0",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://help.usajobs.gov/help/contactus/",
+          "unwrapped_url": "https://help.usajobs.gov/help/contactus/",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "600499.SH",
       "source": "xueqiu",
       "query": "site:xueqiu.com \"科达制造\" 股票 讨论",
-      "checked_utc": "2026-10-07T03:45:35.416095+00:00",
+      "checked_utc": "2026-10-07T03:53:00.188610+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -419,13 +879,30 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://support.google.com/youtube/answer/10801543?hl=en",
+          "unwrapped_url": "https://support.google.com/youtube/answer/10801543?hl=en",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://support.google.com/youtubetv/?hl=en",
+          "unwrapped_url": "https://support.google.com/youtubetv/?hl=en",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://obsproject.com/forum/tags/youtube/",
+          "unwrapped_url": "https://obsproject.com/forum/tags/youtube/",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "600499.SH",
       "source": "eastmoney",
       "query": "site:guba.eastmoney.com/news \"科达制造\"",
-      "checked_utc": "2026-10-07T03:45:36.123554+00:00",
+      "checked_utc": "2026-10-07T03:53:00.849871+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -433,13 +910,30 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.cars.com/dealers/208994/joe-paul-crouse-auto-sales/",
+          "unwrapped_url": "https://www.cars.com/dealers/208994/joe-paul-crouse-auto-sales/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.cars.com/dealers/5389641/auto-bohn-family-motors/",
+          "unwrapped_url": "https://www.cars.com/dealers/5389641/auto-bohn-family-motors/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.cars.com/dealers/175025/rochester-wholesale-auto-sales/",
+          "unwrapped_url": "https://www.cars.com/dealers/175025/rochester-wholesale-auto-sales/",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "600499.SH",
       "source": "weibo",
       "query": "site:weibo.com \"科达制造\" 股票",
-      "checked_utc": "2026-10-07T03:45:36.867752+00:00",
+      "checked_utc": "2026-10-07T03:53:01.510154+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -447,13 +941,30 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://ttlc.intuit.com/community/get-your-taxes-done-using-turbotax-6/my-wife-and-i-file-separately-do-we-need-two-turbo-tax-accounts-or-can-we-purchase-one-program-and-use-it-twice-57406",
+          "unwrapped_url": "https://ttlc.intuit.com/community/get-your-taxes-done-using-turbotax-6/my-wife-and-i-file-separately-do-we-need-two-turbo-tax-accounts-or-can-we-purchase-one-program-and-use-it-twice-57406",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://ttlc.intuit.com/community/get-your-taxes-done-using-turbotax-6/turbotax-not-calculating-social-security-tax-correctly-for-2025-132257",
+          "unwrapped_url": "https://ttlc.intuit.com/community/get-your-taxes-done-using-turbotax-6/turbotax-not-calculating-social-security-tax-correctly-for-2025-132257",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://ttlc.intuit.com/turbotax-support/en-us/help-article/customer-full-service-product/cant-connect-tax-expert/L3T7dXfRi_US_en_US",
+          "unwrapped_url": "https://ttlc.intuit.com/turbotax-support/en-us/help-article/customer-full-service-product/cant-connect-tax-expert/L3T7dXfRi_US_en_US",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "600499.SH",
       "source": "futu",
       "query": "site:futunn.com/post \"科达制造\"",
-      "checked_utc": "2026-10-07T03:45:37.612738+00:00",
+      "checked_utc": "2026-10-07T03:53:02.175507+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -461,27 +972,61 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.bclplaw.com/print/v2/content/1727/sharon-z-weiss.pdf",
+          "unwrapped_url": "https://www.bclplaw.com/print/v2/content/1727/sharon-z-weiss.pdf",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.linkedin.com/in/sharon-weiss-a58441b",
+          "unwrapped_url": "https://www.linkedin.com/in/sharon-weiss-a58441b",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://aira.org/brc/speaker/2025/sharon-weiss-956",
+          "unwrapped_url": "https://aira.org/brc/speaker/2025/sharon-weiss-956",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "600795.SH",
       "source": "xueqiu",
       "query": "site:xueqiu.com \"国电电力\" 股票 讨论",
-      "checked_utc": "2026-10-07T03:45:38.337001+00:00",
+      "checked_utc": "2026-10-07T03:53:02.865661+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
-      "raw_items": 10,
-      "filtered_wrong_host": 10,
+      "raw_items": 7,
+      "filtered_wrong_host": 7,
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://gautamkhorana.com/blog/claude-code-daily-founder-workflow/",
+          "unwrapped_url": "https://gautamkhorana.com/blog/claude-code-daily-founder-workflow/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://tech.tint.ai/diving-into-our-claude-code-daily-workflow/",
+          "unwrapped_url": "https://tech.tint.ai/diving-into-our-claude-code-daily-workflow/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://claude.com/blog/building-companies-with-claude-code",
+          "unwrapped_url": "https://claude.com/blog/building-companies-with-claude-code",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "600795.SH",
       "source": "eastmoney",
       "query": "site:guba.eastmoney.com/news \"国电电力\"",
-      "checked_utc": "2026-10-07T03:45:39.077443+00:00",
+      "checked_utc": "2026-10-07T03:53:03.537261+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -489,13 +1034,30 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.reddit.com/r/amazon/comments/3hiaq1/is_it_reliable_to_buy_used_book_from_amazon/",
+          "unwrapped_url": "https://www.reddit.com/r/amazon/comments/3hiaq1/is_it_reliable_to_buy_used_book_from_amazon/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.reddit.com/r/amazon/comments/6f4wqy/lpt_when_searching_for_items_paste/",
+          "unwrapped_url": "https://www.reddit.com/r/amazon/comments/6f4wqy/lpt_when_searching_for_items_paste/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.reddit.com/r/buildapc/comments/w2zf40/is_it_safe_to_buy_a_gpu_from_amazon/",
+          "unwrapped_url": "https://www.reddit.com/r/buildapc/comments/w2zf40/is_it_safe_to_buy_a_gpu_from_amazon/",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "600795.SH",
       "source": "weibo",
       "query": "site:weibo.com \"国电电力\" 股票",
-      "checked_utc": "2026-10-07T03:45:39.818102+00:00",
+      "checked_utc": "2026-10-07T03:53:04.224276+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -503,41 +1065,92 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.zhihu.com/question/2063033606767895735",
+          "unwrapped_url": "https://www.zhihu.com/question/2063033606767895735",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.astrologyanswers.com/zodiac-signs/gemini/",
+          "unwrapped_url": "https://www.astrologyanswers.com/zodiac-signs/gemini/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.zhihu.com/question/2050527290925248637",
+          "unwrapped_url": "https://www.zhihu.com/question/2050527290925248637",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "600795.SH",
       "source": "futu",
       "query": "site:futunn.com/post \"国电电力\"",
-      "checked_utc": "2026-10-07T03:45:40.600184+00:00",
+      "checked_utc": "2026-10-07T03:53:04.912015+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
-      "raw_items": 10,
-      "filtered_wrong_host": 10,
+      "raw_items": 7,
+      "filtered_wrong_host": 7,
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://freedominnmotel.com/",
+          "unwrapped_url": "https://freedominnmotel.com/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.booking.com/hotel/us/freedom-inn-motel.html",
+          "unwrapped_url": "https://www.booking.com/hotel/us/freedom-inn-motel.html",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.yelp.com/biz/freedom-inn-motel-grantville-3",
+          "unwrapped_url": "https://www.yelp.com/biz/freedom-inn-motel-grantville-3",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "603871.SH",
       "source": "xueqiu",
       "query": "site:xueqiu.com \"嘉友国际\" 股票 讨论",
-      "checked_utc": "2026-10-07T03:45:41.365209+00:00",
+      "checked_utc": "2026-10-07T03:53:05.575842+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
-      "raw_items": 10,
-      "filtered_wrong_host": 10,
+      "raw_items": 7,
+      "filtered_wrong_host": 7,
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.facebook.com/",
+          "unwrapped_url": "https://www.facebook.com/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.facebook.com/login.php/",
+          "unwrapped_url": "https://www.facebook.com/login.php/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://secure.facebook.com/login/",
+          "unwrapped_url": "https://secure.facebook.com/login/",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "603871.SH",
       "source": "eastmoney",
       "query": "site:guba.eastmoney.com/news \"嘉友国际\"",
-      "checked_utc": "2026-10-07T03:45:42.133256+00:00",
+      "checked_utc": "2026-10-07T03:53:06.269145+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -545,41 +1158,87 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://mail.google.com/maiL",
+          "unwrapped_url": "https://mail.google.com/maiL",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://accounts.google.com/login?service=mail",
+          "unwrapped_url": "https://accounts.google.com/login?service=mail",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://www.gmail.com/app",
+          "unwrapped_url": "https://www.gmail.com/app",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "603871.SH",
       "source": "weibo",
       "query": "site:weibo.com \"嘉友国际\" 股票",
-      "checked_utc": "2026-10-07T03:45:42.864055+00:00",
+      "checked_utc": "2026-10-07T03:53:06.935605+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
-      "raw_items": 5,
-      "filtered_wrong_host": 5,
+      "raw_items": 10,
+      "filtered_wrong_host": 10,
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://support.apple.com/en-us/105083",
+          "unwrapped_url": "https://support.apple.com/en-us/105083",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://support.apple.com/guide/iphone/unsend-or-edit-messages-iphe67195653/ios",
+          "unwrapped_url": "https://support.apple.com/guide/iphone/unsend-or-edit-messages-iphe67195653/ios",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://cyberguy.com/iphone/how-to-edit-unsend-iphone-message/",
+          "unwrapped_url": "https://cyberguy.com/iphone/how-to-edit-unsend-iphone-message/",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "603871.SH",
       "source": "futu",
       "query": "site:futunn.com/post \"嘉友国际\"",
-      "checked_utc": "2026-10-07T03:45:43.596929+00:00",
+      "checked_utc": "2026-10-07T03:53:07.633332+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
-      "raw_items": 10,
-      "filtered_wrong_host": 10,
+      "raw_items": 2,
+      "filtered_wrong_host": 2,
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://wheelofnames.com/",
+          "unwrapped_url": "https://wheelofnames.com/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://wheelofnames.com/faq",
+          "unwrapped_url": "https://wheelofnames.com/faq",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "601857.SH",
       "source": "xueqiu",
       "query": "site:xueqiu.com \"中国石油\" 股票 讨论",
-      "checked_utc": "2026-10-07T03:45:44.318132+00:00",
+      "checked_utc": "2026-10-07T03:53:08.332457+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -587,13 +1246,30 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.cnpc.com.cn/cnpc/index.shtml",
+          "unwrapped_url": "https://www.cnpc.com.cn/cnpc/index.shtml",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://zhaopin.cnpc.com.cn/",
+          "unwrapped_url": "https://zhaopin.cnpc.com.cn/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://quote.eastmoney.com/sh601857.html",
+          "unwrapped_url": "https://quote.eastmoney.com/sh601857.html",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "601857.SH",
       "source": "eastmoney",
       "query": "site:guba.eastmoney.com/news \"中国石油\"",
-      "checked_utc": "2026-10-07T03:45:45.099358+00:00",
+      "checked_utc": "2026-10-07T03:53:09.045851+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -601,13 +1277,30 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.cnpc.com.cn/cnpc/index.shtml",
+          "unwrapped_url": "https://www.cnpc.com.cn/cnpc/index.shtml",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://zhaopin.cnpc.com.cn/",
+          "unwrapped_url": "https://zhaopin.cnpc.com.cn/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://quote.eastmoney.com/sh601857.html",
+          "unwrapped_url": "https://quote.eastmoney.com/sh601857.html",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "601857.SH",
       "source": "weibo",
       "query": "site:weibo.com \"中国石油\" 股票",
-      "checked_utc": "2026-10-07T03:45:45.861920+00:00",
+      "checked_utc": "2026-10-07T03:53:09.717827+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -615,13 +1308,30 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.cnpc.com.cn/cnpc/index.shtml",
+          "unwrapped_url": "https://www.cnpc.com.cn/cnpc/index.shtml",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://zhaopin.cnpc.com.cn/",
+          "unwrapped_url": "https://zhaopin.cnpc.com.cn/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://quote.eastmoney.com/sh601857.html",
+          "unwrapped_url": "https://quote.eastmoney.com/sh601857.html",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     },
     {
       "symbol": "601857.SH",
       "source": "futu",
       "query": "site:futunn.com/post \"中国石油\"",
-      "checked_utc": "2026-10-07T03:45:46.688433+00:00",
+      "checked_utc": "2026-10-07T03:53:10.437129+00:00",
       "status": "SEARCH_RESULTS_FILTERED",
       "http_status": 200,
       "raw_items": 10,
@@ -629,6 +1339,23 @@
       "filtered_generic_landing": 0,
       "filtered_empty": 0,
       "accepted_before_dedup": 0,
+      "wrong_host_samples": [
+        {
+          "raw_url": "https://www.cnpc.com.cn/cnpc/index.shtml",
+          "unwrapped_url": "https://www.cnpc.com.cn/cnpc/index.shtml",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://zhaopin.cnpc.com.cn/",
+          "unwrapped_url": "https://zhaopin.cnpc.com.cn/",
+          "classified_as": null
+        },
+        {
+          "raw_url": "https://quote.eastmoney.com/sh601857.html",
+          "unwrapped_url": "https://quote.eastmoney.com/sh601857.html",
+          "classified_as": null
+        }
+      ],
       "candidates": 0
     }
   ]

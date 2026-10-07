@@ -1,7 +1,8 @@
 {
   "schema": "E36_PUBLIC_ACQUISITION_HEALTH/v1",
-  "status": "FAIL",
-  "failures": [
+  "status": "PASS_WITH_SOFT_GAPS",
+  "hard_failures": [],
+  "soft_gaps": [
     "A_SHARE_FINANCIALS_INCOMPLETE",
     "COMMUNITY_DISCOVERY_UNUSABLE"
   ],
@@ -26,15 +27,15 @@
       "ok": false,
       "checks_completed": 44,
       "checks_expected": 44,
-      "raw_items": 429,
-      "filtered_wrong_host": 429,
+      "raw_items": 403,
+      "filtered_wrong_host": 403,
       "accepted_before_dedup": 0,
       "lead_count": 0,
       "resolver_broken": true
     },
     "news_discovery": {
       "ok": true,
-      "lead_count": 1
+      "lead_count": 6
     },
     "ir_discovery": {
       "ok": true,
