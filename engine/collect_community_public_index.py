@@ -3,10 +3,10 @@
 Searches the public Bing RSS representation, not community-platform endpoints.
 Search snippets are discovery leads only; never claim complete/current platform coverage.
 """
-import argparse,json,re,time,xml.etree.ElementTree as ET
+import argparse,base64,json,re,time,xml.etree.ElementTree as ET
 from datetime import datetime,timezone
 from pathlib import Path
-from urllib.parse import urlencode
+from urllib.parse import urlencode,urlparse,parse_qs,unquote
 import requests
 from universe import load_universe
 from community_sources import classify,ingest
@@ -23,6 +23,29 @@ DOMAINS={
 }
 RSS="https://www.bing.com/search"
 
+def unwrap_search_url(url):
+    """Return the target URL when Bing RSS emits a /ck/a redirect."""
+    try:
+        p=urlparse(url)
+        if p.hostname not in ("bing.com","www.bing.com") or p.path!="/ck/a":
+            return url
+        q=parse_qs(p.query)
+        raw=(q.get("u") or [None])[0]
+        if not raw:
+            return url
+        raw=unquote(raw)
+        if raw.startswith("a1"):
+            token=raw[2:]
+            token += "=" * (-len(token) % 4)
+            target=base64.urlsafe_b64decode(token.encode()).decode("utf-8","ignore")
+            if target.startswith("https://"):
+                return target
+        if raw.startswith("https://"):
+            return raw
+    except Exception:
+        pass
+    return url
+
 def parse_rss(data,source,symbol,limit=5,diagnostics=None):
     root=ET.fromstring(data)
     if root.tag!="rss":raise ValueError("NON_RSS_SEARCH_RESPONSE")
@@ -31,7 +54,7 @@ def parse_rss(data,source,symbol,limit=5,diagnostics=None):
     if diagnostics is not None:diagnostics["raw_items"]=len(items)
     wrong_host=0;empty=0
     for item in items:
-        url=(item.findtext("link") or "").strip()
+        url=unwrap_search_url((item.findtext("link") or "").strip())
         if classify(url)!=source:
             wrong_host+=1
             continue
