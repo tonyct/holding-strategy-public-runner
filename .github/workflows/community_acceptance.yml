@@ -25,6 +25,8 @@ jobs:
           python-version: '3.11'
       - name: Install minimal dependencies
         run: python -m pip install requests
+      - name: Test source-board provenance gates
+        run: python -m unittest tests.test_community_direct -v
       - name: Run community collector
         run: |
           rm -rf output/community
@@ -53,10 +55,27 @@ jobs:
                         for r in rows if r.get("symbol") in a_symbols)
           qualified_symbols=set(q.get("symbols_with_qualified_leads") or [])
           qualified_count=int(q.get("qualified_count") or 0)
-          qualified_coverage=(len(qualified_symbols)==11)
-          useful=(leads>0 and len(a_found)==7 and len(hk_found)==4 and hk_code_ok and a_code_ok and qualified_count>0 and qualified_coverage)
+          target_specific_count=int(q.get("target_specific_qualified_count") or 0)
+          source_board_mismatch_count=int(q.get("source_board_mismatch_count") or 0)
+          qualified_coverage=(len(qualified_symbols)==11 and q.get("target_specific_coverage_ok") is True)
+          target_rows=[r for r in q.get("rows",[]) if r.get("qualified_for_target_specific_shadow_verification")]
+          target_rows_integrity=(all(r.get("target_board_match") is True and
+                                     r.get("discovery_relation")=="DIRECT_BOARD" and
+                                     r.get("source_board_code")==r.get("market_code") and
+                                     r.get("post_content_status")=="TITLE_ONLY_BODY_NOT_FETCHED" and
+                                     r.get("raw_post_verified") is False and
+                                     isinstance(r.get("url"),str) and r.get("post_id") in r.get("url")
+                                     for r in target_rows) and len(target_rows)==target_specific_count)
+          board_metadata_complete=all(bool(r.get("source_board_code") and r.get("source_board_name") and
+                                           isinstance(r.get("url"),str) and
+                                           r.get("source_board_code") in r.get("url") and
+                                           r.get("post_id") in r.get("url") and
+                                           r.get("post_content_status")=="TITLE_ONLY_BODY_NOT_FETCHED" and
+                                           r.get("raw_post_verified") is False)
+                                      for r in rows)
+          useful=(leads>0 and len(a_found)==7 and len(hk_found)==4 and hk_code_ok and a_code_ok and board_metadata_complete and qualified_count>0 and target_specific_count>0 and qualified_coverage and target_rows_integrity)
           out={
-            "schema":"E36_COMMUNITY_ACCEPTANCE/v4",
+            "schema":"E36_COMMUNITY_ACCEPTANCE/v5",
             "source":"EASTMONEY_GUBA_DIRECT",
             "checks_complete":complete,
             "symbols_checked":s.get("symbols_checked"),
@@ -65,10 +84,14 @@ jobs:
             "a_share_coverage_ok":len(a_found)==7,
             "hk_coverage_ok":len(hk_found)==4,
             "market_code_mapping_ok":hk_code_ok and a_code_ok,
+            "source_board_metadata_complete":board_metadata_complete,
             "accepted_count":leads,
             "qualified_count":qualified_count,
+            "target_specific_qualified_count":target_specific_count,
+            "source_board_mismatch_count":source_board_mismatch_count,
             "qualified_symbols":sorted(qualified_symbols),
             "qualified_coverage_ok":qualified_coverage,
+            "target_rows_integrity_ok":target_rows_integrity,
             "restricted_or_failed_symbols":[r.get("symbol") for r in restricted],
             "research_only":s.get("research_only"),
             "live_platform_coverage":s.get("live_platform_coverage"),
