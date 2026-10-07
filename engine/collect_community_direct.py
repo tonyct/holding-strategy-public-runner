@@ -12,7 +12,10 @@ from universe import load_universe
 API="https://gbapi.eastmoney.com/webarticlelist/api/Article/Articlelist"
 
 def code_for(symbol):
-    return symbol.split(".")[0]
+    code, market = symbol.split(".")
+    if market == "HK":
+        return "hk" + code.zfill(5)
+    return code
 
 def parse_json_response(resp):
     try:
@@ -75,6 +78,7 @@ def collect(universe_file,output,limit=20,delay=0.8,session=None):
                         "comment_count":item.get("post_comment_count"),
                         "like_count":item.get("post_like_count"),
                         "url":("https://guba.eastmoney.com/news,"+code+","+post_id+".html") if post_id else None,
+                        "market_code": code,
                         "verification_state":"UNVERIFIED_DISCOVERY",
                         "raw_post_verified":False,
                         "issuer_fact_verified":False,
