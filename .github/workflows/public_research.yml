@@ -74,6 +74,24 @@ jobs:
           mkdir -p output/hk_financials
           python engine/collect_hk_financials.py --period 2026-06-30 --output output/hk_financials
 
+      - name: Collect public community discovery
+        continue-on-error: true
+        run: |
+          mkdir -p output/community
+          python engine/collect_community_public_index.py --output output/community --per-query 5 --delay 0.6
+
+      - name: Collect public news discovery
+        continue-on-error: true
+        run: |
+          mkdir -p output/news
+          python engine/collect_news_public_index.py --output output/news --per-query 8 --delay 0.6
+
+      - name: Extract investor-relations discovery
+        continue-on-error: true
+        run: |
+          mkdir -p output/ir
+          python engine/collect_ir_discovery.py --input-dir output/a --output output/ir/IR_DISCOVERY.json
+
       - name: Collect public quotes
         continue-on-error: true
         run: |
