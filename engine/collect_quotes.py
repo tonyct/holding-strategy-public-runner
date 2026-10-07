@@ -97,8 +97,8 @@ def collect(universe, source, now=None, attempts=2, delay=0.8,
         if delay:
             time.sleep(delay)
     return {"schema": "E36_HISTORICAL_QUOTES/v1",
-            "strategy_id": "HOLDING_STRATEGY", "version": "4.8.0",
-            "epoch": 36, "checked_at_utc": now.isoformat(),
+            "research_scope_id": "PUBLIC_COMPANY_RESEARCH",
+            "checked_at_utc": now.isoformat(),
             "universe_sha256": universe["universe_sha256"],
             "rows": rows,
             "quotes_with_source_session": sum(r["status"] == "HISTORICAL_PROVIDER_QUOTE"
