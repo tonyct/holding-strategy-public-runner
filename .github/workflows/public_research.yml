@@ -272,6 +272,26 @@ jobs:
           print("PUBLIC_OUTPUT_PRIVACY_PASS")
           PY
 
+      - name: Enforce acquisition health
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          h=json.loads(Path("output/ACQUISITION_HEALTH.json").read_text())
+          if h.get("status")=="HARD_FAIL" or h.get("hard_failures"):
+              raise SystemExit("PUBLIC_ACQUISITION_HARD_FAIL: "+",".join(h.get("hard_failures") or []))
+          print("PUBLIC_ACQUISITION_HEALTH_"+str(h.get("status") or "UNKNOWN"))
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-research-${{ github.run_id }}-${{ github.run_attempt }}
+          path: output/
+          retention-days: 7
+
+
       - name: Persist latest public JSON bundle
         shell: bash
         run: |
@@ -310,20 +330,3 @@ jobs:
           echo "PERSIST_RETRY_EXHAUSTED"
           exit 1
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: public-research-${{ github.run_id }}-${{ github.run_attempt }}
-          path: output/
-          retention-days: 7
-
-      - name: Enforce acquisition health
-        shell: bash
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          h=json.loads(Path("output/ACQUISITION_HEALTH.json").read_text())
-          if h.get("status")=="HARD_FAIL" or h.get("hard_failures"):
-              raise SystemExit("PUBLIC_ACQUISITION_HARD_FAIL: "+",".join(h.get("hard_failures") or []))
-          print("PUBLIC_ACQUISITION_HEALTH_"+str(h.get("status") or "UNKNOWN"))
-          PY
