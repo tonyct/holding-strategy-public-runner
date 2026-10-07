@@ -1,19 +1,13 @@
 {
-  "schema": "E36_COMMUNITY_ACCEPTANCE/v1",
+  "schema": "E36_COMMUNITY_ACCEPTANCE/v2",
+  "source": "EASTMONEY_GUBA_DIRECT",
   "checks_complete": true,
-  "raw_items": 431,
-  "wrong_host_filtered": 431,
-  "accepted_before_dedup": 0,
-  "accepted_count": 0,
-  "source_counts": {
-    "xueqiu": 0,
-    "eastmoney": 0,
-    "weibo": 0,
-    "futu": 0
-  },
-  "resolver_ok": false,
-  "useful_leads_present": false,
-  "live_platform_coverage": false,
+  "symbols_checked": 11,
+  "symbols_with_posts": 11,
+  "accepted_count": 220,
+  "restricted_or_failed_symbols": [],
   "research_only": true,
-  "status": "FAIL"
+  "live_platform_coverage": false,
+  "useful_leads_present": true,
+  "status": "PASS"
 }
