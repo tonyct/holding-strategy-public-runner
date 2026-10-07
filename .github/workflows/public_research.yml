@@ -108,6 +108,86 @@ jobs:
           mkdir -p output/quotes
           python -m engine.collect_quotes --output output/quotes/QUOTE_RECEIPT.json --delay 0.6
 
+      - name: Build acquisition health receipt
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          failures=[]
+          checks={}
+
+          def load(path):
+              p=Path(path)
+              if not p.is_file():
+                  failures.append("MISSING:"+path)
+                  return {}
+              try:
+                  return json.loads(p.read_text())
+              except Exception as e:
+                  failures.append("INVALID_JSON:"+path+":"+type(e).__name__)
+                  return {}
+
+          fin=load("output/a_financials/ACQUISITION_RECEIPT.json")
+          fin_ok=(fin.get("status")=="CORE_FIELDS_FETCHED_UNVERIFIED"
+                  and fin.get("core_three_statement_count")==fin.get("ticker_count")
+                  and fin.get("runner_exit_code")==0)
+          checks["a_share_financials"]={"ok":fin_ok,"status":fin.get("status"),
+              "core_three_statement_count":fin.get("core_three_statement_count"),
+              "ticker_count":fin.get("ticker_count"),"runner_exit_code":fin.get("runner_exit_code")}
+          if not fin_ok: failures.append("A_SHARE_FINANCIALS_INCOMPLETE")
+
+          ann=load("output/a/ANNOUNCEMENT_RECEIPT.json")
+          allowed_ann={"LINKS_FETCHED_UNVERIFIED_ORIGIN","NO_NEW_PUBLICATION_IN_WINDOW_HISTORY_VERIFIED"}
+          ann_rows=ann.get("rows") or []
+          bad_ann=[r.get("symbol") for r in ann_rows if r.get("status") not in allowed_ann]
+          ann_ok=(len(ann_rows)==7 and not bad_ann)
+          checks["a_share_announcements"]={"ok":ann_ok,"row_count":len(ann_rows),"bad_symbols":bad_ann}
+          if not ann_ok: failures.append("A_SHARE_ANNOUNCEMENTS_INCOMPLETE")
+
+          hk=load("output/hk_financials/HK_FINANCIAL_RECEIPT.json")
+          hk_rows=hk.get("rows") or []
+          hk_ok=(len(hk_rows)==4 and all(r.get("status")=="RAW_THREE_STATEMENTS_FETCHED_UNVERIFIED" for r in hk_rows))
+          checks["hk_financials"]={"ok":hk_ok,"row_count":len(hk_rows)}
+          if not hk_ok: failures.append("HK_FINANCIALS_INCOMPLETE")
+
+          community=load("output/community/PUBLIC_INDEX_SCAN_RECEIPT.json")
+          rows=community.get("rows") or []
+          raw_total=sum(int(r.get("raw_items") or 0) for r in rows)
+          wrong_total=sum(int(r.get("filtered_wrong_host") or 0) for r in rows)
+          accepted_total=sum(int(r.get("accepted_before_dedup") or 0) for r in rows)
+          complete=(community.get("checks_completed")==community.get("checks_expected") and len(rows)==community.get("checks_expected"))
+          resolver_broken=(raw_total>0 and accepted_total==0 and wrong_total>=raw_total)
+          community_ok=complete and not resolver_broken
+          checks["community_discovery"]={"ok":community_ok,"checks_completed":community.get("checks_completed"),
+              "checks_expected":community.get("checks_expected"),"raw_items":raw_total,
+              "filtered_wrong_host":wrong_total,"accepted_before_dedup":accepted_total,
+              "lead_count":community.get("lead_count"),"resolver_broken":resolver_broken}
+          if not community_ok: failures.append("COMMUNITY_DISCOVERY_UNUSABLE")
+
+          news=load("output/news/NEWS_DISCOVERY.json")
+          news_ok=(news.get("schema")=="E36_PUBLIC_NEWS_DISCOVERY/v1" and isinstance(news.get("rows"),list))
+          checks["news_discovery"]={"ok":news_ok,"lead_count":news.get("lead_count")}
+          if not news_ok: failures.append("NEWS_DISCOVERY_INVALID")
+
+          ir=load("output/ir/IR_DISCOVERY.json")
+          ir_ok=(ir.get("schema")=="E36_PUBLIC_IR_DISCOVERY/v1" and isinstance(ir.get("rows"),list))
+          checks["ir_discovery"]={"ok":ir_ok,"lead_count":ir.get("lead_count")}
+          if not ir_ok: failures.append("IR_DISCOVERY_INVALID")
+
+          quotes=load("output/quotes/QUOTE_RECEIPT.json")
+          quote_ok=(quotes.get("quotes_with_source_session")==11)
+          checks["quotes"]={"ok":quote_ok,"quotes_with_source_session":quotes.get("quotes_with_source_session")}
+          if not quote_ok: failures.append("QUOTE_COVERAGE_INCOMPLETE")
+
+          out={"schema":"E36_PUBLIC_ACQUISITION_HEALTH/v1",
+               "status":"PASS" if not failures else "FAIL",
+               "failures":failures,"checks":checks}
+          Path("output/ACQUISITION_HEALTH.json").write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n")
+          print(json.dumps(out,ensure_ascii=False))
+          PY
+
       - name: Build public-safe manifest
         shell: bash
         run: |
@@ -197,3 +277,15 @@ jobs:
           name: public-research-${{ github.run_id }}-${{ github.run_attempt }}
           path: output/
           retention-days: 7
+
+      - name: Enforce acquisition health
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          h=json.loads(Path("output/ACQUISITION_HEALTH.json").read_text())
+          if h.get("status")!="PASS":
+              raise SystemExit("PUBLIC_ACQUISITION_HEALTH_FAIL: "+",".join(h.get("failures") or []))
+          print("PUBLIC_ACQUISITION_HEALTH_PASS")
+          PY
