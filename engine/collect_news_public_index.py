@@ -8,19 +8,25 @@ from universe import load_universe
 
 NAMES={"600941.SH":"中国移动","148.HK":"建滔集团","001286.SZ":"陕西能源","603993.SH":"洛阳钼业","2233.HK":"西部水泥","3933.HK":"联邦制药","9926.HK":"康方生物","600499.SH":"科达制造","600795.SH":"国电电力","603871.SH":"嘉友国际","601857.SH":"中国石油"}
 RSS="https://www.bing.com/search"
-BLOCK_HOSTS={"xueqiu.com","guba.eastmoney.com","weibo.com","www.weibo.com","m.weibo.cn"}
+BLOCK_HOSTS={"xueqiu.com","www.xueqiu.com","guba.eastmoney.com","weibo.com","www.weibo.com","m.weibo.cn"}
+LOW_VALUE_HOSTS={"baike.baidu.com","wikipedia.org","zh.wikipedia.org","answers.com","www.answers.com"}
+EVENT_TERMS=("公告","业绩","财报","投资","订单","项目","产能","涨价","降价","诉讼","监管","合作","收购","出售","分红","回购","减持","增持","调研","说明会","产品","审批","临床","获批","矿","铜","钴","水泥","电力","煤","油","天然气","物流")
 
 def parse(data,symbol,limit):
+    company=NAMES[symbol]; code=symbol.split(".")[0]
     root=ET.fromstring(data)
     if root.tag!="rss": raise ValueError("NON_RSS_SEARCH_RESPONSE")
     rows=[]
     for item in root.findall("./channel/item"):
         url=(item.findtext("link") or "").strip()
         host=(urlparse(url).hostname or "").lower()
-        if not url.startswith("https://") or host in BLOCK_HOSTS: continue
+        if not url.startswith("https://") or host in BLOCK_HOSTS or host in LOW_VALUE_HOSTS: continue
         title=re.sub("<[^>]+>","",item.findtext("title") or "").strip()
         desc=re.sub("<[^>]+>","",item.findtext("description") or "").strip()
+        text=(title+" "+desc)
         if not title and not desc: continue
+        if company not in text and code not in text: continue
+        if not any(term in text for term in EVENT_TERMS): continue
         rows.append({"symbol":symbol,"source":"PUBLIC_WEB_INDEX","url":url,"title":title[:240],"snippet":desc[:1500],
                      "published_at":item.findtext("pubDate"),"verification_state":"UNVERIFIED_DISCOVERY",
                      "may_directly_change_main_or_trade":False})
@@ -32,7 +38,7 @@ def collect(universe_file,output,per_query=8,delay=0.8):
     rows=[];checks=[]
     s=requests.Session(); s.headers.update({"User-Agent":"E36PublicNewsDiscovery/1.0","Accept":"application/rss+xml, application/xml;q=0.9"})
     for symbol in u["active"]:
-        q=f'"{NAMES[symbol]}" 股票 OR 公司 OR 行业'
+        q=f'"{NAMES[symbol]}" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)'
         url=RSS+"?"+urlencode({"q":q,"format":"rss"})
         rec={"symbol":symbol,"query":q,"checked_utc":datetime.now(timezone.utc).isoformat()}
         try:
