@@ -1,7 +1,7 @@
 {
   "schema": "E36_A_ANNOUNCEMENT_INDEX/v1",
   "universe_sha256": "951695d407c5a3ad05838363654aa57d9edf7c51a978e7ca3815dae792abc82c",
-  "run_utc": "2026-10-07T03:34:29.235840+00:00",
+  "run_utc": "2026-10-07T03:34:52.737160+00:00",
   "start": "20260902",
   "end": "20261007",
   "complete_original_pdf_verified": 0,
@@ -68,18 +68,20 @@
     },
     {
       "symbol": "600795.SH",
-      "status": "NO_NEW_PUBLICATION_IN_WINDOW_HISTORY_VERIFIED",
+      "status": "EMPTY_UNCONFIRMED",
       "items": 0,
       "raw_count": 0,
-      "historical_recheck_raw_count": 42,
+      "historical_recheck_raw_count": null,
       "source_used": "AKSHARE_CNINFO",
-      "source_attempt_errors": [],
+      "source_attempt_errors": [
+        "HISTORY_RECHECK:JSONDecodeError:Expecting value: line 1 column 1 (char 0)"
+      ],
       "secondary_checked": true,
       "secondary_in_window_items": 0,
       "secondary_initial_gap_count": 0,
       "direct_cninfo_crosscheck_used": false,
       "secondary_unresolved_leads": 0,
-      "sha256": "a85411501752f3913c7531e4865e3dca537e417fe18b118f13c4b62e07285666"
+      "sha256": "629228e3fb664ccfb2049c1385b572678a5e1d97a52d24269e1f93a8e33db8e1"
     },
     {
       "symbol": "603871.SH",
