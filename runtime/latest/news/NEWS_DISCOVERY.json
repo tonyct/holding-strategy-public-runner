@@ -1,11 +1,11 @@
 {
   "schema": "E36_PUBLIC_NEWS_DISCOVERY/v1",
-  "generated_utc": "2026-10-07T03:43:10.037612+00:00",
+  "generated_utc": "2026-10-07T03:45:55.833474+00:00",
   "universe_sha256": "951695d407c5a3ad05838363654aa57d9edf7c51a978e7ca3815dae792abc82c",
   "research_only": true,
   "live_news_coverage_complete": false,
   "may_directly_change_main_or_trade": false,
-  "lead_count": 5,
+  "lead_count": 1,
   "rows": [
     {
       "symbol": "601857.SH",
@@ -16,53 +16,13 @@
       "published_at": "Mon, 05 Oct 2026 16:45:00 GMT",
       "verification_state": "UNVERIFIED_DISCOVERY",
       "may_directly_change_main_or_trade": false
-    },
-    {
-      "symbol": "601857.SH",
-      "source": "PUBLIC_WEB_INDEX",
-      "url": "https://quote.eastmoney.com/sh601857.html",
-      "title": "中国石油 (601857)_最新价格_行情_走势图—东方财富网",
-      "snippet": "提供中国石油 (601857)股票的行情走势、五档盘口、逐笔交易等实时行情数据，及中国石油 (601857)的新闻资讯、公司公告、研究报告、行业研报、F10资料、行业资讯、资金流分析、阶段涨幅、所属板块、财务指标、机构观点、行业排名、估值水平、股吧互动等与 ...",
-      "published_at": "Wed, 07 Oct 2026 02:17:00 GMT",
-      "verification_state": "UNVERIFIED_DISCOVERY",
-      "may_directly_change_main_or_trade": false
-    },
-    {
-      "symbol": "601857.SH",
-      "source": "PUBLIC_WEB_INDEX",
-      "url": "https://finance.sina.com.cn/realstock/company/sh601857/nc.shtml",
-      "title": "中国石油 (601857)股票股价,行情,新闻,财报数据_新浪财经_新浪网",
-      "snippet": "新浪财经为您提供中国石油 (601857)股票实时行情走势,实时资金流向,实时新闻资讯,研究报告,股吧互动,交易信息,个股点评,公告,财务指标分析等与 ...",
-      "published_at": "Wed, 07 Oct 2026 02:10:00 GMT",
-      "verification_state": "UNVERIFIED_DISCOVERY",
-      "may_directly_change_main_or_trade": false
-    },
-    {
-      "symbol": "601857.SH",
-      "source": "PUBLIC_WEB_INDEX",
-      "url": "https://quote.eastmoney.com/kcb/601857.html",
-      "title": "中国石油 (601857)_股票行情_走势图—东方财富网",
-      "snippet": "提供中国石油 (601857)的行情走势、资金流向、行业概念板块排行、成份股排行、大盘分析、证券聚焦、市场总貌、股吧互动等与中国石油 (601857)有关的信息和服务。",
-      "published_at": "Wed, 07 Oct 2026 01:05:00 GMT",
-      "verification_state": "UNVERIFIED_DISCOVERY",
-      "may_directly_change_main_or_trade": false
-    },
-    {
-      "symbol": "601857.SH",
-      "source": "PUBLIC_WEB_INDEX",
-      "url": "https://zhaopin.cnpc.com.cn/web/recruitInfolist.html",
-      "title": "中国石油高校毕业生招聘-招聘信息",
-      "snippet": "中国石油高校毕业生招聘平台，提供最新招聘信息及报名条件，助力高校毕业生开启职业生涯。",
-      "published_at": "Wed, 07 Oct 2026 02:31:00 GMT",
-      "verification_state": "UNVERIFIED_DISCOVERY",
-      "may_directly_change_main_or_trade": false
     }
   ],
   "checks": [
     {
       "symbol": "600941.SH",
       "query": "\"中国移动\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-07T03:43:01.505646+00:00",
+      "checked_utc": "2026-10-07T03:45:47.616664+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -70,7 +30,7 @@
     {
       "symbol": "148.HK",
       "query": "\"建滔集团\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-07T03:43:02.268478+00:00",
+      "checked_utc": "2026-10-07T03:45:48.382982+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -78,7 +38,7 @@
     {
       "symbol": "001286.SZ",
       "query": "\"陕西能源\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-07T03:43:03.100540+00:00",
+      "checked_utc": "2026-10-07T03:45:49.150434+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -86,7 +46,7 @@
     {
       "symbol": "603993.SH",
       "query": "\"洛阳钼业\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-07T03:43:03.886845+00:00",
+      "checked_utc": "2026-10-07T03:45:49.879622+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -94,7 +54,7 @@
     {
       "symbol": "2233.HK",
       "query": "\"西部水泥\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-07T03:43:04.647809+00:00",
+      "checked_utc": "2026-10-07T03:45:50.632780+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -102,7 +62,7 @@
     {
       "symbol": "3933.HK",
       "query": "\"联邦制药\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-07T03:43:05.388802+00:00",
+      "checked_utc": "2026-10-07T03:45:51.347629+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -110,7 +70,7 @@
     {
       "symbol": "9926.HK",
       "query": "\"康方生物\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-07T03:43:06.162477+00:00",
+      "checked_utc": "2026-10-07T03:45:52.073066+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -118,7 +78,7 @@
     {
       "symbol": "600499.SH",
       "query": "\"科达制造\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-07T03:43:06.933636+00:00",
+      "checked_utc": "2026-10-07T03:45:52.838503+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -126,7 +86,7 @@
     {
       "symbol": "600795.SH",
       "query": "\"国电电力\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-07T03:43:07.663587+00:00",
+      "checked_utc": "2026-10-07T03:45:53.551087+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -134,7 +94,7 @@
     {
       "symbol": "603871.SH",
       "query": "\"嘉友国际\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-07T03:43:08.453907+00:00",
+      "checked_utc": "2026-10-07T03:45:54.323950+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -142,10 +102,10 @@
     {
       "symbol": "601857.SH",
       "query": "\"中国石油\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-07T03:43:09.185807+00:00",
+      "checked_utc": "2026-10-07T03:45:55.103412+00:00",
       "http_status": 200,
       "status": "INDEXED_LEADS_FOUND",
-      "candidates": 5
+      "candidates": 1
     }
   ]
 }
