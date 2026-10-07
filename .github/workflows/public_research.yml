@@ -251,30 +251,39 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          # Another Public run may have persisted runtime/latest after this run checked out.
-          # Rebase the tracked working tree to the newest remote main while preserving untracked output/.
-          git fetch origin main
-          # Monotonic latest: an older run must never overwrite a newer persisted bundle.
-          remote_run="$(git show origin/main:runtime/latest/PUBLIC_RESEARCH_BUNDLE.json 2>/dev/null | python -c 'import json,sys; print(json.load(sys.stdin).get("source_run_id","0"))' 2>/dev/null || echo 0)"
-          if [[ "$remote_run" =~ ^[0-9]+$ ]] && (( remote_run > GITHUB_RUN_ID )); then
-            echo "SKIP_STALE_PERSIST current=$GITHUB_RUN_ID remote=$remote_run"
-            exit 0
-          fi
-          git reset --hard origin/main
-          rm -rf runtime/latest
-          mkdir -p runtime/latest
-          find output -type f -name '*.json' -print0 | while IFS= read -r -d '' src; do
-            rel="${src#output/}"
-            mkdir -p "runtime/latest/$(dirname "$rel")"
-            cp "$src" "runtime/latest/$rel"
-          done
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add runtime/latest
-          if ! git diff --cached --quiet; then
+          for attempt in 1 2 3 4; do
+            echo "PERSIST_ATTEMPT=$attempt"
+            git fetch origin main
+            remote_run="$(git show origin/main:runtime/latest/PUBLIC_RESEARCH_BUNDLE.json 2>/dev/null | python -c 'import json,sys; print(json.load(sys.stdin).get("source_run_id","0"))' 2>/dev/null || echo 0)"
+            if [[ "$remote_run" =~ ^[0-9]+$ ]] && (( remote_run > GITHUB_RUN_ID )); then
+              echo "SKIP_STALE_PERSIST current=$GITHUB_RUN_ID remote=$remote_run"
+              exit 0
+            fi
+            git reset --hard origin/main
+            rm -rf runtime/latest
+            mkdir -p runtime/latest
+            find output -type f -name '*.json' -print0 | while IFS= read -r -d '' src; do
+              rel="${src#output/}"
+              mkdir -p "runtime/latest/$(dirname "$rel")"
+              cp "$src" "runtime/latest/$rel"
+            done
+            git add runtime/latest
+            if git diff --cached --quiet; then
+              echo "NO_RUNTIME_CHANGE"
+              exit 0
+            fi
             git commit -m "Publish public research bundle $GITHUB_RUN_ID/$GITHUB_RUN_ATTEMPT"
-            git push origin HEAD:main
-          fi
+            if git push origin HEAD:main; then
+              echo "PERSIST_SUCCESS attempt=$attempt"
+              exit 0
+            fi
+            echo "PERSIST_CONFLICT attempt=$attempt"
+            sleep $((attempt * 2))
+          done
+          echo "PERSIST_RETRY_EXHAUSTED"
+          exit 1
 
       - uses: actions/upload-artifact@v4
         with:
