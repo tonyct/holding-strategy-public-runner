@@ -2,6 +2,15 @@ name: Public company research acquisition
 
 on:
   workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Public-only refresh reason'
+        required: false
+        type: string
+      request_id:
+        description: 'Opaque idempotency token; never a raw private cycle id'
+        required: false
+        type: string
   schedule:
     # Public data refresh only. 07:10 / 20:10 Asia/Shanghai = 23:10 / 12:10 UTC.
     - cron: '10 23,12 * * *'
@@ -225,6 +234,9 @@ jobs:
 
       - name: Build public-safe manifest
         shell: bash
+        env:
+          DISPATCH_REASON: ${{ inputs.reason }}
+          DISPATCH_REQUEST_ID: ${{ inputs.request_id }}
         run: |
           python - <<'PY'
           import hashlib, json, os
@@ -237,6 +249,24 @@ jobs:
               if p.is_file():
                   b=p.read_bytes()
                   files.append({"path":str(p.relative_to(root)),"sha256":hashlib.sha256(b).hexdigest(),"size":len(b)})
+          request_id=(os.environ.get("DISPATCH_REQUEST_ID") or "").strip()
+          reason=(os.environ.get("DISPATCH_REASON") or "").strip()
+          if os.environ.get("GITHUB_EVENT_NAME")=="push":
+              try:
+                  request=json.loads(Path("trigger-public-run.txt").read_text(encoding="utf-8"))
+                  if request.get("schema")=="PUBLIC_REFRESH_REQUEST/v1":
+                      request_id=str(request.get("request_id") or "").strip()
+                      reason=str(request.get("reason") or "").strip()
+              except (OSError, ValueError, TypeError):
+                  pass
+          refresh_request=None
+          if request_id:
+              refresh_request={
+                  "schema":"PUBLIC_REFRESH_REQUEST/v1",
+                  "request_id":request_id,
+                  "reason":reason or "PUBLIC_REFRESH",
+                  "privacy_class":"PUBLIC_REFRESH_CONTROL_ONLY",
+              }
           out={
               "schema":"E36_PUBLIC_RESEARCH_BUNDLE/v1",
               "privacy_class":"PUBLIC_MARKET_DATA_ONLY",
@@ -247,6 +277,7 @@ jobs:
               "completed_at_utc":datetime.now(timezone.utc).isoformat(),
               "contains_account_state":False,
               "contains_portfolio_decision":False,
+              "refresh_request":refresh_request,
               "files":files,
           }
           Path("output/PUBLIC_RESEARCH_BUNDLE.json").write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n")
@@ -258,7 +289,7 @@ jobs:
           python - <<'PY'
           import json, re
           from pathlib import Path
-          prohibited = re.compile(r'actual_held|account_state|portfolio_decision|tracking_only|position_size|cost_basis|cash_nav|drive_bootstrap_id|user_screenshot|XUEQIU_COOKIE', re.I)
+          prohibited = re.compile(r'actual_held|account_state|portfolio_decision|tracking_only|position_size|cost_basis|cash_nav|drive_bootstrap_id|user_screenshot|XUEQIU_COOKIE|HOLDING_STRATEGY|"active_version"\\s*:|"epoch"\\s*:|"private_(?:commit|generation)"\\s*:|"raw_shadow_cycle_id"\\s*:', re.I)
           root=Path("output")
           failures=[]
           for p in root.rglob("*"):
