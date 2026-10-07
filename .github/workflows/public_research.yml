@@ -23,6 +23,36 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Validate public data-only contract
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          contract=json.loads(Path("config/public_data_contract.json").read_text())
+          universe=json.loads(Path("config/research_universe.json").read_text())
+          assert contract.get("schema")=="PUBLIC_DATA_ACQUISITION_CONTRACT/v1"
+          assert contract.get("role")=="PUBLIC_MARKET_DATA_AND_EVIDENCE_ACQUISITION_ONLY"
+          assert contract.get("no_private_repo_dependency") is True
+          assert contract.get("no_investment_decision_logic") is True
+          assert contract.get("no_trade_logic") is True
+          assert universe.get("schema")=="E36_PUBLIC_RESEARCH_UNIVERSE/v1"
+          assert universe.get("source")=="PUBLIC_RESEARCH_COVERAGE_UNIVERSE_NOT_ACCOUNT_HOLDINGS"
+          assert universe.get("strategy_id")=="PUBLIC_COMPANY_RESEARCH"
+          allowed_top={"schema","source","strategy_id","universe_version","disclaimer","stocks"}
+          unexpected=set(universe)-allowed_top
+          assert not unexpected, f"unexpected universe keys: {sorted(unexpected)}"
+          stocks=universe.get("stocks")
+          assert isinstance(stocks,list) and stocks
+          for row in stocks:
+              assert isinstance(row,dict)
+              extra=set(row)-{"symbol","active"}
+              assert not extra, f"forbidden stock fields for {row.get('symbol')}: {sorted(extra)}"
+              assert isinstance(row.get("symbol"),str) and row["symbol"]
+              assert isinstance(row.get("active"),bool)
+          print("PUBLIC_DATA_CONTRACT_PASS")
+          PY
+
       - name: Install dependencies
         run: python -m pip install -r engine/requirements.txt pymupdf pdfplumber akshare baostock
 
