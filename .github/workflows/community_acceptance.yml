@@ -29,35 +29,32 @@ jobs:
         run: |
           rm -rf output/community
           mkdir -p output/community
-          python engine/collect_community_public_index.py --output output/community --per-query 5 --delay 0.6
+          python engine/collect_community_direct.py --output output/community --limit 20 --delay 0.6
       - name: Evaluate community quality
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          s=json.loads(Path("output/community/PUBLIC_INDEX_SCAN_RECEIPT.json").read_text())
-          q=json.loads(Path("output/community/COMMUNITY_RESEARCH_QUEUE.json").read_text())
-          rows=s.get("rows") or []
-          raw=sum(int(r.get("raw_items") or 0) for r in rows)
-          wrong=sum(int(r.get("filtered_wrong_host") or 0) for r in rows)
-          accepted=sum(int(r.get("accepted_before_dedup") or 0) for r in rows)
-          source_counts=s.get("source_counts") or {}
-          complete=(s.get("checks_completed")==s.get("checks_expected")==44)
-          resolver_ok=not (raw>0 and accepted==0 and wrong>=raw)
-          useful=q.get("accepted_count",0)>0
+          s=json.loads(Path("output/community/COMMUNITY_DIRECT_DISCOVERY.json").read_text())
+          checks=s.get("checks") or []
+          found=[r for r in checks if r.get("status")=="DIRECT_POSTS_FOUND"]
+          restricted=[r for r in checks if r.get("status") in ("ACCESS_RESTRICTED","REQUEST_FAILED","PARSE_FAILED","HTTP_ERROR")]
+          leads=s.get("lead_count") or 0
+          complete=(s.get("symbols_checked")==11 and len(checks)==11)
+          breadth=(s.get("symbols_with_posts") or 0)
+          useful=(leads>0 and breadth>0)
           out={
-            "schema":"E36_COMMUNITY_ACCEPTANCE/v1",
+            "schema":"E36_COMMUNITY_ACCEPTANCE/v2",
+            "source":"EASTMONEY_GUBA_DIRECT",
             "checks_complete":complete,
-            "raw_items":raw,
-            "wrong_host_filtered":wrong,
-            "accepted_before_dedup":accepted,
-            "accepted_count":q.get("accepted_count",0),
-            "source_counts":source_counts,
-            "resolver_ok":resolver_ok,
+            "symbols_checked":s.get("symbols_checked"),
+            "symbols_with_posts":breadth,
+            "accepted_count":leads,
+            "restricted_or_failed_symbols":[r.get("symbol") for r in restricted],
+            "research_only":s.get("research_only"),
+            "live_platform_coverage":s.get("live_platform_coverage"),
             "useful_leads_present":useful,
-            "live_platform_coverage":q.get("live_platform_coverage"),
-            "research_only":q.get("research_only"),
-            "status":"PASS" if complete and resolver_ok and useful else "FAIL"
+            "status":"PASS" if complete and useful else "FAIL"
           }
           Path("output/community/COMMUNITY_ACCEPTANCE.json").write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n")
           print(json.dumps(out,ensure_ascii=False))
