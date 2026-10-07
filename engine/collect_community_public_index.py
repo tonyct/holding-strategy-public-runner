@@ -21,7 +21,29 @@ DOMAINS={
     "weibo":"weibo.com",
     "futu":"futunn.com",
 }
+QUERY_TEMPLATES={
+    "xueqiu":'site:xueqiu.com "{name}" 股票 讨论',
+    "eastmoney":'site:guba.eastmoney.com/news "{name}"',
+    "weibo":'site:weibo.com "{name}" 股票',
+    "futu":'site:futunn.com/post "{name}"',
+}
 RSS="https://www.bing.com/search"
+
+def specific_lead_url(source,url):
+    try:
+        p=urlparse(url)
+        path=p.path or "/"
+        if source=="xueqiu":
+            return not path.startswith("/S/") and path!="/"
+        if source=="eastmoney":
+            return "news" in path.lower()
+        if source=="futu":
+            return "/post" in path.lower()
+        if source=="weibo":
+            return path not in ("","/")
+    except Exception:
+        return False
+    return False
 
 def unwrap_search_url(url):
     """Resolve common Bing result redirect wrappers without fetching the target."""
@@ -52,40 +74,20 @@ def unwrap_search_url(url):
         return url
     return url
 
-def unwrap_search_url(url):
-    """Return the target URL when Bing RSS emits a /ck/a redirect."""
-    try:
-        p=urlparse(url)
-        if p.hostname not in ("bing.com","www.bing.com") or p.path!="/ck/a":
-            return url
-        q=parse_qs(p.query)
-        raw=(q.get("u") or [None])[0]
-        if not raw:
-            return url
-        raw=unquote(raw)
-        if raw.startswith("a1"):
-            token=raw[2:]
-            token += "=" * (-len(token) % 4)
-            target=base64.urlsafe_b64decode(token.encode()).decode("utf-8","ignore")
-            if target.startswith("https://"):
-                return target
-        if raw.startswith("https://"):
-            return raw
-    except Exception:
-        pass
-    return url
-
 def parse_rss(data,source,symbol,limit=5,diagnostics=None):
     root=ET.fromstring(data)
     if root.tag!="rss":raise ValueError("NON_RSS_SEARCH_RESPONSE")
     rows=[]
     items=root.findall("./channel/item")
     if diagnostics is not None:diagnostics["raw_items"]=len(items)
-    wrong_host=0;empty=0
+    wrong_host=0;generic=0;empty=0
     for item in items:
         url=unwrap_search_url((item.findtext("link") or "").strip())
         if classify(url)!=source:
             wrong_host+=1
+            continue
+        if not specific_lead_url(source,url):
+            generic+=1
             continue
         title=re.sub("<[^>]+>","",item.findtext("title") or "").strip()
         desc=re.sub("<[^>]+>","",item.findtext("description") or "").strip()
@@ -98,7 +100,7 @@ def parse_rss(data,source,symbol,limit=5,diagnostics=None):
             "evidence_scope":"PUBLIC_INDEX_SNIPPET"})
         if len(rows)>=limit:break
     if diagnostics is not None:
-        diagnostics.update(filtered_wrong_host=wrong_host,filtered_empty=empty,accepted_before_dedup=len(rows))
+        diagnostics.update(filtered_wrong_host=wrong_host,filtered_generic_landing=generic,filtered_empty=empty,accepted_before_dedup=len(rows))
     return rows
 
 def collect(universe_file,output,per_query=5,delay=1.0,session=None):
@@ -111,7 +113,7 @@ def collect(universe_file,output,per_query=5,delay=1.0,session=None):
                             "Accept":"application/rss+xml, application/xml;q=0.9"})
     for symbol in u["active"]:
         for source,domain in DOMAINS.items():
-            query=f'site:{domain} "{NAMES[symbol]}"'
+            query=QUERY_TEMPLATES[source].format(name=NAMES[symbol])
             url=RSS+"?"+urlencode({"q":query,"format":"rss"})
             receipt={"symbol":symbol,"source":source,"query":query,
                 "checked_utc":datetime.now(timezone.utc).isoformat(),"status":"NOT_ATTEMPTED"}
