@@ -34,14 +34,20 @@ def collect(universe_file,output,limit=20):
         code=symbol.split(".")[0]
         rec={"symbol":symbol,"news":{"status":"API_UNAVAILABLE","rows":[]},"community":{"status":"API_UNAVAILABLE","rows":[]}}
         if result["news_api_available"]:
-            try:
-                rows=frame_rows(ak.stock_news_em(symbol=code),limit*3)
-                name=NAMES[symbol]
-                rows=[row for row in rows if name in json.dumps(row,ensure_ascii=False)][:limit]
-                rec["news"]={"status":"PUBLIC_ROWS_FETCHED" if rows else "NO_RELEVANT_ROWS","rows":rows,
-                             "verification_state":"UNVERIFIED_DISCOVERY","source":"AKSHARE_STOCK_NEWS_EM"}
-            except Exception as e:
-                rec["news"]={"status":"REQUEST_FAILED","error_type":type(e).__name__,"rows":[]}
+            if symbol.endswith(".HK"):
+                rec["news"]={"status":"SKIPPED_HK_NUMERIC_CODE_NOISE","rows":[],
+                             "verification_state":"UNVERIFIED_DISCOVERY","source":"AKSHARE_STOCK_NEWS_EM",
+                             "reason":"HK numeric code search is ambiguous; use other public discovery sources."}
+            else:
+                try:
+                    rows=frame_rows(ak.stock_news_em(symbol=code),limit*3)
+                    name=NAMES[symbol]
+                    rows=[row for row in rows if name in json.dumps(row,ensure_ascii=False)][:limit]
+                    rec["news"]={"status":"PUBLIC_ROWS_FETCHED" if rows else "NO_RELEVANT_ROWS","rows":rows,
+                                 "verification_state":"UNVERIFIED_DISCOVERY","source":"AKSHARE_STOCK_NEWS_EM",
+                                 "relevance_filter":"COMPANY_NAME_MATCH"}
+                except Exception as e:
+                    rec["news"]={"status":"REQUEST_FAILED","error_type":type(e).__name__,"rows":[]}
         if result["guba_api_available"]:
             try:
                 rows=frame_rows(ak.stock_guba_em(symbol=code),limit)
