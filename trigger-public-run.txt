@@ -1,2 +1,7 @@
-2026-10-07: Refresh public research using provider price observation time; daily bar start is not quote as-of. No private/account data or trading authorization.
-2026-10-07T22:51:00Z: SHADOW requested bounded public refresh because runtime/latest bundle exceeded freshness threshold; public-only data, no private/account data, no portfolio or trade authorization.
+{
+  "schema": "PUBLIC_REFRESH_REQUEST/v1",
+  "reason": "PUBLIC_BRIDGE_PRIVACY_REPAIR_VALIDATION",
+  "request_id": "public-refresh-20261007T2302Z-privacy-bridge",
+  "requested_at_utc": "2026-10-07T23:02:00Z",
+  "privacy_class": "PUBLIC_REFRESH_CONTROL_ONLY"
+}
