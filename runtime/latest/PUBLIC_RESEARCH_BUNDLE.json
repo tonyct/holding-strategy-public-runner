@@ -2,17 +2,17 @@
   "schema": "E36_PUBLIC_RESEARCH_BUNDLE/v1",
   "privacy_class": "PUBLIC_MARKET_DATA_ONLY",
   "source_repository": "tonyct/holding-strategy-public-runner",
-  "source_run_id": "37568750357",
+  "source_run_id": "37568996168",
   "source_run_attempt": "1",
-  "source_commit_sha": "00c6f9d5d6b1bcf64e127573172fb5a48486261f",
-  "completed_at_utc": "2026-10-07T03:56:26.842314+00:00",
+  "source_commit_sha": "506f0a1858c707276d41bd683d21723a3a753f85",
+  "completed_at_utc": "2026-10-07T03:59:40.500765+00:00",
   "contains_account_state": false,
   "contains_portfolio_decision": false,
   "files": [
     {
       "path": "ACQUISITION_HEALTH.json",
-      "sha256": "bc98aaa16313ff4ead9bd7e408688910ae0e17554465d25c1836014c9e82e12a",
-      "size": 1024
+      "sha256": "5849dd38f78d681aaacce0290e0356b97fa8e35dbd525915af47f865a4cc03af",
+      "size": 1252
     },
     {
       "path": "a/001286_SZ_6d64b00eeba7.json",
@@ -51,12 +51,12 @@
     },
     {
       "path": "a/ANNOUNCEMENT_RECEIPT.json",
-      "sha256": "c5b2abc54d561597334b960dd9c88aed46dcd69afd86f87afa1ee3c049345d96",
+      "sha256": "324cafdb7b579e9ef7b17427deefbf6419e8c01d304cffa4f9262ea112ad894a",
       "size": 3998
     },
     {
       "path": "a_financials/ACQUISITION_RECEIPT.json",
-      "sha256": "6d4f6f3b479b972771a17ddc9b7b5d51584583504bdd2047b77c88e1f6bbbc5a",
+      "sha256": "01ef02296a1913768c0de1de693867894c5d3598728ac87871326a649b2d8bba",
       "size": 3113
     },
     {
@@ -70,23 +70,18 @@
       "size": 0
     },
     {
-      "path": "community/COMMUNITY_RESEARCH_QUEUE.json",
-      "sha256": "ac017c1c1efa309432f82bf329fb16b8353275d7ba6cd7b0b1e34a23860440bf",
-      "size": 400
+      "path": "community/COMMUNITY_DIRECT_DISCOVERY.json",
+      "sha256": "e69598a175682d955b76bc9e998a9e9a7179c481cfdf128f707f593a64187fc0",
+      "size": 210167
     },
     {
-      "path": "community/PUBLIC_INDEX_SCAN_RECEIPT.json",
-      "sha256": "f156aa19ea3bd2a98b9cb9eb31103ba5870956972555eac24dd9f40f2cebdfd6",
-      "size": 50322
-    },
-    {
-      "path": "community/PUBLIC_SEARCH_CANDIDATES.json",
-      "sha256": "8324eb2f76904457a0363453610486aa5b077048ca1bd745d9e9a21c6d03ffb9",
-      "size": 60
+      "path": "community/COMMUNITY_QUALIFIED_QUEUE.json",
+      "sha256": "628ea3feb9ff6e3b0b787ac6d803d0507f42a7bca379d894216d51749bbbf5c3",
+      "size": 58262
     },
     {
       "path": "discovery/AKSHARE_DISCOVERY.json",
-      "sha256": "78753a69f72387d2ea6ef53a50a132be429e09e255fa7c0a3a3b9d21ed80aa77",
+      "sha256": "cd1cedd8498994c9ae4aeb77b5b080c10b5c8054d1a43e05e2f9ed9998458f35",
       "size": 29667
     },
     {
@@ -111,23 +106,23 @@
     },
     {
       "path": "hk_financials/HK_FINANCIAL_RECEIPT.json",
-      "sha256": "63f33032e0e902d68d53055b5d8dbdf0de355b7cb6eb859b141c6d7f243b4474",
+      "sha256": "0ccf3e24ec632eceab04a345d418a9ecb8d2b421e6fedcefacbcd24260e0f0e8",
       "size": 1026
     },
     {
       "path": "ir/IR_DISCOVERY.json",
-      "sha256": "4dc7b0e26f2c2e4ca3f1c6a2a822b2b3e232e545735075197e8e6f73cf0178e6",
+      "sha256": "39077ac9bac8372b82d14aace46cadbf0204c180cb212caa01c0608b7134edb0",
       "size": 3066
     },
     {
       "path": "news/NEWS_DISCOVERY.json",
-      "sha256": "ddcf4462b7c6935e7c544e4a779470e0e0b97ab3d5d4025e25c446897c1d2525",
-      "size": 4402
+      "sha256": "c054d6a4e1b0e4d82ff601614fae615d26e656f0f7ec431768ee17004e6b7948",
+      "size": 7561
     },
     {
       "path": "quotes/QUOTE_RECEIPT.json",
-      "sha256": "2dc9a1753df237dd29a593585fe1241a459998271121933c2f70f2cde6c6a5cf",
-      "size": 4858
+      "sha256": "c8d4c77d3c5b90182ac61c4dd0ea45f453ca576100130297a9bec4ce2625b406",
+      "size": 4846
     }
   ]
 }

@@ -1,10 +1,11 @@
 {
-  "schema": "E36_PUBLIC_ACQUISITION_HEALTH/v1",
-  "status": "PASS_WITH_SOFT_GAPS",
+  "schema": "E36_PUBLIC_ACQUISITION_HEALTH/v2",
+  "status": "DEGRADED",
   "hard_failures": [],
-  "soft_gaps": [
+  "degraded_reasons": [
     "A_SHARE_FINANCIALS_INCOMPLETE"
   ],
+  "semantics": "SOURCE_GAPS_DEGRADE_BUT_DO_NOT_INVALIDATE_AN_INTEGRITY_SAFE_BUNDLE",
   "checks": {
     "a_share_financials": {
       "ok": false,
@@ -24,21 +25,26 @@
     },
     "community_discovery": {
       "ok": true,
-      "checks_completed": 44,
-      "checks_expected": 44,
-      "raw_items": 413,
-      "filtered_wrong_host": 412,
-      "accepted_before_dedup": 0,
-      "lead_count": 0,
-      "resolver_broken": false
+      "source": "EASTMONEY_GUBA_DIRECT",
+      "symbols_checked": 11,
+      "symbols_with_posts": 11,
+      "lead_count": 220,
+      "qualified_for_shadow_verification": 60,
+      "market_code_mapping_ok": true
     },
     "news_discovery": {
       "ok": true,
-      "lead_count": 1
+      "lead_count": 6
     },
     "ir_discovery": {
       "ok": true,
       "lead_count": 7
+    },
+    "akshare_discovery": {
+      "ok": true,
+      "news_symbol_count": 7,
+      "news_row_count": 39,
+      "community_row_count": 0
     },
     "quotes": {
       "ok": true,
