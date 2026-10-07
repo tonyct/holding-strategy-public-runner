@@ -9,7 +9,7 @@ from universe import load_universe
 NAMES={"600941.SH":"中国移动","148.HK":"建滔集团","001286.SZ":"陕西能源","603993.SH":"洛阳钼业","2233.HK":"西部水泥","3933.HK":"联邦制药","9926.HK":"康方生物","600499.SH":"科达制造","600795.SH":"国电电力","603871.SH":"嘉友国际","601857.SH":"中国石油"}
 RSS="https://www.bing.com/search"
 BLOCK_HOSTS={"xueqiu.com","www.xueqiu.com","guba.eastmoney.com","weibo.com","www.weibo.com","m.weibo.cn"}
-LOW_VALUE_HOSTS={"baike.baidu.com","wikipedia.org","zh.wikipedia.org","answers.com","www.answers.com"}
+LOW_VALUE_HOSTS={"baike.baidu.com","wikipedia.org","zh.wikipedia.org","answers.com","www.answers.com","quote.eastmoney.com","finance.sina.com.cn","zhaopin.cnpc.com.cn"}
 EVENT_TERMS=("公告","业绩","财报","投资","订单","项目","产能","涨价","降价","诉讼","监管","合作","收购","出售","分红","回购","减持","增持","调研","说明会","产品","审批","临床","获批","矿","铜","钴","水泥","电力","煤","油","天然气","物流")
 
 def parse(data,symbol,limit):
