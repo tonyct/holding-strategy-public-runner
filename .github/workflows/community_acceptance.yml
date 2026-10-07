@@ -36,6 +36,7 @@ jobs:
           import json
           from pathlib import Path
           s=json.loads(Path("output/community/COMMUNITY_DIRECT_DISCOVERY.json").read_text())
+          q=json.loads(Path("output/community/COMMUNITY_QUALIFIED_QUEUE.json").read_text())
           checks=s.get("checks") or []
           found=[r for r in checks if r.get("status")=="DIRECT_POSTS_FOUND"]
           restricted=[r for r in checks if r.get("status") in ("ACCESS_RESTRICTED","REQUEST_FAILED","PARSE_FAILED","HTTP_ERROR")]
@@ -50,9 +51,12 @@ jobs:
                          for r in rows if r.get("symbol") in hk_symbols)
           a_code_ok=all(not str(r.get("market_code") or "").startswith("hk")
                         for r in rows if r.get("symbol") in a_symbols)
-          useful=(leads>0 and len(a_found)==7 and len(hk_found)==4 and hk_code_ok and a_code_ok)
+          qualified_symbols=set(q.get("symbols_with_qualified_leads") or [])
+          qualified_count=int(q.get("qualified_count") or 0)
+          qualified_coverage=(len(qualified_symbols)==11)
+          useful=(leads>0 and len(a_found)==7 and len(hk_found)==4 and hk_code_ok and a_code_ok and qualified_count>0 and qualified_coverage)
           out={
-            "schema":"E36_COMMUNITY_ACCEPTANCE/v3",
+            "schema":"E36_COMMUNITY_ACCEPTANCE/v4",
             "source":"EASTMONEY_GUBA_DIRECT",
             "checks_complete":complete,
             "symbols_checked":s.get("symbols_checked"),
@@ -62,6 +66,9 @@ jobs:
             "hk_coverage_ok":len(hk_found)==4,
             "market_code_mapping_ok":hk_code_ok and a_code_ok,
             "accepted_count":leads,
+            "qualified_count":qualified_count,
+            "qualified_symbols":sorted(qualified_symbols),
+            "qualified_coverage_ok":qualified_coverage,
             "restricted_or_failed_symbols":[r.get("symbol") for r in restricted],
             "research_only":s.get("research_only"),
             "live_platform_coverage":s.get("live_platform_coverage"),
