@@ -11,6 +11,31 @@ from universe import load_universe
 
 API="https://gbapi.eastmoney.com/webarticlelist/api/Article/Articlelist"
 
+RESEARCH_TERMS=(
+    "业绩","财报","收入","利润","成本","分红","回购","增持","减持","公告","月报",
+    "订单","项目","产能","扩产","停产","涨价","降价","销量","产量","资本开支",
+    "诉讼","监管","合作","收购","出售","审批","临床","获批","调研","说明会",
+    "政策","关税","融资","事故","铜","钴","煤","油","天然气","水泥","PCB",
+    "电子纱","电子布","创新药","AI","算力","云业务","油气","矿","物流"
+)
+PURE_SENTIMENT_TERMS=(
+    "梭哈","抄底","主力","洗盘","吸筹","看涨","看跌","太牛","好难熬","何时到底",
+    "割肉","加仓","清仓","目标价","涨停","跌停","退市"
+)
+
+def qualify(title,click_count=None,comment_count=None):
+    text=str(title or "")
+    matched=[x for x in RESEARCH_TERMS if x in text]
+    sentiment=[x for x in PURE_SENTIMENT_TERMS if x in text]
+    clicks=int(click_count or 0) if str(click_count or "").isdigit() else 0
+    comments=int(comment_count or 0) if str(comment_count or "").isdigit() else 0
+    score=min(60,12*len(set(matched))) + min(20, comments*2) + min(20, clicks//500)
+    if matched:
+        category="RESEARCH_SIGNAL"
+        priority="HIGH" if score>=40 else "MEDIUM" if score>=20 else "LOW"
+        return True,category,priority,score,matched,sentiment
+    return False,"PURE_SENTIMENT_OR_LOW_INFORMATION","NONE",0,matched,sentiment
+
 def code_for(symbol):
     code, market = symbol.split(".")
     if market == "HK":
@@ -66,6 +91,8 @@ def collect(universe_file,output,limit=20,delay=0.8,session=None):
                     title=str(item.get("post_title") or item.get("title") or "").strip()
                     post_id=str(item.get("post_id") or item.get("id") or "").strip()
                     if not title: continue
+                    qualified,category,priority,signal_score,matched_terms,sentiment_terms=qualify(
+                        title,item.get("post_click_count"),item.get("post_comment_count"))
                     rows.append({
                         "symbol":symbol,
                         "source":"EASTMONEY_GUBA_DIRECT",
@@ -83,6 +110,12 @@ def collect(universe_file,output,limit=20,delay=0.8,session=None):
                         "raw_post_verified":False,
                         "issuer_fact_verified":False,
                         "may_directly_change_main_or_trade":False,
+                        "quality_category":category,
+                        "shadow_verification_priority":priority,
+                        "signal_score":signal_score,
+                        "matched_research_terms":matched_terms,
+                        "matched_sentiment_terms":sentiment_terms,
+                        "qualified_for_shadow_verification":qualified,
                     })
                 rec["candidate_count"]=len(rows)-before
                 rec["status"]="DIRECT_POSTS_FOUND" if rec["candidate_count"] else "DIRECT_EMPTY_OR_UNSUPPORTED"
@@ -96,7 +129,7 @@ def collect(universe_file,output,limit=20,delay=0.8,session=None):
         if delay: time.sleep(delay)
 
     result={
-        "schema":"E36_COMMUNITY_DIRECT_DISCOVERY/v1",
+        "schema":"E36_COMMUNITY_DIRECT_DISCOVERY/v2",
         "generated_utc":datetime.now(timezone.utc).isoformat(),
         "universe_sha256":u["universe_sha256"],
         "research_only":True,
@@ -110,6 +143,19 @@ def collect(universe_file,output,limit=20,delay=0.8,session=None):
         "checks":checks,
     }
     (out/"COMMUNITY_DIRECT_DISCOVERY.json").write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    qualified=[r for r in rows if r.get("qualified_for_shadow_verification")]
+    queue={
+        "schema":"E36_COMMUNITY_QUALIFIED_QUEUE/v1",
+        "generated_utc":result["generated_utc"],
+        "research_only":True,
+        "may_directly_change_main_or_trade":False,
+        "requires_shadow_verification":True,
+        "source":result["source"],
+        "qualified_count":len(qualified),
+        "symbols_with_qualified_leads":sorted({r["symbol"] for r in qualified}),
+        "rows":sorted(qualified,key=lambda r:(r.get("signal_score") or 0),reverse=True)
+    }
+    (out/"COMMUNITY_QUALIFIED_QUEUE.json").write_text(json.dumps(queue,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     return result
 
 if __name__=="__main__":
