@@ -157,6 +157,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          # Another Public run may have persisted runtime/latest after this run checked out.
+          # Rebase the tracked working tree to the newest remote main while preserving untracked output/.
+          git fetch origin main
+          git reset --hard origin/main
           rm -rf runtime/latest
           mkdir -p runtime/latest
           find output -type f -name '*.json' -print0 | while IFS= read -r -d '' src; do
