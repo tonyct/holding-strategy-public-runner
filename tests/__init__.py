@@ -1,0 +1,1 @@
+"""Community source acceptance tests."""
