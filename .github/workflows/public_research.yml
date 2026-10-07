@@ -96,6 +96,12 @@ jobs:
           mkdir -p output/ir
           python engine/collect_ir_discovery.py --input-dir output/a --output output/ir/IR_DISCOVERY.json
 
+      - name: Collect AKShare public discovery
+        continue-on-error: true
+        run: |
+          mkdir -p output/discovery
+          python engine/collect_akshare_discovery.py --output output/discovery/AKSHARE_DISCOVERY.json --limit 20
+
       - name: Collect public quotes
         continue-on-error: true
         run: |
