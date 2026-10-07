@@ -1,0 +1,47 @@
+{
+  "schema": "PUBLIC_DATA_ACQUISITION_CONTRACT/v1",
+  "contract_id": "PUBLIC_DATA_ACQUISITION_CONTRACT_V1_20261007",
+  "role": "PUBLIC_MARKET_DATA_AND_EVIDENCE_ACQUISITION_ONLY",
+  "request_semantics": "RESEARCH_COVERAGE_NOT_ACCOUNT_HOLDINGS",
+  "allowed_request_fields": [
+    "symbol",
+    "market",
+    "report_period",
+    "lookback_days",
+    "data_types"
+  ],
+  "forbidden_semantics": [
+    "holding",
+    "owned",
+    "portfolio",
+    "position",
+    "quantity",
+    "cost_basis",
+    "cash",
+    "nav",
+    "order",
+    "fill",
+    "weight",
+    "tracking_only_account_semantics",
+    "add",
+    "reduce",
+    "exit",
+    "portfolio_decision"
+  ],
+  "allowed_data_types": [
+    "quotes",
+    "announcements",
+    "financials",
+    "official_filings"
+  ],
+  "output_requirements": [
+    "source",
+    "source_timestamp_or_session_date",
+    "period_or_as_of",
+    "sha256_or_content_identity",
+    "verification_state"
+  ],
+  "no_private_repo_dependency": true,
+  "no_investment_decision_logic": true,
+  "no_trade_logic": true
+}
