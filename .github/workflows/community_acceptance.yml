@@ -70,9 +70,13 @@ jobs:
           set -euo pipefail
           git fetch origin main
           git reset --hard origin/main
-          rm -rf runtime/acceptance/community/latest
-          mkdir -p runtime/acceptance/community/latest
-          cp -f output/community/*.json runtime/acceptance/community/latest/ || true
+          if compgen -G "output/community/*.json" > /dev/null; then
+            rm -rf runtime/acceptance/community/latest
+            mkdir -p runtime/acceptance/community/latest
+            cp -f output/community/*.json runtime/acceptance/community/latest/
+          else
+            echo "NO_COMMUNITY_OUTPUT_PRESERVE_PREVIOUS_ACCEPTANCE"
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add runtime/acceptance/community/latest
