@@ -37,61 +37,159 @@
     "removed": [],
     "retained": []
   },
-  "run_started_utc": "2026-10-07T03:57:32.122478+00:00",
-  "run_ended_utc": "2026-10-07T03:57:33.157768+00:00",
+  "run_started_utc": "2026-10-07T04:04:21.356343+00:00",
+  "run_ended_utc": "2026-10-07T04:04:59.538837+00:00",
   "report_period_end": "2026-06-30",
-  "runner_exit_code": 1,
+  "runner_exit_code": 0,
   "runner_error": null,
   "ticker_count": 7,
-  "core_three_statement_count": 0,
+  "core_three_statement_count": 7,
   "complete_original_filing_verified": 0,
   "research_generation_created": false,
   "production_integration_verified": false,
   "tickers": [
     {
       "symbol": "600941.SH",
-      "status": "MISSING_OR_AMBIGUOUS_CURRENT_RUN_SNAPSHOT",
-      "current_run_snapshot_count": 0,
-      "snapshot_history_count": 0
+      "status": "CORE_THREE_STATEMENTS_UNVERIFIED",
+      "snapshot_file": "600941_SH_2026-06-30_fcdabe805b531111.json",
+      "current_run_snapshot_count": 1,
+      "snapshot_history_count": 1,
+      "retrieved_statements": 3,
+      "snapshot_sha256": "fcdabe805b5311115e0ceeed2fcfa7f9712540c3dfd68a1e5c6fe353de15bade",
+      "statement_status": {
+        "income": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "balance": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "cashflow": "FETCHED_UNVERIFIED_PRIMARY_FILING"
+      },
+      "source": {
+        "income": "AKSHARE_SINA",
+        "balance": "AKSHARE_SINA",
+        "cashflow": "AKSHARE_SINA"
+      },
+      "quality": "CORE_FIELDS_ONLY_UNVERIFIED_PRIMARY"
     },
     {
       "symbol": "001286.SZ",
-      "status": "MISSING_OR_AMBIGUOUS_CURRENT_RUN_SNAPSHOT",
-      "current_run_snapshot_count": 0,
-      "snapshot_history_count": 0
+      "status": "CORE_THREE_STATEMENTS_UNVERIFIED",
+      "snapshot_file": "001286_SZ_2026-06-30_d7718feb67869897.json",
+      "current_run_snapshot_count": 1,
+      "snapshot_history_count": 1,
+      "retrieved_statements": 3,
+      "snapshot_sha256": "d7718feb67869897af40324f59a2088724d15053c41943cc0b65e35a60c8fc8d",
+      "statement_status": {
+        "income": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "balance": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "cashflow": "FETCHED_UNVERIFIED_PRIMARY_FILING"
+      },
+      "source": {
+        "income": "AKSHARE_SINA",
+        "balance": "AKSHARE_SINA",
+        "cashflow": "AKSHARE_SINA"
+      },
+      "quality": "CORE_FIELDS_ONLY_UNVERIFIED_PRIMARY"
     },
     {
       "symbol": "603993.SH",
-      "status": "MISSING_OR_AMBIGUOUS_CURRENT_RUN_SNAPSHOT",
-      "current_run_snapshot_count": 0,
-      "snapshot_history_count": 0
+      "status": "CORE_THREE_STATEMENTS_UNVERIFIED",
+      "snapshot_file": "603993_SH_2026-06-30_567ec9a3845c5bba.json",
+      "current_run_snapshot_count": 1,
+      "snapshot_history_count": 1,
+      "retrieved_statements": 3,
+      "snapshot_sha256": "567ec9a3845c5bbae5d4116e0220578a0fe9e8700f581920f75e3c43d22344a0",
+      "statement_status": {
+        "income": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "balance": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "cashflow": "FETCHED_UNVERIFIED_PRIMARY_FILING"
+      },
+      "source": {
+        "income": "AKSHARE_SINA",
+        "balance": "AKSHARE_SINA",
+        "cashflow": "AKSHARE_SINA"
+      },
+      "quality": "CORE_FIELDS_ONLY_UNVERIFIED_PRIMARY"
     },
     {
       "symbol": "600499.SH",
-      "status": "MISSING_OR_AMBIGUOUS_CURRENT_RUN_SNAPSHOT",
-      "current_run_snapshot_count": 0,
-      "snapshot_history_count": 0
+      "status": "CORE_THREE_STATEMENTS_UNVERIFIED",
+      "snapshot_file": "600499_SH_2026-06-30_253a5e5bf9604274.json",
+      "current_run_snapshot_count": 1,
+      "snapshot_history_count": 1,
+      "retrieved_statements": 3,
+      "snapshot_sha256": "253a5e5bf9604274ebe124d2c07f8f98afed30710be9fdacf0a98d030bd13e9e",
+      "statement_status": {
+        "income": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "balance": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "cashflow": "FETCHED_UNVERIFIED_PRIMARY_FILING"
+      },
+      "source": {
+        "income": "AKSHARE_SINA",
+        "balance": "AKSHARE_SINA",
+        "cashflow": "AKSHARE_SINA"
+      },
+      "quality": "CORE_FIELDS_ONLY_UNVERIFIED_PRIMARY"
     },
     {
       "symbol": "600795.SH",
-      "status": "MISSING_OR_AMBIGUOUS_CURRENT_RUN_SNAPSHOT",
-      "current_run_snapshot_count": 0,
-      "snapshot_history_count": 0
+      "status": "CORE_THREE_STATEMENTS_UNVERIFIED",
+      "snapshot_file": "600795_SH_2026-06-30_83204bccaf2ef76c.json",
+      "current_run_snapshot_count": 1,
+      "snapshot_history_count": 1,
+      "retrieved_statements": 3,
+      "snapshot_sha256": "83204bccaf2ef76c5fc094adb3f1ef0818ba613532c8f9c8ce94b90c37935a91",
+      "statement_status": {
+        "income": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "balance": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "cashflow": "FETCHED_UNVERIFIED_PRIMARY_FILING"
+      },
+      "source": {
+        "income": "AKSHARE_SINA",
+        "balance": "AKSHARE_SINA",
+        "cashflow": "AKSHARE_SINA"
+      },
+      "quality": "CORE_FIELDS_ONLY_UNVERIFIED_PRIMARY"
     },
     {
       "symbol": "603871.SH",
-      "status": "MISSING_OR_AMBIGUOUS_CURRENT_RUN_SNAPSHOT",
-      "current_run_snapshot_count": 0,
-      "snapshot_history_count": 0
+      "status": "CORE_THREE_STATEMENTS_UNVERIFIED",
+      "snapshot_file": "603871_SH_2026-06-30_3c47229385ba3596.json",
+      "current_run_snapshot_count": 1,
+      "snapshot_history_count": 1,
+      "retrieved_statements": 3,
+      "snapshot_sha256": "3c47229385ba35968b1238efb59c89546dbed8965575ff851a48ba7f7e493542",
+      "statement_status": {
+        "income": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "balance": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "cashflow": "FETCHED_UNVERIFIED_PRIMARY_FILING"
+      },
+      "source": {
+        "income": "AKSHARE_SINA",
+        "balance": "AKSHARE_SINA",
+        "cashflow": "AKSHARE_SINA"
+      },
+      "quality": "CORE_FIELDS_ONLY_UNVERIFIED_PRIMARY"
     },
     {
       "symbol": "601857.SH",
-      "status": "MISSING_OR_AMBIGUOUS_CURRENT_RUN_SNAPSHOT",
-      "current_run_snapshot_count": 0,
-      "snapshot_history_count": 0
+      "status": "CORE_THREE_STATEMENTS_UNVERIFIED",
+      "snapshot_file": "601857_SH_2026-06-30_b24b5528fcb452ce.json",
+      "current_run_snapshot_count": 1,
+      "snapshot_history_count": 1,
+      "retrieved_statements": 3,
+      "snapshot_sha256": "b24b5528fcb452ce4e839c678147b5d6d0148bd27ec01d1de74225745e9952f9",
+      "statement_status": {
+        "income": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "balance": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "cashflow": "FETCHED_UNVERIFIED_PRIMARY_FILING"
+      },
+      "source": {
+        "income": "AKSHARE_SINA",
+        "balance": "AKSHARE_SINA",
+        "cashflow": "AKSHARE_SINA"
+      },
+      "quality": "CORE_FIELDS_ONLY_UNVERIFIED_PRIMARY"
     }
   ],
-  "runner_stdout_tail": "",
-  "runner_stderr_tail": "Traceback (most recent call last):\n  File \"/home/runner/work/holding-strategy-public-runner/holding-strategy-public-runner/engine/financial_adapter.py\", line 363, in <module>\n    if __name__=='__main__':raise SystemExit(main())\n                                             ^^^^^^\n  File \"/home/runner/work/holding-strategy-public-runner/holding-strategy-public-runner/engine/financial_adapter.py\", line 343, in main\n    from direct_eastmoney import DirectEastmoneyProvider\nModuleNotFoundError: No module named 'direct_eastmoney'\n",
-  "status": "DATA_PARTIAL_OR_BLOCKED"
+  "runner_stdout_tail": null,
+  "runner_stderr_tail": null,
+  "status": "CORE_FIELDS_FETCHED_UNVERIFIED"
 }

@@ -1,18 +1,16 @@
 {
   "schema": "E36_PUBLIC_ACQUISITION_HEALTH/v2",
-  "status": "DEGRADED",
+  "status": "PASS",
   "hard_failures": [],
-  "degraded_reasons": [
-    "A_SHARE_FINANCIALS_INCOMPLETE"
-  ],
+  "degraded_reasons": [],
   "semantics": "SOURCE_GAPS_DEGRADE_BUT_DO_NOT_INVALIDATE_AN_INTEGRITY_SAFE_BUNDLE",
   "checks": {
     "a_share_financials": {
-      "ok": false,
-      "status": "DATA_PARTIAL_OR_BLOCKED",
-      "core_three_statement_count": 0,
+      "ok": true,
+      "status": "CORE_FIELDS_FETCHED_UNVERIFIED",
+      "core_three_statement_count": 7,
       "ticker_count": 7,
-      "runner_exit_code": 1
+      "runner_exit_code": 0
     },
     "a_share_announcements": {
       "ok": true,
@@ -34,7 +32,7 @@
     },
     "news_discovery": {
       "ok": true,
-      "lead_count": 6
+      "lead_count": 1
     },
     "ir_discovery": {
       "ok": true,
