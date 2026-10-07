@@ -13,6 +13,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: public-research-main
+  cancel-in-progress: true
+
 jobs:
   collect:
     runs-on: ubuntu-latest
@@ -160,6 +164,12 @@ jobs:
           # Another Public run may have persisted runtime/latest after this run checked out.
           # Rebase the tracked working tree to the newest remote main while preserving untracked output/.
           git fetch origin main
+          # Monotonic latest: an older run must never overwrite a newer persisted bundle.
+          remote_run="$(git show origin/main:runtime/latest/PUBLIC_RESEARCH_BUNDLE.json 2>/dev/null | python -c 'import json,sys; print(json.load(sys.stdin).get("source_run_id","0"))' 2>/dev/null || echo 0)"
+          if [[ "$remote_run" =~ ^[0-9]+$ ]] && (( remote_run > GITHUB_RUN_ID )); then
+            echo "SKIP_STALE_PERSIST current=$GITHUB_RUN_ID remote=$remote_run"
+            exit 0
+          fi
           git reset --hard origin/main
           rm -rf runtime/latest
           mkdir -p runtime/latest
