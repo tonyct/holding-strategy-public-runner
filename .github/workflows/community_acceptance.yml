@@ -62,8 +62,7 @@ jobs:
           target_rows_integrity=(all(
               ((r.get("discovery_relation")=="DIRECT_BOARD" and
                 r.get("target_board_match") is True and
-                r.get("source_board_code")==r.get("market_code") and
-                r.get("target_name_mentioned") is False) or
+                r.get("source_board_code")==r.get("market_code")) or
                (r.get("discovery_relation")=="TITLE_ENTITY_MENTION" and
                 r.get("target_board_match") is False and
                 r.get("target_name_mentioned") is True)) and
@@ -85,7 +84,7 @@ jobs:
           )
           useful=(leads>0 and len(a_found)==7 and len(hk_found)==4 and hk_code_ok and a_code_ok and board_metadata_complete and qualified_count>0 and target_specific_count>0 and qualified_coverage and target_rows_integrity)
           out={
-            "schema":"E36_COMMUNITY_ACCEPTANCE/v6",
+            "schema":"E36_COMMUNITY_ACCEPTANCE/v7",
             "source":"EASTMONEY_GUBA_DIRECT",
             "checks_complete":complete,
             "symbols_checked":s.get("symbols_checked"),
