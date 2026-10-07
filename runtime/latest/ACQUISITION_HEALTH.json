@@ -3,8 +3,7 @@
   "status": "PASS_WITH_SOFT_GAPS",
   "hard_failures": [],
   "soft_gaps": [
-    "A_SHARE_FINANCIALS_INCOMPLETE",
-    "COMMUNITY_DISCOVERY_UNUSABLE"
+    "A_SHARE_FINANCIALS_INCOMPLETE"
   ],
   "checks": {
     "a_share_financials": {
@@ -24,18 +23,18 @@
       "row_count": 4
     },
     "community_discovery": {
-      "ok": false,
+      "ok": true,
       "checks_completed": 44,
       "checks_expected": 44,
-      "raw_items": 403,
-      "filtered_wrong_host": 403,
+      "raw_items": 413,
+      "filtered_wrong_host": 412,
       "accepted_before_dedup": 0,
       "lead_count": 0,
-      "resolver_broken": true
+      "resolver_broken": false
     },
     "news_discovery": {
       "ok": true,
-      "lead_count": 6
+      "lead_count": 1
     },
     "ir_discovery": {
       "ok": true,
