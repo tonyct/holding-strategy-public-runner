@@ -24,6 +24,35 @@ DOMAINS={
 RSS="https://www.bing.com/search"
 
 def unwrap_search_url(url):
+    """Resolve common Bing result redirect wrappers without fetching the target."""
+    if not isinstance(url,str) or not url:
+        return url
+    try:
+        p=urlparse(url)
+        host=(p.hostname or "").lower()
+        if host not in ("bing.com","www.bing.com","cn.bing.com"):
+            return url
+        qs=parse_qs(p.query)
+        for key in ("u","url","r","target"):
+            for raw in qs.get(key,[]):
+                cand=unquote(raw)
+                if cand.startswith(("http://","https://")):
+                    return cand
+                # Bing often encodes the destination as a1<urlsafe-base64>.
+                if cand.startswith("a1"):
+                    enc=cand[2:]
+                    enc += "="*((4-len(enc)%4)%4)
+                    try:
+                        dec=base64.urlsafe_b64decode(enc.encode()).decode("utf-8","replace")
+                    except Exception:
+                        continue
+                    if dec.startswith(("http://","https://")):
+                        return dec
+    except Exception:
+        return url
+    return url
+
+def unwrap_search_url(url):
     """Return the target URL when Bing RSS emits a /ck/a redirect."""
     try:
         p=urlparse(url)
