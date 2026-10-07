@@ -52,5 +52,22 @@
     "research_only": true,
     "may_directly_change_main_or_trade": false,
     "requires_shadow_primary_source_verification": true
-  }
+  },
+  "no_private_strategy_runtime_state": true,
+  "forbidden_private_runtime_fields": [
+    "HOLDING_STRATEGY",
+    "active_version",
+    "epoch",
+    "private_commit",
+    "private_generation",
+    "raw_shadow_cycle_id",
+    "account_state",
+    "holdings",
+    "positions",
+    "cost_basis",
+    "cash",
+    "nav",
+    "orders",
+    "portfolio_decisions"
+  ]
 }
