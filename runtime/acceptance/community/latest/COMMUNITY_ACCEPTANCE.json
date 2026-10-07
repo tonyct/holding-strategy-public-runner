@@ -1,5 +1,5 @@
 {
-  "schema": "E36_COMMUNITY_ACCEPTANCE/v6",
+  "schema": "E36_COMMUNITY_ACCEPTANCE/v7",
   "source": "EASTMONEY_GUBA_DIRECT",
   "checks_complete": true,
   "symbols_checked": 11,
@@ -41,10 +41,10 @@
     "9926.HK"
   ],
   "qualified_coverage_ok": true,
-  "target_rows_integrity_ok": false,
+  "target_rows_integrity_ok": true,
   "restricted_or_failed_symbols": [],
   "research_only": true,
   "live_platform_coverage": false,
-  "useful_leads_present": false,
-  "status": "FAIL"
+  "useful_leads_present": true,
+  "status": "PASS"
 }
