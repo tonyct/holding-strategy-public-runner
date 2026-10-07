@@ -84,6 +84,41 @@ def yahoo_one(ticker, session=None, now=None):
     if len(result) != 1:
         raise ValueError("YAHOO_CHART_EMPTY")
     chart = result[0]
+    return parse_yahoo(ticker, chart, now=now)
+
+
+def parse_yahoo(ticker, chart, now=None):
+    """Keep actual provider price time separate from a daily bar's start time."""
+    now = now or datetime.now(timezone.utc)
+    code, market = ticker.split(".")
+    expected_symbol = (code.zfill(4) + ".HK" if market == "HK" else
+                       code + (".SS" if market == "SH" else ".SZ"))
+    currency = "HKD" if market == "HK" else "CNY"
+    zone = ZoneInfo("Asia/Hong_Kong" if market == "HK" else "Asia/Shanghai")
+    meta = chart.get("meta") or {}
+    if meta.get("symbol") and meta["symbol"] != expected_symbol:
+        raise ValueError("YAHOO_SYMBOL_MISMATCH")
+    if meta.get("currency") and meta["currency"] != currency:
+        raise ValueError("YAHOO_CURRENCY_MISMATCH")
+    # regularMarketPrice and regularMarketTime describe the same provider
+    # observation. The chart timestamp describes the bar start (09:30 for a
+    # Hong Kong daily bar), not when its latest close value was observed.
+    try:
+        price = float(meta["regularMarketPrice"])
+        at = datetime.fromtimestamp(int(meta["regularMarketTime"]), tz=timezone.utc)
+        if (meta.get("symbol") == expected_symbol and meta.get("currency") == currency
+                and math.isfinite(price) and price > 0
+                and now - timedelta(days=16) <= at <= now + timedelta(minutes=10)):
+            return {"ticker": ticker, "status": "HISTORICAL_PROVIDER_QUOTE",
+                    "close": price, "currency": currency,
+                    "market_session_date": at.astimezone(zone).date().isoformat(),
+                    "source_timestamp_utc": at.isoformat(),
+                    "source_timestamp_role": "PROVIDER_PRICE_OBSERVATION",
+                    "fetched_at_utc": now.isoformat(),
+                    "source": "YAHOO_DELAYED_MARKET_OBSERVATION_NON_EXECUTABLE",
+                    "exchange_close_independently_certified": False}
+    except (KeyError, TypeError, ValueError, OverflowError):
+        pass
     times = chart.get("timestamp") or []
     vals = (chart.get("indicators", {}).get("quote") or [{}])[0].get("close") or []
     for stamp, value in reversed(list(zip(times, vals))):
@@ -93,13 +128,14 @@ def yahoo_one(ticker, session=None, now=None):
         at = datetime.fromtimestamp(int(stamp), tz=timezone.utc)
         if (math.isfinite(price) and price > 0 and
             at <= now + timedelta(minutes=10) and at >= now - timedelta(days=16)):
-            zone = ZoneInfo("Asia/Hong_Kong" if market == "HK" else "Asia/Shanghai")
             return {"ticker": ticker, "status": "HISTORICAL_PROVIDER_QUOTE",
                     "close": price, "currency": "HKD" if market == "HK" else "CNY",
                     "market_session_date": at.astimezone(zone).date().isoformat(),
-                    "source_timestamp_utc": at.isoformat(),
+                    "source_timestamp_utc": None,
+                    "source_timestamp_role": "UNKNOWN_PRICE_OBSERVATION_TIME",
+                    "bar_start_timestamp_utc": at.isoformat(),
                     "fetched_at_utc": now.isoformat(),
-                    "source": "YAHOO_HISTORICAL_DELAYED_NON_EXECUTABLE",
+                    "source": "YAHOO_DAILY_BAR_REFERENCE_NON_EXECUTABLE",
                     "exchange_close_independently_certified": False}
     raise ValueError("YAHOO_NO_VALID_DATED_CLOSE")
 
