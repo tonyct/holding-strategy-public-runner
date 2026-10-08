@@ -18,6 +18,18 @@ class TableCandidateTests(unittest.TestCase):
                 {"status":"FETCHED_OFFICIAL_ORIGINAL","title":"董事会决议","filename":"other.pdf"}]}}}
             (out/"A_ORIGINALS_RECEIPT.json").write_text(json.dumps(data))
             self.assertEqual(report_files(root),{"report.pdf"})
+    def test_corrupt_official_pdf_is_explicit_gap(self):
+        with tempfile.TemporaryDirectory() as root:
+            root=Path(root)
+            (root/"a").mkdir()
+            name="600795_SH_bad.pdf"
+            (root/"a"/name).write_bytes(b"not a pdf")
+            receipt={"symbols":{"600795.SH":{"files":[{"filename":name,"title":"2026年半年度报告","status":"FETCHED_OFFICIAL_ORIGINAL"}]}}}
+            (root/"a"/"A_ORIGINALS_RECEIPT.json").write_text(json.dumps(receipt))
+            documents,out=build(root)
+            self.assertEqual(len(documents),1)
+            self.assertIn("extraction_error",documents[0])
+            self.assertEqual(out["store"]["facts"],[])
     def test_build_respects_official_receipt_filter(self):
         with tempfile.TemporaryDirectory() as root:
             p=Path(root)
