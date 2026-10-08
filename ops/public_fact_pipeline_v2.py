@@ -65,7 +65,8 @@ def extract(pdf_path,symbol):
     return {"symbol":symbol,"source_sha256":sha,"page_count":pages,"table_candidates":ambiguous,
             "facts":[],"semantic_fact_verified":False}
 def build(root):
-    root=Path(root);documents=[];facts=[]\n    selected=report_files(root)
+    root=Path(root);documents=[];facts=[]
+    selected=report_files(root)
     for path in sorted(root.rglob("*.pdf")):
         m=re.match(r"(\d+_[A-Z]+)_",path.name)
         if not m: continue
