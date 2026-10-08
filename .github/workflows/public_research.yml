@@ -142,6 +142,14 @@ jobs:
           fi
           python -m ops.public_lead_registry             --registry output/state/PUBLIC_LEAD_LIFECYCLE_REGISTRY.json             --run-id "$GITHUB_RUN_ID"             --community output/community/COMMUNITY_DIRECT_DISCOVERY.json             --news output/news/NEWS_DISCOVERY.json             --ir output/ir/IR_DISCOVERY.json             --akshare output/discovery/AKSHARE_DISCOVERY.json             --output output/state/PUBLIC_LEAD_LIFECYCLE_REGISTRY.json
 
+      - name: Resolve deterministic public lead lifecycle
+        run: |
+          python -m ops.public_lead_resolver \
+            --registry output/state/PUBLIC_LEAD_LIFECYCLE_REGISTRY.json \
+            --a-originals output/originals/a/A_ORIGINALS_RECEIPT.json \
+            --hk-originals output/originals/hk/HK_ORIGINALS_RECEIPT.json \
+            --report output/state/PUBLIC_LEAD_RESOLUTION_REPORT.json
+
       - name: Extract source-bound public original text candidates
         run: |
           mkdir -p output/compute
@@ -258,6 +266,17 @@ jobs:
           if a_fetched==0: degraded_reasons.append("A_SHARE_OFFICIAL_ORIGINALS_UNAVAILABLE")
           if hk_fetched==0: degraded_reasons.append("HK_OFFICIAL_ORIGINALS_UNAVAILABLE")
 
+          lead_state=load("output/state/PUBLIC_LEAD_LIFECYCLE_REGISTRY.json", required=False)
+          lead_resolution=load("output/state/PUBLIC_LEAD_RESOLUTION_REPORT.json", required=False)
+          checks["lead_lifecycle"]={
+              "total":(lead_state.get("counts") or {}).get("total"),
+              "pending":(lead_state.get("counts") or {}).get("pending"),
+              "terminal":(lead_state.get("counts") or {}).get("terminal"),
+              "transition_count":lead_resolution.get("transition_count"),
+              "automatic_fact_promotion":lead_resolution.get("automatic_fact_promotion")}
+          if lead_resolution.get("automatic_fact_promotion") is not False:
+              hard_failures.append("LEAD_RESOLUTION_FACT_PROMOTION_CONTRACT_BROKEN")
+
           quotes=load("output/quotes/QUOTE_RECEIPT.json")
           quote_ok=(quotes.get("quotes_with_source_session")==n)
           checks["quotes"]={"ok":quote_ok,"quotes_with_source_session":quotes.get("quotes_with_source_session")}
@@ -371,6 +390,8 @@ jobs:
                   "company_research_sha256":sha("output/compute/PUBLIC_COMPANY_RESEARCH_COMPUTE.json"),
                   "lead_registry_path":"state/PUBLIC_LEAD_LIFECYCLE_REGISTRY.json",
                   "lead_registry_sha256":sha("output/state/PUBLIC_LEAD_LIFECYCLE_REGISTRY.json"),
+                  "lead_resolution_path":"state/PUBLIC_LEAD_RESOLUTION_REPORT.json",
+                  "lead_resolution_sha256":sha("output/state/PUBLIC_LEAD_RESOLUTION_REPORT.json"),
                   "dynamic_evidence_registry_path":"state/PUBLIC_DYNAMIC_EVIDENCE_REGISTRY.json",
                   "dynamic_evidence_registry_sha256":sha("output/state/PUBLIC_DYNAMIC_EVIDENCE_REGISTRY.json"),
                   "active_symbol_count":snapshot.get("active_symbol_count"),
@@ -411,6 +432,7 @@ jobs:
           assert compute.get("no_trade_logic") is True
           assert compute.get("snapshot_sha256") and compute.get("metrics_sha256") and compute.get("evidence_index_sha256")
           assert compute.get("company_research_sha256") and compute.get("lead_registry_sha256")
+          assert compute.get("lead_resolution_sha256")
           assert compute.get("dynamic_evidence_registry_sha256")
           if failures:
               raise SystemExit("Private/account semantic detected in public output: "+", ".join(failures))
