@@ -37,8 +37,7 @@ def build(root,previous=None):
     return {"schema":"PUBLIC_EVIDENCE_REGISTRY/v1","generated_utc":now,
         "object_count":len(objects),"identity_count":len(identities),
         "objects":objects,"identities":identities,"touched":touched,
-        "contains_account_state":False,"contains_portfolio_decision":False,
-        "investment_decision_authorized":False,"automatic_trade_execution":False}
+        "public_only_contract":True,"investment_decision_authorized":False,"automatic_trade_execution":False}
 
 def main():
     p=argparse.ArgumentParser();p.add_argument("--root",default="output")
