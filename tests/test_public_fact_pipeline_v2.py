@@ -1,6 +1,7 @@
 import unittest
-from ops.public_fact_pipeline_v2 import parse_number, extract
+from ops.public_fact_pipeline_v2 import parse_number, extract, report_files
 import tempfile
+import json
 from pathlib import Path
 class TableCandidateTests(unittest.TestCase):
     def test_numeric_cells(self):
@@ -8,6 +9,15 @@ class TableCandidateTests(unittest.TestCase):
         self.assertEqual(parse_number("−2,100"),"-2100")
     def test_ambiguous_cells(self):
         for x in ("2026年","10%","--","1 2 3",""):self.assertIsNone(parse_number(x))
+    def test_official_report_filter(self):
+        with tempfile.TemporaryDirectory() as root:
+            out=Path(root)/"a"
+            out.mkdir()
+            data={"symbols":{"600795.SH":{"files":[
+                {"status":"FETCHED_OFFICIAL_ORIGINAL","title":"国电电力2026年半年度报告","filename":"report.pdf"},
+                {"status":"FETCHED_OFFICIAL_ORIGINAL","title":"董事会决议","filename":"other.pdf"}]}}}
+            (out/"A_ORIGINALS_RECEIPT.json").write_text(json.dumps(data))
+            self.assertEqual(report_files(root),{"report.pdf"})
     def test_pdf_source_bound_no_promotion(self):
         import fitz
         with tempfile.TemporaryDirectory() as root:
