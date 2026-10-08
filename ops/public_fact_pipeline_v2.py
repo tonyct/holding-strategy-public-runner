@@ -37,8 +37,8 @@ def extract(pdf_path,symbol):
         pages=doc.page_count
         for pi,page in enumerate(doc):
             # Avoid expensive table recognition on unrelated pages.
-            normalized=re.sub(r"\\s+","",page.get_text(sort=False).casefold())
-            has_financial_label=any(re.sub(r"\\s+","",alias).casefold() in normalized for aliases in LABELS.values() for alias in aliases)
+            normalized=re.sub(r"\s+","",page.get_text(sort=False).casefold())
+            has_financial_label=any(re.sub(r"\s+","",alias).casefold() in normalized for aliases in LABELS.values() for alias in aliases)
             if not has_financial_label:continue
             # Table cells preserve row and column geometry; extraction is deliberately conservative.
             try: tables=page.find_tables().tables
@@ -56,8 +56,8 @@ def extract(pdf_path,symbol):
                 rows=table.extract()
                 for ri,row in enumerate(rows):
                     if not row: continue
-                    label=re.sub(r"\\s+","",str(row[0] or "")).casefold()
-                    matches=[field for field,aliases in LABELS.items() if any(re.sub(r"\\s+","",alias).casefold() in label for alias in aliases)]
+                    label=re.sub(r"\s+","",str(row[0] or "")).casefold()
+                    matches=[field for field,aliases in LABELS.items() if any(re.sub(r"\s+","",alias).casefold() in label for alias in aliases)]
                     if not matches:continue
                     values=[(ci,parse_number(cell)) for ci,cell in enumerate(row[1:],1)]
                     values=[(ci,v) for ci,v in values if v is not None]
