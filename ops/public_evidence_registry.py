@@ -1,5 +1,5 @@
 """Dynamic content-addressed registry for public research evidence."""
-import argparse,hashlib,json,shutil
+import argparse,hashlib,json,os
 from datetime import datetime,timezone
 from pathlib import Path
 SCHEMA="PUBLIC_DYNAMIC_EVIDENCE_REGISTRY/v1"
@@ -32,7 +32,25 @@ def main():
             versions.append({"sha256":sha,"source_run_id":a.run_id,"supersedes":versions[-1]["sha256"] if versions else None})
         if path.suffix.lower() in (".pdf",".json"):
             dest=store/sha[:2]/(sha+path.suffix.lower());dest.parent.mkdir(parents=True,exist_ok=True)
-            if not dest.exists(): shutil.copyfile(path,dest)
+            # Store one physical payload per SHA, not a second byte copy.
+            # Keep both logical paths for source/provenance compatibility.
+            # Both paths live below source-root on one filesystem.
+            if path.is_symlink() or dest.is_symlink():
+                raise ValueError("PUBLIC_CAS_SYMLINK_FORBIDDEN")
+            if dest.exists():
+                if (not dest.is_file() or dest.stat().st_size != len(raw)
+                        or hashlib.sha256(dest.read_bytes()).hexdigest() != sha):
+                    raise ValueError("PUBLIC_CAS_EXISTING_SHA_CONFLICT")
+                if not os.path.samefile(path, dest):
+                    raise ValueError("PUBLIC_CAS_DUPLICATE_PHYSICAL_COPY_EXISTS")
+            else:
+                try:
+                    os.link(path, dest)
+                except OSError as exc:
+                    raise ValueError("PUBLIC_CAS_HARDLINK_REQUIRED") from exc
+            if (not os.path.samefile(path, dest)
+                    or hashlib.sha256(dest.read_bytes()).hexdigest() != sha):
+                raise ValueError("PUBLIC_CAS_LINK_VERIFICATION_FAILED")
         touched.append({"identity":ident,"sha256":sha})
     reg["updated_at_utc"]=datetime.now(timezone.utc).isoformat();reg["object_count"]=len(reg["objects"]);reg["identity_count"]=len(reg["identities"])
     Path(a.registry).parent.mkdir(parents=True,exist_ok=True);Path(a.registry).write_text(json.dumps(reg,ensure_ascii=False,indent=2)+"\n")
