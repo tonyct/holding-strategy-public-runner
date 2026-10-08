@@ -94,7 +94,7 @@ class PublicFirewallTests(unittest.TestCase):
                   "strategy_id":"PUBLIC_COMPANY_RESEARCH",
                   "stocks":[{"symbol":"600795.SH","active":True}]}
         payload=build(universe,{"facts":[]},[],"2026-10-08T04:00:00Z")
-        raw=json.dumps(payload,ensure_ascii=False,sort_keys=True,indent=2).encode()+b"\\n"
+        raw=json.dumps(payload,ensure_ascii=False,sort_keys=True,indent=2).encode()+bytes([10])
         digest=hashlib.sha256(raw).hexdigest()
         with tempfile.TemporaryDirectory() as td:
             base=Path(td)
