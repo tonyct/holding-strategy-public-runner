@@ -1,0 +1,19 @@
+name: Public compute platform branch regression
+on:
+  push:
+    branches: [fix/public-compute-platform-20261008]
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile
+        run: python -m compileall -q engine/public_metrics.py engine/public_evidence_index.py engine/public_run_snapshot.py
+      - name: Test
+        run: python -m unittest tests.test_public_metrics tests.test_public_evidence_index tests.test_public_run_snapshot -v
