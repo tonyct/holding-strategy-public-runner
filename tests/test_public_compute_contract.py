@@ -12,5 +12,6 @@ class PublicComputeContractTests(unittest.TestCase):
   pos=[s.index(x) for x in names];self.assertEqual(pos,sorted(pos))
   self.assertNotIn("holding-strategy-data",s)
   self.assertIn("PUBLIC_DETERMINISTIC_METRICS.json",s);self.assertIn("PUBLIC_EVIDENCE_INDEX.json",s);self.assertIn("PUBLIC_RUN_SNAPSHOT.json",s)
+  self.assertFalse(any('\\n          assert contract.get' in line for line in s.splitlines()), 'BROKEN_LITERAL_NEWLINE_ASSERT')
   self.assertNotIn('\\\\n          assert contract.get',s)
 if __name__=="__main__":unittest.main()
