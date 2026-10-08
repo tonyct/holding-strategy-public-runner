@@ -42,6 +42,14 @@ def main():
                         "state/*.json","originals/**/*RECEIPT.json"):
             selected.extend(x for x in root.glob(pattern) if x.is_file())
         if not str(a.run_id).isdigit(): raise ValueError("INVALID_RUN_ID")
+        # Fail before writing any file when the current pointer is incompatible.
+        pre_status,pre_existing=request(token,a.repo,"GET","runtime/public_inputs/latest.json")
+        if pre_status==200:
+            pre_pointer=json.loads(base64.b64decode(pre_existing["content"]))
+            pre_run=(pre_pointer.get("source") or {}).get("run_id",pre_pointer.get("source_run_id","0"))
+            if int(pre_run)>=int(a.run_id):raise ValueError("STALE_OR_DUPLICATE_PUBLIC_RUN")
+            if pre_pointer.get("schema")!="PRIVATE_PUBLIC_INPUT_POINTER/v1":
+                raise ValueError("POINTER_SCHEMA_MIGRATION_REQUIRED")
         prefix="runtime/public_inputs/runs/"+str(a.run_id)
         written=[]
         for src in sorted(set(selected)):
