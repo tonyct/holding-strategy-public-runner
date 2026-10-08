@@ -26,6 +26,15 @@ def extract(pdf_path,symbol):
             # Table cells preserve row and column geometry; extraction is deliberately conservative.
             try: tables=page.find_tables().tables
             except Exception: tables=[]
+            if not tables:
+                lines=page.get_text(sort=True).splitlines()
+                for li,line in enumerate(lines):
+                    low=line.casefold()
+                    fields=[field for field,aliases in LABELS.items() if any(alias.casefold() in low for alias in aliases)]
+                    if fields:
+                        ambiguous.append({"symbol":symbol,"field_candidates":fields,"page":pi+1,
+                          "text_line":li+1,"literal_excerpt":" ".join(lines[max(0,li-1):li+3])[:600],
+                          "source_sha256":sha,"state":"TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED"})
             for ti,table in enumerate(tables):
                 rows=table.extract()
                 for ri,row in enumerate(rows):
