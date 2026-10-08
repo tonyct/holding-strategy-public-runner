@@ -84,7 +84,7 @@ jobs:
         continue-on-error: true
         run: |
           mkdir -p output/a
-          python engine/collect_announcements.py --output output/a --start "$(date -u -d '35 days ago' +%Y%m%d)" --end "$(date -u +%Y%m%d)"
+          python engine/collect_announcements.py --output output/a --start "$(date -u -d '75 days ago' +%Y%m%d)" --end "$(date -u +%Y%m%d)"
 
       - name: Collect public HK financials
         continue-on-error: true
@@ -122,13 +122,13 @@ jobs:
           mkdir -p output/quotes
           python -m engine.collect_quotes --output output/quotes/QUOTE_RECEIPT.json --delay 0.6
 
-      - name: Fetch current-window A-share official originals
+      - name: Fetch rolling-window A-share official originals
         continue-on-error: true
         run: |
           mkdir -p output/originals/a
           python -m ops.public_a_originals             --index-dir output/a             --output output/originals/a             --universe config/research_universe.json             --max-per-symbol 100
 
-      - name: Fetch current-window HKEX official originals
+      - name: Fetch rolling-window HKEX official originals
         continue-on-error: true
         run: |
           mkdir -p output/originals/hk
