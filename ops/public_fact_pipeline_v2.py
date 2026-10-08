@@ -11,7 +11,7 @@ LABELS={
 }
 NUMBER=re.compile(r"^\(?[-−]?\d[\d,]*(?:\.\d+)?\)?$")
 def parse_number(raw):
-    s=str(raw).strip().replace(" ","").replace("−","-")
+    s=str(raw).strip().replace("−","-")\n    if any(ch.isspace() for ch in s): return None
     if not NUMBER.fullmatch(s): return None
     if s.startswith("("): s="-"+s[1:-1]
     return s.replace(",","")
