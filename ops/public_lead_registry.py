@@ -17,10 +17,25 @@ def stable(source,row):
                    sort_keys=True,ensure_ascii=False,separators=(",",":"))
     return hashlib.sha256(key.encode()).hexdigest()
 
-def rows(path):
+def rows(path,source=None):
     p=Path(path)
     if not p.is_file(): return []
-    x=json.loads(p.read_text());return x.get("rows") or x.get("leads") or x.get("event_candidates") or []
+    x=json.loads(p.read_text())
+    if source!="akshare":
+        value=x.get("rows") or x.get("leads") or x.get("event_candidates") or []
+        return value if isinstance(value,list) else []
+    out=[]
+    # AKShare is symbol-bucketed; every article must have its own lifecycle id.
+    for bucket in x.get("rows") or []:
+        if not isinstance(bucket,dict): continue
+        symbol=bucket.get("symbol"); news=bucket.get("news") or {}
+        for article in news.get("rows") or []:
+            if not isinstance(article,dict): continue
+            out.append({"symbol":symbol,"title":article.get("新闻标题"),
+                "url":article.get("新闻链接"),"published_at":article.get("发布时间"),
+                "article_source":article.get("文章来源"),"summary":article.get("新闻内容"),
+                "verification_state":"UNVERIFIED_DISCOVERY","source":"AKSHARE_STOCK_NEWS_EM"})
+    return out
 
 def main():
     p=argparse.ArgumentParser();p.add_argument("--registry",required=True);p.add_argument("--run-id",required=True);p.add_argument("--output",required=True)
@@ -28,7 +43,7 @@ def main():
     reg=load(a.registry);seen=set()
     for source,path in (("community",a.community),("news",a.news),("ir",a.ir),("akshare",a.akshare)):
         if not path: continue
-        for row in rows(path):
+        for row in rows(path,source):
             if not isinstance(row,dict): continue
             symbol=row.get("symbol") or row.get("ticker")
             if not symbol: continue
