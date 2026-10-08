@@ -23,7 +23,12 @@ def one(path):
 def main():
     p=argparse.ArgumentParser();p.add_argument("--root",default="output/originals");p.add_argument("--output",required=True);a=p.parse_args()
     root=Path(a.root);symbols={};sources={}
-    for pth in sorted(root.rglob("*.pdf")):
+    # Historic exact-SHA TTM PDFs live under originals/ttm for SHADOW only.
+    # Public's rolling-window current-report extractor must not treat those
+    # SHA-named originals as ticker UNKNOWN or reparse old FY/H1 every hour.
+    public_window=[p for folder in ("a","hk")
+                   for p in (root/folder).glob("*.pdf") if p.is_file()]
+    for pth in sorted(public_window):
         raw=pth.read_bytes();sha=hashlib.sha256(raw).hexdigest()
         m=re.match(r"(\d+_[A-Z]+)_",pth.name);ticker=(m.group(1).replace("_",".") if m else "UNKNOWN")
         candidates=one(pth)
