@@ -6,7 +6,6 @@ written; no private state is read into the computation.
 """
 import argparse,base64,json,os,time
 from pathlib import Path
-import requests
 
 API="https://api.github.com/repos/tonyct/holding-strategy-data/contents/"
 
@@ -35,6 +34,7 @@ def main():
         text=raw.decode("utf-8")
         if any(x in text.lower() for x in ("cost_basis","position_size","portfolio_decision")):
             raise ValueError("PUBLIC_TO_PRIVATE_PAYLOAD_NOT_PUBLIC_SAFE")
+    import requests
     s=requests.Session();s.headers.update({"Authorization":"Bearer "+token,"Accept":"application/vnd.github+json",
         "X-GitHub-Api-Version":"2022-11-28"})
     put(s,"runtime/public_compute_latest.json",snap,"Sync latest public company research snapshot")
