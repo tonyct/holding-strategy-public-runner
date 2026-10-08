@@ -13,6 +13,31 @@ def unresolved(state):
         "SOURCE_UNAVAILABLE_RETRYABLE",
     } or str(state or "").endswith("_PENDING")
 
+def original_state(originals):
+    indexed=int(originals.get("indexed",0) or 0)
+    fetched=int(originals.get("fetched",0) or 0)
+    complete=originals.get("complete") is True
+    if complete and indexed==0:
+        return "WINDOW_COMPLETE_NO_NEW_OFFICIAL_ORIGINALS"
+    if complete and indexed>0 and fetched==indexed:
+        return "CURRENT_WINDOW_ORIGINALS_COMPLETE"
+    if fetched>0:
+        return "CURRENT_WINDOW_ORIGINALS_PARTIAL"
+    return "CURRENT_WINDOW_ORIGINALS_UNAVAILABLE"
+
+def research_state(originals,metric,text_rows):
+    ostate=original_state(originals)
+    financial=(metric or {}).get("financials") or {}
+    structured=financial.get("source_verification_state")
+    if ostate=="CURRENT_WINDOW_ORIGINALS_COMPLETE":
+        return "PUBLIC_EVIDENCE_PACKET_AVAILABLE"
+    if ostate=="WINDOW_COMPLETE_NO_NEW_OFFICIAL_ORIGINALS":
+        return ("PUBLIC_WINDOW_COMPLETE_NO_NEW_ORIGINALS_STRUCTURED_FINANCIALS_UNVERIFIED"
+                if structured else "PUBLIC_WINDOW_COMPLETE_NO_NEW_ORIGINALS")
+    if text_rows or structured:
+        return "PUBLIC_EVIDENCE_PACKET_PARTIAL"
+    return "PUBLIC_EVIDENCE_UNAVAILABLE"
+
 def main():
     p=argparse.ArgumentParser()
     for x in ("universe","metrics","a-originals","hk-originals","text-candidates","lead-registry","run-id","output"):
@@ -31,22 +56,25 @@ def main():
         originals=(ho if s.endswith(".HK") else ao).get(s,{})
         files=originals.get("files",[])
         metric=metrics.get(s,{})
+        text_rows=tx.get(s,[])
+        ostate=original_state(originals)
         packets[s]={
           "symbol":s,
           "deterministic_metrics":metric,
           "official_originals":{
             "indexed":originals.get("indexed",0),"fetched":originals.get("fetched",0),
-            "complete":originals.get("complete",False),
+            "complete_window":originals.get("complete",False),
+            "coverage_state":ostate,
             "sha256s":[x.get("sha256") for x in files if x.get("sha256")]},
-          "original_text_candidate_source_count":len(tx.get(s,[])),
+          "original_text_candidate_source_count":len(text_rows),
           "pending_public_lead_count":pending.get(s,0),
           "terminal_public_lead_count":terminal.get(s,0),
-          "research_state":("PUBLIC_PRIMARY_EVIDENCE_READY" if originals.get("complete")
-                            else "PUBLIC_PRIMARY_EVIDENCE_PARTIAL"),
+          "research_state":research_state(originals,metric,text_rows),
+          "decisive_primary_financial_evidence_verified":False,
           "company_research_only":True,
           "valuation_authorized":False,
           "trade_action_authorized":False}
-    out={"schema":"PUBLIC_COMPANY_RESEARCH_COMPUTE/v1","source_run_id":a.run_id,
+    out={"schema":"PUBLIC_COMPANY_RESEARCH_COMPUTE/v2","source_run_id":a.run_id,
          "computed_at_utc":datetime.now(timezone.utc).isoformat(),"packets":packets,
          "public_only_contract":True,"buy_sell_prices_included":False,
          "lead_counts":{"pending":sum(pending.values()),"terminal":sum(terminal.values())},
@@ -54,5 +82,6 @@ def main():
     Path(a.output).parent.mkdir(parents=True,exist_ok=True)
     Path(a.output).write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n")
     print(json.dumps({"packets":len(packets),
-        "ready":sum(x["research_state"]=="PUBLIC_PRIMARY_EVIDENCE_READY" for x in packets.values())}))
+        "evidence_packet_available":sum(x["research_state"]=="PUBLIC_EVIDENCE_PACKET_AVAILABLE" for x in packets.values()),
+        "window_complete_no_new":sum("NO_NEW_ORIGINALS" in x["research_state"] for x in packets.values())}))
 if __name__=="__main__":main()
