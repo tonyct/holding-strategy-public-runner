@@ -1,0 +1,55 @@
+name: Public compute architecture branch regression
+on:
+  push:
+    branches: [e36-public-compute-orchestrator-20261008]
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile public compute components
+        run: |
+          python -m compileall -q             engine/public_evidence_registry.py             engine/build_public_company_research.py             engine/sync_public_state_to_private.py             engine/fetch_official_filings.py             engine/fetch_hk_official.py
+      - name: Build registry from current persisted public data
+        run: |
+          mkdir -p /tmp/evidence
+          python engine/public_evidence_registry.py             --root runtime/latest             --previous runtime/latest/evidence/PUBLIC_EVIDENCE_REGISTRY.json             --output /tmp/evidence/PUBLIC_EVIDENCE_REGISTRY.json
+      - name: Build company research from current persisted public data
+        run: |
+          mkdir -p /tmp/compute
+          python engine/build_public_company_research.py             --root runtime/latest             --universe config/research_universe.json             --output /tmp/compute/PUBLIC_COMPANY_RESEARCH_SNAPSHOT.json
+          python - <<'PY'
+          import json
+          x=json.load(open('/tmp/compute/PUBLIC_COMPANY_RESEARCH_SNAPSHOT.json'))
+          assert x['schema']=='PUBLIC_COMPANY_RESEARCH_SNAPSHOT/v1'
+          assert len(x['symbols'])==11
+          assert x['scope']=='PUBLIC_COMPANY_FACTS_AND_EVIDENCE_ONLY'
+          assert x['public_only_contract'] is True
+          assert x['private_strategy_valuation_included'] is False
+          assert x['buy_sell_prices_included'] is False
+          assert x['automatic_trade_execution'] is False
+          print({'symbols':len(x['symbols']),
+                 'with_core_fields':sum(bool(v.get('reported_core_fields')) for v in x['symbols'].values())})
+          PY
+      - name: Validate public-only contract
+        run: |
+          python - <<'PY'
+          import json
+          c=json.load(open('config/public_data_contract.json'))
+          assert c['role']=='PUBLIC_MARKET_DATA_EVIDENCE_AND_COMPANY_RESEARCH_COMPUTE_ONLY'
+          assert c['no_private_repo_dependency'] is True
+          assert c['no_investment_decision_logic'] is True
+          assert c['no_trade_logic'] is True
+          assert c['optional_private_state_sink']['computation_must_not_depend_on_sink'] is True
+          PY
+      - name: Verify Private sink is optional
+        run: |
+          unset PRIVATE_STATE_REPO_TOKEN
+          python engine/sync_public_state_to_private.py             --snapshot /tmp/compute/PUBLIC_COMPANY_RESEARCH_SNAPSHOT.json             --registry /tmp/evidence/PUBLIC_EVIDENCE_REGISTRY.json             --evidence-root runtime/latest | tee /tmp/sink.txt
+          grep -q SKIPPED_NO_PRIVATE_STATE_TOKEN /tmp/sink.txt
