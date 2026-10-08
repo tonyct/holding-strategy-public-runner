@@ -59,6 +59,21 @@ class PublicHistoricOriginalTests(unittest.TestCase):
             self.assertEqual(b["symbols"]["600941.SH"]["files"][0]["status"],
                              "REUSED_EXACT_SHA_PUBLIC_OFFICIAL_CACHE")
 
+    def test_exact_persistent_cache_is_written_and_used_on_next_run(self):
+        with tempfile.TemporaryDirectory() as root:
+            src=Path(root)/"config.json"
+            fixture(src)
+            cache=Path(root)/"cache"
+            session=FakeSession()
+            first=collect(src,Path(root)/"stage1",cache,session)
+            self.assertEqual(first["verified_count"],1)
+            self.assertEqual((cache/(SHA+".pdf")).read_bytes(),PDF)
+            second=collect(src,Path(root)/"stage2",cache,session)
+            self.assertEqual(second["verified_count"],1)
+            self.assertEqual(session.calls,1)
+            self.assertEqual(second["symbols"]["600941.SH"]["files"][0]["status"],
+                             "REUSED_EXACT_SHA_PUBLIC_OFFICIAL_CACHE")
+
     def test_changed_historical_digest_is_not_forgiven(self):
         with tempfile.TemporaryDirectory() as root:
             src=Path(root)/"config.json"
