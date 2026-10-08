@@ -1,9 +1,25 @@
 import unittest
-from ops.public_fact_pipeline_v2 import parse_number
+from ops.public_fact_pipeline_v2 import parse_number, extract
+import tempfile
+from pathlib import Path
 class TableCandidateTests(unittest.TestCase):
     def test_numeric_cells(self):
         self.assertEqual(parse_number("(1,234.50)"),"-1234.50")
         self.assertEqual(parse_number("−2,100"),"-2100")
     def test_ambiguous_cells(self):
         for x in ("2026年","10%","--","1 2 3",""):self.assertIsNone(parse_number(x))
+    def test_pdf_source_bound_no_promotion(self):
+        import fitz
+        with tempfile.TemporaryDirectory() as root:
+            pdf=fitz.open()
+            page=pdf.new_page()
+            page.insert_text((72,72),"Revenue")
+            path=Path(root)/"600795_SH_mock.pdf"
+            pdf.save(str(path))
+            pdf.close()
+            result=extract(path,"600795.SH")
+            self.assertEqual(len(result["source_sha256"]),64)
+            self.assertEqual(result["page_count"],1)
+            self.assertEqual(result["facts"],[])
+            self.assertFalse(result["semantic_fact_verified"])
 if __name__=="__main__":unittest.main()
