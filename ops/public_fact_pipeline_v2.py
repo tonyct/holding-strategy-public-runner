@@ -82,7 +82,13 @@ def build(root,prior=None):
         if path.name not in selected: continue
         m=re.match(r"(\d+_[A-Z]+)_",path.name)
         if not m: continue
-        document=extract(path,m.group(1).replace("_","."))
+        symbol=m.group(1).replace("_",".")
+        try:
+            document=extract(path,symbol)
+        except Exception as exc:
+            document={"symbol":symbol,"source_sha256":hashlib.sha256(path.read_bytes()).hexdigest(),
+                      "page_count":0,"table_candidates":[],"facts":[],"semantic_fact_verified":False,
+                      "extraction_error":{"type":type(exc).__name__,"detail":str(exc)[:160]}}
         documents.append(document)
         facts.extend(document["facts"])
     # All normalized rows remain UNVERIFIED pending independent research review.
