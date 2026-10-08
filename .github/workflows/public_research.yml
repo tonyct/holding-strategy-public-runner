@@ -557,6 +557,90 @@ jobs:
           print("PUBLIC_ACQUISITION_HEALTH_"+str(h.get("status") or "UNKNOWN"))
           PY
 
+      # Versioned compact transport. All logical manifest paths remain intact,
+      # but duplicate CAS bytes are shipped once in bounded, independently
+      # downloadable PDF shards. Retain the legacy artifact for compatibility.
+      - name: Prepare Public deduplicated delivery shards
+        if: success()
+        run: |
+          python -m ops.public_delivery_shards \
+            --root output --universe config/research_universe.json \
+            --output delivery_shards --shards 8 \
+            --run-id "$GITHUB_RUN_ID" --attempt "$GITHUB_RUN_ATTEMPT" \
+            --commit-sha "$GITHUB_SHA"
+
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: public-delivery-metadata-${{ github.run_id }}-${{ github.run_attempt }}
+          path: delivery_shards/metadata/
+          if-no-files-found: error
+          retention-days: 7
+
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: public-delivery-pdf-00-${{ github.run_id }}-${{ github.run_attempt }}
+          path: delivery_shards/pdf-00/
+          if-no-files-found: error
+          retention-days: 7
+
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: public-delivery-pdf-01-${{ github.run_id }}-${{ github.run_attempt }}
+          path: delivery_shards/pdf-01/
+          if-no-files-found: error
+          retention-days: 7
+
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: public-delivery-pdf-02-${{ github.run_id }}-${{ github.run_attempt }}
+          path: delivery_shards/pdf-02/
+          if-no-files-found: error
+          retention-days: 7
+
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: public-delivery-pdf-03-${{ github.run_id }}-${{ github.run_attempt }}
+          path: delivery_shards/pdf-03/
+          if-no-files-found: error
+          retention-days: 7
+
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: public-delivery-pdf-04-${{ github.run_id }}-${{ github.run_attempt }}
+          path: delivery_shards/pdf-04/
+          if-no-files-found: error
+          retention-days: 7
+
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: public-delivery-pdf-05-${{ github.run_id }}-${{ github.run_attempt }}
+          path: delivery_shards/pdf-05/
+          if-no-files-found: error
+          retention-days: 7
+
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: public-delivery-pdf-06-${{ github.run_id }}-${{ github.run_attempt }}
+          path: delivery_shards/pdf-06/
+          if-no-files-found: error
+          retention-days: 7
+
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: public-delivery-pdf-07-${{ github.run_id }}-${{ github.run_attempt }}
+          path: delivery_shards/pdf-07/
+          if-no-files-found: error
+          retention-days: 7
+
       - uses: actions/upload-artifact@v4
         if: always()
         with:
