@@ -33,10 +33,10 @@ def validate(row):
     if row["field"] in CORE:
         for name in ("currency","period_end","period_type","scope","unit_multiplier"):
             if row.get(name) in (None,""):return "MISSING_"+name.upper()
-        if row["scope"] not in ("CONSOLIDATED","PARENT","ENTITY","UNKNOWN"):return "INVALID_SCOPE"
+        if row["currency"]=="UNVERIFIED":return "UNVERIFIED_CURRENCY"\n        if row["scope"] not in ("CONSOLIDATED","PARENT","ENTITY","UNKNOWN"):return "INVALID_SCOPE"
         if row["field"] not in SNAPSHOT and not row.get("period_start"):return "MISSING_PERIOD_START"
         try:
-            if Decimal(str(row["unit_multiplier"]))<=0:return "INVALID_MULTIPLIER"
+            if not Decimal(str(row["unit_multiplier"])).is_finite() or Decimal(str(row["unit_multiplier"]))<=0:return "INVALID_MULTIPLIER"
         except (ValueError,InvalidOperation):return "INVALID_MULTIPLIER"
     else:
         if not row.get("price_session") and row["field"] in MARKET:
@@ -84,7 +84,7 @@ def route(symbols,records,now_iso,market_ttl_hours=24):
                 gaps.append({"symbol":symbol,"field":field,"reason":"MIXED_CONTEXT_REQUIRES_RECONCILIATION"})
                 tasks.append({"symbol":symbol,"field":field,"action":"INDEPENDENT_CONTEXT_REVIEW","automatic_verification":False})
                 continue
-            values={str(Decimal(str(r["value"]))*Decimal(str(r.get("unit_multiplier",1)))) for r in options}
+            values={Decimal(str(r["value"]))*Decimal(str(r.get("unit_multiplier",1))) for r in options}
             if len(values)>1:
                 gaps.append({"symbol":symbol,"field":field,"reason":"SOURCE_VALUE_CONFLICT"})
                 tasks.append({"symbol":symbol,"field":field,"action":"INDEPENDENT_SOURCE_RECONCILIATION","automatic_verification":False})
