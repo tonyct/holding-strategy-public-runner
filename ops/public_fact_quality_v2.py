@@ -38,6 +38,10 @@ def quality(universe,store,documents):
             "valuation_authorized":False,
             "trade_signal_authorized":False
         }
+    from ops.public_fact_reconcile_v2 import reconcile
+    comparisons=reconcile(facts,active)
+    for symbol in active:
+        result[symbol]["cross_source_reconciliation"]=comparisons["stocks"][symbol]
     return {"schema":"PUBLIC_FINANCIAL_FACT_QUALITY/v2","stocks":result,
             "active_symbol_count":len(active),"verified_symbol_count":0,
             "unverified_data_may_not_authorize_valuation":True,"automatic_trade_execution":False}
