@@ -1,0 +1,304 @@
+{
+  "historical_simplified_fcf_is_not_owner_cash_flow": true,
+  "no_trade_logic": true,
+  "no_valuation": true,
+  "schema": "PUBLIC_COMPACT_FACT_PACKET/v2",
+  "stocks": {
+    "001286.SZ": [
+      {
+        "currency": "CNY",
+        "fact_id": "d353ed48d7491edc49c2357081a78f1a47ec4c845c7a1ffbbc7d8351126adc97",
+        "field": "capital_expenditure",
+        "period_end": "2025-06-30",
+        "period_start": "2025-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "2766514905.24",
+        "verification_state": "UNVERIFIED"
+      },
+      {
+        "currency": "CNY",
+        "fact_id": "8a09ee8f3a4f80beb1be37f0cc33df4bd6151d0b529be21c108196d04c6a4e28",
+        "field": "capital_expenditure",
+        "period_end": "2026-06-30",
+        "period_start": "2026-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "3108195089.91",
+        "verification_state": "UNVERIFIED"
+      },
+      {
+        "currency": "CNY",
+        "fact_id": "0e6f32d90a5461ba8337a6d1426b84105fc567f388f53a642f50590fc30a2f08",
+        "field": "operating_cash_flow",
+        "period_end": "2025-06-30",
+        "period_start": "2025-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "3894907607.55",
+        "verification_state": "UNVERIFIED"
+      },
+      {
+        "currency": "CNY",
+        "fact_id": "e109b1d8557f734b3609399f2239e206f685b732990096e0e09685cdf40bb995",
+        "field": "operating_cash_flow",
+        "period_end": "2026-06-30",
+        "period_start": "2026-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "4489391033.81",
+        "verification_state": "UNVERIFIED"
+      },
+      {
+        "currency": "CNY",
+        "fact_id": "ad231b3761644ebf818eb4a603ddda43625e5023cdf462ffdd92ba2ce4a993e6",
+        "field": "simple_historical_free_cash_flow",
+        "period_end": "2025-06-30",
+        "period_start": "2025-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "1128392702.31",
+        "verification_state": "UNVERIFIED"
+      },
+      {
+        "currency": "CNY",
+        "fact_id": "0284c326d1d961bc0b0361211ae51773fde7851f151dd0addd06e755cf2502a6",
+        "field": "simple_historical_free_cash_flow",
+        "period_end": "2026-06-30",
+        "period_start": "2026-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "1381195943.90",
+        "verification_state": "UNVERIFIED"
+      }
+    ],
+    "148.HK": [
+      {
+        "currency": "HKD",
+        "fact_id": "5a80ee3162bd8a0d1ec5ebde91121f84a4a33b90bee7154ea0e9baabc2f13db7",
+        "field": "operating_cash_flow",
+        "period_end": "2025-06-30",
+        "period_start": "2025-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "605969000",
+        "verification_state": "UNVERIFIED"
+      },
+      {
+        "currency": "HKD",
+        "fact_id": "fc27d63d1e97b92b7d96b0572f88878b9878b26877f4714dd5c9f955a53dddad",
+        "field": "operating_cash_flow",
+        "period_end": "2026-06-30",
+        "period_start": "2026-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "2473724000",
+        "verification_state": "UNVERIFIED"
+      }
+    ],
+    "600499.SH": [
+      {
+        "currency": "CNY",
+        "fact_id": "dbefed7f01db671b84a4de17fcf127e5c35f075837b6a061865acab36e838bf7",
+        "field": "capital_expenditure",
+        "period_end": "2025-06-30",
+        "period_start": "2025-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "1070871800.00",
+        "verification_state": "UNVERIFIED"
+      },
+      {
+        "currency": "CNY",
+        "fact_id": "23a89aef4f7ed095fdf140f9039ad63301228f24f5a5bbd3c7dfabb51cc764ae",
+        "field": "capital_expenditure",
+        "period_end": "2026-06-30",
+        "period_start": "2026-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "583252200.00",
+        "verification_state": "UNVERIFIED"
+      },
+      {
+        "currency": "CNY",
+        "fact_id": "b8f1dded40717b3f145976b3d76a32a3b3b8844fb18dd4b53c525b22779a4dba",
+        "field": "operating_cash_flow",
+        "period_end": "2025-06-30",
+        "period_start": "2025-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "659644500.00",
+        "verification_state": "UNVERIFIED"
+      },
+      {
+        "currency": "CNY",
+        "fact_id": "d1956c30f70246ed2ce55c65bafcfd411b4f10d09e94dce335798b484648112a",
+        "field": "operating_cash_flow",
+        "period_end": "2026-06-30",
+        "period_start": "2026-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "1365343000.00",
+        "verification_state": "UNVERIFIED"
+      },
+      {
+        "currency": "CNY",
+        "fact_id": "1f40f1b9ebe400accd88ceffe52c249721989e072c525d29dc4ffeaffc1ae433",
+        "field": "simple_historical_free_cash_flow",
+        "period_end": "2025-06-30",
+        "period_start": "2025-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "-411227300.00",
+        "verification_state": "UNVERIFIED"
+      },
+      {
+        "currency": "CNY",
+        "fact_id": "68fc34a9cc0b921e9fe60fe12ffb02d95e0164715a56e50c84ccda634abac55a",
+        "field": "simple_historical_free_cash_flow",
+        "period_end": "2026-06-30",
+        "period_start": "2026-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "782090800.00",
+        "verification_state": "UNVERIFIED"
+      }
+    ],
+    "600795.SH": [
+      {
+        "currency": "CNY",
+        "fact_id": "0adf25b4910141532ca83ee01096265c30e6654799899ab9c2cbe98315ef4819",
+        "field": "capital_expenditure",
+        "period_end": "2025-06-30",
+        "period_start": "2025-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "22875403899.84",
+        "verification_state": "UNVERIFIED"
+      },
+      {
+        "currency": "CNY",
+        "fact_id": "9a8f9657a578c8d20a25b642aac25353c623bca94a36cf1afe8d603e0e8248be",
+        "field": "capital_expenditure",
+        "period_end": "2026-06-30",
+        "period_start": "2026-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "16273059216.17",
+        "verification_state": "UNVERIFIED"
+      },
+      {
+        "currency": "CNY",
+        "fact_id": "b74c427589bb5edb586a77a55cee57e382ffebc8d28a54bc7a0716ad50bff7f1",
+        "field": "operating_cash_flow",
+        "period_end": "2025-06-30",
+        "period_start": "2025-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "25976808703.64",
+        "verification_state": "UNVERIFIED"
+      },
+      {
+        "currency": "CNY",
+        "fact_id": "eed673075fed9c76f1cd38b0b7137e1b4caeecb0bca12bca7d9926f14c81903c",
+        "field": "operating_cash_flow",
+        "period_end": "2026-06-30",
+        "period_start": "2026-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "20516819187.46",
+        "verification_state": "UNVERIFIED"
+      },
+      {
+        "currency": "CNY",
+        "fact_id": "349cf2b7267406ed4a1343e0b6d7881b92fca8d525f735ae6a376364f87387c0",
+        "field": "simple_historical_free_cash_flow",
+        "period_end": "2025-06-30",
+        "period_start": "2025-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "3101404803.80",
+        "verification_state": "UNVERIFIED"
+      },
+      {
+        "currency": "CNY",
+        "fact_id": "0f8d65bc7a8985a1c53fa0a0feb85eec9b2af200ce5e5f532830a3f1c44e7d98",
+        "field": "simple_historical_free_cash_flow",
+        "period_end": "2026-06-30",
+        "period_start": "2026-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "4243759971.29",
+        "verification_state": "UNVERIFIED"
+      }
+    ],
+    "603871.SH": [
+      {
+        "currency": "CNY",
+        "fact_id": "b163fbdb479007a5334f90077cdf01948de5aa2b9e91610fbc253382ac18bb73",
+        "field": "capital_expenditure",
+        "period_end": "2025-06-30",
+        "period_start": "2025-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "147360565.70",
+        "verification_state": "UNVERIFIED"
+      },
+      {
+        "currency": "CNY",
+        "fact_id": "03d46f6245847d27f9d75fb5009765e1d99ed80332737fb6874646b9908ac764",
+        "field": "capital_expenditure",
+        "period_end": "2026-06-30",
+        "period_start": "2026-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "64887474.62",
+        "verification_state": "UNVERIFIED"
+      },
+      {
+        "currency": "CNY",
+        "fact_id": "a81107fc41ea8dd85a77c942b3b31316cd4f3a3d4a86fd3b437f78ef2a96ce70",
+        "field": "operating_cash_flow",
+        "period_end": "2025-06-30",
+        "period_start": "2025-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "318035280.67",
+        "verification_state": "UNVERIFIED"
+      },
+      {
+        "currency": "CNY",
+        "fact_id": "c4af9cec632b0afe24d2d8248408a9d6758fddc47dc9dfa06e97b6f224d70087",
+        "field": "operating_cash_flow",
+        "period_end": "2026-06-30",
+        "period_start": "2026-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "566280374.23",
+        "verification_state": "UNVERIFIED"
+      },
+      {
+        "currency": "CNY",
+        "fact_id": "4692dcd43b36db7b0e5998d2f242d8f34a4bbbb31bf39729c617b2d8ba999977",
+        "field": "simple_historical_free_cash_flow",
+        "period_end": "2025-06-30",
+        "period_start": "2025-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "170674714.97",
+        "verification_state": "UNVERIFIED"
+      },
+      {
+        "currency": "CNY",
+        "fact_id": "84c0d36a01365c4cac06c567f88a2641d150cf1b59cb1ee0dbb0e23e0e30c476",
+        "field": "simple_historical_free_cash_flow",
+        "period_end": "2026-06-30",
+        "period_start": "2026-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "501392899.61",
+        "verification_state": "UNVERIFIED"
+      }
+    ]
+  }
+}

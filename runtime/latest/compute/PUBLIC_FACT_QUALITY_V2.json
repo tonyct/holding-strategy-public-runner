@@ -1,0 +1,705 @@
+{
+  "active_symbol_count": 11,
+  "automatic_trade_execution": false,
+  "schema": "PUBLIC_FINANCIAL_FACT_QUALITY/v2",
+  "stocks": {
+    "001286.SZ": {
+      "cross_source_reconciliation": {
+        "capital_structure_reconciled": false,
+        "comparisons": [
+          {
+            "currency": "CNY",
+            "fact_ids": [
+              "d353ed48d7491edc49c2357081a78f1a47ec4c845c7a1ffbbc7d8351126adc97"
+            ],
+            "field": "capital_expenditure",
+            "max_difference": "0.00",
+            "period_end": "2025-06-30",
+            "period_start": "2025-01-01",
+            "period_type": "H1_YTD",
+            "scope": "CONSOLIDATED",
+            "source_sha256s": [
+              "e70cbc72e0cda0e0d8166348b8608e9ab989beef03f7046a3a2199c80c2cbf16"
+            ],
+            "status": "SINGLE_SOURCE_REVIEW_REQUIRED",
+            "tolerance": "2766.51490524"
+          },
+          {
+            "currency": "CNY",
+            "fact_ids": [
+              "8a09ee8f3a4f80beb1be37f0cc33df4bd6151d0b529be21c108196d04c6a4e28"
+            ],
+            "field": "capital_expenditure",
+            "max_difference": "0.00",
+            "period_end": "2026-06-30",
+            "period_start": "2026-01-01",
+            "period_type": "H1_YTD",
+            "scope": "CONSOLIDATED",
+            "source_sha256s": [
+              "e70cbc72e0cda0e0d8166348b8608e9ab989beef03f7046a3a2199c80c2cbf16"
+            ],
+            "status": "SINGLE_SOURCE_REVIEW_REQUIRED",
+            "tolerance": "3108.19508991"
+          },
+          {
+            "currency": "CNY",
+            "fact_ids": [
+              "0e6f32d90a5461ba8337a6d1426b84105fc567f388f53a642f50590fc30a2f08"
+            ],
+            "field": "operating_cash_flow",
+            "max_difference": "0.00",
+            "period_end": "2025-06-30",
+            "period_start": "2025-01-01",
+            "period_type": "H1_YTD",
+            "scope": "CONSOLIDATED",
+            "source_sha256s": [
+              "e70cbc72e0cda0e0d8166348b8608e9ab989beef03f7046a3a2199c80c2cbf16"
+            ],
+            "status": "SINGLE_SOURCE_REVIEW_REQUIRED",
+            "tolerance": "3894.90760755"
+          },
+          {
+            "currency": "CNY",
+            "fact_ids": [
+              "e109b1d8557f734b3609399f2239e206f685b732990096e0e09685cdf40bb995"
+            ],
+            "field": "operating_cash_flow",
+            "max_difference": "0.00",
+            "period_end": "2026-06-30",
+            "period_start": "2026-01-01",
+            "period_type": "H1_YTD",
+            "scope": "CONSOLIDATED",
+            "source_sha256s": [
+              "e70cbc72e0cda0e0d8166348b8608e9ab989beef03f7046a3a2199c80c2cbf16"
+            ],
+            "status": "SINGLE_SOURCE_REVIEW_REQUIRED",
+            "tolerance": "4489.39103381"
+          }
+        ],
+        "historical_ttm_ready": false,
+        "independent_fact_verification": false,
+        "missing_fields": [
+          "revenue",
+          "attributable_net_profit",
+          "assets",
+          "liabilities",
+          "issued_shares",
+          "minority_interest",
+          "interest_bearing_debt"
+        ]
+      },
+      "decisive_primary_financial_evidence_verified": false,
+      "derived_count": 2,
+      "extraction_errors": [],
+      "fact_candidate_count": 4,
+      "field_candidate_names": [
+        "capital_expenditure",
+        "operating_cash_flow",
+        "simple_historical_free_cash_flow"
+      ],
+      "missing_research_fields": [
+        "issued_shares"
+      ],
+      "numeric_conflicts": [],
+      "research_state": "SOURCE_BOUND_CANDIDATES_REQUIRE_INDEPENDENT_REVIEW",
+      "source_document_count": 2,
+      "source_page_count": 215,
+      "trade_signal_authorized": false,
+      "valuation_authorized": false
+    },
+    "148.HK": {
+      "cross_source_reconciliation": {
+        "capital_structure_reconciled": false,
+        "comparisons": [
+          {
+            "currency": "HKD",
+            "fact_ids": [
+              "5a80ee3162bd8a0d1ec5ebde91121f84a4a33b90bee7154ea0e9baabc2f13db7"
+            ],
+            "field": "operating_cash_flow",
+            "max_difference": "0",
+            "period_end": "2025-06-30",
+            "period_start": "2025-01-01",
+            "period_type": "H1_YTD",
+            "scope": "CONSOLIDATED",
+            "source_sha256s": [
+              "6a7a836f630d4139951e82f28bd41588c9124f0d955603c0e589334f39e73378"
+            ],
+            "status": "SINGLE_SOURCE_REVIEW_REQUIRED",
+            "tolerance": "605.969000"
+          },
+          {
+            "currency": "HKD",
+            "fact_ids": [
+              "fc27d63d1e97b92b7d96b0572f88878b9878b26877f4714dd5c9f955a53dddad"
+            ],
+            "field": "operating_cash_flow",
+            "max_difference": "0",
+            "period_end": "2026-06-30",
+            "period_start": "2026-01-01",
+            "period_type": "H1_YTD",
+            "scope": "CONSOLIDATED",
+            "source_sha256s": [
+              "6a7a836f630d4139951e82f28bd41588c9124f0d955603c0e589334f39e73378"
+            ],
+            "status": "SINGLE_SOURCE_REVIEW_REQUIRED",
+            "tolerance": "2473.724000"
+          }
+        ],
+        "historical_ttm_ready": false,
+        "independent_fact_verification": false,
+        "missing_fields": [
+          "revenue",
+          "attributable_net_profit",
+          "capital_expenditure",
+          "assets",
+          "liabilities",
+          "issued_shares",
+          "minority_interest",
+          "interest_bearing_debt"
+        ]
+      },
+      "decisive_primary_financial_evidence_verified": false,
+      "derived_count": 0,
+      "extraction_errors": [],
+      "fact_candidate_count": 2,
+      "field_candidate_names": [
+        "operating_cash_flow"
+      ],
+      "missing_research_fields": [
+        "capital_expenditure",
+        "issued_shares"
+      ],
+      "numeric_conflicts": [],
+      "research_state": "SOURCE_BOUND_CANDIDATES_REQUIRE_INDEPENDENT_REVIEW",
+      "source_document_count": 2,
+      "source_page_count": 63,
+      "trade_signal_authorized": false,
+      "valuation_authorized": false
+    },
+    "2233.HK": {
+      "cross_source_reconciliation": {
+        "capital_structure_reconciled": false,
+        "comparisons": [],
+        "historical_ttm_ready": false,
+        "independent_fact_verification": false,
+        "missing_fields": [
+          "revenue",
+          "attributable_net_profit",
+          "operating_cash_flow",
+          "capital_expenditure",
+          "assets",
+          "liabilities",
+          "issued_shares",
+          "minority_interest",
+          "interest_bearing_debt"
+        ]
+      },
+      "decisive_primary_financial_evidence_verified": false,
+      "derived_count": 0,
+      "extraction_errors": [],
+      "fact_candidate_count": 0,
+      "field_candidate_names": [],
+      "missing_research_fields": [
+        "operating_cash_flow",
+        "capital_expenditure",
+        "issued_shares"
+      ],
+      "numeric_conflicts": [],
+      "research_state": "NO_SOURCE_BOUND_FACTS",
+      "source_document_count": 2,
+      "source_page_count": 114,
+      "trade_signal_authorized": false,
+      "valuation_authorized": false
+    },
+    "3933.HK": {
+      "cross_source_reconciliation": {
+        "capital_structure_reconciled": false,
+        "comparisons": [],
+        "historical_ttm_ready": false,
+        "independent_fact_verification": false,
+        "missing_fields": [
+          "revenue",
+          "attributable_net_profit",
+          "operating_cash_flow",
+          "capital_expenditure",
+          "assets",
+          "liabilities",
+          "issued_shares",
+          "minority_interest",
+          "interest_bearing_debt"
+        ]
+      },
+      "decisive_primary_financial_evidence_verified": false,
+      "derived_count": 0,
+      "extraction_errors": [],
+      "fact_candidate_count": 0,
+      "field_candidate_names": [],
+      "missing_research_fields": [
+        "operating_cash_flow",
+        "capital_expenditure",
+        "issued_shares"
+      ],
+      "numeric_conflicts": [],
+      "research_state": "NO_SOURCE_BOUND_FACTS",
+      "source_document_count": 4,
+      "source_page_count": 73,
+      "trade_signal_authorized": false,
+      "valuation_authorized": false
+    },
+    "600499.SH": {
+      "cross_source_reconciliation": {
+        "capital_structure_reconciled": false,
+        "comparisons": [
+          {
+            "currency": "CNY",
+            "fact_ids": [
+              "dbefed7f01db671b84a4de17fcf127e5c35f075837b6a061865acab36e838bf7"
+            ],
+            "field": "capital_expenditure",
+            "max_difference": "0.00",
+            "period_end": "2025-06-30",
+            "period_start": "2025-01-01",
+            "period_type": "H1_YTD",
+            "scope": "CONSOLIDATED",
+            "source_sha256s": [
+              "c0042cd4836ea80bd92fafaa9d3c7f54dd1a9138daa52aa2adade3260ab22f0b"
+            ],
+            "status": "SINGLE_SOURCE_REVIEW_REQUIRED",
+            "tolerance": "1070.87180000"
+          },
+          {
+            "currency": "CNY",
+            "fact_ids": [
+              "23a89aef4f7ed095fdf140f9039ad63301228f24f5a5bbd3c7dfabb51cc764ae"
+            ],
+            "field": "capital_expenditure",
+            "max_difference": "0.00",
+            "period_end": "2026-06-30",
+            "period_start": "2026-01-01",
+            "period_type": "H1_YTD",
+            "scope": "CONSOLIDATED",
+            "source_sha256s": [
+              "c0042cd4836ea80bd92fafaa9d3c7f54dd1a9138daa52aa2adade3260ab22f0b"
+            ],
+            "status": "SINGLE_SOURCE_REVIEW_REQUIRED",
+            "tolerance": "583.25220000"
+          },
+          {
+            "currency": "CNY",
+            "fact_ids": [
+              "b8f1dded40717b3f145976b3d76a32a3b3b8844fb18dd4b53c525b22779a4dba"
+            ],
+            "field": "operating_cash_flow",
+            "max_difference": "0.00",
+            "period_end": "2025-06-30",
+            "period_start": "2025-01-01",
+            "period_type": "H1_YTD",
+            "scope": "CONSOLIDATED",
+            "source_sha256s": [
+              "c0042cd4836ea80bd92fafaa9d3c7f54dd1a9138daa52aa2adade3260ab22f0b"
+            ],
+            "status": "SINGLE_SOURCE_REVIEW_REQUIRED",
+            "tolerance": "659.64450000"
+          },
+          {
+            "currency": "CNY",
+            "fact_ids": [
+              "d1956c30f70246ed2ce55c65bafcfd411b4f10d09e94dce335798b484648112a"
+            ],
+            "field": "operating_cash_flow",
+            "max_difference": "0.00",
+            "period_end": "2026-06-30",
+            "period_start": "2026-01-01",
+            "period_type": "H1_YTD",
+            "scope": "CONSOLIDATED",
+            "source_sha256s": [
+              "c0042cd4836ea80bd92fafaa9d3c7f54dd1a9138daa52aa2adade3260ab22f0b"
+            ],
+            "status": "SINGLE_SOURCE_REVIEW_REQUIRED",
+            "tolerance": "1365.34300000"
+          }
+        ],
+        "historical_ttm_ready": false,
+        "independent_fact_verification": false,
+        "missing_fields": [
+          "revenue",
+          "attributable_net_profit",
+          "assets",
+          "liabilities",
+          "issued_shares",
+          "minority_interest",
+          "interest_bearing_debt"
+        ]
+      },
+      "decisive_primary_financial_evidence_verified": false,
+      "derived_count": 2,
+      "extraction_errors": [],
+      "fact_candidate_count": 4,
+      "field_candidate_names": [
+        "capital_expenditure",
+        "operating_cash_flow",
+        "simple_historical_free_cash_flow"
+      ],
+      "missing_research_fields": [
+        "issued_shares"
+      ],
+      "numeric_conflicts": [],
+      "research_state": "SOURCE_BOUND_CANDIDATES_REQUIRE_INDEPENDENT_REVIEW",
+      "source_document_count": 2,
+      "source_page_count": 229,
+      "trade_signal_authorized": false,
+      "valuation_authorized": false
+    },
+    "600795.SH": {
+      "cross_source_reconciliation": {
+        "capital_structure_reconciled": false,
+        "comparisons": [
+          {
+            "currency": "CNY",
+            "fact_ids": [
+              "0adf25b4910141532ca83ee01096265c30e6654799899ab9c2cbe98315ef4819"
+            ],
+            "field": "capital_expenditure",
+            "max_difference": "0.00",
+            "period_end": "2025-06-30",
+            "period_start": "2025-01-01",
+            "period_type": "H1_YTD",
+            "scope": "CONSOLIDATED",
+            "source_sha256s": [
+              "60fd2d61955bb1ab81647c434c963048f778e68e14fde49d12315dd9f7e011da"
+            ],
+            "status": "SINGLE_SOURCE_REVIEW_REQUIRED",
+            "tolerance": "22875.40389984"
+          },
+          {
+            "currency": "CNY",
+            "fact_ids": [
+              "9a8f9657a578c8d20a25b642aac25353c623bca94a36cf1afe8d603e0e8248be"
+            ],
+            "field": "capital_expenditure",
+            "max_difference": "0.00",
+            "period_end": "2026-06-30",
+            "period_start": "2026-01-01",
+            "period_type": "H1_YTD",
+            "scope": "CONSOLIDATED",
+            "source_sha256s": [
+              "60fd2d61955bb1ab81647c434c963048f778e68e14fde49d12315dd9f7e011da"
+            ],
+            "status": "SINGLE_SOURCE_REVIEW_REQUIRED",
+            "tolerance": "16273.05921617"
+          },
+          {
+            "currency": "CNY",
+            "fact_ids": [
+              "b74c427589bb5edb586a77a55cee57e382ffebc8d28a54bc7a0716ad50bff7f1"
+            ],
+            "field": "operating_cash_flow",
+            "max_difference": "0.00",
+            "period_end": "2025-06-30",
+            "period_start": "2025-01-01",
+            "period_type": "H1_YTD",
+            "scope": "CONSOLIDATED",
+            "source_sha256s": [
+              "60fd2d61955bb1ab81647c434c963048f778e68e14fde49d12315dd9f7e011da"
+            ],
+            "status": "SINGLE_SOURCE_REVIEW_REQUIRED",
+            "tolerance": "25976.80870364"
+          },
+          {
+            "currency": "CNY",
+            "fact_ids": [
+              "eed673075fed9c76f1cd38b0b7137e1b4caeecb0bca12bca7d9926f14c81903c"
+            ],
+            "field": "operating_cash_flow",
+            "max_difference": "0.00",
+            "period_end": "2026-06-30",
+            "period_start": "2026-01-01",
+            "period_type": "H1_YTD",
+            "scope": "CONSOLIDATED",
+            "source_sha256s": [
+              "60fd2d61955bb1ab81647c434c963048f778e68e14fde49d12315dd9f7e011da"
+            ],
+            "status": "SINGLE_SOURCE_REVIEW_REQUIRED",
+            "tolerance": "20516.81918746"
+          }
+        ],
+        "historical_ttm_ready": false,
+        "independent_fact_verification": false,
+        "missing_fields": [
+          "revenue",
+          "attributable_net_profit",
+          "assets",
+          "liabilities",
+          "issued_shares",
+          "minority_interest",
+          "interest_bearing_debt"
+        ]
+      },
+      "decisive_primary_financial_evidence_verified": false,
+      "derived_count": 2,
+      "extraction_errors": [],
+      "fact_candidate_count": 4,
+      "field_candidate_names": [
+        "capital_expenditure",
+        "operating_cash_flow",
+        "simple_historical_free_cash_flow"
+      ],
+      "missing_research_fields": [
+        "issued_shares"
+      ],
+      "numeric_conflicts": [],
+      "research_state": "SOURCE_BOUND_CANDIDATES_REQUIRE_INDEPENDENT_REVIEW",
+      "source_document_count": 2,
+      "source_page_count": 249,
+      "trade_signal_authorized": false,
+      "valuation_authorized": false
+    },
+    "600941.SH": {
+      "cross_source_reconciliation": {
+        "capital_structure_reconciled": false,
+        "comparisons": [],
+        "historical_ttm_ready": false,
+        "independent_fact_verification": false,
+        "missing_fields": [
+          "revenue",
+          "attributable_net_profit",
+          "operating_cash_flow",
+          "capital_expenditure",
+          "assets",
+          "liabilities",
+          "issued_shares",
+          "minority_interest",
+          "interest_bearing_debt"
+        ]
+      },
+      "decisive_primary_financial_evidence_verified": false,
+      "derived_count": 0,
+      "extraction_errors": [],
+      "fact_candidate_count": 0,
+      "field_candidate_names": [],
+      "missing_research_fields": [
+        "operating_cash_flow",
+        "capital_expenditure",
+        "issued_shares"
+      ],
+      "numeric_conflicts": [],
+      "research_state": "NO_SOURCE_BOUND_FACTS",
+      "source_document_count": 2,
+      "source_page_count": 171,
+      "trade_signal_authorized": false,
+      "valuation_authorized": false
+    },
+    "601857.SH": {
+      "cross_source_reconciliation": {
+        "capital_structure_reconciled": false,
+        "comparisons": [],
+        "historical_ttm_ready": false,
+        "independent_fact_verification": false,
+        "missing_fields": [
+          "revenue",
+          "attributable_net_profit",
+          "operating_cash_flow",
+          "capital_expenditure",
+          "assets",
+          "liabilities",
+          "issued_shares",
+          "minority_interest",
+          "interest_bearing_debt"
+        ]
+      },
+      "decisive_primary_financial_evidence_verified": false,
+      "derived_count": 0,
+      "extraction_errors": [],
+      "fact_candidate_count": 0,
+      "field_candidate_names": [],
+      "missing_research_fields": [
+        "operating_cash_flow",
+        "capital_expenditure",
+        "issued_shares"
+      ],
+      "numeric_conflicts": [],
+      "research_state": "NO_SOURCE_BOUND_FACTS",
+      "source_document_count": 2,
+      "source_page_count": 209,
+      "trade_signal_authorized": false,
+      "valuation_authorized": false
+    },
+    "603871.SH": {
+      "cross_source_reconciliation": {
+        "capital_structure_reconciled": false,
+        "comparisons": [
+          {
+            "currency": "CNY",
+            "fact_ids": [
+              "b163fbdb479007a5334f90077cdf01948de5aa2b9e91610fbc253382ac18bb73"
+            ],
+            "field": "capital_expenditure",
+            "max_difference": "0.00",
+            "period_end": "2025-06-30",
+            "period_start": "2025-01-01",
+            "period_type": "H1_YTD",
+            "scope": "CONSOLIDATED",
+            "source_sha256s": [
+              "459da428b56f0eb92c01a99043cb47319aa1e2974db4d21cf87dc1e42ff5205e"
+            ],
+            "status": "SINGLE_SOURCE_REVIEW_REQUIRED",
+            "tolerance": "147.36056570"
+          },
+          {
+            "currency": "CNY",
+            "fact_ids": [
+              "03d46f6245847d27f9d75fb5009765e1d99ed80332737fb6874646b9908ac764"
+            ],
+            "field": "capital_expenditure",
+            "max_difference": "0.00",
+            "period_end": "2026-06-30",
+            "period_start": "2026-01-01",
+            "period_type": "H1_YTD",
+            "scope": "CONSOLIDATED",
+            "source_sha256s": [
+              "459da428b56f0eb92c01a99043cb47319aa1e2974db4d21cf87dc1e42ff5205e"
+            ],
+            "status": "SINGLE_SOURCE_REVIEW_REQUIRED",
+            "tolerance": "64.88747462"
+          },
+          {
+            "currency": "CNY",
+            "fact_ids": [
+              "a81107fc41ea8dd85a77c942b3b31316cd4f3a3d4a86fd3b437f78ef2a96ce70"
+            ],
+            "field": "operating_cash_flow",
+            "max_difference": "0.00",
+            "period_end": "2025-06-30",
+            "period_start": "2025-01-01",
+            "period_type": "H1_YTD",
+            "scope": "CONSOLIDATED",
+            "source_sha256s": [
+              "459da428b56f0eb92c01a99043cb47319aa1e2974db4d21cf87dc1e42ff5205e"
+            ],
+            "status": "SINGLE_SOURCE_REVIEW_REQUIRED",
+            "tolerance": "318.03528067"
+          },
+          {
+            "currency": "CNY",
+            "fact_ids": [
+              "c4af9cec632b0afe24d2d8248408a9d6758fddc47dc9dfa06e97b6f224d70087"
+            ],
+            "field": "operating_cash_flow",
+            "max_difference": "0.00",
+            "period_end": "2026-06-30",
+            "period_start": "2026-01-01",
+            "period_type": "H1_YTD",
+            "scope": "CONSOLIDATED",
+            "source_sha256s": [
+              "459da428b56f0eb92c01a99043cb47319aa1e2974db4d21cf87dc1e42ff5205e"
+            ],
+            "status": "SINGLE_SOURCE_REVIEW_REQUIRED",
+            "tolerance": "566.28037423"
+          }
+        ],
+        "historical_ttm_ready": false,
+        "independent_fact_verification": false,
+        "missing_fields": [
+          "revenue",
+          "attributable_net_profit",
+          "assets",
+          "liabilities",
+          "issued_shares",
+          "minority_interest",
+          "interest_bearing_debt"
+        ]
+      },
+      "decisive_primary_financial_evidence_verified": false,
+      "derived_count": 2,
+      "extraction_errors": [],
+      "fact_candidate_count": 4,
+      "field_candidate_names": [
+        "capital_expenditure",
+        "operating_cash_flow",
+        "simple_historical_free_cash_flow"
+      ],
+      "missing_research_fields": [
+        "issued_shares"
+      ],
+      "numeric_conflicts": [],
+      "research_state": "SOURCE_BOUND_CANDIDATES_REQUIRE_INDEPENDENT_REVIEW",
+      "source_document_count": 2,
+      "source_page_count": 160,
+      "trade_signal_authorized": false,
+      "valuation_authorized": false
+    },
+    "603993.SH": {
+      "cross_source_reconciliation": {
+        "capital_structure_reconciled": false,
+        "comparisons": [],
+        "historical_ttm_ready": false,
+        "independent_fact_verification": false,
+        "missing_fields": [
+          "revenue",
+          "attributable_net_profit",
+          "operating_cash_flow",
+          "capital_expenditure",
+          "assets",
+          "liabilities",
+          "issued_shares",
+          "minority_interest",
+          "interest_bearing_debt"
+        ]
+      },
+      "decisive_primary_financial_evidence_verified": false,
+      "derived_count": 0,
+      "extraction_errors": [],
+      "fact_candidate_count": 0,
+      "field_candidate_names": [],
+      "missing_research_fields": [
+        "operating_cash_flow",
+        "capital_expenditure",
+        "issued_shares"
+      ],
+      "numeric_conflicts": [],
+      "research_state": "NO_SOURCE_BOUND_FACTS",
+      "source_document_count": 2,
+      "source_page_count": 229,
+      "trade_signal_authorized": false,
+      "valuation_authorized": false
+    },
+    "9926.HK": {
+      "cross_source_reconciliation": {
+        "capital_structure_reconciled": false,
+        "comparisons": [],
+        "historical_ttm_ready": false,
+        "independent_fact_verification": false,
+        "missing_fields": [
+          "revenue",
+          "attributable_net_profit",
+          "operating_cash_flow",
+          "capital_expenditure",
+          "assets",
+          "liabilities",
+          "issued_shares",
+          "minority_interest",
+          "interest_bearing_debt"
+        ]
+      },
+      "decisive_primary_financial_evidence_verified": false,
+      "derived_count": 0,
+      "extraction_errors": [],
+      "fact_candidate_count": 0,
+      "field_candidate_names": [],
+      "missing_research_fields": [
+        "operating_cash_flow",
+        "capital_expenditure",
+        "issued_shares"
+      ],
+      "numeric_conflicts": [],
+      "research_state": "NO_SOURCE_BOUND_FACTS",
+      "source_document_count": 2,
+      "source_page_count": 144,
+      "trade_signal_authorized": false,
+      "valuation_authorized": false
+    }
+  },
+  "unverified_data_may_not_authorize_valuation": true,
+  "verified_symbol_count": 0
+}
