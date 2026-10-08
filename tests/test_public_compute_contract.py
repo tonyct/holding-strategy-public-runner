@@ -12,12 +12,13 @@ class PublicComputeContractTests(unittest.TestCase):
          "Build deterministic public metrics","Build public company research packets",
          "Build dynamic public evidence index","Freeze exact public run snapshot","Build public-safe manifest"]
   pos=[s.index(x) for x in names];self.assertEqual(pos,sorted(pos))
-  sink="Optionally archive public state and official evidence into Private storage"
-  self.assertIn(sink,s)
-  sink_pos=s.index(sink)
-  self.assertNotIn("holding-strategy-data",s[:sink_pos])
-  self.assertIn("holding-strategy-data",s[sink_pos:])
-  self.assertIn("PRIVATE_STATE_WRITE_TOKEN",s[sink_pos:])
+  # Public is the computation boundary. It must never write Private state.
+  self.assertNotIn("Optionally archive public state and official evidence into Private storage",s)
+  self.assertNotIn("PRIVATE_STATE_WRITE_TOKEN",s)
+  self.assertNotIn("holding-strategy-data",s)
+  self.assertIn("Validate public data-only contract",s)
+  self.assertIn("Public-safety gate",s)
+  self.assertIn("Persist latest public JSON bundle",s)
   self.assertIn("PUBLIC_LEAD_RESOLUTION_REPORT.json",s);self.assertIn("PUBLIC_DETERMINISTIC_METRICS.json",s);self.assertIn("PUBLIC_EVIDENCE_INDEX.json",s);self.assertIn("PUBLIC_RUN_SNAPSHOT.json",s)
   self.assertFalse(any('\\n          assert contract.get' in line for line in s.splitlines()), 'BROKEN_LITERAL_NEWLINE_ASSERT')
   self.assertNotIn('\\\\n          assert contract.get',s)
