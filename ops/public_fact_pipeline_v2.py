@@ -39,8 +39,8 @@ def extract(pdf_path,symbol):
                 rows=table.extract()
                 for ri,row in enumerate(rows):
                     if not row: continue
-                    label=str(row[0] or "").strip().casefold()
-                    matches=[field for field,aliases in LABELS.items() if any(alias.casefold() in label for alias in aliases)]
+                    label=re.sub(r"\\s+","",str(row[0] or "")).casefold()
+                    matches=[field for field,aliases in LABELS.items() if any(re.sub(r"\\s+","",alias).casefold() in label for alias in aliases)]
                     if not matches:continue
                     values=[(ci,parse_number(cell)) for ci,cell in enumerate(row[1:],1)]
                     values=[(ci,v) for ci,v in values if v is not None]
