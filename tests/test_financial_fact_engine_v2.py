@@ -25,6 +25,23 @@ class FactsTest(unittest.TestCase):
         self.assertEqual(delta([a],[b])["changes"][0]["status"],"CHANGED")
     def test_conflicts(self):
         self.assertEqual(delta([],[f("100"),f("110")])["changes"][0]["status"],"CONFLICTED")
+    def test_simple_historical_fcf(self):
+        base={"symbol":"600795.SH","currency":"CNY","period_start":"2026-01-01",
+              "period_end":"2026-06-30","period_type":"H1_YTD","scope":"CONSOLIDATED",
+              "source":{"document_sha256":SHA,"page":59}}
+        result=run([{**base,"field":"operating_cash_flow","value":"100"},
+                    {**base,"field":"capital_expenditure","value":"30"}])
+        derived=[x for x in result["store"]["facts"] if x["kind"]=="DETERMINISTIC_DERIVED"]
+        self.assertEqual(len(derived),1)
+        self.assertEqual(derived[0]["value"],"70")
+        self.assertEqual(derived[0]["verification_state"],"UNVERIFIED")
+        self.assertTrue(result["compact"]["historical_simplified_fcf_is_not_owner_cash_flow"])
+    def test_no_simple_fcf_if_source_conflicts(self):
+        base={"symbol":"600795.SH","currency":"CNY","period_start":"2026-01-01",
+              "period_end":"2026-06-30","period_type":"H1_YTD","scope":"CONSOLIDATED"}
+        result=run([{**base,"field":"operating_cash_flow","value":"100","source":{"document_sha256":SHA,"page":59}},
+                    {**base,"field":"capital_expenditure","value":"30","source":{"document_sha256":"b"*64,"page":59}}])
+        self.assertFalse(any(x["kind"]=="DETERMINISTIC_DERIVED" for x in result["store"]["facts"]))
     def test_no_auto_verification(self):
         r=run([{"symbol":"600795.SH","field":"revenue","value":"5","currency":"CNY","period_start":"2025-01-01","period_end":"2025-12-31","period_type":"FY","scope":"CONSOLIDATED","source":{"document_sha256":SHA,"page":1}}])
         self.assertEqual(r["store"]["facts"][0]["verification_state"],"UNVERIFIED")
