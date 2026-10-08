@@ -8,7 +8,9 @@ class PublicComputeContractTests(unittest.TestCase):
   self.assertTrue(c["no_valuation_logic"]);self.assertTrue(c["no_recommendation_logic"]);self.assertTrue(c["no_trade_logic"])
  def test_workflow_wires_compute_before_manifest(self):
   s=Path(".github/workflows/public_research.yml").read_text()
-  names=["Build deterministic public metrics","Build dynamic public evidence index","Freeze exact public run snapshot","Build public-safe manifest"]
+  names=["Update durable public lead lifecycle","Resolve deterministic public lead lifecycle",
+         "Build deterministic public metrics","Build public company research packets",
+         "Build dynamic public evidence index","Freeze exact public run snapshot","Build public-safe manifest"]
   pos=[s.index(x) for x in names];self.assertEqual(pos,sorted(pos))
   sink="Optionally archive public state and official evidence into Private storage"
   self.assertIn(sink,s)
@@ -16,7 +18,7 @@ class PublicComputeContractTests(unittest.TestCase):
   self.assertNotIn("holding-strategy-data",s[:sink_pos])
   self.assertIn("holding-strategy-data",s[sink_pos:])
   self.assertIn("PRIVATE_STATE_WRITE_TOKEN",s[sink_pos:])
-  self.assertIn("PUBLIC_DETERMINISTIC_METRICS.json",s);self.assertIn("PUBLIC_EVIDENCE_INDEX.json",s);self.assertIn("PUBLIC_RUN_SNAPSHOT.json",s)
+  self.assertIn("PUBLIC_LEAD_RESOLUTION_REPORT.json",s);self.assertIn("PUBLIC_DETERMINISTIC_METRICS.json",s);self.assertIn("PUBLIC_EVIDENCE_INDEX.json",s);self.assertIn("PUBLIC_RUN_SNAPSHOT.json",s)
   self.assertFalse(any('\\n          assert contract.get' in line for line in s.splitlines()), 'BROKEN_LITERAL_NEWLINE_ASSERT')
   self.assertNotIn('\\\\n          assert contract.get',s)
 if __name__=="__main__":unittest.main()
