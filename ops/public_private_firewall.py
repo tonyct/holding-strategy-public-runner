@@ -1,5 +1,6 @@
 """Public publication firewall: private holdings AND private-derived data stay private."""
 import argparse
+import hashlib
 import json
 import re
 from pathlib import Path
@@ -104,6 +105,16 @@ def validate(root,manifest,universe):
         check_request(request.get("reason"),request.get("request_id"))
     files=set()
     base=Path(root)
+    # Evidence registry stores byte-identical Public files by SHA-256. The
+    # sole permitted negative Private-approval assertion must be identical
+    # to the canonical published routing packet, even in its CAS copy.
+    routing_rel="compute/PUBLIC_API_FIRST_ROUTING_V1.json"
+    routing_path=base/routing_rel
+    routing_bytes=routing_path.read_bytes() if routing_path.is_file() else None
+    routing_digest=(hashlib.sha256(routing_bytes).hexdigest()
+                    if routing_bytes is not None else None)
+    routing_archive_rel=(f"evidence/raw/sha256/{routing_digest[:2]}/{routing_digest}.json"
+                         if routing_digest else None)
     for path in base.rglob("*"):
         if path.is_symlink():
             raise PrivateDataBlocked("PUBLIC_SYMLINK_NOT_ALLOWED")
@@ -115,7 +126,10 @@ def validate(root,manifest,universe):
         if path.suffix.lower()==".json":
             check_json(
                 json.loads(path.read_text(encoding="utf-8")),
-                allow_public_routing_control=(rel=="compute/PUBLIC_API_FIRST_ROUTING_V1.json"),
+                allow_public_routing_control=(
+                    rel==routing_rel or
+                    (rel==routing_archive_rel and path.read_bytes()==routing_bytes)
+                ),
             )
         elif path.suffix.lower()==".log":
             if PRIVATE_TEXT.search(path.read_text(encoding="utf-8")):
