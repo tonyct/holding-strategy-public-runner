@@ -296,7 +296,7 @@ jobs:
       - name: Build conservative public financial table candidates v2
         shell: bash
         run: |
-          python -m ops.public_fact_pipeline_v2 --root output/originals --out-dir output/compute
+          python -m ops.public_fact_pipeline_v2 --root output/originals --out-dir output/compute --previous runtime/latest/compute/PUBLIC_FACT_STORE_V2.json
 
       - name: Build deterministic public metrics
         shell: bash
