@@ -31,8 +31,12 @@ def extract_a_halfyear_cashflow(path,symbol):
             if scope is None:continue
             if "单位：元币种：人民币" in text or "单位:元币种:人民币" in text:
                 currency="CNY";multiplier="1"
+            elif "单位：万元币种：人民币" in text or "单位:万元币种:人民币" in text:
+                currency="CNY";multiplier="10000"
             elif "金额单位为人民币百万元" in text:
                 currency="CNY";multiplier="1000000"
+            elif "单位：元" in text or "单位:元" in text:
+                currency="CNY";multiplier="1"
             if scope!="CONSOLIDATED":continue
             field_on_page=any(normalize(alias) in text for aliases in FIELDS.values() for alias in aliases)
             section_header_on_page="合并现金流量表" in text
@@ -40,10 +44,10 @@ def extract_a_halfyear_cashflow(path,symbol):
             for ti,table in enumerate(page.find_tables().tables):
                 for ri,row in enumerate(table.extract()):
                     if not row:continue
-                    if len(row)>3 and normalize(row[0])=="项目":
+                    if len(row)>=3 and normalize(row[0])=="项目":
                         headers=[re.search(r"(20\d{2})年半年度",normalize(x)) for x in row]
-                        columns=([(i,int(x.group(1))) for i,x in enumerate(headers) if x and i>=1]
-                                 if len(headers)>3 and headers[2] and headers[3] else None)
+                        parsed=[(i,int(x.group(1))) for i,x in enumerate(headers) if x and i>=1]
+                        columns=parsed if len(parsed)==2 else None
                     if currency!="CNY" or not multiplier or not columns:continue
                     label=normalize(row[0])
                     matched=[field for field,aliases in FIELDS.items()
