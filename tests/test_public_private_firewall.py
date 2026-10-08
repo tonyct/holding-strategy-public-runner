@@ -1,3 +1,4 @@
+import hashlib
 import json
 import tempfile
 import unittest
@@ -86,6 +87,47 @@ class PublicFirewallTests(unittest.TestCase):
             }),encoding="utf-8")
             with self.assertRaises(PrivateDataBlocked):
                 validate(output,manifest,universe_path)
+
+    def test_sha_verified_cas_copy_of_generated_routing(self):
+        universe={"schema":"E36_PUBLIC_RESEARCH_UNIVERSE/v1",
+                  "source":"PUBLIC_RESEARCH_COVERAGE_UNIVERSE_NOT_ACCOUNT_HOLDINGS",
+                  "strategy_id":"PUBLIC_COMPANY_RESEARCH",
+                  "stocks":[{"symbol":"600795.SH","active":True}]}
+        payload=build(universe,{"facts":[]},[],"2026-10-08T04:00:00Z")
+        raw=json.dumps(payload,ensure_ascii=False,sort_keys=True,indent=2).encode()+b"\\n"
+        digest=hashlib.sha256(raw).hexdigest()
+        with tempfile.TemporaryDirectory() as td:
+            base=Path(td)
+            root=base/"output"
+            routing=root/"compute/PUBLIC_API_FIRST_ROUTING_V1.json"
+            routing.parent.mkdir(parents=True)
+            routing.write_bytes(raw)
+            cas=root/f"evidence/raw/sha256/{digest[:2]}/{digest}.json"
+            cas.parent.mkdir(parents=True)
+            cas.write_bytes(raw)
+            source=base/"universe.json"
+            source.write_text(json.dumps(universe))
+            manifest=root/"PUBLIC_RESEARCH_BUNDLE.json"
+            def write_manifest():
+                manifest.write_text(json.dumps({
+                    "privacy_class":"PUBLIC_MARKET_DATA_ONLY",
+                    "source_repository":"tonyct/holding-strategy-public-runner",
+                    "contains_account_state":False,
+                    "contains_portfolio_decision":False,
+                    "files":[{"path":"compute/PUBLIC_API_FIRST_ROUTING_V1.json"},
+                             {"path":cas.relative_to(root).as_posix()}],
+                }))
+            write_manifest()
+            self.assertEqual(validate(root,manifest,source),2)
+            # A CAS copy must be byte identical, not just claim the same schema.
+            cas.write_bytes(raw+b" ")
+            with self.assertRaises(PrivateDataBlocked):
+                validate(root,manifest,source)
+            cas.write_bytes(raw)
+            # New route content makes the previously hashed CAS copy ineligible.
+            routing.write_bytes(raw+b" ")
+            with self.assertRaises(PrivateDataBlocked):
+                validate(root,manifest,source)
 
     def test_latest_persisted_routing_contract(self):
         fixture=Path("runtime/latest/compute/PUBLIC_API_FIRST_ROUTING_V1.json")
