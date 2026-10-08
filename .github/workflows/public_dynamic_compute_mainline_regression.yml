@@ -89,8 +89,8 @@ jobs:
           python - <<'PY'
           s=open('.github/workflows/public_research.yml').read()
           for needle in [
-            'Fetch current-window A-share official originals',
-            'Fetch current-window HKEX official originals',
+            'Fetch rolling-window A-share official originals',
+            'Fetch rolling-window HKEX official originals',
             'Update durable public lead lifecycle',
             'Build public company research packets',
             'Update content-addressed public evidence registry',
