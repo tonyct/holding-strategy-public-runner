@@ -23,7 +23,7 @@ def extract_a_halfyear_cashflow(path,symbol):
     with fitz.open(str(path)) as pdf:
         scope=None;currency=None;columns=None
         for pi,page in enumerate(pdf):
-            text=normalize(page.get_text(sort=True))
+            text=normalize(page.get_text(sort=False))
             if "母公司现金流量表" in text:
                 scope="PARENT";currency=None;columns=None
             elif "合并现金流量表" in text:
