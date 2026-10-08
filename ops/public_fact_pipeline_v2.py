@@ -9,6 +9,19 @@ LABELS={
  "capital_expenditure":("购建固定资产、无形资产和其他长期资产支付的现金","purchase of property, plant and equipment"),
  "issued_shares":("股份总数","已发行股份总数","number of issued shares"),
 }
+REPORT_PATTERNS=("年度报告","半年度报告","季度报告","财务报告","业绩公告","业绩报告","annual report","interim report","quarterly report","interim results","annual results","financial statements","results announcement")
+def report_files(root):
+    root=Path(root)
+    names=set()
+    for receipt in (root/"a/A_ORIGINALS_RECEIPT.json",root/"hk/HK_ORIGINALS_RECEIPT.json"):
+        if not receipt.is_file():continue
+        data=json.loads(receipt.read_text(encoding="utf-8"))
+        for row in (data.get("symbols") or {}).values():
+            for f in row.get("files",[]):
+                title=str(f.get("title") or "").casefold()
+                if f.get("status")=="FETCHED_OFFICIAL_ORIGINAL" and any(k in title for k in REPORT_PATTERNS):
+                    if f.get("filename"):names.add(f["filename"])
+    return names
 NUMBER=re.compile(r"^\(?[-−]?\d[\d,]*(?:\.\d+)?\)?$")
 def parse_number(raw):
     s=str(raw).strip().replace("−","-")
@@ -52,7 +65,7 @@ def extract(pdf_path,symbol):
     return {"symbol":symbol,"source_sha256":sha,"page_count":pages,"table_candidates":ambiguous,
             "facts":[],"semantic_fact_verified":False}
 def build(root):
-    root=Path(root);documents=[];facts=[]
+    root=Path(root);documents=[];facts=[]\n    selected=report_files(root)
     for path in sorted(root.rglob("*.pdf")):
         m=re.match(r"(\d+_[A-Z]+)_",path.name)
         if not m: continue
