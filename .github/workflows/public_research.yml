@@ -12,10 +12,11 @@ on:
         required: false
         type: string
   schedule:
-    # Public-only freshness backstop. Hourly acquisition keeps the normal
-    # bundle comfortably inside the Private 3h freshness SLA even when the
-    # optional cross-repo immediate-dispatch credential is unavailable.
-    - cron: '17 * * * *'
+    # Public-only data freshness backstop. Twice-hourly opportunities limit
+    # impact of a delayed/skipped GitHub schedule; SHADOW still must trigger
+    # a bounded on-demand Public refresh when its 2h data SLA is exceeded.
+    # GitHub cron is best-effort; successful workflow != fresh/verified inputs.
+    - cron: '17,47 * * * *'
   push:
     branches: [main]
     paths:
