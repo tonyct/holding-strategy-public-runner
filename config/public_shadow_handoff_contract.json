@@ -1,0 +1,38 @@
+{
+  "schema": "PUBLIC_TO_SHADOW_HANDOFF_CONTRACT/v1",
+  "role": "PUBLIC_COMPLETE_SHADOW_VALIDATE_PRIVATE_ARCHIVE",
+  "producer": "tonyct/holding-strategy-public-runner",
+  "storage_repository": "tonyct/holding-strategy-data",
+  "authoritative_head": "runtime/e36_authoritative_head.json",
+  "public_security": {
+    "private_credentials_in_public": false,
+    "private_write_from_public": false,
+    "account_information_in_handoff": false
+  },
+  "required_public_files": [
+    "PUBLIC_RESEARCH_BUNDLE.json",
+    "ACQUISITION_HEALTH.json",
+    "PUBLIC_RUN_SNAPSHOT.json",
+    "PUBLIC_EVIDENCE_INDEX.json",
+    "PUBLIC_DETERMINISTIC_METRICS.json",
+    "compute/PUBLIC_COMPANY_RESEARCH_COMPUTE.json",
+    "state/PUBLIC_LEAD_LIFECYCLE_REGISTRY.json",
+    "state/PUBLIC_LEAD_RESOLUTION_REPORT.json",
+    "state/PUBLIC_DYNAMIC_EVIDENCE_REGISTRY.json",
+    "compute/PUBLIC_FACT_QUALITY_V2.json"
+  ],
+  "shadow_ingestion": {
+    "compare_run_id_attempt_and_commit": true,
+    "validate_manifest_sha256": true,
+    "validate_universe_and_privacy": true,
+    "require_complete_batch_before_pointer": true,
+    "write_only_runtime_public_inputs": true,
+    "reject_stale_or_duplicate": true,
+    "atomically_commit_then_readback": true,
+    "keep_formal_shadow_research_gates": true,
+    "never_auto_approve_financial_facts": true
+  },
+  "private_storage_only": true,
+  "new_formal_task_required": false,
+  "trade_execution": false
+}
