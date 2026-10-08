@@ -47,7 +47,7 @@ jobs:
           contract=json.loads(Path("config/public_data_contract.json").read_text())
           universe=json.loads(Path("config/research_universe.json").read_text())
           assert contract.get("schema")=="PUBLIC_DATA_ACQUISITION_CONTRACT/v1"
-          assert contract.get("role")=="PUBLIC_MARKET_DATA_AND_EVIDENCE_ACQUISITION_ONLY"
+          assert contract.get("role")=="PUBLIC_MARKET_DATA_EVIDENCE_AND_DETERMINISTIC_COMPUTE_ONLY"\n          assert contract.get("deterministic_public_compute_only") is True\n          assert contract.get("no_valuation_logic") is True\n          assert contract.get("no_recommendation_logic") is True
           assert contract.get("no_private_repo_dependency") is True
           assert contract.get("no_investment_decision_logic") is True
           assert contract.get("no_trade_logic") is True
@@ -234,6 +234,29 @@ jobs:
           print(json.dumps(out,ensure_ascii=False))
           PY
 
+      - name: Build deterministic public metrics
+        shell: bash
+        run: |
+          python -m engine.public_metrics \
+            --root output --universe config/research_universe.json \
+            --output output/PUBLIC_DETERMINISTIC_METRICS.json
+
+      - name: Build dynamic public evidence index
+        shell: bash
+        run: |
+          python -m engine.public_evidence_index \
+            --root output --output output/PUBLIC_EVIDENCE_INDEX.json
+
+      - name: Freeze exact public run snapshot
+        shell: bash
+        run: |
+          python -m engine.public_run_snapshot \
+            --universe config/research_universe.json \
+            --health output/ACQUISITION_HEALTH.json \
+            --evidence-index output/PUBLIC_EVIDENCE_INDEX.json \
+            --metrics output/PUBLIC_DETERMINISTIC_METRICS.json \
+            --output output/PUBLIC_RUN_SNAPSHOT.json
+
       - name: Build public-safe manifest
         shell: bash
         env:
@@ -269,6 +292,10 @@ jobs:
                   "reason":reason or "PUBLIC_REFRESH",
                   "privacy_class":"PUBLIC_REFRESH_CONTROL_ONLY",
               }
+          def sha(path):
+              b=Path(path).read_bytes()
+              return hashlib.sha256(b).hexdigest()
+          snapshot=json.loads(Path("output/PUBLIC_RUN_SNAPSHOT.json").read_text())
           out={
               "schema":"E36_PUBLIC_RESEARCH_BUNDLE/v1",
               "privacy_class":"PUBLIC_MARKET_DATA_ONLY",
@@ -279,6 +306,18 @@ jobs:
               "completed_at_utc":datetime.now(timezone.utc).isoformat(),
               "contains_account_state":False,
               "contains_portfolio_decision":False,
+              "public_compute":{
+                  "snapshot_path":"PUBLIC_RUN_SNAPSHOT.json",
+                  "snapshot_sha256":sha("output/PUBLIC_RUN_SNAPSHOT.json"),
+                  "evidence_index_path":"PUBLIC_EVIDENCE_INDEX.json",
+                  "evidence_index_sha256":sha("output/PUBLIC_EVIDENCE_INDEX.json"),
+                  "metrics_path":"PUBLIC_DETERMINISTIC_METRICS.json",
+                  "metrics_sha256":sha("output/PUBLIC_DETERMINISTIC_METRICS.json"),
+                  "active_symbol_count":snapshot.get("active_symbol_count"),
+                  "no_private_repo_dependency":True,
+                  "no_valuation":True,
+                  "no_trade_logic":True,
+              },
               "refresh_request":refresh_request,
               "files":files,
           }
@@ -291,7 +330,7 @@ jobs:
           python - <<'PY'
           import json, re
           from pathlib import Path
-          prohibited = re.compile(r'actual_held|account_state|portfolio_decision|tracking_only|position_size|cost_basis|cash_nav|drive_bootstrap_id|user_screenshot|XUEQIU_COOKIE|HOLDING_STRATEGY|"active_version"\\s*:|"epoch"\\s*:|"private_(?:commit|generation)"\\s*:|"raw_shadow_cycle_id"\\s*:', re.I)
+          prohibited = re.compile(r'\\bactual_held\\b|\\baccount_state\\b|\\bportfolio_decision\\b|\\btracking_only\\b|\\bposition_size\\b|\\bcost_basis\\b|\\bcash_nav\\b|\\bdrive_bootstrap_id\\b|\\buser_screenshot\\b|XUEQIU_COOKIE|HOLDING_STRATEGY|"active_version"\\s*:|"epoch"\\s*:|"private_(?:commit|generation)"\\s*:|"raw_shadow_cycle_id"\\s*:', re.I)
           root=Path("output")
           failures=[]
           for p in root.rglob("*"):
@@ -306,6 +345,11 @@ jobs:
           manifest=json.loads(Path("output/PUBLIC_RESEARCH_BUNDLE.json").read_text())
           assert manifest.get("contains_account_state") is False
           assert manifest.get("contains_portfolio_decision") is False
+          compute=manifest.get("public_compute") or {}
+          assert compute.get("no_private_repo_dependency") is True
+          assert compute.get("no_valuation") is True
+          assert compute.get("no_trade_logic") is True
+          assert compute.get("snapshot_sha256") and compute.get("metrics_sha256") and compute.get("evidence_index_sha256")
           if failures:
               raise SystemExit("Private/account semantic detected in public output: "+", ".join(failures))
           print("PUBLIC_OUTPUT_PRIVACY_PASS")
