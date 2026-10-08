@@ -46,8 +46,8 @@ def extract(pdf_path,symbol):
             if not tables:
                 lines=page.get_text(sort=True).splitlines()
                 for li,line in enumerate(lines):
-                    low=line.casefold()
-                    fields=[field for field,aliases in LABELS.items() if any(alias.casefold() in low for alias in aliases)]
+                    low=re.sub(r"\\s+","",(line+" "+(lines[li+1] if li+1<len(lines) else "")).casefold())
+                    fields=[field for field,aliases in LABELS.items() if any(re.sub(r"\\s+","",alias).casefold() in low for alias in aliases)]
                     if fields:
                         ambiguous.append({"symbol":symbol,"field_candidates":fields,"page":pi+1,
                           "text_line":li+1,"literal_excerpt":" ".join(lines[max(0,li-1):li+3])[:600],
