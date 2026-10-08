@@ -122,6 +122,31 @@ jobs:
           mkdir -p output/quotes
           python -m engine.collect_quotes --output output/quotes/QUOTE_RECEIPT.json --delay 0.6
 
+      - name: Fetch current-window A-share official originals
+        continue-on-error: true
+        run: |
+          mkdir -p output/originals/a
+          python -m ops.public_a_originals             --index-dir output/a             --output output/originals/a             --universe config/research_universe.json             --max-per-symbol 100
+
+      - name: Fetch current-window HKEX official originals
+        continue-on-error: true
+        run: |
+          mkdir -p output/originals/hk
+          python -m ops.public_hk_originals             --output output/originals/hk             --universe config/research_universe.json             --issuer-map config/hkex_issuer_ids.json             --max-per-symbol 100
+
+      - name: Update durable public lead lifecycle
+        run: |
+          mkdir -p output/state
+          if test -f runtime/latest/state/PUBLIC_LEAD_LIFECYCLE_REGISTRY.json; then
+            cp runtime/latest/state/PUBLIC_LEAD_LIFECYCLE_REGISTRY.json output/state/PUBLIC_LEAD_LIFECYCLE_REGISTRY.json
+          fi
+          python -m ops.public_lead_registry             --registry output/state/PUBLIC_LEAD_LIFECYCLE_REGISTRY.json             --run-id "$GITHUB_RUN_ID"             --community output/community/COMMUNITY_DIRECT_DISCOVERY.json             --news output/news/NEWS_DISCOVERY.json             --ir output/ir/IR_DISCOVERY.json             --akshare output/discovery/AKSHARE_DISCOVERY.json             --output output/state/PUBLIC_LEAD_LIFECYCLE_REGISTRY.json
+
+      - name: Extract source-bound public original text candidates
+        run: |
+          mkdir -p output/compute
+          python -m ops.public_original_text             --root output/originals             --output output/compute/PUBLIC_ORIGINAL_TEXT_CANDIDATES.json
+
       - name: Build acquisition health receipt
         shell: bash
         run: |
@@ -221,6 +246,18 @@ jobs:
               "news_row_count":ak.get("news_row_count"),"community_row_count":ak.get("community_row_count")}
           if not ak_ok: degraded_reasons.append("AKSHARE_DISCOVERY_UNAVAILABLE")
 
+          a_orig=load("output/originals/a/A_ORIGINALS_RECEIPT.json", required=False)
+          hk_orig=load("output/originals/hk/HK_ORIGINALS_RECEIPT.json", required=False)
+          a_fetched=sum(int(x.get("fetched",0)) for x in (a_orig.get("symbols") or {}).values())
+          hk_fetched=sum(int(x.get("fetched",0)) for x in (hk_orig.get("symbols") or {}).values())
+          checks["dynamic_official_originals"]={
+              "a_share_fetched":a_fetched,
+              "hk_fetched":hk_fetched,
+              "a_share_complete_symbols":sum(x.get("complete") is True for x in (a_orig.get("symbols") or {}).values()),
+              "hk_complete_symbols":sum(x.get("complete") is True for x in (hk_orig.get("symbols") or {}).values())}
+          if a_fetched==0: degraded_reasons.append("A_SHARE_OFFICIAL_ORIGINALS_UNAVAILABLE")
+          if hk_fetched==0: degraded_reasons.append("HK_OFFICIAL_ORIGINALS_UNAVAILABLE")
+
           quotes=load("output/quotes/QUOTE_RECEIPT.json")
           quote_ok=(quotes.get("quotes_with_source_session")==n)
           checks["quotes"]={"ok":quote_ok,"quotes_with_source_session":quotes.get("quotes_with_source_session")}
@@ -243,6 +280,20 @@ jobs:
           python -m engine.public_metrics \
             --root output --universe config/research_universe.json \
             --output output/PUBLIC_DETERMINISTIC_METRICS.json
+
+      - name: Build public company research packets
+        shell: bash
+        run: |
+          python -m ops.public_company_compute             --universe config/research_universe.json             --metrics output/PUBLIC_DETERMINISTIC_METRICS.json             --a-originals output/originals/a/A_ORIGINALS_RECEIPT.json             --hk-originals output/originals/hk/HK_ORIGINALS_RECEIPT.json             --text-candidates output/compute/PUBLIC_ORIGINAL_TEXT_CANDIDATES.json             --lead-registry output/state/PUBLIC_LEAD_LIFECYCLE_REGISTRY.json             --run-id "$GITHUB_RUN_ID"             --output output/compute/PUBLIC_COMPANY_RESEARCH_COMPUTE.json
+
+      - name: Update content-addressed public evidence registry
+        shell: bash
+        run: |
+          mkdir -p output/state output/evidence/raw/sha256
+          if test -f runtime/latest/state/PUBLIC_DYNAMIC_EVIDENCE_REGISTRY.json; then
+            cp runtime/latest/state/PUBLIC_DYNAMIC_EVIDENCE_REGISTRY.json output/state/PUBLIC_DYNAMIC_EVIDENCE_REGISTRY.json
+          fi
+          python -m ops.public_evidence_registry             --registry output/state/PUBLIC_DYNAMIC_EVIDENCE_REGISTRY.json             --source-root output             --store-root output/evidence/raw/sha256             --run-id "$GITHUB_RUN_ID"             --output output/state/PUBLIC_EVIDENCE_REGISTRY_UPDATE.json
 
       - name: Build dynamic public evidence index
         shell: bash
@@ -316,6 +367,12 @@ jobs:
                   "evidence_index_sha256":sha("output/PUBLIC_EVIDENCE_INDEX.json"),
                   "metrics_path":"PUBLIC_DETERMINISTIC_METRICS.json",
                   "metrics_sha256":sha("output/PUBLIC_DETERMINISTIC_METRICS.json"),
+                  "company_research_path":"compute/PUBLIC_COMPANY_RESEARCH_COMPUTE.json",
+                  "company_research_sha256":sha("output/compute/PUBLIC_COMPANY_RESEARCH_COMPUTE.json"),
+                  "lead_registry_path":"state/PUBLIC_LEAD_LIFECYCLE_REGISTRY.json",
+                  "lead_registry_sha256":sha("output/state/PUBLIC_LEAD_LIFECYCLE_REGISTRY.json"),
+                  "dynamic_evidence_registry_path":"state/PUBLIC_DYNAMIC_EVIDENCE_REGISTRY.json",
+                  "dynamic_evidence_registry_sha256":sha("output/state/PUBLIC_DYNAMIC_EVIDENCE_REGISTRY.json"),
                   "active_symbol_count":snapshot.get("active_symbol_count"),
                   "no_private_repo_dependency":True,
                   "no_valuation":True,
@@ -353,6 +410,8 @@ jobs:
           assert compute.get("no_valuation") is True
           assert compute.get("no_trade_logic") is True
           assert compute.get("snapshot_sha256") and compute.get("metrics_sha256") and compute.get("evidence_index_sha256")
+          assert compute.get("company_research_sha256") and compute.get("lead_registry_sha256")
+          assert compute.get("dynamic_evidence_registry_sha256")
           if failures:
               raise SystemExit("Private/account semantic detected in public output: "+", ".join(failures))
           print("PUBLIC_OUTPUT_PRIVACY_PASS")
@@ -377,6 +436,13 @@ jobs:
           path: output/
           retention-days: 7
 
+
+      - name: Optionally archive public state and official evidence into Private storage
+        continue-on-error: true
+        env:
+          PRIVATE_STATE_WRITE_TOKEN: ${{ secrets.PRIVATE_STATE_WRITE_TOKEN }}
+        run: |
+          python -m ops.private_state_sink             --root output             --repo tonyct/holding-strategy-data             --run-id "$GITHUB_RUN_ID"             --status-output output/state/PUBLIC_TO_PRIVATE_STATE_SINK.json
 
       - name: Persist latest public JSON bundle
         shell: bash
