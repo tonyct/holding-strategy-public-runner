@@ -32,6 +32,7 @@ def quality(universe,store,documents):
             "field_candidate_names":sorted(fields),
             "missing_research_fields":missing,
             "numeric_conflicts":conflicts,
+            "extraction_errors":[d["extraction_error"] for d in docs.get(symbol,[]) if d.get("extraction_error")],
             "decisive_primary_financial_evidence_verified":False,
             "research_state":"SOURCE_BOUND_CANDIDATES_REQUIRE_INDEPENDENT_REVIEW" if rows else "NO_SOURCE_BOUND_FACTS",
             "valuation_authorized":False,
