@@ -36,10 +36,10 @@ def main():
           "original_text_candidate_source_count":len(tx.get(s,[])),
           "pending_public_lead_count":pending.get(s,0),
           "research_state":("PUBLIC_PRIMARY_EVIDENCE_READY" if originals.get("complete") else "PUBLIC_PRIMARY_EVIDENCE_PARTIAL"),
-          "company_research_only":True,"portfolio_decision":False,"trade_signal":False}
+          "company_research_only":True}
     out={"schema":"PUBLIC_COMPANY_RESEARCH_COMPUTE/v1","source_run_id":a.run_id,
          "computed_at_utc":datetime.now(timezone.utc).isoformat(),"packets":packets,
-         "contains_account_state":False,"contains_portfolio_decision":False,"contains_trade_logic":False}
+         "contains_account_state":False}
     Path(a.output).parent.mkdir(parents=True,exist_ok=True);Path(a.output).write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n")
     print(json.dumps({"packets":len(packets),"ready":sum(x["research_state"]=="PUBLIC_PRIMARY_EVIDENCE_READY" for x in packets.values())}))
 if __name__=="__main__":main()
