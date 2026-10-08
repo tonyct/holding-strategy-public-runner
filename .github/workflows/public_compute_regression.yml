@@ -1,0 +1,68 @@
+name: Public compute platform regression
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile
+        run: python -m compileall -q engine/public_metrics.py engine/public_evidence_index.py engine/public_run_snapshot.py
+      - name: Test
+        run: python -m unittest tests.test_public_metrics tests.test_public_evidence_index tests.test_public_run_snapshot tests.test_public_compute_contract -v
+  real-latest-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Replay compute layer on latest published public data
+        run: |
+          rm -rf /tmp/public-output
+          cp -a runtime/latest /tmp/public-output
+          rm -f /tmp/public-output/PUBLIC_RESEARCH_BUNDLE.json /tmp/public-output/PUBLIC_EVIDENCE_INDEX.json /tmp/public-output/PUBLIC_RUN_SNAPSHOT.json /tmp/public-output/PUBLIC_DETERMINISTIC_METRICS.json
+          python -m engine.public_metrics --root /tmp/public-output --universe config/research_universe.json --output /tmp/public-output/PUBLIC_DETERMINISTIC_METRICS.json
+          python -m engine.public_evidence_index --root /tmp/public-output --output /tmp/public-output/PUBLIC_EVIDENCE_INDEX.json
+          GITHUB_RUN_ID=TEST GITHUB_RUN_ATTEMPT=1 GITHUB_SHA=${{ github.sha }} python -m engine.public_run_snapshot --universe config/research_universe.json --health /tmp/public-output/ACQUISITION_HEALTH.json --evidence-index /tmp/public-output/PUBLIC_EVIDENCE_INDEX.json --metrics /tmp/public-output/PUBLIC_DETERMINISTIC_METRICS.json --output /tmp/public-output/PUBLIC_RUN_SNAPSHOT.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          u=json.loads(Path('config/research_universe.json').read_text())
+          n=sum(x.get('active') is True for x in u['stocks'])
+          m=json.loads(Path('/tmp/public-output/PUBLIC_DETERMINISTIC_METRICS.json').read_text())
+          e=json.loads(Path('/tmp/public-output/PUBLIC_EVIDENCE_INDEX.json').read_text())
+          s=json.loads(Path('/tmp/public-output/PUBLIC_RUN_SNAPSHOT.json').read_text())
+          assert m['active_symbol_count']==n and len(m['stocks'])==n
+          assert e['artifact_count']>0 and e['fixed_document_count_assumed'] is False
+          assert s['active_symbol_count']==n and s['contains_account_state'] is False and s['contains_portfolio_decision'] is False
+          print({'active_symbols':n,'artifact_count':e['artifact_count']})
+          PY
+  workflow-yaml:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install pyyaml
+      - name: Parse production workflow YAML
+        run: |
+          python - <<'PY'
+          import yaml
+          from pathlib import Path
+          x=yaml.safe_load(Path('.github/workflows/public_research.yml').read_text())
+          assert isinstance(x,dict) and 'jobs' in x and 'collect' in x['jobs']
+          print('PUBLIC_RESEARCH_YAML_PARSE_PASS')
+          PY
