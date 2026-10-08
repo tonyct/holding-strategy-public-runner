@@ -313,6 +313,17 @@ jobs:
             --candidates output/compute/PUBLIC_TABLE_CANDIDATES_V2.json \
             --output output/compute/PUBLIC_FACT_QUALITY_V2.json
 
+      - name: Build unified API-first candidate and AI gap packet
+        shell: bash
+        continue-on-error: true
+        timeout-minutes: 2
+        run: |
+          test -s output/compute/PUBLIC_FACT_STORE_V2.json
+          python -m ops.public_fact_routing_bridge \
+            --universe config/research_universe.json \
+            --fact-store output/compute/PUBLIC_FACT_STORE_V2.json \
+            --output output/compute/PUBLIC_API_FIRST_ROUTING_V1.json
+
       - name: Build deterministic public metrics
         shell: bash
         run: |
