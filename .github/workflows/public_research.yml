@@ -47,7 +47,10 @@ jobs:
           contract=json.loads(Path("config/public_data_contract.json").read_text())
           universe=json.loads(Path("config/research_universe.json").read_text())
           assert contract.get("schema")=="PUBLIC_DATA_ACQUISITION_CONTRACT/v1"
-          assert contract.get("role")=="PUBLIC_MARKET_DATA_EVIDENCE_AND_DETERMINISTIC_COMPUTE_ONLY"\n          assert contract.get("deterministic_public_compute_only") is True\n          assert contract.get("no_valuation_logic") is True\n          assert contract.get("no_recommendation_logic") is True
+          assert contract.get("role")=="PUBLIC_MARKET_DATA_EVIDENCE_AND_DETERMINISTIC_COMPUTE_ONLY"
+          assert contract.get("deterministic_public_compute_only") is True
+          assert contract.get("no_valuation_logic") is True
+          assert contract.get("no_recommendation_logic") is True
           assert contract.get("no_private_repo_dependency") is True
           assert contract.get("no_investment_decision_logic") is True
           assert contract.get("no_trade_logic") is True
