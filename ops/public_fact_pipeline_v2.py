@@ -37,7 +37,7 @@ def extract(pdf_path,symbol):
         pages=doc.page_count
         for pi,page in enumerate(doc):
             # Avoid expensive table recognition on unrelated pages.
-            normalized=re.sub(r"\\s+","",low)
+            normalized=re.sub(r"\\s+","",page.get_text(sort=False).casefold())
             has_financial_label=any(re.sub(r"\\s+","",alias).casefold() in normalized for aliases in LABELS.values() for alias in aliases)
             if not has_financial_label:continue
             # Table cells preserve row and column geometry; extraction is deliberately conservative.
