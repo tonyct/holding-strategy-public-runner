@@ -98,5 +98,21 @@
     "consumer_verifies_run_attempt_commit_and_sha256": true,
     "consumer_stores_private_state_only_in_private_repository": true,
     "automatic_trade_execution": false
+  },
+  "private_data_firewall": {
+    "policy": "PRIVATE_INPUT_AND_DERIVATIVES_NEVER_PUBLIC/v1",
+    "inputs": "PUBLIC_OFFICIAL_SOURCES_AND_PUBLIC_COVERAGE_ONLY",
+    "private_inputs_forbidden": true,
+    "private_derivatives_forbidden": true,
+    "public_ticker_universe_does_not_prove_holdings": true,
+    "taint_rule": "ANY_PRIVATE_SOURCE_OR_PORTFOLIO_HOLDINGS_DERIVED_OUTPUT_REMAINS_PRIVATE_NO_REDACTION_DECLASSIFICATION",
+    "sensitive_scope": "ACTUAL_HOLDINGS_QUANTITY_COST_ACCOUNT_CASH_NAV_ORDERS_PNL_PORTFOLIO_RISK_AND_REBALANCING_PLUS_PRIVATE_ASSUMPTIONS_REPORTS_AND_REVIEW_RESULTS",
+    "publication": "ONLY_PUBLIC_DERIVED_DETERMINISTIC_DATA",
+    "pre_upload_and_publish_gate": "ops.public_private_firewall",
+    "privacy_failure": "BLOCK_ALL_UPLOADS_AND_PUBLIC_GIT_COMMITS",
+    "allowed_private_transfer": "NONE",
+    "private_model_consumption": "PULL_ONLY_PUBLIC_TO_PRIVATE_BY_TRUSTED_SHADOW",
+    "user_specific_refresh_controls_forbidden": true,
+    "automatic_trade_execution": false
   }
 }
