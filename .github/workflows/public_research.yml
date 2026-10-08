@@ -30,7 +30,60 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Two cron opportunities improve resilience without downloading hundreds of MB
+  # twice per hour. Manual/SHADOW-triggered refresh always runs.
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    outputs:
+      collect: ${{ steps.need.outputs.collect }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Gate redundant scheduled acquisitions
+        id: need
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          python - <<'PY'
+          import datetime, json, os
+          from pathlib import Path
+          collect = True
+          reason = "MANUAL_OR_PUSH_REFRESH"
+          if os.environ["EVENT_NAME"] == "schedule":
+              reason = "SCHEDULED_DATA_NOT_CURRENT"
+              try:
+                  info = json.loads(Path("runtime/latest/PUBLIC_RESEARCH_BUNDLE.json").read_bytes())
+                  completed = datetime.datetime.fromisoformat(
+                      info["completed_at_utc"].replace("Z", "+00:00"))
+                  if completed.tzinfo is None:
+                      raise ValueError("SOURCE_CLOCK_HAS_NO_TIMEZONE")
+                  now = datetime.datetime.now(datetime.timezone.utc)
+                  age = (now - completed.astimezone(datetime.timezone.utc)).total_seconds()
+                  trusted_metadata = (
+                      info.get("schema") == "E36_PUBLIC_RESEARCH_BUNDLE/v1"
+                      and info.get("source_repository") == "tonyct/holding-strategy-public-runner"
+                      and info.get("privacy_class") == "PUBLIC_MARKET_DATA_ONLY"
+                      and info.get("contains_account_state") is False
+                      and info.get("contains_portfolio_decision") is False
+                      and isinstance(info.get("files"), list) and len(info["files"]) > 0
+                      and str(info.get("source_run_id", "")).isdigit()
+                      and isinstance(info.get("source_commit_sha"), str)
+                      and len(info["source_commit_sha"]) == 40
+                  )
+                  # Gate is only a low-cost trigger guard, never evidence approval.
+                  if trusted_metadata and -300 <= age < 45 * 60:
+                      collect = False
+                      reason = "SKIP_REDUNDANT_SCHEDULE_DATA_RECENT"
+              except (OSError, KeyError, ValueError, TypeError):
+                  reason = "SCHEDULED_METADATA_MISSING_RUN_TO_RECOVER"
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
+              out.write(f"collect={str(collect).lower()}\n")
+          print(f"PUBLIC_SCHEDULE_GATE collect={collect} reason={reason}")
+          PY
   collect:
+    needs: gate
+    if: needs.gate.outputs.collect == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
