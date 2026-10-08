@@ -75,7 +75,7 @@ def extract(pdf_path,symbol):
         facts=extract_hk_halfyear_cashflow(pdf_path,symbol)
     return {"symbol":symbol,"source_sha256":sha,"page_count":pages,"table_candidates":ambiguous,
             "facts":facts,"semantic_fact_verified":False}
-def build(root):
+def build(root,prior=None):
     root=Path(root);documents=[];facts=[]
     selected=report_files(root)
     for path in sorted(root.rglob("*.pdf")):
@@ -85,7 +85,7 @@ def build(root):
         documents.append(document)
         facts.extend(document["facts"])
     # All normalized rows remain UNVERIFIED pending independent research review.
-    out=run(facts)
+    out=run(facts,prior)
     return documents,out
 def main():
     p=argparse.ArgumentParser();p.add_argument("--root",required=True);p.add_argument("--out-dir",required=True);a=p.parse_args()
