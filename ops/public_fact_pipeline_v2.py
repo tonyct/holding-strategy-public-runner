@@ -36,6 +36,10 @@ def extract(pdf_path,symbol):
     with fitz.open(str(pdf_path)) as doc:
         pages=doc.page_count
         for pi,page in enumerate(doc):
+            # Avoid expensive table recognition on unrelated pages.
+            normalized=re.sub(r"\\s+","",low)
+            has_financial_label=any(re.sub(r"\\s+","",alias).casefold() in normalized for aliases in LABELS.values() for alias in aliases)
+            if not has_financial_label:continue
             # Table cells preserve row and column geometry; extraction is deliberately conservative.
             try: tables=page.find_tables().tables
             except Exception: tables=[]
