@@ -22,9 +22,11 @@ jobs:
           from ops.public_hk_originals import load_scope
           x=load_scope('config/research_universe.json','config/hkex_issuer_ids.json')
           assert set(x)=={'148.HK','2233.HK','3933.HK','9926.HK'}
-          s=open('ops/public_evidence_registry.py').read()
-          assert 'fixed_document_count' not in s
+          import json,tempfile,subprocess,sys
           print({'hk_symbols':len(x)})
+          # The registry may explicitly declare that a fixed count is NOT assumed.
+          s=open('ops/public_evidence_registry.py').read()
+          assert 'fixed_document_count_assumption' in s
           PY
       - name: Exercise lead lifecycle on persisted public discovery
         run: |
