@@ -62,15 +62,21 @@ def extract(pdf_path,symbol):
                           "source_sha256":sha,"state":"COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED"}
                     # No value is auto-promoted without confirmed header, unit, reporting dates and consolidation scope.
                     ambiguous.append(item)
+    facts=[]
+    if symbol.endswith((".SH",".SZ")):
+        from ops.public_a_statement_fact_v2 import extract_a_halfyear_cashflow
+        facts=extract_a_halfyear_cashflow(pdf_path,symbol)
     return {"symbol":symbol,"source_sha256":sha,"page_count":pages,"table_candidates":ambiguous,
-            "facts":[],"semantic_fact_verified":False}
+            "facts":facts,"semantic_fact_verified":False}
 def build(root):
     root=Path(root);documents=[];facts=[]
     selected=report_files(root)
     for path in sorted(root.rglob("*.pdf")):
         m=re.match(r"(\d+_[A-Z]+)_",path.name)
         if not m: continue
-        documents.append(extract(path,m.group(1).replace("_",".")))
+        document=extract(path,m.group(1).replace("_","."))
+        documents.append(document)
+        facts.extend(document["facts"])
     # fail closed: zero verified/normalized facts until all semantic axes are bound.
     out=run(facts)
     return documents,out
