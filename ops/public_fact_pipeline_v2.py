@@ -84,7 +84,7 @@ def build(root):
         document=extract(path,m.group(1).replace("_","."))
         documents.append(document)
         facts.extend(document["facts"])
-    # fail closed: zero verified/normalized facts until all semantic axes are bound.
+    # All normalized rows remain UNVERIFIED pending independent research review.
     out=run(facts)
     return documents,out
 def main():
