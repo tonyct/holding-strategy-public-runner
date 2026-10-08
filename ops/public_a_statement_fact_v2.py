@@ -32,6 +32,9 @@ def extract_a_halfyear_cashflow(path,symbol):
             if "单位：元币种：人民币" in text or "单位:元币种:人民币" in text:
                 currency="CNY"
             if scope!="CONSOLIDATED":continue
+            field_on_page=any(normalize(alias) in text for aliases in FIELDS.values() for alias in aliases)
+            section_header_on_page="合并现金流量表" in text
+            if not (field_on_page or section_header_on_page):continue
             for ti,table in enumerate(page.find_tables().tables):
                 for ri,row in enumerate(table.extract()):
                     if not row:continue
