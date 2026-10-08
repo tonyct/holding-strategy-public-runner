@@ -1,7 +1,7 @@
 name: Public dynamic compute mainline regression
 on:
   push:
-    branches: [e36-public-compute-mainline-20261008]
+    branches: [e36-public-compute-mainline-20261008, fix/public-compute-lifecycle-semantics-20261008]
 permissions:
   contents: read
 jobs:
@@ -37,6 +37,9 @@ jobs:
           x=json.load(open('/tmp/state/PUBLIC_LEAD_LIFECYCLE_REGISTRY.json'))
           assert x['schema']=='PUBLIC_LEAD_LIFECYCLE_REGISTRY/v1'
           assert x['counts']['total']>=x['counts']['pending']
+          assert x['counts']['terminal']>0
+          assert x['counts']['by_state'].get('RETIRED_LOW_INFORMATION',0)>0
+          assert x['counts']['by_state'].get('CROSS_BOARD_NOISE',0)>0
           PY
       - name: Exercise content-addressed evidence registry dynamically
         run: |
@@ -70,6 +73,7 @@ jobs:
           assert x['public_only_contract'] is True
           assert x['buy_sell_prices_included'] is False
           assert x['automatic_trade_execution'] is False
+          assert all(v['research_state']!='PUBLIC_PRIMARY_EVIDENCE_READY' for v in x['packets'].values())
           PY
       - name: Verify Private sink is optional and Private Actions are not required
         run: |
