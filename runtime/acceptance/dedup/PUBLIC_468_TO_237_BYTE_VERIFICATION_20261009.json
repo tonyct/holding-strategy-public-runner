@@ -1,0 +1,49 @@
+{
+  "schema": "E36_PUBLIC_DELIVERY_PHYSICAL_DEDUP_AUDIT/v1",
+  "scope": "PUBLIC_ONLY_BYTE_IDENTITY_AND_TRANSPORT_NOT_PRIVATE_RESEARCH_OR_TRADING",
+  "source_public_run_id": "37771829042",
+  "source_run_attempt": 1,
+  "source_public_commit_sha": "161c1345b8c4bd8e54d1bf3fe2551912ee330580",
+  "source_manifest_sha256": "d93b1433859052172916671a75beb7c12cf90cfd3eb94b620b52e4a762c0ee94",
+  "source_manifest_logical_paths": 468,
+  "sha256_distinct_payloads": 237,
+  "duplicate_alias_paths": 231,
+  "duplicate_groups": 231,
+  "duplicate_pdf_groups": 184,
+  "duplicate_other_groups": 47,
+  "distinct_payload_types": {
+    "pdf": 184,
+    "json": 51,
+    "log": 2
+  },
+  "physical_deduplicated_artifacts": [
+    "public-delivery-metadata-37771829042-1",
+    "public-delivery-pdf-00-37771829042-1",
+    "public-delivery-pdf-01-37771829042-1",
+    "public-delivery-pdf-02-37771829042-1",
+    "public-delivery-pdf-03-37771829042-1",
+    "public-delivery-pdf-04-37771829042-1",
+    "public-delivery-pdf-05-37771829042-1",
+    "public-delivery-pdf-06-37771829042-1",
+    "public-delivery-pdf-07-37771829042-1"
+  ],
+  "verified_in_isolated_working_environment": true,
+  "verification_method": "Read all 9 actual Public Actions ZIP archives; independently SHA-256 hash every canonical payload and compare exact size/SHA with original 468-row manifest; reconcile full alias groups, unique-count, PDF-shard byte totals and identity.",
+  "all_237_unique_payload_sha256_verified": true,
+  "all_468_logical_alias_sha256_size_mappings_verified": true,
+  "deduplicated_uncompressed_payload_bytes": 258897929,
+  "original_logical_payload_bytes": 517353979,
+  "repeated_uncompressed_payload_bytes_omitted": 258456050,
+  "canonical_payloads_physically_repeated_across_nine_shards": 0,
+  "source_manifest_remains_468_path_provenance_index": true,
+  "legacy_actions_artifact": {
+    "name": "public-research-37771829042-1",
+    "size_bytes": 431975386,
+    "delete_status": "NOT_DELETED_COMPATIBILITY_ACTIVE",
+    "retention_days_from_workflow": 7
+  },
+  "retirement_blocker": "No confirmed accepted full Private consumer end-to-end Coverage/Semantic/Audit gate; current SHADOW run receipt alone does not prove it uses restored sharded transport end to end.",
+  "safe_retirement_requirement": "Verify actual Private shard consumption receipt for same run/attempt/source_commit, all original alias restores by SHA, prior leads, PDF recovery, and scope-gated research acceptance before stopping legacy artifact upload.",
+  "no_private_data": true,
+  "no_valutation_or_trade_approval": true
+}
