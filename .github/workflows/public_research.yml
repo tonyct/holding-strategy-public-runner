@@ -501,12 +501,8 @@ jobs:
           retention-days: 7
 
 
-      - name: Optionally archive public state and official evidence into Private storage
-        continue-on-error: true
-        env:
-          PRIVATE_STATE_WRITE_TOKEN: ${{ secrets.PRIVATE_STATE_WRITE_TOKEN }}
-        run: |
-          python -m ops.private_sink_atomic_v2             --root output             --repo tonyct/holding-strategy-data             --run-id "$GITHUB_RUN_ID"             --status-output output/state/PUBLIC_TO_PRIVATE_STATE_SINK.json
+      # Public must never receive or use credentials that can write to Private.
+      # Trusted SHADOW sync reads the published Public bundle separately.
 
       - name: Persist latest public JSON bundle
         shell: bash
