@@ -47,7 +47,7 @@ def extract_a_halfyear_cashflow(path,symbol):
                     if len(row)>=3 and normalize(row[0])=="项目":
                         headers=[re.search(r"(20\d{2})年半年度",normalize(x)) for x in row]
                         parsed=[(i,int(x.group(1))) for i,x in enumerate(headers) if x and i>=1]
-                        columns=parsed if len(parsed)==2 else None
+                        columns=parsed if len(parsed)==2 and parsed[0][1] != parsed[1][1] else None
                     if currency!="CNY" or not multiplier or not columns:continue
                     label=normalize(row[0])
                     matched=[field for field,aliases in FIELDS.items()
