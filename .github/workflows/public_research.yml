@@ -132,7 +132,7 @@ jobs:
         continue-on-error: true
         run: |
           mkdir -p output/originals/hk
-          python -m ops.public_hk_originals             --output output/originals/hk             --universe config/research_universe.json             --issuer-map config/hkex_issuer_ids.json             --max-per-symbol 100
+          python -m ops.public_hk_originals             --output output/originals/hk             --universe config/research_universe.json             --issuer-map config/hkex_issuer_ids.json             --start "$(date -u -d '75 days ago' +%Y%m%d)" --end "$(date -u +%Y%m%d)"             --max-per-symbol 100
 
       - name: Update durable public lead lifecycle
         run: |
