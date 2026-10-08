@@ -506,7 +506,7 @@ jobs:
         env:
           PRIVATE_STATE_WRITE_TOKEN: ${{ secrets.PRIVATE_STATE_WRITE_TOKEN }}
         run: |
-          python -m ops.private_state_sink             --root output             --repo tonyct/holding-strategy-data             --run-id "$GITHUB_RUN_ID"             --status-output output/state/PUBLIC_TO_PRIVATE_STATE_SINK.json
+          python -m ops.private_sink_atomic_v2             --root output             --repo tonyct/holding-strategy-data             --run-id "$GITHUB_RUN_ID"             --status-output output/state/PUBLIC_TO_PRIVATE_STATE_SINK.json
 
       - name: Persist latest public JSON bundle
         shell: bash
