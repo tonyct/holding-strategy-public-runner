@@ -66,6 +66,9 @@ def extract(pdf_path,symbol):
     if symbol.endswith((".SH",".SZ")):
         from ops.public_a_statement_fact_v2 import extract_a_halfyear_cashflow
         facts=extract_a_halfyear_cashflow(pdf_path,symbol)
+    elif symbol.endswith(".HK"):
+        from ops.public_hk_statement_fact_v2 import extract_hk_halfyear_cashflow
+        facts=extract_hk_halfyear_cashflow(pdf_path,symbol)
     return {"symbol":symbol,"source_sha256":sha,"page_count":pages,"table_candidates":ambiguous,
             "facts":facts,"semantic_fact_verified":False}
 def build(root):
