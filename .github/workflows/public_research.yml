@@ -293,6 +293,20 @@ jobs:
           print(json.dumps(out,ensure_ascii=False))
           PY
 
+      - name: Build conservative public financial table candidates v2
+        shell: bash
+        run: |
+          python -m ops.public_fact_pipeline_v2 --root output/originals --out-dir output/compute --previous runtime/latest/compute/PUBLIC_FACT_STORE_V2.json
+
+      - name: Build per-symbol financial fact quality receipt v2
+        shell: bash
+        run: |
+          python -m ops.public_fact_quality_v2 \
+            --universe config/research_universe.json \
+            --store output/compute/PUBLIC_FACT_STORE_V2.json \
+            --candidates output/compute/PUBLIC_TABLE_CANDIDATES_V2.json \
+            --output output/compute/PUBLIC_FACT_QUALITY_V2.json
+
       - name: Build deterministic public metrics
         shell: bash
         run: |
