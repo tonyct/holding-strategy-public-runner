@@ -16,9 +16,9 @@ jobs:
         with:
           python-version: '3.11'
       - name: Compile
-        run: python -m compileall -q engine/public_metrics.py engine/public_evidence_index.py engine/public_run_snapshot.py
+        run: python -m compileall -q engine/public_metrics.py engine/public_evidence_index.py engine/public_run_snapshot.py ops/public_lead_resolver.py ops/public_company_compute.py
       - name: Test
-        run: python -m unittest tests.test_public_metrics tests.test_public_evidence_index tests.test_public_run_snapshot tests.test_public_compute_contract -v
+        run: python -m unittest tests.test_public_metrics tests.test_public_evidence_index tests.test_public_run_snapshot tests.test_public_compute_contract tests.test_public_lead_resolver -v
   real-latest-integration:
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -32,6 +32,11 @@ jobs:
           rm -rf /tmp/public-output
           cp -a runtime/latest /tmp/public-output
           rm -f /tmp/public-output/PUBLIC_RESEARCH_BUNDLE.json /tmp/public-output/PUBLIC_EVIDENCE_INDEX.json /tmp/public-output/PUBLIC_RUN_SNAPSHOT.json /tmp/public-output/PUBLIC_DETERMINISTIC_METRICS.json
+          python -m ops.public_lead_resolver \
+            --registry /tmp/public-output/state/PUBLIC_LEAD_LIFECYCLE_REGISTRY.json \
+            --a-originals /tmp/public-output/originals/a/A_ORIGINALS_RECEIPT.json \
+            --hk-originals /tmp/public-output/originals/hk/HK_ORIGINALS_RECEIPT.json \
+            --report /tmp/public-output/state/PUBLIC_LEAD_RESOLUTION_REPORT.json
           python -m engine.public_metrics --root /tmp/public-output --universe config/research_universe.json --output /tmp/public-output/PUBLIC_DETERMINISTIC_METRICS.json
           python -m engine.public_evidence_index --root /tmp/public-output --output /tmp/public-output/PUBLIC_EVIDENCE_INDEX.json
           GITHUB_RUN_ID=TEST GITHUB_RUN_ATTEMPT=1 GITHUB_SHA=${{ github.sha }} python -m engine.public_run_snapshot --universe config/research_universe.json --health /tmp/public-output/ACQUISITION_HEALTH.json --evidence-index /tmp/public-output/PUBLIC_EVIDENCE_INDEX.json --metrics /tmp/public-output/PUBLIC_DETERMINISTIC_METRICS.json --output /tmp/public-output/PUBLIC_RUN_SNAPSHOT.json
@@ -43,6 +48,11 @@ jobs:
           m=json.loads(Path('/tmp/public-output/PUBLIC_DETERMINISTIC_METRICS.json').read_text())
           e=json.loads(Path('/tmp/public-output/PUBLIC_EVIDENCE_INDEX.json').read_text())
           s=json.loads(Path('/tmp/public-output/PUBLIC_RUN_SNAPSHOT.json').read_text())
+          leads=json.loads(Path('/tmp/public-output/state/PUBLIC_LEAD_LIFECYCLE_REGISTRY.json').read_text())
+          lead_report=json.loads(Path('/tmp/public-output/state/PUBLIC_LEAD_RESOLUTION_REPORT.json').read_text())
+          assert lead_report['automatic_fact_promotion'] is False
+          assert leads['counts']['terminal']>0
+          assert leads['counts']['pending']<leads['counts']['total']
           assert m['active_symbol_count']==n and len(m['stocks'])==n
           assert e['artifact_count']>0 and e['fixed_document_count_assumed'] is False
           assert s['active_symbol_count']==n and s['contains_account_state'] is False and s['contains_portfolio_decision'] is False
