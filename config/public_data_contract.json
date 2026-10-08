@@ -38,7 +38,12 @@
     "ir_discovery",
     "deterministic_metrics",
     "evidence_index",
-    "run_snapshot"
+    "run_snapshot",
+    "official_original_bytes",
+    "lead_lifecycle",
+    "original_text_candidates",
+    "company_research_packet",
+    "evidence_registry"
   ],
   "output_requirements": [
     "source",
@@ -83,5 +88,13 @@
     "no_valuation",
     "no_portfolio_logic",
     "no_trade_logic"
-  ]
+  ],
+  "optional_private_state_sink": {
+    "enabled_by_secret": "PRIVATE_STATE_WRITE_TOKEN",
+    "direction": "PUBLIC_TO_PRIVATE_ONLY",
+    "target_prefix": "runtime/public_inputs/",
+    "computation_must_not_depend_on_sink": true,
+    "private_actions_required": false,
+    "public_evidence_archive_prefix": "evidence/public/raw/sha256/"
+  }
 }

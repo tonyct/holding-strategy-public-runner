@@ -1,0 +1,100 @@
+name: Public dynamic compute mainline regression
+on:
+  push:
+    branches: [e36-public-compute-mainline-20261008]
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile new public components
+        run: |
+          python -m compileall -q             ops/public_a_originals.py ops/public_hk_originals.py             ops/public_lead_registry.py ops/public_original_text.py             ops/public_evidence_registry.py ops/public_company_compute.py             ops/private_state_sink.py
+      - name: Validate dynamic HK scope and no fixed evidence count
+        run: |
+          python - <<'PY'
+          from ops.public_hk_originals import load_scope
+          x=load_scope('config/research_universe.json','config/hkex_issuer_ids.json')
+          assert set(x)=={'148.HK','2233.HK','3933.HK','9926.HK'}
+          import json,tempfile,subprocess,sys
+          print({'hk_symbols':len(x)})
+          # The registry may explicitly declare that a fixed count is NOT assumed.
+          s=open('ops/public_evidence_registry.py').read()
+          assert 'fixed_document_count_assumption' in s
+          PY
+      - name: Exercise lead lifecycle on persisted public discovery
+        run: |
+          mkdir -p /tmp/state
+          python -m ops.public_lead_registry             --registry /tmp/state/PUBLIC_LEAD_LIFECYCLE_REGISTRY.json             --run-id TEST_RUN             --community runtime/latest/community/COMMUNITY_DIRECT_DISCOVERY.json             --news runtime/latest/news/NEWS_DISCOVERY.json             --ir runtime/latest/ir/IR_DISCOVERY.json             --akshare runtime/latest/discovery/AKSHARE_DISCOVERY.json             --output /tmp/state/PUBLIC_LEAD_LIFECYCLE_REGISTRY.json
+          python - <<'PY'
+          import json
+          x=json.load(open('/tmp/state/PUBLIC_LEAD_LIFECYCLE_REGISTRY.json'))
+          assert x['schema']=='PUBLIC_LEAD_LIFECYCLE_REGISTRY/v1'
+          assert x['counts']['total']>=x['counts']['pending']
+          PY
+      - name: Exercise content-addressed evidence registry dynamically
+        run: |
+          mkdir -p /tmp/out/sample /tmp/out/state /tmp/out/evidence/raw/sha256
+          printf '{"x":1}\n' >/tmp/out/sample/a.json
+          printf '{"x":2}\n' >/tmp/out/sample/b.json
+          python -m ops.public_evidence_registry             --registry /tmp/out/state/PUBLIC_DYNAMIC_EVIDENCE_REGISTRY.json             --source-root /tmp/out             --store-root /tmp/out/evidence/raw/sha256             --run-id TEST_RUN             --output /tmp/out/state/PUBLIC_EVIDENCE_REGISTRY_UPDATE.json
+          python - <<'PY'
+          import json
+          x=json.load(open('/tmp/out/state/PUBLIC_DYNAMIC_EVIDENCE_REGISTRY.json'))
+          assert x['object_count']>=2
+          assert x['identity_count']>=2
+          PY
+      - name: Exercise public company packet against current deterministic metrics
+        run: |
+          mkdir -p /tmp/compute
+          python - <<'PY'
+          import json
+          u=json.load(open('config/research_universe.json'))
+          a={x['symbol']:{'indexed':0,'fetched':0,'complete':False,'files':[]} for x in u['stocks'] if x.get('active') and not x['symbol'].endswith('.HK')}
+          h={x['symbol']:{'indexed':0,'fetched':0,'complete':False,'files':[]} for x in u['stocks'] if x.get('active') and x['symbol'].endswith('.HK')}
+          json.dump({'symbols':a},open('/tmp/a.json','w'));json.dump({'symbols':h},open('/tmp/h.json','w'))
+          json.dump({'symbols':{}},open('/tmp/text.json','w'))
+          json.dump({'leads':{}},open('/tmp/leads.json','w'))
+          PY
+          python -m ops.public_company_compute             --universe config/research_universe.json             --metrics runtime/latest/PUBLIC_DETERMINISTIC_METRICS.json             --a-originals /tmp/a.json --hk-originals /tmp/h.json             --text-candidates /tmp/text.json --lead-registry /tmp/leads.json             --run-id TEST_RUN --output /tmp/compute/PUBLIC_COMPANY_RESEARCH_COMPUTE.json
+          python - <<'PY'
+          import json
+          x=json.load(open('/tmp/compute/PUBLIC_COMPANY_RESEARCH_COMPUTE.json'))
+          assert len(x['packets'])==11
+          assert x['public_only_contract'] is True
+          assert x['buy_sell_prices_included'] is False
+          assert x['automatic_trade_execution'] is False
+          PY
+      - name: Verify Private sink is optional and Private Actions are not required
+        run: |
+          unset PRIVATE_STATE_WRITE_TOKEN
+          python -m ops.private_state_sink --root /tmp --run-id TEST_RUN             --status-output /tmp/private-sink.json
+          python - <<'PY'
+          import json
+          x=json.load(open('/tmp/private-sink.json'))
+          assert x['status']=='NOT_CONFIGURED'
+          PY
+      - name: Validate workflow wiring
+        run: |
+          python - <<'PY'
+          s=open('.github/workflows/public_research.yml').read()
+          for needle in [
+            'Fetch current-window A-share official originals',
+            'Fetch current-window HKEX official originals',
+            'Update durable public lead lifecycle',
+            'Build public company research packets',
+            'Update content-addressed public evidence registry',
+            'Optionally archive public state and official evidence into Private storage']:
+              assert needle in s,needle
+          c=__import__('json').load(open('config/public_data_contract.json'))
+          assert c['optional_private_state_sink']['private_actions_required'] is False
+          assert c['no_private_repo_dependency'] is True
+          assert c['no_valuation_logic'] is True
+          assert c['no_trade_logic'] is True
+          PY
