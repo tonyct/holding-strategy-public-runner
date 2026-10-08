@@ -91,8 +91,7 @@ def build(root,universe):
         "community_lead_count":community.get("lead_count"),
         "news_lead_count":news.get("lead_count"),
         "scope":"PUBLIC_COMPANY_FACTS_AND_EVIDENCE_ONLY",
-        "contains_account_state":False,"contains_portfolio_decision":False,
-        "private_strategy_valuation_included":False,"buy_sell_prices_included":False,
+        "public_only_contract":True,"private_strategy_valuation_included":False,"buy_sell_prices_included":False,
         "automatic_trade_execution":False}
 
 def main():
