@@ -79,6 +79,7 @@ def build(root,prior=None):
     root=Path(root);documents=[];facts=[]
     selected=report_files(root)
     for path in sorted(root.rglob("*.pdf")):
+        if path.name not in selected: continue
         m=re.match(r"(\d+_[A-Z]+)_",path.name)
         if not m: continue
         document=extract(path,m.group(1).replace("_","."))
@@ -88,8 +89,11 @@ def build(root,prior=None):
     out=run(facts,prior)
     return documents,out
 def main():
-    p=argparse.ArgumentParser();p.add_argument("--root",required=True);p.add_argument("--out-dir",required=True);a=p.parse_args()
-    documents,products=build(a.root);root=Path(a.out_dir);root.mkdir(parents=True,exist_ok=True)
+    p=argparse.ArgumentParser();p.add_argument("--root",required=True);p.add_argument("--out-dir",required=True);p.add_argument("--previous");a=p.parse_args()
+    prior=[]
+    if a.previous and Path(a.previous).is_file():
+        prior=json.loads(Path(a.previous).read_text(encoding="utf-8")).get("facts",[])
+    documents,products=build(a.root,prior);root=Path(a.out_dir);root.mkdir(parents=True,exist_ok=True)
     artifacts={"PUBLIC_TABLE_CANDIDATES_V2.json":{"schema":"PUBLIC_TABLE_CANDIDATES/v2","documents":documents,"automatic_fact_promotion":False},
       "PUBLIC_FACT_STORE_V2.json":products["store"],"PUBLIC_COMPACT_FACT_PACKET_V2.json":products["compact"],"PUBLIC_DELTA_PACKET_V2.json":products["delta"]}
     for name,value in artifacts.items():
