@@ -293,6 +293,11 @@ jobs:
           print(json.dumps(out,ensure_ascii=False))
           PY
 
+      - name: Build conservative public financial table candidates v2
+        shell: bash
+        run: |
+          python -m ops.public_fact_pipeline_v2 --root output/originals --out-dir output/compute
+
       - name: Build deterministic public metrics
         shell: bash
         run: |
