@@ -1,5 +1,5 @@
 import unittest
-from ops.public_fact_pipeline_v2 import parse_number, extract, report_files
+from ops.public_fact_pipeline_v2 import parse_number, extract, report_files, build
 import tempfile
 import json
 from pathlib import Path
@@ -18,6 +18,20 @@ class TableCandidateTests(unittest.TestCase):
                 {"status":"FETCHED_OFFICIAL_ORIGINAL","title":"董事会决议","filename":"other.pdf"}]}}}
             (out/"A_ORIGINALS_RECEIPT.json").write_text(json.dumps(data))
             self.assertEqual(report_files(root),{"report.pdf"})
+    def test_build_respects_official_receipt_filter(self):
+        with tempfile.TemporaryDirectory() as root:
+            p=Path(root)
+            docs,products=build(p)
+            self.assertEqual(docs,[])
+            self.assertEqual(products["store"]["facts"],[])
+            other=p/"600795_SH_unrelated.pdf"
+            import fitz
+            pdf=fitz.open()
+            pdf.new_page()
+            pdf.save(str(other))
+            pdf.close()
+            docs,products=build(p)
+            self.assertEqual(docs,[])
     def test_pdf_source_bound_no_promotion(self):
         import fitz
         with tempfile.TemporaryDirectory() as root:
