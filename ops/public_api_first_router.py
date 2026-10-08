@@ -99,3 +99,22 @@ def route(symbols,records,now_iso,market_ttl_hours=24):
             "gaps":gaps,"ai_fallback_tasks":tasks,"rejected_records":rejected,
             "model_output_auto_approved":False,"can_modify_private_head":False,
             "automatic_trade_execution":False}
+
+def main():
+    import argparse,json
+    from pathlib import Path
+    p=argparse.ArgumentParser()
+    p.add_argument("--universe",required=True)
+    p.add_argument("--records",required=True)
+    p.add_argument("--output",required=True)
+    p.add_argument("--as-of",required=True)
+    a=p.parse_args()
+    universe=json.loads(Path(a.universe).read_text(encoding="utf-8"))
+    symbols=[x["symbol"] for x in universe["stocks"] if x.get("active") is True]
+    raw=json.loads(Path(a.records).read_text(encoding="utf-8"))
+    rows=raw.get("records",[]) if isinstance(raw,dict) else raw
+    if not isinstance(rows,list):raise ValueError("RECORDS_MUST_BE_LIST")
+    receipt=route(symbols,rows,a.as_of)
+    Path(a.output).parent.mkdir(parents=True,exist_ok=True)
+    Path(a.output).write_text(json.dumps(receipt,ensure_ascii=False,sort_keys=True,indent=2)+"\n",encoding="utf-8")
+if __name__=="__main__":main()
