@@ -32,6 +32,19 @@ class TableCandidateTests(unittest.TestCase):
             pdf.close()
             docs,products=build(p)
             self.assertEqual(docs,[])
+    def test_pdf_multiline_financial_label(self):
+        import fitz
+        with tempfile.TemporaryDirectory() as root:
+            filename=Path(root)/"600795_SH_test.pdf"
+            pdf=fitz.open()
+            page=pdf.new_page()
+            page.insert_text((50,50),"Net cash from")
+            page.insert_text((50,65),"operating activities")
+            pdf.save(str(filename))
+            pdf.close()
+            result=extract(filename,"600795.SH")
+            self.assertGreaterEqual(len(result["table_candidates"]),1)
+            self.assertFalse(result["semantic_fact_verified"])
     def test_pdf_source_bound_no_promotion(self):
         import fitz
         with tempfile.TemporaryDirectory() as root:
