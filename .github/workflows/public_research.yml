@@ -134,6 +134,16 @@ jobs:
           mkdir -p output/originals/hk
           python -m ops.public_hk_originals             --output output/originals/hk             --universe config/research_universe.json             --issuer-map config/hkex_issuer_ids.json             --start "$(date -u -d '75 days ago' +%Y%m%d)" --end "$(date -u +%Y%m%d)"             --max-per-symbol 100
 
+      - name: Recover and cache exact historic issuer TTM originals (Public only)
+        continue-on-error: true
+        timeout-minutes: 18
+        run: |
+          mkdir -p output/originals/ttm
+          python -m ops.public_historical_ttm_originals \
+            --config config/public_historical_original_backfill_20261008.json \
+            --output output/originals/ttm \
+            --cache-dir runtime/latest/originals/ttm
+
       - name: Update durable public lead lifecycle
         run: |
           mkdir -p output/state
