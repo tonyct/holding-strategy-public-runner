@@ -16,7 +16,7 @@ class PublicTextScopeTests(unittest.TestCase):
             for folder in ("a","ttm"):
                 (root/folder).mkdir(parents=True)
             current=root/"a/600941_SH_1225573518_26e900128123.pdf"
-            historical=root/"ttm/" + ("a"*64+".pdf")
+            historical=root/"ttm"/("a"*64+".pdf")
             current.write_bytes(b"PDF_CURRENT_SOURCE_FIXTURE")
             historical.write_bytes(b"PDF_HISTORIC_DO_NOT_PARSE_FIXTURE")
             output=Path(name)/"PUBLIC_ORIGINAL_TEXT_CANDIDATES.json"
