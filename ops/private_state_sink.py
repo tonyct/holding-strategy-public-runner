@@ -62,6 +62,15 @@ def main():
         pointer={"schema":"PRIVATE_PUBLIC_INPUT_POINTER/v1","source_run_id":a.run_id,"files":written,
                  "public_evidence_files":evidence_written,"public_safe_only":True,
                  "automatic_trade_execution":False,"orders_submitted":0}
+        # Do not downgrade the v2 production pointer or replace a newer input.
+        old_status,existing=request(token,a.repo,"GET","runtime/public_inputs/latest.json")
+        if old_status==200:
+            prev=json.loads(base64.b64decode(existing["content"]))
+            previous_run=(prev.get("source") or {}).get("run_id",prev.get("source_run_id","0"))
+            if int(previous_run)>=int(a.run_id):
+                raise ValueError("STALE_OR_DUPLICATE_PUBLIC_RUN")
+            if prev.get("schema")!="PRIVATE_PUBLIC_INPUT_POINTER/v1":
+                raise ValueError("POINTER_SCHEMA_MIGRATION_REQUIRED")
         put(token,a.repo,"runtime/public_inputs/latest.json",(json.dumps(pointer,ensure_ascii=False,indent=2)+"\n").encode(),
             "Advance public research input pointer "+str(a.run_id))
         status.update(status="SYNCED",file_count=len(written),evidence_file_count=len(evidence_written))
