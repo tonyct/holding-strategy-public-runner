@@ -27,4 +27,21 @@ Create a **new public repository with fresh Git history**. Do not fork or change
 Public sources -> public acquisition/parsing -> public evidence index + deterministic metrics + run snapshot -> PUBLIC_RESEARCH_BUNDLE -> private state layer verifies exact run/commit/hash lineage -> private Shadow/MAIN performs user-specific research and portfolio decisions.
 
 The private repository remains the only authority for account-aware conclusions.
-\n\n## Runtime boundary\n\n`runtime/latest` is generated only by this public repository from public-safe inputs. The public runner never reads the private repository. The private side may copy or reference public artifacts by exact run ID, commit SHA, and SHA-256, but private state is never sent back into the public workflow.\n
+
+
+## Runtime boundary
+
+`runtime/latest` is generated only by this public repository from public-safe inputs. The public runner never reads the private repository. The private side may copy or reference public artifacts by exact run ID, commit SHA, and SHA-256, but private state is never sent back into the public workflow.\n
+## Strict pull-only handoff
+
+The Public runner publishes only to its own repository and public GitHub Actions artifacts.
+It never holds a token with Private repository write access, never contacts the Private
+Git API, and never dispatches a Private workflow. Historic public-to-private sink
+code is retired; it must not be restored via configuration or secrets.
+
+SHADOW runs from the Private trust boundary and pulls the exact Public
+run/attempt/source-commit artifacts. SHADOW independently verifies SHA-256,
+consumes only verified source bytes and decides whether they qualify for
+Private research. The optional **Public Actions: read** credential, if needed,
+exists only inside Private, with no Private write permission granted to Public.
+Existing Private production research and trading approvals remain unchanged.

@@ -15,7 +15,7 @@ jobs:
           python-version: '3.11'
       - name: Compile new public components
         run: |
-          python -m compileall -q             ops/public_a_originals.py ops/public_hk_originals.py             ops/public_lead_registry.py ops/public_original_text.py             ops/public_evidence_registry.py ops/public_company_compute.py             ops/private_state_sink.py
+          python -m compileall -q             ops/public_a_originals.py ops/public_hk_originals.py             ops/public_lead_registry.py ops/public_original_text.py             ops/public_evidence_registry.py ops/public_company_compute.py             
       - name: Validate dynamic HK scope and no fixed evidence count
         run: |
           python - <<'PY'
@@ -71,15 +71,9 @@ jobs:
           assert x['buy_sell_prices_included'] is False
           assert x['automatic_trade_execution'] is False
           PY
-      - name: Verify Private sink is optional and Private Actions are not required
+      - name: Verify Public is strictly publish-only
         run: |
-          unset PRIVATE_STATE_WRITE_TOKEN
-          python -m ops.private_state_sink --root /tmp --run-id TEST_RUN             --status-output /tmp/private-sink.json
-          python - <<'PY'
-          import json
-          x=json.load(open('/tmp/private-sink.json'))
-          assert x['status']=='NOT_CONFIGURED'
-          PY
+          python -m unittest tests.test_public_pull_only_boundary -v
       - name: Validate workflow wiring
         run: |
           python - <<'PY'
@@ -90,10 +84,12 @@ jobs:
             'Update durable public lead lifecycle',
             'Build public company research packets',
             'Update content-addressed public evidence registry',
-            'Optionally archive public state and official evidence into Private storage']:
+            'Build public-safe manifest',
+            'Persist latest public JSON bundle']:
               assert needle in s,needle
           c=__import__('json').load(open('config/public_data_contract.json'))
-          assert c['optional_private_state_sink']['private_actions_required'] is False
+          assert c['public_delivery']['direction']=='PRIVATE_SHADOW_PULL_FROM_PUBLIC'
+          assert c['public_delivery']['public_must_not_write_private_repository'] is True
           assert c['no_private_repo_dependency'] is True
           assert c['no_valuation_logic'] is True
           assert c['no_trade_logic'] is True

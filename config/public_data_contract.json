@@ -89,12 +89,14 @@
     "no_portfolio_logic",
     "no_trade_logic"
   ],
-  "optional_private_state_sink": {
-    "enabled_by_secret": "PRIVATE_STATE_WRITE_TOKEN",
-    "direction": "PUBLIC_TO_PRIVATE_ONLY",
-    "target_prefix": "runtime/public_inputs/",
-    "computation_must_not_depend_on_sink": true,
-    "private_actions_required": false,
-    "public_evidence_archive_prefix": "evidence/public/raw/sha256/"
+  "public_delivery": {
+    "direction": "PRIVATE_SHADOW_PULL_FROM_PUBLIC",
+    "public_publish_repository": "tonyct/holding-strategy-public-runner",
+    "public_publishes_only_public_research_artifacts": true,
+    "public_must_not_store_private_write_credential": true,
+    "public_must_not_write_private_repository": true,
+    "consumer_verifies_run_attempt_commit_and_sha256": true,
+    "consumer_stores_private_state_only_in_private_repository": true,
+    "automatic_trade_execution": false
   }
 }

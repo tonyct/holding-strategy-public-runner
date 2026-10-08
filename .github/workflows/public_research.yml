@@ -657,6 +657,8 @@ jobs:
 
       # Public must never receive or use credentials that can write to Private.
       # Trusted SHADOW sync reads the published Public bundle separately.
+      # Ensure 'origin' is this PUBLIC repository before any Git push.
+      # No Public -> Private push endpoint or write credential is permitted.
 
       - name: Persist latest public JSON bundle
         shell: bash
@@ -686,6 +688,12 @@ jobs:
               exit 0
             fi
             git commit -m "Publish public research bundle $GITHUB_RUN_ID/$GITHUB_RUN_ATTEMPT"
+            test "${GITHUB_REPOSITORY}" = "tonyct/holding-strategy-public-runner"
+            REMOTE_URL="$(git remote get-url origin)"
+            [[ "$REMOTE_URL" =~ github[.]com[:/]tonyct/holding-strategy-public-runner([.]git)?$ ]] || {
+              echo "::error::PUBLIC_REMOTE_MISMATCH"
+              exit 1
+            }
             if git push origin HEAD:main; then
               echo "PERSIST_SUCCESS attempt=$attempt"
               exit 0
