@@ -18,9 +18,9 @@ jobs:
       - name: Install PDF parser
         run: python -m pip install pymupdf
       - name: Compile
-        run: python -m compileall -q engine/public_metrics.py engine/public_evidence_index.py engine/public_run_snapshot.py ops/public_lead_resolver.py ops/public_company_compute.py engine/financial_fact_engine_v2.py ops/public_fact_pipeline_v2.py ops/public_a_statement_fact_v2.py ops/public_hk_statement_fact_v2.py
+        run: python -m compileall -q engine/public_metrics.py engine/public_evidence_index.py engine/public_run_snapshot.py ops/public_lead_resolver.py ops/public_company_compute.py engine/financial_fact_engine_v2.py ops/public_fact_pipeline_v2.py ops/public_a_statement_fact_v2.py ops/public_hk_statement_fact_v2.py ops/public_fact_quality_v2.py
       - name: Test
-        run: python -m unittest tests.test_public_metrics tests.test_public_evidence_index tests.test_public_run_snapshot tests.test_public_compute_contract tests.test_public_lead_resolver tests.test_public_company_compute tests.test_financial_fact_engine_v2 tests.test_public_fact_pipeline_v2 tests.test_public_hk_statement_fact_v2 -v
+        run: python -m unittest tests.test_public_metrics tests.test_public_evidence_index tests.test_public_run_snapshot tests.test_public_compute_contract tests.test_public_lead_resolver tests.test_public_company_compute tests.test_financial_fact_engine_v2 tests.test_public_fact_pipeline_v2 tests.test_public_hk_statement_fact_v2 tests.test_public_fact_quality_v2 -v
   real-latest-integration:
     runs-on: ubuntu-latest
     timeout-minutes: 5
