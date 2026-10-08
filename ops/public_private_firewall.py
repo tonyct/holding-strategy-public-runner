@@ -46,10 +46,16 @@ class PrivateDataBlocked(ValueError):
 def name_of(key):
     return re.sub(r"[^a-z0-9]+","_",str(key).lower()).strip("_")
 
-def check_json(item):
+def check_json(item, allow_public_routing_control=False):
     if isinstance(item,dict):
         for k,v in item.items():
             key=name_of(k)
+            # Exact public schema/location exception only. This is a negative
+            # authority assertion, never evidence of Private approval.
+            if (allow_public_routing_control and k=="private_consumption_approved"
+                and item.get("schema")=="PUBLIC_API_FIRST_FACT_ROUTING/v1"
+                and v is False):
+                continue
             if key in PRIVATE_KEYS or key.startswith(("private_","account_","portfolio_","broker_")):
                 raise PrivateDataBlocked("PRIVATE_FIELD:"+key)
             if key in PRIVATE_FLAGS and v is not False:
@@ -107,7 +113,10 @@ def validate(root,manifest,universe):
         if path.suffix.lower() not in {".json",".log",".pdf"}:
             raise PrivateDataBlocked("PUBLIC_UNEXPECTED_FILE_TYPE")
         if path.suffix.lower()==".json":
-            check_json(json.loads(path.read_text(encoding="utf-8")))
+            check_json(
+                json.loads(path.read_text(encoding="utf-8")),
+                allow_public_routing_control=(rel=="compute/PUBLIC_API_FIRST_ROUTING_V1.json"),
+            )
         elif path.suffix.lower()==".log":
             if PRIVATE_TEXT.search(path.read_text(encoding="utf-8")):
                 raise PrivateDataBlocked("PRIVATE_TEXT_IN_PUBLIC_LOG")
