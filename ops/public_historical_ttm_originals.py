@@ -103,6 +103,19 @@ def fetch_one(row, output_dir, cache_dir, session):
         if not valid_bytes(raw, row):
             raise ValueError("OFFICIAL_ORIGINAL_BYTES_DO_NOT_MATCH_HISTORICAL_PIN")
         dest.write_bytes(raw)
+        # Persist exact-SHA validated official originals for the next Public
+        # run. The immutable Actions cache key includes the pinned config.
+        # A conflicting cache entry is never silently overwritten.
+        if cache_dir:
+            cached = Path(cache_dir) / dest.name
+            cached.parent.mkdir(parents=True, exist_ok=True)
+            if cached.exists():
+                if not valid_bytes(cached.read_bytes(), row):
+                    raise ValueError("PINNED_TTM_CACHE_SHA_CONFLICT")
+            else:
+                cached.write_bytes(raw)
+                if not valid_bytes(cached.read_bytes(), row):
+                    raise ValueError("PINNED_TTM_CACHE_WRITE_VERIFICATION_FAILED")
         return {**row, "filename": dest.name, "status": "FETCHED_EXACT_SHA_OFFICIAL",
                 "verified": True}
     except Exception as exc:
