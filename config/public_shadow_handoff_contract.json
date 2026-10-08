@@ -1,13 +1,14 @@
 {
   "schema": "PUBLIC_TO_SHADOW_HANDOFF_CONTRACT/v1",
-  "role": "PUBLIC_COMPLETE_SHADOW_VALIDATE_PRIVATE_ARCHIVE",
+  "role": "PUBLIC_PUBLISH_ONLY_PRIVATE_SHADOW_PULL_VALIDATE",
   "producer": "tonyct/holding-strategy-public-runner",
-  "storage_repository": "tonyct/holding-strategy-data",
-  "authoritative_head": "runtime/e36_authoritative_head.json",
   "public_security": {
     "private_credentials_in_public": false,
     "private_write_from_public": false,
-    "account_information_in_handoff": false
+    "account_information_in_handoff": false,
+    "public_push_to_private_prohibited": true,
+    "private_write_credential_not_required": true,
+    "artifacts_read_by_shadow": true
   },
   "required_public_files": [
     "PUBLIC_RESEARCH_BUNDLE.json",
@@ -34,5 +35,7 @@
   },
   "private_storage_only": true,
   "new_formal_task_required": false,
-  "trade_execution": false
+  "trade_execution": false,
+  "consumer": "PRIVATE_SHADOW_PULL",
+  "public_delivery": "PUBLIC_RESEARCH_BUNDLE_PLUS_SHA256_PDF_SHARDS"
 }

@@ -6,6 +6,8 @@ class PublicComputeContractTests(unittest.TestCase):
   self.assertEqual(c["role"],"PUBLIC_MARKET_DATA_EVIDENCE_AND_DETERMINISTIC_COMPUTE_ONLY")
   self.assertTrue(c["no_private_repo_dependency"]);self.assertTrue(c["deterministic_public_compute_only"])
   self.assertTrue(c["no_valuation_logic"]);self.assertTrue(c["no_recommendation_logic"]);self.assertTrue(c["no_trade_logic"])
+  self.assertEqual(c["public_delivery"]["direction"],"PRIVATE_SHADOW_PULL_FROM_PUBLIC")
+  self.assertNotIn("optional_private_state_sink",c)
  def test_workflow_wires_compute_before_manifest(self):
   s=Path(".github/workflows/public_research.yml").read_text()
   names=["Update durable public lead lifecycle","Resolve deterministic public lead lifecycle",
