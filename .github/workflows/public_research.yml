@@ -47,7 +47,7 @@ jobs:
           contract=json.loads(Path("config/public_data_contract.json").read_text())
           universe=json.loads(Path("config/research_universe.json").read_text())
           assert contract.get("schema")=="PUBLIC_DATA_ACQUISITION_CONTRACT/v1"
-          assert contract.get("role")=="PUBLIC_MARKET_DATA_AND_EVIDENCE_ACQUISITION_ONLY"
+          assert contract.get("role")=="PUBLIC_MARKET_DATA_EVIDENCE_AND_COMPANY_RESEARCH_COMPUTE_ONLY"
           assert contract.get("no_private_repo_dependency") is True
           assert contract.get("no_investment_decision_logic") is True
           assert contract.get("no_trade_logic") is True
@@ -118,6 +118,34 @@ jobs:
         run: |
           mkdir -p output/quotes
           python -m engine.collect_quotes --output output/quotes/QUOTE_RECEIPT.json --delay 0.6
+
+      - name: Fetch public A-share official full reports
+        continue-on-error: true
+        run: |
+          mkdir -p output/official_a
+          python engine/fetch_official_filings.py             --manifest config/official_filings.json             --output output/official_a             --universe-file config/research_universe.json             --period 2026-06-30
+
+      - name: Fetch public HKEX official full reports
+        continue-on-error: true
+        run: |
+          mkdir -p output/official_hk
+          python engine/fetch_hk_official.py             --manifest config/hk_official_filings.json             --universe-file config/research_universe.json             --output output/official_hk
+
+      - name: Extract reviewable A-share report-note evidence
+        continue-on-error: true
+        run: |
+          mkdir -p output/official_a_notes
+          python engine/extract_report_notes.py             --pdf-receipt output/official_a/OFFICIAL_PDF_FETCH_RECEIPT.json             --output output/official_a_notes
+
+      - name: Build dynamic public evidence registry
+        run: |
+          mkdir -p output/evidence
+          python engine/public_evidence_registry.py             --root output             --previous runtime/latest/evidence/PUBLIC_EVIDENCE_REGISTRY.json             --output output/evidence/PUBLIC_EVIDENCE_REGISTRY.json
+
+      - name: Build public company research snapshot
+        run: |
+          mkdir -p output/public_compute
+          python engine/build_public_company_research.py             --root output             --universe config/research_universe.json             --output output/public_compute/PUBLIC_COMPANY_RESEARCH_SNAPSHOT.json
 
       - name: Build acquisition health receipt
         shell: bash
@@ -217,6 +245,20 @@ jobs:
           checks["akshare_discovery"]={"ok":ak_ok,"news_symbol_count":ak.get("news_symbol_count"),
               "news_row_count":ak.get("news_row_count"),"community_row_count":ak.get("community_row_count")}
           if not ak_ok: degraded_reasons.append("AKSHARE_DISCOVERY_UNAVAILABLE")
+
+          official_a=load("output/official_a/OFFICIAL_PDF_FETCH_RECEIPT.json", required=False)
+          official_hk=load("output/official_hk/HK_FILING_RECEIPT.json", required=False)
+          public_compute=load("output/public_compute/PUBLIC_COMPANY_RESEARCH_SNAPSHOT.json", required=False)
+          a_pdf=sum(1 for r in official_a.get("rows",[]) if str(r.get("status","")).startswith("ORIGINAL_PDF"))
+          hk_pdf=sum(1 for r in official_hk.get("rows",[]) if r.get("downloaded") is True)
+          compute_ok=(public_compute.get("schema")=="PUBLIC_COMPANY_RESEARCH_SNAPSHOT/v1"
+                      and len(public_compute.get("symbols") or {})==n
+                      and public_compute.get("public_only_contract") is True)
+          checks["official_evidence"]={"a_share_full_report_count":a_pdf,"hk_full_report_count":hk_pdf}
+          checks["public_company_research"]={"ok":compute_ok,"symbol_count":len(public_compute.get("symbols") or {})}
+          if a_pdf!=len(a_scope): degraded_reasons.append("A_SHARE_OFFICIAL_REPORTS_PARTIAL")
+          if hk_pdf!=len(hk_scope): degraded_reasons.append("HK_OFFICIAL_REPORTS_PARTIAL")
+          if not compute_ok: degraded_reasons.append("PUBLIC_COMPANY_RESEARCH_INCOMPLETE")
 
           quotes=load("output/quotes/QUOTE_RECEIPT.json")
           quote_ok=(quotes.get("quotes_with_source_session")==n)
@@ -330,6 +372,13 @@ jobs:
           path: output/
           retention-days: 7
 
+
+      - name: Optionally archive public results into Private state storage
+        continue-on-error: true
+        env:
+          PRIVATE_STATE_REPO_TOKEN: ${{ secrets.PRIVATE_STATE_REPO_TOKEN }}
+        run: |
+          python engine/sync_public_state_to_private.py             --snapshot output/public_compute/PUBLIC_COMPANY_RESEARCH_SNAPSHOT.json             --registry output/evidence/PUBLIC_EVIDENCE_REGISTRY.json             --evidence-root output
 
       - name: Persist latest public JSON bundle
         shell: bash
