@@ -98,12 +98,25 @@ def delta(old,new):
 
 def run(rows,prior=None):
     facts=[fact(r) for r in rows]
+    by_context=defaultdict(lambda:defaultdict(list))
+    for f in facts:
+        context=tuple(f.get(k) for k in ("symbol","currency","scope","period_start","period_end","period_type"))
+        by_context[context][f["field"]].append(f)
+    derived=[]
+    for fields in by_context.values():
+        ocf=fields.get("operating_cash_flow",[])
+        capex=fields.get("capital_expenditure",[])
+        if len(ocf)==1 and len(capex)==1 and ocf[0]["source"]["document_sha256"]==capex[0]["source"]["document_sha256"]:
+            derived.append(derive("simple_historical_free_cash_flow",[ocf[0],capex[0]],
+                          "OPERATING_CASH_FLOW_MINUS_REPORTED_CAPITAL_EXPENDITURE/v2",
+                          lambda x:x[0]-x[1]))
+    facts.extend(derived)
     by_symbol=defaultdict(list)
     for r in facts:by_symbol[r["symbol"]].append(r)
     compact={"schema":"PUBLIC_COMPACT_FACT_PACKET/v2","stocks":{
         sym:[{k:f.get(k) for k in ("fact_id","field","value","currency","period_start","period_end","period_type","scope","verification_state")}
              for f in sorted(v,key=lambda x:(x["field"],x["period_end"],x["fact_id"]))]
-        for sym,v in sorted(by_symbol.items())},"no_valuation":True,"no_trade_logic":True}
+        for sym,v in sorted(by_symbol.items())},"no_valuation":True,"no_trade_logic":True,"historical_simplified_fcf_is_not_owner_cash_flow":True}
     return {"store":{"schema":"PUBLIC_FACT_STORE/v2","facts":facts}, "compact":compact,"delta":delta(prior or [],facts)}
 
 def main():
