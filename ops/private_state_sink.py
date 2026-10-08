@@ -49,7 +49,7 @@ def main():
             written.append({"path":rel,"sha256":hashlib.sha256(raw).hexdigest(),"github_blob_sha":sha})
         evidence_written=[]
         for src in sorted((root/"evidence/raw/sha256").rglob("*")) if (root/"evidence/raw/sha256").exists() else []:
-            if not src.is_file(): continue
+            if not src.is_file() or src.suffix.lower()!=".pdf": continue
             rel=str(src.relative_to(root/"evidence/raw/sha256"))
             raw=src.read_bytes()
             dest="evidence/public/raw/sha256/"+rel
