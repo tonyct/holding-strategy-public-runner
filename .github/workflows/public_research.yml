@@ -188,6 +188,12 @@ jobs:
           mkdir -p output/originals/hk
           python -m ops.public_hk_originals             --output output/originals/hk             --universe config/research_universe.json             --issuer-map config/hkex_issuer_ids.json             --start "$(date -u -d '75 days ago' +%Y%m%d)" --end "$(date -u +%Y%m%d)"             --max-per-symbol 100
 
+      - name: Restore immutable verified Public TTM cache
+        uses: actions/cache@v4
+        with:
+          path: .cache/public-originals/ttm
+          key: public-ttm-sha256-v1-${{ hashFiles('config/public_historical_original_backfill_20261008.json') }}
+
       - name: Recover and cache exact historic issuer TTM originals (Public only)
         continue-on-error: true
         timeout-minutes: 18
@@ -196,7 +202,7 @@ jobs:
           python -m ops.public_historical_ttm_originals \
             --config config/public_historical_original_backfill_20261008.json \
             --output output/originals/ttm \
-            --cache-dir runtime/latest/originals/ttm
+            --cache-dir .cache/public-originals/ttm
 
       - name: Update durable public lead lifecycle
         run: |
@@ -556,6 +562,90 @@ jobs:
               raise SystemExit("PUBLIC_ACQUISITION_HARD_FAIL: "+",".join(h.get("hard_failures") or []))
           print("PUBLIC_ACQUISITION_HEALTH_"+str(h.get("status") or "UNKNOWN"))
           PY
+
+      # Versioned compact transport. All logical manifest paths remain intact,
+      # but duplicate CAS bytes are shipped once in bounded, independently
+      # downloadable PDF shards. Retain the legacy artifact for compatibility.
+      - name: Prepare Public deduplicated delivery shards
+        if: success()
+        run: |
+          python -m ops.public_delivery_shards \
+            --root output --universe config/research_universe.json \
+            --output delivery_shards --shards 8 \
+            --run-id "$GITHUB_RUN_ID" --attempt "$GITHUB_RUN_ATTEMPT" \
+            --commit-sha "$GITHUB_SHA"
+
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: public-delivery-metadata-${{ github.run_id }}-${{ github.run_attempt }}
+          path: delivery_shards/metadata/
+          if-no-files-found: error
+          retention-days: 7
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ success() && hashFiles('delivery_shards/pdf-00/**/*') != '' }}
+        with:
+          name: public-delivery-pdf-00-${{ github.run_id }}-${{ github.run_attempt }}
+          path: delivery_shards/pdf-00/
+          if-no-files-found: error
+          retention-days: 7
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ success() && hashFiles('delivery_shards/pdf-01/**/*') != '' }}
+        with:
+          name: public-delivery-pdf-01-${{ github.run_id }}-${{ github.run_attempt }}
+          path: delivery_shards/pdf-01/
+          if-no-files-found: error
+          retention-days: 7
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ success() && hashFiles('delivery_shards/pdf-02/**/*') != '' }}
+        with:
+          name: public-delivery-pdf-02-${{ github.run_id }}-${{ github.run_attempt }}
+          path: delivery_shards/pdf-02/
+          if-no-files-found: error
+          retention-days: 7
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ success() && hashFiles('delivery_shards/pdf-03/**/*') != '' }}
+        with:
+          name: public-delivery-pdf-03-${{ github.run_id }}-${{ github.run_attempt }}
+          path: delivery_shards/pdf-03/
+          if-no-files-found: error
+          retention-days: 7
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ success() && hashFiles('delivery_shards/pdf-04/**/*') != '' }}
+        with:
+          name: public-delivery-pdf-04-${{ github.run_id }}-${{ github.run_attempt }}
+          path: delivery_shards/pdf-04/
+          if-no-files-found: error
+          retention-days: 7
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ success() && hashFiles('delivery_shards/pdf-05/**/*') != '' }}
+        with:
+          name: public-delivery-pdf-05-${{ github.run_id }}-${{ github.run_attempt }}
+          path: delivery_shards/pdf-05/
+          if-no-files-found: error
+          retention-days: 7
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ success() && hashFiles('delivery_shards/pdf-06/**/*') != '' }}
+        with:
+          name: public-delivery-pdf-06-${{ github.run_id }}-${{ github.run_attempt }}
+          path: delivery_shards/pdf-06/
+          if-no-files-found: error
+          retention-days: 7
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ success() && hashFiles('delivery_shards/pdf-07/**/*') != '' }}
+        with:
+          name: public-delivery-pdf-07-${{ github.run_id }}-${{ github.run_attempt }}
+          path: delivery_shards/pdf-07/
+          if-no-files-found: error
+          retention-days: 7
 
       - uses: actions/upload-artifact@v4
         if: always()
