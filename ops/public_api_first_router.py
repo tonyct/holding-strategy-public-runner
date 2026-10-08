@@ -33,7 +33,8 @@ def validate(row):
     if row["field"] in CORE:
         for name in ("currency","period_end","period_type","scope","unit_multiplier"):
             if row.get(name) in (None,""):return "MISSING_"+name.upper()
-        if row["currency"]=="UNVERIFIED":return "UNVERIFIED_CURRENCY"\n        if row["scope"] not in ("CONSOLIDATED","PARENT","ENTITY","UNKNOWN"):return "INVALID_SCOPE"
+        if row["currency"]=="UNVERIFIED":return "UNVERIFIED_CURRENCY"
+        if row["scope"] not in ("CONSOLIDATED","PARENT","ENTITY","UNKNOWN"):return "INVALID_SCOPE"
         if row["field"] not in SNAPSHOT and not row.get("period_start"):return "MISSING_PERIOD_START"
         try:
             if not Decimal(str(row["unit_multiplier"])).is_finite() or Decimal(str(row["unit_multiplier"]))<=0:return "INVALID_MULTIPLIER"
