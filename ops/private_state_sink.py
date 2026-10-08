@@ -41,6 +41,7 @@ def main():
         for pattern in ("PUBLIC_RESEARCH_BUNDLE.json","ACQUISITION_HEALTH.json","compute/*.json",
                         "state/*.json","originals/**/*RECEIPT.json"):
             selected.extend(x for x in root.glob(pattern) if x.is_file())
+        if not str(a.run_id).isdigit(): raise ValueError("INVALID_RUN_ID")
         prefix="runtime/public_inputs/runs/"+str(a.run_id)
         written=[]
         for src in sorted(set(selected)):
