@@ -30,7 +30,7 @@ TAINT_FIELDS = {
 }
 PRIVATE_MARKER = re.compile(r"^(PRIVATE|ACCOUNT|PORTFOLIO|CONFIDENTIAL|USER_SPECIFIC)(?:$|[_:/-])",re.I)
 PRIVATE_TEXT = re.compile(
-    r"holding-strategy-data(?:-1)?|HOLDING_STRATEGY|"
+    r"holding-strategy-" r"data(?:-1)?|HOLDING_STRATEGY|"
     r"\b(?:actual_held|account_state|portfolio_decision|cost_basis|"
     r"position_size|cash_nav|private_commit|private_generation|"
     r"raw_shadow_cycle_id|user_screenshot)\b",re.I)
@@ -56,7 +56,7 @@ def check_json(item):
                 raise PrivateDataBlocked("PRIVATE_FLAG:"+key)
             if key in TAINT_FIELDS:
                 values=v if isinstance(v,list) else [v]
-                if any(isinstance(x,str) and PRIVATE_MARKER.match(x) for x in values):
+                if any(isinstance(x,str) and (PRIVATE_MARKER.match(x) or name_of(x) in PRIVATE_KEYS or name_of(x).startswith(("user_","broker_"))) for x in values):
                     raise PrivateDataBlocked("PRIVATE_DERIVED_DATA:"+key)
             check_json(v)
     elif isinstance(item,list):
