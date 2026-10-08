@@ -469,6 +469,8 @@ jobs:
                       reason=str(request.get("reason") or "").strip()
               except (OSError, ValueError, TypeError):
                   pass
+          from ops.public_private_firewall import check_request
+          check_request(reason, request_id)
           refresh_request=None
           if request_id:
               refresh_request={
@@ -550,6 +552,14 @@ jobs:
               raise SystemExit("Private/account semantic detected in public output: "+", ".join(failures))
           print("PUBLIC_OUTPUT_PRIVACY_PASS")
           PY
+
+      - name: Enforce Private data firewall
+        shell: bash
+        run: |
+          python -m ops.public_private_firewall \
+            --root output \
+            --manifest output/PUBLIC_RESEARCH_BUNDLE.json \
+            --universe config/research_universe.json
 
       - name: Enforce acquisition health
         shell: bash
