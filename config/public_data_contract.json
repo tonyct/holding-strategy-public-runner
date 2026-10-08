@@ -1,7 +1,7 @@
 {
   "schema": "PUBLIC_DATA_ACQUISITION_CONTRACT/v1",
   "contract_id": "PUBLIC_DATA_ACQUISITION_CONTRACT_V1_20261007",
-  "role": "PUBLIC_MARKET_DATA_AND_EVIDENCE_ACQUISITION_ONLY",
+  "role": "PUBLIC_MARKET_DATA_EVIDENCE_AND_COMPANY_RESEARCH_COMPUTE_ONLY",
   "request_semantics": "RESEARCH_COVERAGE_NOT_ACCOUNT_HOLDINGS",
   "allowed_request_fields": [
     "symbol",
@@ -35,14 +35,17 @@
     "official_filings",
     "community_discovery",
     "news_discovery",
-    "ir_discovery"
+    "ir_discovery",
+    "company_research_facts",
+    "evidence_registry"
   ],
   "output_requirements": [
     "source",
     "source_timestamp_or_session_date",
     "period_or_as_of",
     "sha256_or_content_identity",
-    "verification_state"
+    "verification_state",
+    "public_only_contract"
   ],
   "no_private_repo_dependency": true,
   "no_investment_decision_logic": true,
@@ -69,5 +72,15 @@
     "nav",
     "orders",
     "portfolio_decisions"
-  ]
+  ],
+  "optional_private_state_sink": {
+    "enabled_by_secret": "PRIVATE_STATE_REPO_TOKEN",
+    "direction": "PUBLIC_TO_PRIVATE_ONLY",
+    "computation_must_not_depend_on_sink": true,
+    "allowed_payloads": [
+      "PUBLIC_COMPANY_RESEARCH_SNAPSHOT",
+      "PUBLIC_EVIDENCE_REGISTRY",
+      "PUBLIC_OFFICIAL_EVIDENCE_BYTES"
+    ]
+  }
 }
