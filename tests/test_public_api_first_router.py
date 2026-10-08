@@ -32,6 +32,9 @@ class TestRouter(unittest.TestCase):
  def test_numeric_equivalent_sources_do_not_conflict(self):
   q=route(["148.HK"],[record("revenue","1.0"),record("revenue","1.00")],NOW)
   self.assertIn("revenue",q["selected_candidates"]["148.HK"])
+ def test_prior_period_not_false_conflict(self):
+  q=route(["148.HK"],[record("revenue","100",period_end="2025-12-31"),record("revenue","120")],NOW)
+  self.assertEqual(q["selected_candidates"]["148.HK"]["revenue"]["value_normalized"],"120000")
  def test_dynamic_universe(self):
   q=route(["148.HK","600941.SH"],[],NOW)
   self.assertEqual(len(q["symbols"]),2)
