@@ -27,6 +27,11 @@ class TestRouter(unittest.TestCase):
   self.assertNotIn("revenue",q["selected_candidates"].get("148.HK",{}))
  def test_ai_requires_page_and_literal_proof(self):
   self.assertEqual(validate(record("revenue",source="AI_DOCUMENT_EXTRACTION")),"AI_EVIDENCE_REQUIRED")
+ def test_unknown_currency_not_accepted(self):
+  self.assertEqual(validate(record("revenue",currency="UNVERIFIED")),"UNVERIFIED_CURRENCY")
+ def test_numeric_equivalent_sources_do_not_conflict(self):
+  q=route(["148.HK"],[record("revenue","1.0"),record("revenue","1.00")],NOW)
+  self.assertIn("revenue",q["selected_candidates"]["148.HK"])
  def test_dynamic_universe(self):
   q=route(["148.HK","600941.SH"],[],NOW)
   self.assertEqual(len(q["symbols"]),2)
