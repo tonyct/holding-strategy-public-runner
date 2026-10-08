@@ -78,6 +78,11 @@ def route(symbols,records,now_iso,market_ttl_hours=24):
                     tasks.append({"symbol":symbol,"field":field,"action":"SEARCH_OFFICIAL_REPORT_THEN_AI_IF_NEEDED",
                                   "automatic_verification":False})
                 continue
+            # Compare the newest accounting period, not FY and interim snapshots as conflicts.
+            # Historical records remain available in the source artifact for TTM analysis.
+            if field in CORE and options:
+                latest=max(r["period_end"] for r in options)
+                options=[r for r in options if r["period_end"]==latest]
             # Different periods and currencies must never be silently merged.
             contexts={(r.get("currency"),r.get("period_start"),r.get("period_end"),
                        r.get("scope"),r.get("period_type")) for r in options} if field in CORE else {(r.get("price_session"),r.get("metric_definition"),r.get("denominator_period")) for r in options}
