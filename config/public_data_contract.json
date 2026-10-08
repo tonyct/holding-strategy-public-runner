@@ -1,7 +1,7 @@
 {
   "schema": "PUBLIC_DATA_ACQUISITION_CONTRACT/v1",
   "contract_id": "PUBLIC_DATA_ACQUISITION_CONTRACT_V1_20261007",
-  "role": "PUBLIC_MARKET_DATA_AND_EVIDENCE_ACQUISITION_ONLY",
+  "role": "PUBLIC_MARKET_DATA_EVIDENCE_AND_DETERMINISTIC_COMPUTE_ONLY",
   "request_semantics": "RESEARCH_COVERAGE_NOT_ACCOUNT_HOLDINGS",
   "allowed_request_fields": [
     "symbol",
@@ -35,7 +35,10 @@
     "official_filings",
     "community_discovery",
     "news_discovery",
-    "ir_discovery"
+    "ir_discovery",
+    "deterministic_metrics",
+    "evidence_index",
+    "run_snapshot"
   ],
   "output_requirements": [
     "source",
@@ -69,5 +72,16 @@
     "nav",
     "orders",
     "portfolio_decisions"
+  ],
+  "deterministic_public_compute_only": true,
+  "no_valuation_logic": true,
+  "no_recommendation_logic": true,
+  "compute_output_requirements": [
+    "source_artifact_sha256",
+    "source_verification_state_inherited",
+    "deterministic_formula_only",
+    "no_valuation",
+    "no_portfolio_logic",
+    "no_trade_logic"
   ]
 }
