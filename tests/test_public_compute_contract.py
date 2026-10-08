@@ -19,4 +19,11 @@ class PublicComputeContractTests(unittest.TestCase):
   self.assertIn("PUBLIC_DETERMINISTIC_METRICS.json",s);self.assertIn("PUBLIC_EVIDENCE_INDEX.json",s);self.assertIn("PUBLIC_RUN_SNAPSHOT.json",s)
   self.assertFalse(any('\\n          assert contract.get' in line for line in s.splitlines()), 'BROKEN_LITERAL_NEWLINE_ASSERT')
   self.assertNotIn('\\\\n          assert contract.get',s)
+ def test_public_workflow_uses_broad_report_window_and_no_primary_ready_claim(self):
+  s=Path(".github/workflows/public_research.yml").read_text()
+  self.assertIn("75 days ago",s)
+  c=Path("ops/public_company_compute.py").read_text()
+  self.assertNotIn("PUBLIC_PRIMARY_EVIDENCE_READY",c)
+  self.assertIn("WINDOW_COMPLETE_NO_NEW_OFFICIAL_ORIGINALS",c)
+
 if __name__=="__main__":unittest.main()
