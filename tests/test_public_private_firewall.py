@@ -9,6 +9,14 @@ from ops.public_private_firewall import (
 )
 
 class PublicFirewallTests(unittest.TestCase):
+    def test_live_public_refresh_control_is_allowlisted(self):
+        # A bad push trigger otherwise burns a full issuer acquisition run
+        # before Build public-safe manifest rejects its request reason.
+        trigger=Path(__file__).resolve().parents[1]/"trigger-public-run.txt"
+        row=json.loads(trigger.read_text(encoding="utf-8"))
+        self.assertEqual(row["schema"],"PUBLIC_REFRESH_REQUEST/v1")
+        self.assertEqual(row["privacy_class"],"PUBLIC_REFRESH_CONTROL_ONLY")
+        self.assertTrue(check_request(row.get("reason"),row.get("request_id")))
     def test_public_financials(self):
         check_json({"symbol":"ABC","financials":{"cash":10,"net_debt":2},"privacy_class":"PUBLIC_MARKET_DATA_ONLY"})
     def test_private_lineage_and_outputs(self):
