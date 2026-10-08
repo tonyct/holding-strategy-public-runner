@@ -1,0 +1,41 @@
+{
+  "schema": "PUBLIC_RUN_SNAPSHOT/v1",
+  "privacy_class": "PUBLIC_MARKET_DATA_ONLY",
+  "created_at_utc": "2026-10-08T01:36:33.797905Z",
+  "source_run_id": "37713487449",
+  "source_run_attempt": "1",
+  "source_commit_sha": "322e80b105d19aa4aada1fa40d4269b1038a0957",
+  "universe_sha256": "951695d407c5a3ad05838363654aa57d9edf7c51a978e7ca3815dae792abc82c",
+  "active_symbol_count": 11,
+  "active_symbols": [
+    "001286.SZ",
+    "148.HK",
+    "2233.HK",
+    "3933.HK",
+    "600499.SH",
+    "600795.SH",
+    "600941.SH",
+    "601857.SH",
+    "603871.SH",
+    "603993.SH",
+    "9926.HK"
+  ],
+  "acquisition_health": {
+    "sha256": "2a0919bc1ed273e7cec73139bba48ee9bd6724b846988e4334f7bee326fac5d8",
+    "status": "PASS"
+  },
+  "evidence_index": {
+    "sha256": "77db3f3b84e2bad816d7ebbc683785e5d08aa8f63884e629dafce460e9efdf7a",
+    "artifact_count": 31
+  },
+  "deterministic_metrics": {
+    "sha256": "c48128766ab100ac37bc7839b032cf87c786ea5552a9088864ff449ae6977f3a",
+    "schema": "PUBLIC_DETERMINISTIC_METRICS/v1"
+  },
+  "immutable_run_binding": true,
+  "no_private_repo_dependency": true,
+  "contains_account_state": false,
+  "contains_portfolio_decision": false,
+  "no_valuation": true,
+  "no_trade_logic": true
+}
