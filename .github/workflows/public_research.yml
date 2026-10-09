@@ -21,6 +21,7 @@ on:
     branches: [main]
     paths:
       - 'trigger-public-run.txt'
+      - 'config/research_universe.json'  # Public-only independent coverage expansion
 
 permissions:
   contents: write
