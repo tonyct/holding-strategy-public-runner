@@ -22,6 +22,7 @@ on:
     paths:
       - 'trigger-public-run.txt'
       - 'config/research_universe.json'  # Public-only independent coverage expansion
+      - 'config/public_research_requests.json'  # Symbol-only request: never account metadata
 
 permissions:
   contents: write
@@ -92,6 +93,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+
+      - name: Materialize public-only dynamic coverage requests
+        run: |
+          python -m ops.public_coverage_requests \
+            --universe config/research_universe.json \
+            --requests config/public_research_requests.json \
+            --receipt output/coverage/PUBLIC_COVERAGE_EXPANSION.json
 
       - name: Validate public data-only contract
         shell: bash
