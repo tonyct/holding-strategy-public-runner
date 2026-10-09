@@ -23,7 +23,7 @@ def expand(universe, requests):
     if ((requests.get("schema"), requests.get("source")) != (
             "PUBLIC_INDEPENDENT_COVERAGE_REQUESTS/v1",
             "PUBLIC_RESEARCH_ONLY_NOT_ACCOUNT_HOLDINGS")
-            or set(requests) - {"schema", "source", "symbols", "note"}):
+            or set(requests) - {"schema", "source", "symbols"}):
         raise ValueError("PUBLIC_REQUEST_SCHEMA_OR_PRIVACY_INVALID")
     symbols = requests.get("symbols")
     if not isinstance(symbols, list):
