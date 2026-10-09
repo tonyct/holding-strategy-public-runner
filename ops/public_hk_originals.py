@@ -13,7 +13,14 @@ def load_scope(universe_path,map_path):
     out={}
     for s in symbols:
         row=(m.get("issuers") or {}).get(s)
-        if not row: raise ValueError("HKEX_MAP_MISSING:"+s)
+        if not row:
+            # A newly added HK issuer must not stop every other HK retrieval.
+            # SHADOW may use targeted public search and extend this PUBLIC map
+            # only after identifying the exchange's real stock_id and issuer.
+            out[s]=(None,())
+            continue
+        if not row.get("stock_id") or not row.get("issuer_names"):
+            raise ValueError("HKEX_MAP_ENTRY_INCOMPLETE:"+s)
         out[s]=(str(row["stock_id"]),tuple(row["issuer_names"]))
     return out
 
@@ -64,6 +71,14 @@ def main():
     report={"schema":"PUBLIC_HK_CURRENT_WINDOW_ORIGINALS/v1","date_window":[start,end],"checked_at_utc":now.isoformat(),"symbols":{}}
     with requests.Session() as s:
         for symbol,(sid,names) in scope.items():
+            if sid is None:
+                report["symbols"][symbol]={"indexed":0,"attempted":0,"fetched":0,
+                    "files":[],"complete":False,
+                    "status":"HKEX_ISSUER_ID_DISCOVERY_REQUIRED",
+                    "error":"PUBLIC_EXCHANGE_ISSUER_IDENTIFIER_UNVERIFIED"}
+                (out/"HK_ORIGINALS_RECEIPT.json").write_text(
+                    json.dumps(report,ensure_ascii=False,indent=2)+"\n")
+                continue
             try:
                 rows=index(s,symbol,sid,start,end);(out/(symbol.replace(".","_")+"_announcement_index.json")).write_text(json.dumps(rows,ensure_ascii=False,indent=2))
                 chosen=rows[:max(1,min(a.max_per_symbol,100))];files=[fetch(s,x,symbol,names,out) for x in chosen]
