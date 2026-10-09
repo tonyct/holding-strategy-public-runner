@@ -1,6 +1,10 @@
 """Public-only dynamic coverage: no holdings, no private state, no ticker caps at 11."""
 import copy
 import unittest
+import json
+import tempfile
+from pathlib import Path
+from ops.public_hk_originals import load_scope
 from ops.public_coverage_requests import expand, MAX_SYMBOLS
 
 U = {
@@ -43,6 +47,20 @@ class Coverage(unittest.TestCase):
                         ["../../../etc/passwd"]):
             with self.assertRaises(ValueError):
                 expand(U, dict(Q, symbols=invalid))
+
+    def test_new_hk_issuer_is_isolated_pending_exchange_id_research(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d)
+            universe=copy.deepcopy(U)
+            universe["stocks"].append({"symbol":"9999.HK","active":True})
+            index={"schema":"PUBLIC_HKEX_ISSUER_ID_MAP/v1",
+                   "issuers":{"148.HK":{"stock_id":"256","issuer_names":["KINGBOARD"]}}}
+            (root/"u.json").write_text(json.dumps(universe))
+            (root/"m.json").write_text(json.dumps(index))
+            got=load_scope(root/"u.json",root/"m.json")
+            self.assertEqual(got["148.HK"],("256",("KINGBOARD",)))
+            self.assertEqual(got["9999.HK"],(None,()))
+            self.assertNotIn("600941.SH",got)
 
     def test_no_overwrite_or_duplicate_existing_public_pool(self):
         bad = copy.deepcopy(U)
