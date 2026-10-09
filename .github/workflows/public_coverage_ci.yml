@@ -1,0 +1,32 @@
+name: Public independent coverage privacy regression
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/public_coverage_ci.yml'
+      - 'ops/public_coverage_requests.py'
+      - 'ops/test_public_coverage_requests.py'
+      - 'config/public_research_requests.json'
+      - '.github/workflows/public_research.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test-coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile public coverage and run adversarial tests
+        run: |
+          python -m compileall -q ops/public_coverage_requests.py ops/test_public_coverage_requests.py
+          python -m unittest ops.test_public_coverage_requests -v
+      - name: Ensure empty public requests do not imply private holdings
+        run: |
+          python -m ops.public_coverage_requests \
+            --universe config/research_universe.json \
+            --requests config/public_research_requests.json
+# This workflow checks only PUBLIC research code; no private credentials or state.
