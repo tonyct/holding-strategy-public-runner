@@ -23,6 +23,7 @@ on:
       - 'trigger-public-run.txt'
       - 'config/research_universe.json'  # Public-only independent coverage expansion
       - 'config/public_research_requests.json'  # Symbol-only request: never account metadata
+      - 'config/hkex_issuer_ids.json'  # Public exchange issuer identifiers only
 
 permissions:
   contents: write
