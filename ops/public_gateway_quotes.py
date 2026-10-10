@@ -23,10 +23,13 @@ def _validate(rows,request):
         seen.add(stamp)
         if str(row["code"]).split(".")[-1] != code:
             raise ValueError("QUOTE_SYMBOL_MISMATCH")
-        for key in ("open","high","low","close","volume","amount"):
+        for key in ("open","high","low","close","volume"):
             row[key]=_number(row[key])
+        if row.get("amount") is not None:
+            row["amount"]=_number(row["amount"])
         low=Decimal(row["low"]);high=Decimal(row["high"])
-        if high<low or Decimal(row["volume"])<0 or Decimal(row["amount"])<0:
+        if (high<low or Decimal(row["volume"])<0 or
+                (row.get("amount") is not None and Decimal(row["amount"])<0)):
             raise ValueError("INVALID_QUOTE_RANGE")
     return rows
 
@@ -72,23 +75,82 @@ def _akshare(request):
         if len(rows)>400:raise ValueError("PROVIDER_ROW_LIMIT")
     return rows
 
+def _yahoo_chart(request):
+    """HKD OHLCV history, no turnover amount: always a PARTIAL source."""
+    import requests
+    import datetime as dt
+    from zoneinfo import ZoneInfo
+    symbol=request["symbol"]
+    if not symbol.endswith(".HK"):
+        raise ValueError("YAHOO_CHART_ONLY_VALIDATED_FOR_HK")
+    code=symbol.split(".")[0]
+    zone=ZoneInfo("Asia/Hong_Kong")
+    start=dt.date.fromisoformat(request["start_date"])
+    end=dt.date.fromisoformat(request["end_date"])
+    period1=int(dt.datetime.combine(start,dt.time.min,zone).timestamp())
+    period2=int(dt.datetime.combine(end+dt.timedelta(days=1),dt.time.min,zone).timestamp())
+    errors=[]
+    for host in ("query2.finance.yahoo.com","query1.finance.yahoo.com"):
+        try:
+            url="https://"+host+"/v8/finance/chart/"+code.zfill(4)+".HK"
+            resp=requests.get(url,params={"period1":period1,"period2":period2,
+                 "interval":"1d","events":"history"},timeout=(5,15),
+                 headers={"Accept":"application/json",
+                          "User-Agent":"Mozilla/5.0 (compatible; PublicResearch/1.0)"},
+                 allow_redirects=False)
+            if resp.status_code!=200 or len(resp.content)>2_000_000:
+                raise ValueError("YAHOO_HTTP_OR_SIZE_"+str(resp.status_code))
+            blocks=(resp.json().get("chart") or {}).get("result") or []
+            if len(blocks)!=1:raise ValueError("YAHOO_RESULT_AMBIGUOUS_OR_EMPTY")
+            block=blocks[0];meta=block.get("meta") or {}
+            if (meta.get("currency")!="HKD" or meta.get("symbol")!=code.zfill(4)+".HK"):
+                raise ValueError("YAHOO_CURRENCY_OR_SYMBOL_MISMATCH")
+            stamps=block.get("timestamp") or []
+            quotes=((block.get("indicators") or {}).get("quote") or [{}])[0]
+            result=[]
+            for i,epoch in enumerate(stamps):
+                at=dt.datetime.fromtimestamp(int(epoch),dt.timezone.utc).astimezone(zone)
+                day=at.date()
+                if not start<=day<=end:continue
+                row={"date":day.isoformat(),"code":code,
+                     "open":(quotes.get("open") or [])[i],
+                     "high":(quotes.get("high") or [])[i],
+                     "low":(quotes.get("low") or [])[i],
+                     "close":(quotes.get("close") or [])[i],
+                     "volume":(quotes.get("volume") or [])[i],
+                     "amount":None,"adjustflag":"3"}
+                if any(row[k] is None for k in ("open","high","low","close","volume")):
+                    continue
+                result.append(row)
+                if len(result)>400:raise ValueError("YAHOO_ROW_LIMIT")
+            return result
+        except Exception as exc:
+            errors.append(type(exc).__name__+":"+str(exc)[:100])
+    raise RuntimeError("YAHOO_CHART_ALL_HOSTS_FAILED:"+";".join(errors))
+
+
 def fetch_quotes(request):
     selected=request.get("source","AUTO")
     hk=request["symbol"].endswith(".HK")
-    names=(["akshare"] if hk else ["baostock","akshare"]) if selected=="AUTO" else [selected]
+    names=(["akshare","yahoo_chart"] if hk else ["baostock","akshare"]) if selected=="AUTO" else [selected]
     if hk and "baostock" in names:
         raise ValueError("HK_BAOSTOCK_NOT_SUPPORTED")
     attempts=[]
     for source in names:
         try:
-            rows=(_baostock if source=="baostock" else _akshare)(request)
+            handler={"baostock":_baostock,"akshare":_akshare,"yahoo_chart":_yahoo_chart}.get(source)
+            if handler is None:raise ValueError("UNKNOWN_APPROVED_SOURCE")
+            rows=handler(request)
             if not rows:
                 attempts.append({"source":source,"outcome":"EMPTY"})
                 continue
             rows=_validate(rows,request)
-            return rows,{"required":1,"fetched":1,"source_used":source,
+            missing_turnover=any(row.get("amount") is None for row in rows)
+            return rows,{"required":2 if missing_turnover else 1,
+                         "fetched":1,"source_used":source,
                          "fetch_state":"RAW_QUOTES_FETCHED_UNVERIFIED",
                          "source_attempts":attempts,
+                         "missing_fields":["amount"] if missing_turnover else [],
                          "quote_currency":"HKD" if hk else "CNY",
                          "normalized_volume_unit":"AS_RETURNED" if hk else "shares",
                          "provider_raw_volume_unit":("AS_RETURNED" if hk else
