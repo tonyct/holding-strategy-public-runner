@@ -17,6 +17,13 @@ CATEGORIES = {
                           "fields": ["date", "code", "open", "high", "low", "close", "volume", "amount", "adjustflag"]},
 }
 CATEGORIES.update(EXTENDED)
+CATEGORIES["sec_companyfacts"]={
+    "adapter":"sec_edgar_companyfacts","markets":["US"],
+    "source_options":["AUTO","sec_edgar"],
+    "fields":["us-gaap monetary observations","filing accession",
+              "official filed_at","report_period_end"],
+    "note":"SEC XBRL API transport only; never independent issuer page economic review",
+}
 # PUBLIC-only coverage seeds; these are not user holdings or investment
 # recommendations. Discovery must not leak any PRIVATE research hypothesis.
 def _public_coverage_seed():
@@ -106,6 +113,9 @@ def execute(request):
     if request["data_type"]=="historical_quotes":
         from ops.public_gateway_quotes import fetch_quotes
         return fetch_quotes(request)
+    if request["data_type"]=="sec_companyfacts":
+        from ops.public_gateway_sec_facts import fetch_sec_companyfacts
+        return fetch_sec_companyfacts(request)
     if request["data_type"]!="historical_quotes":
         return execute_extended(request)
     import baostock as bs
