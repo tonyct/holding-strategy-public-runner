@@ -6,9 +6,11 @@ on:
     paths:
       - 'ops/public_data_gateway.py'
       - 'ops/public_gateway_extended.py'
+      - 'ops/public_gateway_quotes.py'
       - 'ops/public_gateway_extended.py'
       - 'tests/test_public_data_gateway.py'
       - 'tests/test_public_gateway_extended.py'
+      - 'tests/test_public_gateway_quotes.py'
       - 'tests/test_public_gateway_extended.py'
       - '.github/workflows/public_gateway_tests.yml'
   workflow_dispatch:
