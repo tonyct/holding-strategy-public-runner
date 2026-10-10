@@ -9,10 +9,13 @@ from pathlib import Path
 SCHEMA = "PUBLIC_DATA_GATEWAY_REQUEST/v1"
 SYMBOL = re.compile(r"(?:[0-9]{6}\.(?:SH|SZ)|[0-9]{1,5}\.HK)\Z")
 ID = re.compile(r"[A-Za-z0-9_-]{8,80}\Z")
+from ops.public_gateway_extended import CAPABILITIES as EXTENDED, execute_extended
+
 CATEGORIES = {
     "historical_quotes": {"adapter": "baostock", "markets": ["SH", "SZ"],
                           "fields": ["date", "code", "open", "high", "low", "close", "volume", "amount", "adjustflag"]},
 }
+CATEGORIES.update(EXTENDED)
 FORBIDDEN = {"holdings", "holding", "portfolio", "position", "quantity", "cost_basis",
              "account", "balance", "nav", "cash", "pnl", "target_price",
              "valuation", "thesis", "trade", "order", "private", "shadow_cycle_id"}
@@ -47,7 +50,7 @@ def validate(request):
         raise ValueError("UNSUPPORTED_DATA_TYPE")
     if symbol.rsplit(".", 1)[1] not in CATEGORIES[category]["markets"]:
         raise ValueError("MARKET_NOT_SUPPORTED")
-    if request.get("source", "AUTO") not in ("AUTO", CATEGORIES[category]["adapter"]):
+    if request.get("source", "AUTO") not in CATEGORIES[category].get("source_options", ("AUTO", CATEGORIES[category]["adapter"])):
         raise ValueError("SOURCE_NOT_SUPPORTED")
     try:
         start = dt.date.fromisoformat(request["start_date"])
@@ -56,9 +59,15 @@ def validate(request):
         raise ValueError("INVALID_DATE") from exc
     if end < start or (end - start).days > 366 or end > dt.datetime.now(dt.timezone.utc).date():
         raise ValueError("INVALID_DATE_WINDOW")
+    if category=="financial_statements" and end.strftime("%m-%d") not in ("03-31","06-30","09-30","12-31"):
+        raise ValueError("FINANCIAL_PERIOD_MUST_BE_QUARTER_END")
+    if category=="official_filings" and (end-start).days > 75:
+        raise ValueError("ORIGINALS_REQUIRE_75_DAY_WINDOW")
 
 def execute(request):
     """Execute a bounded public-only provider request; never claim issuer validation."""
+    if request["data_type"]!="historical_quotes":
+        return execute_extended(request)
     import baostock as bs
     symbol = request["symbol"]
     market = symbol.split(".")[1].lower()
@@ -96,20 +105,27 @@ def process(request, output):
         base.update(status="DELIVERED", capabilities=CATEGORIES, actual_fetch_count=0)
     else:
         base.update(symbol=request["symbol"], data_type=request["data_type"],
-                    provider="baostock", requested_period=[request["start_date"], request["end_date"]])
+                    provider=CATEGORIES[request["data_type"]]["adapter"],
+                    requested_period=[request["start_date"], request["end_date"]])
         try:
-            rows, status = execute(request)
+            rows, detail = execute(request)
+            meta=detail if isinstance(detail,dict) else {"fetch_state":detail}
+            coverage=meta.get("fetched", 1 if rows else 0)
+            required=meta.get("required", 1)
             if rows:
-                raw = (json.dumps({"source": "baostock", "request": request,
+                state="DELIVERED" if coverage>=required else "PARTIAL"
+                raw = (json.dumps({"source":base["provider"], "request": request,
                                    "rows": rows}, ensure_ascii=False, sort_keys=True) + "\n").encode()
                 file = output / "RAW_RESPONSE.json"
                 file.write_bytes(raw)
-                base.update(status="DELIVERED", fetch_state=status, row_count=len(rows),
+                base.update(status=state, fetch_state=meta.get("fetch_state","FETCHED_UNVERIFIED"),
+                            source_details=meta, row_count=len(rows),
                             response_file=file.name, response_sha256=digest(raw),
-                            provider_reported_source="baostock",
+                            provider_reported_source=base["provider"],
                             verification_state="RAW_API_UNVERIFIED")
             else:
-                base.update(status="GAP", fetch_state=status, row_count=0, error_code=status)
+                base.update(status="GAP", fetch_state="EMPTY_OR_INCOMPLETE", row_count=0,
+                            source_details=meta, error_code=meta.get("gap_reason","EMPTY_RESULT"))
         except Exception as exc:
             base.update(status="GAP", fetch_state="FAILED", row_count=0,
                         error_code=str(exc)[:200], exception_type=type(exc).__name__)
