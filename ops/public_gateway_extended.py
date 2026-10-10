@@ -80,7 +80,8 @@ def official_filings(request):
                   "03-31":[year+"年第一季度报告",year+"年一季度报告"],
                   "09-30":[year+"年第三季度报告",year+"年三季度报告"]}[target[5:]]
         candidates=[r for r in candidates if any(x in
-                    "".join(str(r["title"]).split()) for x in expected)]
+                    "".join(str(r["title"]).split()) for x in expected)
+                    and not any(k in r["title"] for k in ("摘要","提示性公告","更正","说明","英文"))]
     # Prioritize complete financial reports over abstracts, notices and amendments.
     candidates.sort(key=lambda x:(any(k in x["title"] for k in
                            ("摘要","提示性公告","更正","说明","英文")),len(x["title"])))
@@ -104,7 +105,7 @@ def official_filings(request):
                 buf=bytearray()
                 for chunk in resp.iter_content(65536):
                     buf.extend(chunk)
-                    if len(buf)>3*1024*1024:raise ValueError("ORIGINAL_PDF_TOO_LARGE_FOR_ON_DEMAND")
+                    if len(buf)>8*1024*1024:raise ValueError("ORIGINAL_PDF_TOO_LARGE_FOR_ON_DEMAND")
             raw=bytes(buf)
             if not raw.startswith(b"%PDF-") or b"%%EOF" not in raw[-8192:]:
                 raise ValueError("INVALID_OFFICIAL_PDF_BYTES")
