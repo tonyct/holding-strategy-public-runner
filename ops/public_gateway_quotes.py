@@ -76,15 +76,18 @@ def _akshare(request):
     return rows
 
 def _yahoo_chart(request):
-    """HKD OHLCV history, no turnover amount: always a PARTIAL source."""
+    """Bounded HKD/USD OHLCV history. Provider has no turnover amount."""
     import requests
     import datetime as dt
     from zoneinfo import ZoneInfo
     symbol=request["symbol"]
-    if not symbol.endswith(".HK"):
-        raise ValueError("YAHOO_CHART_ONLY_VALIDATED_FOR_HK")
+    if not symbol.endswith((".HK",".US")):
+        raise ValueError("YAHOO_CHART_ONLY_VALIDATED_FOR_HK_US")
+    hk=symbol.endswith(".HK")
     code=symbol.split(".")[0]
-    zone=ZoneInfo("Asia/Hong_Kong")
+    provider_symbol=code.zfill(4)+".HK" if hk else code
+    zone=ZoneInfo("Asia/Hong_Kong" if hk else "America/New_York")
+    currency="HKD" if hk else "USD"
     start=dt.date.fromisoformat(request["start_date"])
     end=dt.date.fromisoformat(request["end_date"])
     period1=int(dt.datetime.combine(start,dt.time.min,zone).timestamp())
@@ -92,7 +95,7 @@ def _yahoo_chart(request):
     errors=[]
     for host in ("query2.finance.yahoo.com","query1.finance.yahoo.com"):
         try:
-            url="https://"+host+"/v8/finance/chart/"+code.zfill(4)+".HK"
+            url="https://"+host+"/v8/finance/chart/"+provider_symbol
             resp=requests.get(url,params={"period1":period1,"period2":period2,
                  "interval":"1d","events":"history"},timeout=(5,15),
                  headers={"Accept":"application/json",
@@ -103,22 +106,20 @@ def _yahoo_chart(request):
             blocks=(resp.json().get("chart") or {}).get("result") or []
             if len(blocks)!=1:raise ValueError("YAHOO_RESULT_AMBIGUOUS_OR_EMPTY")
             block=blocks[0];meta=block.get("meta") or {}
-            if (meta.get("currency")!="HKD" or meta.get("symbol")!=code.zfill(4)+".HK"):
+            if meta.get("currency")!=currency or meta.get("symbol")!=provider_symbol:
                 raise ValueError("YAHOO_CURRENCY_OR_SYMBOL_MISMATCH")
             stamps=block.get("timestamp") or []
             quotes=((block.get("indicators") or {}).get("quote") or [{}])[0]
+            if any(len(quotes.get(k) or [])<len(stamps) for k in ("open","high","low","close","volume")):
+                raise ValueError("YAHOO_PRICE_VECTOR_INCOMPLETE")
             result=[]
             for i,epoch in enumerate(stamps):
-                at=dt.datetime.fromtimestamp(int(epoch),dt.timezone.utc).astimezone(zone)
-                day=at.date()
+                day=dt.datetime.fromtimestamp(int(epoch),dt.timezone.utc).astimezone(zone).date()
                 if not start<=day<=end:continue
                 row={"date":day.isoformat(),"code":code,
-                     "open":(quotes.get("open") or [])[i],
-                     "high":(quotes.get("high") or [])[i],
-                     "low":(quotes.get("low") or [])[i],
-                     "close":(quotes.get("close") or [])[i],
-                     "volume":(quotes.get("volume") or [])[i],
-                     "amount":None,"adjustflag":"3"}
+                     "open":quotes["open"][i],"high":quotes["high"][i],
+                     "low":quotes["low"][i],"close":quotes["close"][i],
+                     "volume":quotes["volume"][i],"amount":None,"adjustflag":"3"}
                 if any(row[k] is None for k in ("open","high","low","close","volume")):
                     continue
                 result.append(row)
@@ -128,13 +129,15 @@ def _yahoo_chart(request):
             errors.append(type(exc).__name__+":"+str(exc)[:100])
     raise RuntimeError("YAHOO_CHART_ALL_HOSTS_FAILED:"+";".join(errors))
 
-
 def fetch_quotes(request):
     selected=request.get("source","AUTO")
     hk=request["symbol"].endswith(".HK")
-    names=(["akshare","yahoo_chart"] if hk else ["baostock","akshare"]) if selected=="AUTO" else [selected]
-    if hk and "baostock" in names:
-        raise ValueError("HK_BAOSTOCK_NOT_SUPPORTED")
+    us=request["symbol"].endswith(".US")
+    names=(["yahoo_chart"] if us else ["akshare","yahoo_chart"] if hk else ["baostock","akshare"]) if selected=="AUTO" else [selected]
+    if (hk or us) and "baostock" in names:
+        raise ValueError("NON_A_SHARE_BAOSTOCK_NOT_SUPPORTED")
+    if us and any(source!="yahoo_chart" for source in names):
+        raise ValueError("US_ONLY_SUPPORTS_YAHOO_CHART")
     attempts=[]
     for source in names:
         try:
@@ -151,9 +154,9 @@ def fetch_quotes(request):
                          "fetch_state":"RAW_QUOTES_FETCHED_UNVERIFIED",
                          "source_attempts":attempts,
                          "missing_fields":["amount"] if missing_turnover else [],
-                         "quote_currency":"HKD" if hk else "CNY",
-                         "normalized_volume_unit":"AS_RETURNED" if hk else "shares",
-                         "provider_raw_volume_unit":("AS_RETURNED" if hk else
+                         "quote_currency":"HKD" if hk else "USD" if us else "CNY",
+                         "normalized_volume_unit":"shares" if us else "AS_RETURNED" if hk else "shares",
+                         "provider_raw_volume_unit":("shares" if us else "AS_RETURNED" if hk else
                            "lots_of_100_shares" if source=="akshare" else "shares")}
         except Exception as exc:
             attempts.append({"source":source,"outcome":"FAILED",
