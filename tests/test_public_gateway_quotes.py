@@ -34,6 +34,19 @@ class QuoteRouterTests(unittest.TestCase):
         with patch.dict(sys.modules,{"akshare":FakeAKShare()}):
             rows=_akshare(REQUEST)
         self.assertEqual(rows[0]["volume"],"1200")
+    def test_failed_source_receipt_must_not_claim_provider(self):
+        from ops.public_data_gateway import process
+        with tempfile.TemporaryDirectory() as d, patch("ops.public_data_gateway.execute",
+             return_value=([],{"required":1,"fetched":0,
+                               "gap_reason":"ALL_ALLOWED_QUOTE_SOURCES_UNAVAILABLE",
+                               "source_attempts":[{"source":"akshare","outcome":"FAILED"}]})):
+            req={"schema":"PUBLIC_DATA_GATEWAY_REQUEST/v1","request_id":"test_no_fake_provider_001",
+                 "operation":"EXECUTE","symbol":"001286.SZ","data_type":"historical_quotes",
+                 "start_date":"2025-09-01","end_date":"2025-09-30","source":"akshare"}
+            outcome=process(req,d)
+            self.assertEqual(outcome["status"],"GAP")
+            self.assertIsNone(outcome["provider"])
+            self.assertEqual(outcome["source_details"]["source_attempts"][0]["source"],"akshare")
     def test_primary_success(self):
         with patch("ops.public_gateway_quotes._baostock",return_value=[dict(ROW)]):
             rows,details=fetch_quotes(REQUEST)
