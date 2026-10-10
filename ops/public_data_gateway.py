@@ -30,7 +30,7 @@ def validate(request):
     if not isinstance(request, dict):
         raise ValueError("REQUEST_NOT_OBJECT")
     allowed = {"schema", "request_id", "operation", "symbol", "data_type",
-               "start_date", "end_date", "source"}
+               "start_date", "end_date", "source", "report_period_end"}
     if set(request) - allowed or set(request) & FORBIDDEN:
         raise ValueError("REQUEST_EXTRA_OR_PRIVATE_FIELDS")
     if request.get("schema") != SCHEMA or request.get("operation") not in ("DISCOVER", "EXECUTE"):
@@ -61,8 +61,16 @@ def validate(request):
         raise ValueError("INVALID_DATE_WINDOW")
     if category=="financial_statements" and end.strftime("%m-%d") not in ("03-31","06-30","09-30","12-31"):
         raise ValueError("FINANCIAL_PERIOD_MUST_BE_QUARTER_END")
-    if category=="official_filings" and (end-start).days > 75:
-        raise ValueError("ORIGINALS_REQUIRE_75_DAY_WINDOW")
+    if category=="official_filings":
+        if (end-start).days > 75:
+            raise ValueError("ORIGINALS_REQUIRE_75_DAY_WINDOW")
+        target=request.get("report_period_end")
+        if target is not None:
+            if (not isinstance(target,str) or not re.fullmatch(r"20[0-9]{2}-(03-31|06-30|09-30|12-31)",target)
+                    or dt.date.fromisoformat(target)>end):
+                raise ValueError("INVALID_TARGET_REPORT_PERIOD")
+    elif "report_period_end" in request:
+        raise ValueError("REPORT_PERIOD_ONLY_FOR_ORIGINAL_FILINGS")
 
 def execute(request):
     """Execute a bounded public-only provider request; never claim issuer validation."""
