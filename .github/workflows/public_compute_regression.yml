@@ -4,6 +4,8 @@ on:
     branches: [main]
   push:
     branches: [main]
+    paths-ignore:
+      - 'requests/public_gateway/**'
 permissions:
   contents: read
 jobs:
