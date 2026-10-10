@@ -50,6 +50,8 @@ jobs:
               python -m pip install baostock
               python -m pip install akshare || echo "AKSHARE_OPTIONAL_FALLBACK_DEP_UNAVAILABLE"
             fi
+          elif [ "$TYPE" = "sec_companyfacts" ]; then
+            python -m pip install requests
           elif [ "$TYPE" = "financial_statements" ]; then
             python -m pip install -r engine/requirements.txt akshare
           elif [ "$TYPE" = "announcement_index" ] || [ "$TYPE" = "official_filings" ]; then
