@@ -1,4 +1,4 @@
-"""PUBLIC historic A-share quote source routing with bounded provider fallback."""
+"""Bounded public A/H historical quotes; market currency and volume units explicit."""
 import datetime as dt
 from decimal import Decimal, InvalidOperation
 
@@ -53,16 +53,20 @@ def _baostock(request):
 
 def _akshare(request):
     import akshare as ak
-    frame=ak.stock_zh_a_hist(symbol=request["symbol"][:6],period="daily",
+    market=request["symbol"].rsplit(".",1)[1]
+    code=request["symbol"].split(".")[0]
+    hist=ak.stock_hk_hist if market=="HK" else ak.stock_zh_a_hist
+    frame=hist(symbol=code.zfill(5) if market=="HK" else code,period="daily",
          start_date=request["start_date"].replace("-",""),
          end_date=request["end_date"].replace("-",""),adjust="")
     rows=[]
     for row in frame.to_dict(orient="records"):
         rows.append({"date":str(row.get("日期"))[:10],
-                     "code":request["symbol"][:6],
+                     "code":code,
                      "open":row.get("开盘"),"high":row.get("最高"),
                      "low":row.get("最低"),"close":row.get("收盘"),
-                     "volume":str(Decimal(str(row.get("成交量"))) * Decimal("100")),
+                     "volume":(str(row.get("成交量")) if market=="HK"
+                                else str(Decimal(str(row.get("成交量"))) * Decimal("100"))),
                      "amount":row.get("成交额"),
                      "adjustflag":"3"})
         if len(rows)>400:raise ValueError("PROVIDER_ROW_LIMIT")
@@ -70,7 +74,10 @@ def _akshare(request):
 
 def fetch_quotes(request):
     selected=request.get("source","AUTO")
-    names=["baostock","akshare"] if selected=="AUTO" else [selected]
+    hk=request["symbol"].endswith(".HK")
+    names=(["akshare"] if hk else ["baostock","akshare"]) if selected=="AUTO" else [selected]
+    if hk and "baostock" in names:
+        raise ValueError("HK_BAOSTOCK_NOT_SUPPORTED")
     attempts=[]
     for source in names:
         try:
@@ -82,8 +89,10 @@ def fetch_quotes(request):
             return rows,{"required":1,"fetched":1,"source_used":source,
                          "fetch_state":"RAW_QUOTES_FETCHED_UNVERIFIED",
                          "source_attempts":attempts,
-                         "normalized_volume_unit":"shares",
-                         "provider_raw_volume_unit":"lots_of_100_shares" if source=="akshare" else "shares"}
+                         "quote_currency":"HKD" if hk else "CNY",
+                         "normalized_volume_unit":"AS_RETURNED" if hk else "shares",
+                         "provider_raw_volume_unit":("AS_RETURNED" if hk else
+                           "lots_of_100_shares" if source=="akshare" else "shares")}
         except Exception as exc:
             attempts.append({"source":source,"outcome":"FAILED",
                              "reason":type(exc).__name__+":"+str(exc)[:120]})
