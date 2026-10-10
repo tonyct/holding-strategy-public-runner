@@ -57,6 +57,8 @@ def validate(request):
         raise ValueError("NON_A_SHARE_BAOSTOCK_UNSUPPORTED")
     if not symbol.endswith((".HK",".US")) and category=="historical_quotes" and request.get("source","AUTO")=="yahoo_chart":
         raise ValueError("YAHOO_CHART_ONLY_HK_OR_US")
+    if symbol.endswith(".US") and category=="historical_quotes" and request.get("source","AUTO") not in ("AUTO","yahoo_chart"):
+        raise ValueError("US_ONLY_YAHOO_QUOTES_SUPPORTED")
     try:
         start = dt.date.fromisoformat(request["start_date"])
         end = dt.date.fromisoformat(request["end_date"])
