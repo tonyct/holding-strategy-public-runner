@@ -67,6 +67,8 @@ jobs:
             exit 2
           fi
       - name: Execute public request and retain evidence
+        env:
+          PUBLIC_SEC_USER_AGENT: ${{ secrets.PUBLIC_SEC_USER_AGENT }}
         run: |
           python -m ops.public_data_gateway --request .gateway/request/request.json --output .gateway/result
       - name: Upload bounded immutable run evidence
