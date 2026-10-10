@@ -62,6 +62,8 @@ jobs:
             echo 'UNSUPPORTED_ADAPTER'; exit 2
           fi
       - name: Execute request and publish run-scoped receipt
+        env:
+          PUBLIC_SEC_USER_AGENT: ${{ secrets.PUBLIC_SEC_USER_AGENT }}
         run: |
           python -m ops.public_data_gateway \
             --request "$(cat /tmp/selected_gateway_request.txt)" \
