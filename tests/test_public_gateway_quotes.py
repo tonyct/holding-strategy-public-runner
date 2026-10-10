@@ -1,6 +1,9 @@
 """Offline test for historic quote source failover and strict row scopes."""
 import unittest
 from unittest.mock import patch
+import json
+import tempfile
+from pathlib import Path
 from ops.public_gateway_quotes import fetch_quotes
 
 REQUEST={"symbol":"001286.SZ","start_date":"2025-09-01","end_date":"2025-09-30","source":"AUTO"}
@@ -8,6 +11,29 @@ ROW={"date":"2025-09-01","code":"001286","open":"10","high":"11","low":"9",
      "close":"10.5","volume":"1000","amount":"10000","adjustflag":"3"}
 
 class QuoteRouterTests(unittest.TestCase):
+    def test_fallback_provenance_in_receipt(self):
+        from ops.public_data_gateway import process
+        with tempfile.TemporaryDirectory() as d, patch("ops.public_data_gateway.execute",
+             return_value=([dict(ROW)],{"source_used":"akshare","required":1,"fetched":1})):
+            req={"schema":"PUBLIC_DATA_GATEWAY_REQUEST/v1","request_id":"test_source_akshare_001",
+                 "operation":"EXECUTE","symbol":"001286.SZ","data_type":"historical_quotes",
+                 "start_date":"2025-09-01","end_date":"2025-09-30","source":"AUTO"}
+            receipt=process(req,d)
+            raw=json.loads((Path(d)/"RAW_RESPONSE.json").read_text())
+            self.assertEqual(receipt["provider"],"akshare")
+            self.assertEqual(raw["source"],"akshare")
+    def test_akshare_lot_volume_normalized_to_shares(self):
+        import sys
+        from ops.public_gateway_quotes import _akshare
+        class FakeFrame:
+            def to_dict(self,orient):
+                return [{"日期":"2025-09-01","开盘":10,"最高":11,"最低":9,
+                         "收盘":10.5,"成交量":12,"成交额":10000}]
+        class FakeAKShare:
+            def stock_zh_a_hist(self,**kwargs):return FakeFrame()
+        with patch.dict(sys.modules,{"akshare":FakeAKShare()}):
+            rows=_akshare(REQUEST)
+        self.assertEqual(rows[0]["volume"],"1200")
     def test_primary_success(self):
         with patch("ops.public_gateway_quotes._baostock",return_value=[dict(ROW)]):
             rows,details=fetch_quotes(REQUEST)
