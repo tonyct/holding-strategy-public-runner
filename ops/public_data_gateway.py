@@ -13,7 +13,7 @@ from ops.public_gateway_extended import CAPABILITIES as EXTENDED, execute_extend
 
 CATEGORIES = {
     "historical_quotes": {"adapter": "baostock", "markets": ["SH", "SZ","HK"],
-                          "source_options": ["AUTO","baostock","akshare"],
+                          "source_options": ["AUTO","baostock","akshare","yahoo_chart"],
                           "fields": ["date", "code", "open", "high", "low", "close", "volume", "amount", "adjustflag"]},
 }
 CATEGORIES.update(EXTENDED)
@@ -55,6 +55,8 @@ def validate(request):
         raise ValueError("SOURCE_NOT_SUPPORTED")
     if symbol.endswith(".HK") and category=="historical_quotes" and request.get("source","AUTO")=="baostock":
         raise ValueError("HK_REQUIRES_AKSHARE")
+    if not symbol.endswith(".HK") and category=="historical_quotes" and request.get("source","AUTO")=="yahoo_chart":
+        raise ValueError("YAHOO_CHART_ONLY_HK")
     try:
         start = dt.date.fromisoformat(request["start_date"])
         end = dt.date.fromisoformat(request["end_date"])
