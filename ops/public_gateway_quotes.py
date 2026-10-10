@@ -62,7 +62,8 @@ def _akshare(request):
                      "code":request["symbol"][:6],
                      "open":row.get("开盘"),"high":row.get("最高"),
                      "low":row.get("最低"),"close":row.get("收盘"),
-                     "volume":row.get("成交量"),"amount":row.get("成交额"),
+                     "volume":str(Decimal(str(row.get("成交量"))) * Decimal("100")),
+                     "amount":row.get("成交额"),
                      "adjustflag":"3"})
         if len(rows)>400:raise ValueError("PROVIDER_ROW_LIMIT")
     return rows
@@ -80,7 +81,9 @@ def fetch_quotes(request):
             rows=_validate(rows,request)
             return rows,{"required":1,"fetched":1,"source_used":source,
                          "fetch_state":"RAW_QUOTES_FETCHED_UNVERIFIED",
-                         "source_attempts":attempts}
+                         "source_attempts":attempts,
+                         "normalized_volume_unit":"shares",
+                         "provider_raw_volume_unit":"lots_of_100_shares" if source=="akshare" else "shares"}
         except Exception as exc:
             attempts.append({"source":source,"outcome":"FAILED",
                              "reason":type(exc).__name__+":"+str(exc)[:120]})
