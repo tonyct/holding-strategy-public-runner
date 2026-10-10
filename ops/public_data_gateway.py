@@ -7,12 +7,12 @@ import re
 from pathlib import Path
 
 SCHEMA = "PUBLIC_DATA_GATEWAY_REQUEST/v1"
-SYMBOL = re.compile(r"(?:[0-9]{6}\.(?:SH|SZ)|[0-9]{1,5}\.HK)\Z")
+SYMBOL = re.compile(r"(?:[0-9]{6}\.(?:SH|SZ)|[0-9]{1,5}\.HK|[A-Z]{1,5}(?:-[A-Z])?\.US)\Z")
 ID = re.compile(r"[A-Za-z0-9_-]{8,80}\Z")
 from ops.public_gateway_extended import CAPABILITIES as EXTENDED, execute_extended
 
 CATEGORIES = {
-    "historical_quotes": {"adapter": "baostock", "markets": ["SH", "SZ","HK"],
+    "historical_quotes": {"adapter": "baostock", "markets": ["SH", "SZ","HK","US"],
                           "source_options": ["AUTO","baostock","akshare","yahoo_chart"],
                           "fields": ["date", "code", "open", "high", "low", "close", "volume", "amount", "adjustflag"]},
 }
@@ -53,10 +53,10 @@ def validate(request):
         raise ValueError("MARKET_NOT_SUPPORTED")
     if request.get("source", "AUTO") not in CATEGORIES[category].get("source_options", ("AUTO", CATEGORIES[category]["adapter"])):
         raise ValueError("SOURCE_NOT_SUPPORTED")
-    if symbol.endswith(".HK") and category=="historical_quotes" and request.get("source","AUTO")=="baostock":
-        raise ValueError("HK_REQUIRES_AKSHARE")
-    if not symbol.endswith(".HK") and category=="historical_quotes" and request.get("source","AUTO")=="yahoo_chart":
-        raise ValueError("YAHOO_CHART_ONLY_HK")
+    if symbol.endswith((".HK",".US")) and category=="historical_quotes" and request.get("source","AUTO")=="baostock":
+        raise ValueError("NON_A_SHARE_BAOSTOCK_UNSUPPORTED")
+    if not symbol.endswith((".HK",".US")) and category=="historical_quotes" and request.get("source","AUTO")=="yahoo_chart":
+        raise ValueError("YAHOO_CHART_ONLY_HK_OR_US")
     try:
         start = dt.date.fromisoformat(request["start_date"])
         end = dt.date.fromisoformat(request["end_date"])
