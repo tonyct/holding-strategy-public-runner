@@ -68,6 +68,18 @@ class QuoteRouterTests(unittest.TestCase):
         self.assertEqual(details["quote_currency"],"HKD")
         self.assertEqual(details["normalized_volume_unit"],"AS_RETURNED")
         self.assertEqual(len(rows),1)
+    def test_hk_yahoo_missing_turnover_is_partial(self):
+        hk={**REQUEST,"symbol":"9926.HK"}
+        with patch("ops.public_gateway_quotes._akshare",side_effect=RuntimeError("blocked")),\
+             patch("ops.public_gateway_quotes._yahoo_chart",return_value=[
+                 {**ROW,"code":"9926","amount":None}]):
+            rows,details=fetch_quotes(hk)
+        self.assertEqual(details["source_used"],"yahoo_chart")
+        self.assertEqual(details["quote_currency"],"HKD")
+        self.assertEqual(details["required"],2)
+        self.assertEqual(details["fetched"],1)
+        self.assertIsNone(rows[0]["amount"])
+        self.assertIn("amount",details["missing_fields"])
     def test_hk_baostock_explicitly_rejected(self):
         with self.assertRaisesRegex(ValueError,"HK_BAOSTOCK_NOT_SUPPORTED"):
             fetch_quotes({**REQUEST,"symbol":"9926.HK","source":"baostock"})
