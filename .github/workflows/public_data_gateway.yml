@@ -1,0 +1,49 @@
+name: Public on-demand data gateway
+
+on:
+  workflow_dispatch:
+    inputs:
+      request_json:
+        description: 'Public-only bounded request JSON; no private research or account data'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  gateway:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Write and validate request
+        env:
+          PUBLIC_GATEWAY_REQUEST: ${{ inputs.request_json }}
+        run: |
+          mkdir -p .gateway/request
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          from ops.public_data_gateway import validate
+          request=json.loads(os.environ["PUBLIC_GATEWAY_REQUEST"])
+          validate(request)
+          Path(".gateway/request/request.json").write_text(json.dumps(request))
+          print("PUBLIC_REQUEST_ACCEPTED")
+          PY
+      - name: Install approved public source adapter
+        run: python -m pip install baostock
+      - name: Execute public request and retain evidence
+        run: |
+          python -m ops.public_data_gateway --request .gateway/request/request.json --output .gateway/result
+      - name: Upload bounded immutable run evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-gateway-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .gateway/result/
+          if-no-files-found: warn
+          retention-days: 30
