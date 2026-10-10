@@ -23,11 +23,11 @@ def fetch_sec_companyfacts(request, *, get=None):
     import requests
     get=get or requests.get
     symbol=request["symbol"]
-    if not re.fullmatch(r"[A-Z]{1,5}(?:-[A-Z])?\\.US",symbol):
+    if not re.fullmatch(r"[A-Z]{1,5}(?:-[A-Z])?\.US",symbol):
         raise ValueError("SEC_US_SYMBOL_REQUIRED")
     user_agent=os.environ.get("PUBLIC_SEC_USER_AGENT","")
     if (not isinstance(user_agent,str) or not 12<=len(user_agent)<=180
-        or "@" not in user_agent or "\\n" in user_agent or "\\r" in user_agent):
+        or "@" not in user_agent or "\n" in user_agent or "\r" in user_agent):
         return [],{"required":1,"fetched":0,
                    "gap_reason":"SEC_COMPLIANT_CONTACT_USER_AGENT_NOT_CONFIGURED"}
     headers={"User-Agent":user_agent,"Accept":"application/json"}
@@ -78,7 +78,7 @@ def fetch_sec_companyfacts(request, *, get=None):
                 if isinstance(value.get("val"),bool) or not isinstance(value.get("val"),int):
                     continue
                 accn=value.get("accn","")
-                if not re.fullmatch(r"\\d{10}-\\d{2}-\\d{6}",accn):
+                if not re.fullmatch(r"\d{10}-\d{2}-\d{6}",accn):
                     continue
                 choices.append((fdate,period_end,value))
             if not choices:
