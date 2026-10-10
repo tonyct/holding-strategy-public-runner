@@ -12,7 +12,7 @@ from ops.public_gateway_sec_facts import fetch_sec_companyfacts
 REQUEST={"schema":"PUBLIC_DATA_GATEWAY_REQUEST/v1",
          "request_id":"public_sec_us_test_001","operation":"EXECUTE",
          "symbol":"AAPL.US","data_type":"sec_companyfacts",
-         "start_date":"2025-10-01","end_date":"2026-10-09","source":"AUTO"}
+         "start_date":"2025-10-09","end_date":"2026-10-09","source":"AUTO"}
 
 def response(data):
     return SimpleNamespace(status_code=200,content=json.dumps(data).encode(),
