@@ -43,8 +43,13 @@ jobs:
           set -euo pipefail
           TYPE=$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["data_type"])' "$(cat /tmp/selected_gateway_request.txt)" 2>/dev/null || true)
           if [ "$TYPE" = "historical_quotes" ]; then
-            python -m pip install baostock akshare
-            python -m pip install akshare || echo "AKSHARE_OPTIONAL_FALLBACK_DEP_UNAVAILABLE"
+            MARKET=$(python -c 'import json,sys;print(json.load(open(sys.argv[1])).get("symbol","").rsplit(".",1)[-1])' "$(cat /tmp/selected_gateway_request.txt)")
+            if [ "$MARKET" = "US" ]; then
+              python -m pip install requests
+            else
+              python -m pip install baostock
+              python -m pip install akshare || echo "AKSHARE_OPTIONAL_FALLBACK_DEP_UNAVAILABLE"
+            fi
           elif [ "$TYPE" = "financial_statements" ]; then
             python -m pip install -r engine/requirements.txt akshare
           elif [ "$TYPE" = "announcement_index" ] || [ "$TYPE" = "official_filings" ]; then
