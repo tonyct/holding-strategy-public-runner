@@ -58,6 +58,19 @@ class QuoteRouterTests(unittest.TestCase):
             rows,details=fetch_quotes(REQUEST)
         self.assertEqual(details["source_used"],"akshare")
         self.assertEqual(details["source_attempts"][0]["source"],"baostock")
+    def test_hk_never_calls_baostock(self):
+        hk={**REQUEST,"symbol":"9926.HK"}
+        with patch("ops.public_gateway_quotes._baostock") as primary,\
+             patch("ops.public_gateway_quotes._akshare",return_value=[
+                 {**ROW,"code":"9926"}]):
+            rows,details=fetch_quotes(hk)
+        primary.assert_not_called()
+        self.assertEqual(details["quote_currency"],"HKD")
+        self.assertEqual(details["normalized_volume_unit"],"AS_RETURNED")
+        self.assertEqual(len(rows),1)
+    def test_hk_baostock_explicitly_rejected(self):
+        with self.assertRaisesRegex(ValueError,"HK_BAOSTOCK_NOT_SUPPORTED"):
+            fetch_quotes({**REQUEST,"symbol":"9926.HK","source":"baostock"})
     def test_reject_wrong_symbol(self):
         with patch("ops.public_gateway_quotes._baostock",return_value=[{**ROW,"code":"999999"}]),\
              patch("ops.public_gateway_quotes._akshare",return_value=[]):
