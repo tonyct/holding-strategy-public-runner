@@ -13,6 +13,7 @@ from ops.public_gateway_extended import CAPABILITIES as EXTENDED, execute_extend
 
 CATEGORIES = {
     "historical_quotes": {"adapter": "baostock", "markets": ["SH", "SZ"],
+                          "source_options": ["AUTO","baostock","akshare"],
                           "fields": ["date", "code", "open", "high", "low", "close", "volume", "amount", "adjustflag"]},
 }
 CATEGORIES.update(EXTENDED)
@@ -74,6 +75,9 @@ def validate(request):
 
 def execute(request):
     """Execute a bounded public-only provider request; never claim issuer validation."""
+    if request["data_type"]=="historical_quotes":
+        from ops.public_gateway_quotes import fetch_quotes
+        return fetch_quotes(request)
     if request["data_type"]!="historical_quotes":
         return execute_extended(request)
     import baostock as bs
@@ -118,6 +122,7 @@ def process(request, output):
         try:
             rows, detail = execute(request)
             meta=detail if isinstance(detail,dict) else {"fetch_state":detail}
+            base["provider"]=meta.get("source_used",base["provider"])
             coverage=meta.get("fetched", 1 if rows else 0)
             required=meta.get("required", 1)
             if rows:
