@@ -71,6 +71,9 @@ def official_filings(request):
     # Deterministic prioritization of regulatory financial reports (not random first result).
     candidates=[x for x in rows if ("年度报告" in x["title"] or
                  "半年度报告" in x["title"] or "季度报告" in x["title"])]
+    # Prioritize complete financial reports over abstracts, notices and amendments.
+    candidates.sort(key=lambda x:(any(k in x["title"] for k in
+                           ("摘要","提示性公告","更正","说明","英文")),len(x["title"])))
     if not candidates:
         return [],{"required":1,"fetched":0,"upstream_total":total,
                   "gap_reason":"NO_OFFICIAL_REPORT_IN_WINDOW"}
