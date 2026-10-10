@@ -12,7 +12,7 @@ ID = re.compile(r"[A-Za-z0-9_-]{8,80}\Z")
 from ops.public_gateway_extended import CAPABILITIES as EXTENDED, execute_extended
 
 CATEGORIES = {
-    "historical_quotes": {"adapter": "baostock", "markets": ["SH", "SZ"],
+    "historical_quotes": {"adapter": "baostock", "markets": ["SH", "SZ","HK"],
                           "source_options": ["AUTO","baostock","akshare"],
                           "fields": ["date", "code", "open", "high", "low", "close", "volume", "amount", "adjustflag"]},
 }
@@ -53,6 +53,8 @@ def validate(request):
         raise ValueError("MARKET_NOT_SUPPORTED")
     if request.get("source", "AUTO") not in CATEGORIES[category].get("source_options", ("AUTO", CATEGORIES[category]["adapter"])):
         raise ValueError("SOURCE_NOT_SUPPORTED")
+    if symbol.endswith(".HK") and category=="historical_quotes" and request.get("source","AUTO")=="baostock":
+        raise ValueError("HK_REQUIRES_AKSHARE")
     try:
         start = dt.date.fromisoformat(request["start_date"])
         end = dt.date.fromisoformat(request["end_date"])
