@@ -1,8 +1,13 @@
 name: Public on-demand data gateway
+run-name: gateway-${{ inputs.request_id }}
 
 on:
   workflow_dispatch:
     inputs:
+      request_id:
+        description: 'Opaque public request id used for exact run correlation'
+        required: true
+        type: string
       request_json:
         description: 'Public-only bounded request JSON; no private research or account data'
         required: true
@@ -23,6 +28,7 @@ jobs:
       - name: Write and validate request
         env:
           PUBLIC_GATEWAY_REQUEST: ${{ inputs.request_json }}
+          PUBLIC_GATEWAY_REQUEST_ID: ${{ inputs.request_id }}
         run: |
           mkdir -p .gateway/request
           python - <<'PY'
@@ -31,6 +37,8 @@ jobs:
           from ops.public_data_gateway import validate
           request=json.loads(os.environ["PUBLIC_GATEWAY_REQUEST"])
           validate(request)
+          if request['request_id'] != os.environ['PUBLIC_GATEWAY_REQUEST_ID']:
+              raise ValueError('DISPATCH_REQUEST_ID_MISMATCH')
           Path(".gateway/request/request.json").write_text(json.dumps(request))
           print("PUBLIC_REQUEST_ACCEPTED")
           PY
