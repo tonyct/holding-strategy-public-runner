@@ -34,6 +34,14 @@ class GatewayContractTest(unittest.TestCase):
             validate({**BASE, "symbol": "00700.HK", "source": "baostock"})
         with self.assertRaises(ValueError):
             validate({**BASE, "symbol": "00700.HK", "data_type": "financial_statements"})
+    def test_discovery_seeds_are_public_coverage_not_holdings(self):
+        seed=CATEGORIES["historical_quotes"]["public_research_coverage_seed"]
+        self.assertFalse(seed["complete_market_universe"])
+        self.assertIn("NOT_ACCOUNT_HOLDINGS",seed["source"])
+        self.assertIn("001286.SZ",seed["symbols"])
+        self.assertIn("9926.HK",seed["symbols"])
+        self.assertFalse(any("private" in x.lower() for x in seed["symbols"]))
+
     def test_discover(self):
         req={"schema": SCHEMA, "request_id": "discover001", "operation": "DISCOVER"}
         with tempfile.TemporaryDirectory() as d:
