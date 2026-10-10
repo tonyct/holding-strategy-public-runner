@@ -27,9 +27,13 @@ class GatewayContractTest(unittest.TestCase):
     def test_reject_long_window(self):
         with self.assertRaises(ValueError):
             validate({**BASE, "start_date": "2020-01-01"})
-    def test_reject_hk_unimplemented(self):
+    def test_hk_quotes_supported_but_hk_financials_not_yet(self):
+        validate({**BASE, "symbol": "00700.HK", "source": "AUTO"})
+        validate({**BASE, "symbol": "00700.HK", "source": "akshare"})
         with self.assertRaises(ValueError):
-            validate({**BASE, "symbol": "00700.HK"})
+            validate({**BASE, "symbol": "00700.HK", "source": "baostock"})
+        with self.assertRaises(ValueError):
+            validate({**BASE, "symbol": "00700.HK", "data_type": "financial_statements"})
     def test_discover(self):
         req={"schema": SCHEMA, "request_id": "discover001", "operation": "DISCOVER"}
         with tempfile.TemporaryDirectory() as d:
