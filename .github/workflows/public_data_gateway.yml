@@ -49,6 +49,7 @@ jobs:
           TYPE=$(python -c 'import json;print(json.load(open(".gateway/request/request.json")).get("data_type",""))')
           if [ "$TYPE" = "historical_quotes" ]; then
             python -m pip install baostock
+            python -m pip install akshare || echo "AKSHARE_OPTIONAL_FALLBACK_DEP_UNAVAILABLE"
           elif [ "$TYPE" = "financial_statements" ]; then
             python -m pip install -r engine/requirements.txt akshare
           elif [ "$TYPE" = "announcement_index" ] || [ "$TYPE" = "official_filings" ]; then
