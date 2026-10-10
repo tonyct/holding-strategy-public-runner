@@ -31,6 +31,15 @@ class ExtendedTests(unittest.TestCase):
     def test_official_pdf_limit(self):
         with self.assertRaises(ValueError):
             validate({**REQUEST,"data_type":"official_filings","start_date":"2025-01-01"})
+    def test_target_year_rejects_wrong_official_report(self):
+        rows=[{"title":"2026年第一季度报告","announced_at":"2026-04-20",
+               "announcement_id":"1234567890"}]
+        with patch.object(ext,"_index",return_value=(rows,1)):
+            found,meta=ext.official_filings({**REQUEST,"data_type":"official_filings",
+                "start_date":"2026-04-01","end_date":"2026-04-30",
+                "report_period_end":"2025-12-31"})
+        self.assertEqual(found,[])
+        self.assertEqual(meta["gap_reason"],"TARGET_REPORT_NOT_FOUND_IN_WINDOW")
     def test_financial_partial_receipt(self):
         with tempfile.TemporaryDirectory() as d, patch("ops.public_data_gateway.execute",
              return_value=([{"statement":"balance","data":{"source":"AKSHARE_SINA"}}],
