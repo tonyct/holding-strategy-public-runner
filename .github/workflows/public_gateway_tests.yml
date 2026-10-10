@@ -9,6 +9,7 @@ on:
       - 'ops/public_gateway_quotes.py'
       - 'ops/public_gateway_extended.py'
       - 'tests/test_public_data_gateway.py'
+      - 'tests/test_public_us_daily_quotes.py'
       - 'tests/test_public_gateway_extended.py'
       - 'tests/test_public_gateway_quotes.py'
       - 'tests/test_public_gateway_extended.py'
@@ -28,4 +29,4 @@ jobs:
         with:
           python-version: '3.11'
       - name: Run gateway offline tests
-        run: python -m pip install requests && python -m unittest discover -s tests -p 'test_public*gateway*.py' -v
+        run: python -m pip install requests && python -m unittest discover -s tests -p 'test_public*gateway*.py' -v && python -m unittest tests.test_public_us_daily_quotes -v
