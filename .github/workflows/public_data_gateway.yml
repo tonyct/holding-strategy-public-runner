@@ -43,7 +43,21 @@ jobs:
           print("PUBLIC_REQUEST_ACCEPTED")
           PY
       - name: Install approved public source adapter
-        run: python -m pip install baostock
+        shell: bash
+        run: |
+          set -euo pipefail
+          TYPE=$(python -c 'import json;print(json.load(open(".gateway/request/request.json")).get("data_type",""))')
+          if [ "$TYPE" = "historical_quotes" ]; then
+            python -m pip install baostock
+          elif [ "$TYPE" = "financial_statements" ]; then
+            python -m pip install -r engine/requirements.txt akshare
+          elif [ "$TYPE" = "announcement_index" ] || [ "$TYPE" = "official_filings" ]; then
+            python -m pip install requests
+          elif [ -z "$TYPE" ]; then
+            echo "DISCOVER_ONLY"
+          else
+            exit 2
+          fi
       - name: Execute public request and retain evidence
         run: |
           python -m ops.public_data_gateway --request .gateway/request/request.json --output .gateway/result
