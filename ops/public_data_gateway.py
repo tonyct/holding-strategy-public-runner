@@ -139,9 +139,11 @@ def process(request, output):
                             provider_reported_source=base["provider"],
                             verification_state="RAW_API_UNVERIFIED")
             else:
+                base["provider"]=None  # No actual source was successful; attempts remain in source_details.
                 base.update(status="GAP", fetch_state="EMPTY_OR_INCOMPLETE", row_count=0,
                             source_details=meta, error_code=meta.get("gap_reason","EMPTY_RESULT"))
         except Exception as exc:
+            base["provider"]=None
             base.update(status="GAP", fetch_state="FAILED", row_count=0,
                         error_code=str(exc)[:200], exception_type=type(exc).__name__)
     raw_receipt = (json.dumps(base, ensure_ascii=False, sort_keys=True, indent=2) + "\n").encode()
