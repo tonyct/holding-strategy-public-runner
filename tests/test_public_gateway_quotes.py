@@ -81,7 +81,7 @@ class QuoteRouterTests(unittest.TestCase):
         self.assertIsNone(rows[0]["amount"])
         self.assertIn("amount",details["missing_fields"])
     def test_hk_baostock_explicitly_rejected(self):
-        with self.assertRaisesRegex(ValueError,"HK_BAOSTOCK_NOT_SUPPORTED"):
+        with self.assertRaisesRegex(ValueError,"NON_A_SHARE_BAOSTOCK_NOT_SUPPORTED"):
             fetch_quotes({**REQUEST,"symbol":"9926.HK","source":"baostock"})
     def test_reject_wrong_symbol(self):
         with patch("ops.public_gateway_quotes._baostock",return_value=[{**ROW,"code":"999999"}]),\
