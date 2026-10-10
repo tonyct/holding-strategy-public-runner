@@ -17,6 +17,28 @@ CATEGORIES = {
                           "fields": ["date", "code", "open", "high", "low", "close", "volume", "amount", "adjustflag"]},
 }
 CATEGORIES.update(EXTENDED)
+# PUBLIC-only coverage seeds; these are not user holdings or investment
+# recommendations. Discovery must not leak any PRIVATE research hypothesis.
+def _public_coverage_seed():
+    path=Path(__file__).resolve().parents[1]/"config"/"research_universe.json"
+    try:
+        config=json.loads(path.read_text(encoding="utf-8"))
+        rows=config.get("stocks",[])
+        if (config.get("schema")!="E36_PUBLIC_RESEARCH_UNIVERSE/v1"
+                or not isinstance(rows,list) or len(rows)>500):
+            raise ValueError("INVALID_PUBLIC_COVERAGE_UNIVERSE")
+        symbols=sorted({x["symbol"] for x in rows
+                        if isinstance(x,dict) and x.get("active") is True
+                        and isinstance(x.get("symbol"),str)
+                        and SYMBOL.fullmatch(x["symbol"])})
+        return {"symbols":symbols,
+                "complete_market_universe":False,
+                "source":"PUBLIC_RESEARCH_COVERAGE_ONLY_NOT_ACCOUNT_HOLDINGS"}
+    except (OSError,ValueError,KeyError,TypeError):
+        return {"symbols":[],"complete_market_universe":False,
+                "source":"COVERAGE_SEED_UNAVAILABLE"}
+
+CATEGORIES["historical_quotes"]["public_research_coverage_seed"]=_public_coverage_seed()
 FORBIDDEN = {"holdings", "holding", "portfolio", "position", "quantity", "cost_basis",
              "account", "balance", "nav", "cash", "pnl", "target_price",
              "valuation", "thesis", "trade", "order", "private", "shadow_cycle_id"}
