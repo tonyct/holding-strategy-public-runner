@@ -71,12 +71,23 @@ def official_filings(request):
     # Deterministic prioritization of regulatory financial reports (not random first result).
     candidates=[x for x in rows if ("年度报告" in x["title"] or
                  "半年度报告" in x["title"] or "季度报告" in x["title"])]
+    # Restrict a requested report to its explicit fiscal year and report class.
+    target=request.get("report_period_end")
+    if target:
+        year=target[:4]
+        expected={"12-31":[year+"年年度报告"],
+                  "06-30":[year+"年半年度报告"],
+                  "03-31":[year+"年第一季度报告",year+"年一季度报告"],
+                  "09-30":[year+"年第三季度报告",year+"年三季度报告"]}[target[5:]]
+        candidates=[r for r in candidates if any(x in
+                    "".join(str(r["title"]).split()) for x in expected)]
     # Prioritize complete financial reports over abstracts, notices and amendments.
     candidates.sort(key=lambda x:(any(k in x["title"] for k in
                            ("摘要","提示性公告","更正","说明","英文")),len(x["title"])))
     if not candidates:
         return [],{"required":1,"fetched":0,"upstream_total":total,
-                  "gap_reason":"NO_OFFICIAL_REPORT_IN_WINDOW"}
+                  "gap_reason":"TARGET_REPORT_NOT_FOUND_IN_WINDOW" if target else "NO_OFFICIAL_REPORT_IN_WINDOW",
+                  "requested_report_period_end":target}
     attempts=[]
     for item in candidates[:3]:
         aid=str(item.get("announcement_id",""))
@@ -100,11 +111,12 @@ def official_filings(request):
             return [{
                 "title":item["title"],"announced_at":stamp,"source_url":url,
                 "source":"CNINFO_OFFICIAL_PDF","document_sha256":hashlib.sha256(raw).hexdigest(),
+                "requested_report_period_end":target,
                 "byte_count":len(raw),"pdf_base64":base64.b64encode(raw).decode("ascii"),
                 "verification_state":"ORIGINAL_BYTES_CAPTURED_CONTENT_NOT_AUDITED",
                 "announcement_id":aid}],{
                 "required":1,"fetched":1,"upstream_total":total,"source_used":"CNINFO_OFFICIAL_PDF",
-                "attempts":attempts}
+                "attempts":attempts,"requested_report_period_end":target}
         except Exception as exc:
             attempts.append({"announcement_id":aid,"error":type(exc).__name__+":"+str(exc)[:100]})
     return [],{"required":1,"fetched":0,"upstream_total":total,
