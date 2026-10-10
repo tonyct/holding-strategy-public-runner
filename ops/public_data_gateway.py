@@ -122,6 +122,8 @@ def process(request, output):
         try:
             rows, detail = execute(request)
             meta=detail if isinstance(detail,dict) else {"fetch_state":detail}
+            if meta.get("source_used"):
+                base["provider"]=meta["source_used"]
             base["provider"]=meta.get("source_used",base["provider"])
             coverage=meta.get("fetched", 1 if rows else 0)
             required=meta.get("required", 1)
