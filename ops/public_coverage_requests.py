@@ -43,12 +43,19 @@ def expand(universe, requests):
     if len(known) != len(set(known)) or len(known) + len(set(symbols)-set(known)) > MAX_SYMBOLS:
         raise ValueError("PUBLIC_COVERAGE_LIMIT_OR_DUPLICATE")
     result = json.loads(json.dumps(universe))
+    reactivated = 0
+    requested = set(symbols)
+    for row in result["stocks"]:
+        if row["symbol"] in requested and row["active"] is False:
+            row["active"] = True
+            reactivated += 1
     for ticker in symbols:
         if ticker not in known:
             result["stocks"].append({"symbol": ticker, "active": True})
     return result, {"schema": "PUBLIC_COVERAGE_EXPANSION/v1",
                     "requested_count": len(symbols),
                     "added_count": len(set(symbols)-set(known)),
+                    "reactivated_count": reactivated,
                     "active_symbol_count": sum(r["active"] for r in result["stocks"]),
                     "research_scope_only_not_holdings": True,
                     "no_private_repo_dependency": True,
@@ -75,3 +82,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
