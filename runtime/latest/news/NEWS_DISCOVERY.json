@@ -1,17 +1,78 @@
 {
   "schema": "E36_PUBLIC_NEWS_DISCOVERY/v1",
-  "generated_utc": "2026-10-11T01:03:27.760489+00:00",
+  "generated_utc": "2026-10-11T07:16:11.191949+00:00",
   "universe_sha256": "951695d407c5a3ad05838363654aa57d9edf7c51a978e7ca3815dae792abc82c",
   "research_only": true,
   "live_news_coverage_complete": false,
   "may_directly_change_main_or_trade": false,
-  "lead_count": 0,
-  "rows": [],
+  "lead_count": 6,
+  "rows": [
+    {
+      "symbol": "603993.SH",
+      "source": "PUBLIC_WEB_INDEX",
+      "url": "https://www.cmoc.com/",
+      "title": "CMOC - 洛阳栾川钼业集团股份有限公司",
+      "snippet": "洛阳栾川钼业集团股份有限公司（A股代码：603993，H股代码：03993）属于有色金属矿采选业，主要从事铜、钴、钼、钨、铌、磷等矿产的采、选、冶及金属贸易业务，拥有较为完整的一体化产业链。",
+      "published_at": "Sat, 10 Oct 2026 04:01:00 GMT",
+      "verification_state": "UNVERIFIED_DISCOVERY",
+      "may_directly_change_main_or_trade": false
+    },
+    {
+      "symbol": "603993.SH",
+      "source": "PUBLIC_WEB_INDEX",
+      "url": "https://finance.eastmoney.com/a/202610093891269883.html",
+      "title": "洛阳钼业上半年净利增86.27%背后：有色蓝筹价值重估的三重逻辑",
+      "snippet": "从上半年的量价双升，到供应刚性下的铜金双极，再到“622模型”、数字化与ESG构成的系统能力， 洛阳钼业 展现的不仅是有色行业的周期弹性，更 ...",
+      "published_at": "Fri, 09 Oct 2026 16:05:00 GMT",
+      "verification_state": "UNVERIFIED_DISCOVERY",
+      "may_directly_change_main_or_trade": false
+    },
+    {
+      "symbol": "603993.SH",
+      "source": "PUBLIC_WEB_INDEX",
+      "url": "https://stock.finance.sina.com.cn/hkstock/quotes/03993.html",
+      "title": "洛阳钼业 (03993)股票股价,实时行情,新闻,财报数据_新浪财经_新浪网",
+      "snippet": "新浪财经-港股频道为您提供洛阳钼业 (03993)股票股价,实时行情,新闻,财报,研究报告,财务指标分析等与洛阳钼业 (03993)股票相关的信息与服务.",
+      "published_at": "Sat, 10 Oct 2026 06:17:00 GMT",
+      "verification_state": "UNVERIFIED_DISCOVERY",
+      "may_directly_change_main_or_trade": false
+    },
+    {
+      "symbol": "601857.SH",
+      "source": "PUBLIC_WEB_INDEX",
+      "url": "https://www.cnpc.com.cn/cnpc/index.shtml",
+      "title": "中国石油天然气集团有限公司 - CNPC",
+      "snippet": "中国石油长庆油田第一采气厂掀起秋季夺气... [ 09/23 ] 青海油田技术攻坚重塑老油田产能新格局 [ 09/18 ] 从“磕头机”到智能采油——大庆油田数字... [ 09/18 ] 中国石油长庆油田第二采油厂“质量月”出... [ 09/18 ] 全国首座无障碍加油站在福州投运 [ 09/18 ]",
+      "published_at": "Sun, 11 Oct 2026 00:25:00 GMT",
+      "verification_state": "UNVERIFIED_DISCOVERY",
+      "may_directly_change_main_or_trade": false
+    },
+    {
+      "symbol": "601857.SH",
+      "source": "PUBLIC_WEB_INDEX",
+      "url": "https://www.cnpc.com.cn/index.shtml",
+      "title": "CNPC - 中国石油天然气集团有限公司",
+      "snippet": "中国石油获评2025中国出海品牌100强 [ 01/23 ] 中国石油澳大利亚公司年产气量再创新高 [ 01/23 ] 中国石油蝉联央企海外网络传播力综合指数... [ 01/23 ] 中国石油国际贸易高质量发展迈上新台阶 [ 01/23 ] 全国企业管理现代化创新成果名单公布 中国... [ 01/23 ]",
+      "published_at": "Sat, 10 Oct 2026 22:52:00 GMT",
+      "verification_state": "UNVERIFIED_DISCOVERY",
+      "may_directly_change_main_or_trade": false
+    },
+    {
+      "symbol": "601857.SH",
+      "source": "PUBLIC_WEB_INDEX",
+      "url": "https://www.petrochina.com.cn/",
+      "title": "PetroChina - 中国石油天然气股份有限公司",
+      "snippet": "©2025 版权所有 中国石油天然气股份有限公司 联系我们 | 网站地图 | 法律声明 | 京ICP证：14044136-2 | 京公网安备：110401400007",
+      "published_at": "Sun, 11 Oct 2026 01:01:00 GMT",
+      "verification_state": "UNVERIFIED_DISCOVERY",
+      "may_directly_change_main_or_trade": false
+    }
+  ],
   "checks": [
     {
       "symbol": "600941.SH",
       "query": "\"中国移动\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-11T01:03:19.663192+00:00",
+      "checked_utc": "2026-10-11T07:16:03.111431+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -19,7 +80,7 @@
     {
       "symbol": "148.HK",
       "query": "\"建滔集团\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-11T01:03:20.479580+00:00",
+      "checked_utc": "2026-10-11T07:16:03.876737+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -27,7 +88,7 @@
     {
       "symbol": "001286.SZ",
       "query": "\"陕西能源\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-11T01:03:21.194562+00:00",
+      "checked_utc": "2026-10-11T07:16:04.591013+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -35,15 +96,15 @@
     {
       "symbol": "603993.SH",
       "query": "\"洛阳钼业\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-11T01:03:21.923109+00:00",
+      "checked_utc": "2026-10-11T07:16:05.341434+00:00",
       "http_status": 200,
-      "status": "SEARCH_RETURNED_NO_RESULTS",
-      "candidates": 0
+      "status": "INDEXED_LEADS_FOUND",
+      "candidates": 3
     },
     {
       "symbol": "2233.HK",
       "query": "\"西部水泥\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-11T01:03:22.702147+00:00",
+      "checked_utc": "2026-10-11T07:16:06.073039+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -51,7 +112,7 @@
     {
       "symbol": "3933.HK",
       "query": "\"联邦制药\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-11T01:03:23.425241+00:00",
+      "checked_utc": "2026-10-11T07:16:06.802681+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -59,7 +120,7 @@
     {
       "symbol": "9926.HK",
       "query": "\"康方生物\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-11T01:03:24.152924+00:00",
+      "checked_utc": "2026-10-11T07:16:07.536140+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -67,7 +128,7 @@
     {
       "symbol": "600499.SH",
       "query": "\"科达制造\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-11T01:03:24.870112+00:00",
+      "checked_utc": "2026-10-11T07:16:08.274550+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -75,7 +136,7 @@
     {
       "symbol": "600795.SH",
       "query": "\"国电电力\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-11T01:03:25.584708+00:00",
+      "checked_utc": "2026-10-11T07:16:08.996539+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -83,7 +144,7 @@
     {
       "symbol": "603871.SH",
       "query": "\"嘉友国际\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-11T01:03:26.326873+00:00",
+      "checked_utc": "2026-10-11T07:16:09.721449+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -91,10 +152,10 @@
     {
       "symbol": "601857.SH",
       "query": "\"中国石油\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-11T01:03:27.037527+00:00",
+      "checked_utc": "2026-10-11T07:16:10.459196+00:00",
       "http_status": 200,
-      "status": "SEARCH_RETURNED_NO_RESULTS",
-      "candidates": 0
+      "status": "INDEXED_LEADS_FOUND",
+      "candidates": 3
     }
   ]
 }
