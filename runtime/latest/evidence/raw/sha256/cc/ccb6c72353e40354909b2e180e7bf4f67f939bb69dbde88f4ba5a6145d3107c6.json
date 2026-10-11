@@ -1,0 +1,73 @@
+{
+  "schema": "PUBLIC_LEAD_RESOLUTION_REPORT/v1",
+  "generated_at_utc": "2026-10-11T22:59:13.526591+00:00",
+  "transition_count": 7,
+  "transitions": [
+    {
+      "lead_id": "214533a77f3ef994decf06e41e5251b4753369f889753510005368fcf8ae3838",
+      "symbol": "600941.SH",
+      "source": "community",
+      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
+      "to": "RETIRED_LOW_INFORMATION"
+    },
+    {
+      "lead_id": "69116f114973d4282d95feb11870b7b52166f9ab6b08766a4e7a3c6c6e37376c",
+      "symbol": "600941.SH",
+      "source": "community",
+      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
+      "to": "CROSS_BOARD_NOISE"
+    },
+    {
+      "lead_id": "26c58e2cddf2d42833ec5f1c45f527d2d4d1ab441f3a724a884bc600a3be8f6c",
+      "symbol": "600941.SH",
+      "source": "community",
+      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
+      "to": "CROSS_BOARD_NOISE"
+    },
+    {
+      "lead_id": "895cf256b1f7fc5fe5b7e2719b8b350e98af59034fcd16f60d1a43cb23a4cff1",
+      "symbol": "600941.SH",
+      "source": "community",
+      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
+      "to": "RETIRED_LOW_INFORMATION"
+    },
+    {
+      "lead_id": "52e25d7e497c386045d483ade6006f61dc10d153898265470f02f503fcac10db",
+      "symbol": "600941.SH",
+      "source": "community",
+      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
+      "to": "RETIRED_LOW_INFORMATION"
+    },
+    {
+      "lead_id": "051ab4dbe444b5029a798ecc20addfdf2bf5172a965bca89d618f32096be5ff6",
+      "symbol": "600499.SH",
+      "source": "community",
+      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
+      "to": "RETIRED_LOW_INFORMATION"
+    },
+    {
+      "lead_id": "88290d9fab6c745f0b6389657eff343649bd503566e531e82362e483a39553ea",
+      "symbol": "601857.SH",
+      "source": "community",
+      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
+      "to": "CROSS_BOARD_NOISE"
+    }
+  ],
+  "counts": {
+    "total": 1184,
+    "pending": 315,
+    "terminal": 869,
+    "by_state": {
+      "CROSS_BOARD_NOISE": 219,
+      "DUPLICATE_ALREADY_REGISTERED": 7,
+      "PRIMARY_SOURCE_BYTES_CAPTURED_SEMANTIC_REVIEW_PENDING": 7,
+      "PRIMARY_SOURCE_VERIFICATION_PENDING": 263,
+      "RETIRED_LOW_INFORMATION": 639,
+      "RETIRED_SOURCE_AMBIGUOUS": 4,
+      "SOURCE_UNAVAILABLE_RETRYABLE": 45
+    }
+  },
+  "automatic_fact_promotion": false,
+  "valuation_authorized": false,
+  "automatic_trade_execution": false
+}
