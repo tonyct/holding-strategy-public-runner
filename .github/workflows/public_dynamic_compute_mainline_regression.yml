@@ -82,13 +82,13 @@ jobs:
       - name: Validate workflow wiring
         run: |
           python - <<'PY'
+          import re
           s=open('.github/workflows/public_research.yml').read()
+          for module in ['public_a_originals', 'public_hk_originals',
+                         'public_lead_registry', 'public_company_compute',
+                         'public_evidence_registry']:
+            assert re.search(r'^\s+python\s+-m\s+ops\.'+module+r'\s',s,re.M),module
           for needle in [
-            'Fetch current-window A-share official originals',
-            'Fetch current-window HKEX official originals',
-            'Update durable public lead lifecycle',
-            'Build public company research packets',
-            'Update content-addressed public evidence registry',
             'Build public-safe manifest',
             'Persist latest public JSON bundle']:
               assert needle in s,needle
