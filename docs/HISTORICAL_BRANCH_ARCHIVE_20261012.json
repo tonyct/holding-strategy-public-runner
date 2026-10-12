@@ -1,0 +1,130 @@
+{
+  "schema": "REVIEWED_HISTORICAL_BRANCH_ARCHIVE/v1",
+  "repository": "tonyct/holding-strategy-public-runner",
+  "archive_branch": "archive/retired-branches-20261012",
+  "main_before_cleanup": "f7388968a1fd46368180c361190ba6f1b062aeef",
+  "reviewed_at_utc": "2026-10-12T02:37:15.585Z",
+  "status": "ARCHIVED_DELETION_NOT_EXECUTED",
+  "original_heads_preserved_as_commit_parents": true,
+  "branches": [
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "e36-public-compute-mainline-20261008",
+      "current_head": "4da24a2db4980fa41a2e3e2ff0589ef3bb1edcbc",
+      "reviewed_head": "4da24a2db4980fa41a2e3e2ff0589ef3bb1edcbc",
+      "review_status": "RETAIN_NEWER_MAIN_OR_RETIRE_OLD_IMPLEMENTATION",
+      "delete_eligible": true,
+      "reason": "Useful evidence/metrics already implemented by current PUBLIC ops and engines. Reject retired PRIVATE-write sinks, fixed-count regression, and old H1 locator snapshots."
+    },
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "e36-public-compute-orchestrator-20261008",
+      "current_head": "2b4de33275c42493bf796cd2ec6c08459db89aa2",
+      "reviewed_head": "2b4de33275c42493bf796cd2ec6c08459db89aa2",
+      "review_status": "RETAIN_NEWER_MAIN_OR_RETIRE_OLD_IMPLEMENTATION",
+      "delete_eligible": true,
+      "reason": "Useful evidence/metrics already implemented by current PUBLIC ops and engines. Reject retired PRIVATE-write sinks, fixed-count regression, and old H1 locator snapshots."
+    },
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "e36-public-lead-resolution-20261008",
+      "current_head": "c39289b18108c26d28ed99f167f9c732a61ccddb",
+      "reviewed_head": "c39289b18108c26d28ed99f167f9c732a61ccddb",
+      "review_status": "RETAIN_NEWER_MAIN_OR_RETIRE_OLD_IMPLEMENTATION",
+      "delete_eligible": true,
+      "reason": "Main contains the financial fact/parser/quality/reconciliation, resolver, evidence packet, freshness or shard implementations; branch CI and transport text are older. Existing PUBLIC regression verifies current equivalents."
+    },
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "e36-public-status-semantics-20261008",
+      "current_head": "e90f14224ae63dfc0c8974c2d8cd9088f50a4c16",
+      "reviewed_head": "e90f14224ae63dfc0c8974c2d8cd9088f50a4c16",
+      "review_status": "ALREADY_IN_MAIN",
+      "delete_eligible": true,
+      "reason": "Branch head is already an ancestor of pinned main; no code merge needed."
+    },
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "feat/financial-fact-engine-v2-20261008",
+      "current_head": "eee5ee90ddc3c06ee1bb339ff35c91b432f3d806",
+      "reviewed_head": "eee5ee90ddc3c06ee1bb339ff35c91b432f3d806",
+      "review_status": "RETAIN_NEWER_MAIN_OR_RETIRE_OLD_IMPLEMENTATION",
+      "delete_eligible": true,
+      "reason": "Main contains the financial fact/parser/quality/reconciliation, resolver, evidence packet, freshness or shard implementations; branch CI and transport text are older. Existing PUBLIC regression verifies current equivalents."
+    },
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "fix/public-compute-lifecycle-semantics-20261008",
+      "current_head": "c39e14291247844ccd4935117e70a1872abf4231",
+      "reviewed_head": "c39e14291247844ccd4935117e70a1872abf4231",
+      "review_status": "SELECTED_REVIEWED_MERGE",
+      "delete_eligible": true,
+      "reason": "Merge selected branch ancestry with reviewed resolution: retain stronger current gates, recover the missing memoir replay / lifecycle logic / historical observations; validate without economic promotion."
+    },
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "fix/public-compute-platform-20261008",
+      "current_head": "c5a35a7ea4e01e201f50b896b0c2c70d9dbc72c4",
+      "reviewed_head": "c5a35a7ea4e01e201f50b896b0c2c70d9dbc72c4",
+      "review_status": "RETAIN_NEWER_MAIN_OR_RETIRE_OLD_IMPLEMENTATION",
+      "delete_eligible": true,
+      "reason": "Main contains the financial fact/parser/quality/reconciliation, resolver, evidence packet, freshness or shard implementations; branch CI and transport text are older. Existing PUBLIC regression verifies current equivalents."
+    },
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "fix/public-evidence-readiness-after-resolver-20261008",
+      "current_head": "a30608b37b5ba4364ad8f5750c62ae0a00f61c47",
+      "reviewed_head": "a30608b37b5ba4364ad8f5750c62ae0a00f61c47",
+      "review_status": "RETAIN_NEWER_MAIN_OR_RETIRE_OLD_IMPLEMENTATION",
+      "delete_eligible": true,
+      "reason": "Main contains the financial fact/parser/quality/reconciliation, resolver, evidence packet, freshness or shard implementations; branch CI and transport text are older. Existing PUBLIC regression verifies current equivalents."
+    },
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "public-refresh-sla-20261008",
+      "current_head": "211fcf8e852511045a82d454b5c4e7ef6fd4a15b",
+      "reviewed_head": "211fcf8e852511045a82d454b5c4e7ef6fd4a15b",
+      "review_status": "RETAIN_NEWER_MAIN_OR_RETIRE_OLD_IMPLEMENTATION",
+      "delete_eligible": true,
+      "reason": "Old hourly schedule superseded by current freshness backstop; preserve existing schedule."
+    },
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "repair/e36-public-freshness-backstop-20261008",
+      "current_head": "6f24d22b8627efd458c89989190cfb23d8e6726b",
+      "reviewed_head": "6f24d22b8627efd458c89989190cfb23d8e6726b",
+      "review_status": "RETAIN_NEWER_MAIN_OR_RETIRE_OLD_IMPLEMENTATION",
+      "delete_eligible": true,
+      "reason": "Main contains the financial fact/parser/quality/reconciliation, resolver, evidence packet, freshness or shard implementations; branch CI and transport text are older. Existing PUBLIC regression verifies current equivalents."
+    },
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "repair/e36-sharded-public-delivery-20261008",
+      "current_head": "9e9edba6c57c2e6b770b64db5433544ca00cdf5f",
+      "reviewed_head": "9e9edba6c57c2e6b770b64db5433544ca00cdf5f",
+      "review_status": "RETAIN_NEWER_MAIN_OR_RETIRE_OLD_IMPLEMENTATION",
+      "delete_eligible": true,
+      "reason": "Main contains the financial fact/parser/quality/reconciliation, resolver, evidence packet, freshness or shard implementations; branch CI and transport text are older. Existing PUBLIC regression verifies current equivalents."
+    },
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "security/public-private-pull-only-20261008",
+      "current_head": "7db06eac668f554969f9e4fb369b9d2866203447",
+      "reviewed_head": "7db06eac668f554969f9e4fb369b9d2866203447",
+      "review_status": "RETAIN_NEWER_MAIN_OR_RETIRE_OLD_IMPLEMENTATION",
+      "delete_eligible": true,
+      "reason": "Main already has pull-only contracts, physical sink removal and firewall tests; retain current broader regression."
+    }
+  ],
+  "deleted_count": 0,
+  "protected_branches": [
+    "main",
+    "archive/retired-branches-20261012"
+  ],
+  "source_head_change_policy": "SKIP_IF_CURRENT_BRANCH_HEAD_DIFFERS_FROM_REVIEWED_HEAD",
+  "restore": "Create the original branch at its exact current_head recorded here; all these commits are retained by the archive commit ancestry.",
+  "execution_blocker": "Connected GitHub tools lack delete-branch/delete-ref. No local GitHub write credentials are available. Browser fallback requires user approval.",
+  "formal_head_modified": false,
+  "schedules_modified": false,
+  "orders_submitted": 0
+}
