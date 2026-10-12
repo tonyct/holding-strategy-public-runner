@@ -1,0 +1,647 @@
+{
+  "schema": "PUBLIC_BRANCH_REVIEWED_INTEGRATION_AUDIT/v1",
+  "reviewed_at_utc": "2026-10-12T02:29:45.968Z",
+  "pinned_main": "c9966637112fec275870e78d467bb500e9d370ac",
+  "inventory": [
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "e36-public-compute-orchestrator-20261008",
+      "branch_head_sha": "2b4de33275c42493bf796cd2ec6c08459db89aa2",
+      "pinned_compare_base": "c9966637112fec275870e78d467bb500e9d370ac",
+      "ahead": 22,
+      "behind": 215,
+      "status": "RETAIN_NEWER_MAIN_OR_RETIRE_OLD_IMPLEMENTATION",
+      "reason": "Useful evidence/metrics already implemented by current PUBLIC ops and engines. Reject retired PRIVATE-write sinks, fixed-count regression, and old H1 locator snapshots.",
+      "changed_files": [
+        {
+          "path": ".github/workflows/public_compute_branch_regression.yml",
+          "status": "added",
+          "current_main_blob": null
+        },
+        {
+          "path": ".github/workflows/public_research.yml",
+          "status": "modified",
+          "current_main_blob": "fff94acb1d184f7ff5b5c5936e842976ea5174b3"
+        },
+        {
+          "path": "config/hk_official_filings.json",
+          "status": "added",
+          "current_main_blob": null
+        },
+        {
+          "path": "config/hkex_issuer_ids.json",
+          "status": "added",
+          "current_main_blob": "e5b1f2ea43d1038309b79e8e373edd120af10e71"
+        },
+        {
+          "path": "config/official_filings.json",
+          "status": "added",
+          "current_main_blob": null
+        },
+        {
+          "path": "config/public_data_contract.json",
+          "status": "modified",
+          "current_main_blob": "246070062a1ee983f18dc43867559adb0bdabeaa"
+        },
+        {
+          "path": "engine/build_public_company_research.py",
+          "status": "added",
+          "current_main_blob": null
+        },
+        {
+          "path": "engine/public_evidence_registry.py",
+          "status": "added",
+          "current_main_blob": null
+        },
+        {
+          "path": "engine/sync_public_state_to_private.py",
+          "status": "added",
+          "current_main_blob": null
+        },
+        {
+          "path": "ops/__init__.py",
+          "status": "added",
+          "current_main_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        {
+          "path": "ops/private_state_sink.py",
+          "status": "added",
+          "current_main_blob": null
+        },
+        {
+          "path": "ops/public_a_originals.py",
+          "status": "added",
+          "current_main_blob": "8d0671422ee04a2485d1c65f3a19a0b8de104e7c"
+        },
+        {
+          "path": "ops/public_company_compute.py",
+          "status": "added",
+          "current_main_blob": "a4f6630d316db9359b52e0aeb616375bc511d671"
+        },
+        {
+          "path": "ops/public_evidence_registry.py",
+          "status": "added",
+          "current_main_blob": "352c4421f916c8af0d18ba79bf02b0be28b517f2"
+        },
+        {
+          "path": "ops/public_hk_originals.py",
+          "status": "added",
+          "current_main_blob": "31bdd0b196e8333f9ef659dae2b0f9de69453431"
+        },
+        {
+          "path": "ops/public_lead_registry.py",
+          "status": "added",
+          "current_main_blob": "722d4e593d37144d4970b405783110e20630bc57"
+        },
+        {
+          "path": "ops/public_original_text.py",
+          "status": "added",
+          "current_main_blob": "a4a076da070ed1fcee3789e47ced61977c82cbf7"
+        }
+      ],
+      "branch_deleted": false
+    },
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "e36-public-compute-mainline-20261008",
+      "branch_head_sha": "4da24a2db4980fa41a2e3e2ff0589ef3bb1edcbc",
+      "pinned_compare_base": "c9966637112fec275870e78d467bb500e9d370ac",
+      "ahead": 15,
+      "behind": 206,
+      "status": "RETAIN_NEWER_MAIN_OR_RETIRE_OLD_IMPLEMENTATION",
+      "reason": "Useful evidence/metrics already implemented by current PUBLIC ops and engines. Reject retired PRIVATE-write sinks, fixed-count regression, and old H1 locator snapshots.",
+      "changed_files": [
+        {
+          "path": ".github/workflows/public_dynamic_compute_mainline_regression.yml",
+          "status": "added",
+          "current_main_blob": "c81d836d5d60b73fb71f639c0fe1d2471eb9fb14"
+        },
+        {
+          "path": ".github/workflows/public_research.yml",
+          "status": "modified",
+          "current_main_blob": "fff94acb1d184f7ff5b5c5936e842976ea5174b3"
+        },
+        {
+          "path": "config/hkex_issuer_ids.json",
+          "status": "added",
+          "current_main_blob": "e5b1f2ea43d1038309b79e8e373edd120af10e71"
+        },
+        {
+          "path": "config/public_data_contract.json",
+          "status": "modified",
+          "current_main_blob": "246070062a1ee983f18dc43867559adb0bdabeaa"
+        },
+        {
+          "path": "ops/__init__.py",
+          "status": "added",
+          "current_main_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        {
+          "path": "ops/private_state_sink.py",
+          "status": "added",
+          "current_main_blob": null
+        },
+        {
+          "path": "ops/public_a_originals.py",
+          "status": "added",
+          "current_main_blob": "8d0671422ee04a2485d1c65f3a19a0b8de104e7c"
+        },
+        {
+          "path": "ops/public_company_compute.py",
+          "status": "added",
+          "current_main_blob": "a4f6630d316db9359b52e0aeb616375bc511d671"
+        },
+        {
+          "path": "ops/public_evidence_registry.py",
+          "status": "added",
+          "current_main_blob": "352c4421f916c8af0d18ba79bf02b0be28b517f2"
+        },
+        {
+          "path": "ops/public_hk_originals.py",
+          "status": "added",
+          "current_main_blob": "31bdd0b196e8333f9ef659dae2b0f9de69453431"
+        },
+        {
+          "path": "ops/public_lead_registry.py",
+          "status": "added",
+          "current_main_blob": "722d4e593d37144d4970b405783110e20630bc57"
+        },
+        {
+          "path": "ops/public_original_text.py",
+          "status": "added",
+          "current_main_blob": "a4a076da070ed1fcee3789e47ced61977c82cbf7"
+        }
+      ],
+      "branch_deleted": false
+    },
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "public-refresh-sla-20261008",
+      "branch_head_sha": "211fcf8e852511045a82d454b5c4e7ef6fd4a15b",
+      "pinned_compare_base": "c9966637112fec275870e78d467bb500e9d370ac",
+      "ahead": 1,
+      "behind": 216,
+      "status": "RETAIN_NEWER_MAIN_OR_RETIRE_OLD_IMPLEMENTATION",
+      "reason": "Old hourly schedule superseded by current freshness backstop; preserve existing schedule.",
+      "changed_files": [
+        {
+          "path": ".github/workflows/public_research.yml",
+          "status": "modified",
+          "current_main_blob": "fff94acb1d184f7ff5b5c5936e842976ea5174b3"
+        }
+      ],
+      "branch_deleted": false
+    },
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "e36-public-status-semantics-20261008",
+      "branch_head_sha": "e90f14224ae63dfc0c8974c2d8cd9088f50a4c16",
+      "pinned_compare_base": "c9966637112fec275870e78d467bb500e9d370ac",
+      "ahead": 0,
+      "behind": 197,
+      "status": "ALREADY_IN_MAIN",
+      "reason": "Branch head is already an ancestor of pinned main; no code merge needed.",
+      "changed_files": [],
+      "branch_deleted": false
+    },
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "repair/e36-public-freshness-backstop-20261008",
+      "branch_head_sha": "6f24d22b8627efd458c89989190cfb23d8e6726b",
+      "pinned_compare_base": "c9966637112fec275870e78d467bb500e9d370ac",
+      "ahead": 2,
+      "behind": 139,
+      "status": "RETAIN_NEWER_MAIN_OR_RETIRE_OLD_IMPLEMENTATION",
+      "reason": "Main contains the financial fact/parser/quality/reconciliation, resolver, evidence packet, freshness or shard implementations; branch CI and transport text are older. Existing PUBLIC regression verifies current equivalents.",
+      "changed_files": [
+        {
+          "path": ".github/workflows/public_research.yml",
+          "status": "modified",
+          "current_main_blob": "fff94acb1d184f7ff5b5c5936e842976ea5174b3"
+        }
+      ],
+      "branch_deleted": false
+    },
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "e36-public-lead-resolution-20261008",
+      "branch_head_sha": "c39289b18108c26d28ed99f167f9c732a61ccddb",
+      "pinned_compare_base": "c9966637112fec275870e78d467bb500e9d370ac",
+      "ahead": 6,
+      "behind": 202,
+      "status": "RETAIN_NEWER_MAIN_OR_RETIRE_OLD_IMPLEMENTATION",
+      "reason": "Main contains the financial fact/parser/quality/reconciliation, resolver, evidence packet, freshness or shard implementations; branch CI and transport text are older. Existing PUBLIC regression verifies current equivalents.",
+      "changed_files": [
+        {
+          "path": ".github/workflows/public_compute_regression.yml",
+          "status": "modified",
+          "current_main_blob": "6d0b2567edd17ea666dc363cbdc8a55c9e2367b8"
+        },
+        {
+          "path": ".github/workflows/public_research.yml",
+          "status": "modified",
+          "current_main_blob": "fff94acb1d184f7ff5b5c5936e842976ea5174b3"
+        },
+        {
+          "path": "ops/public_company_compute.py",
+          "status": "modified",
+          "current_main_blob": "a4f6630d316db9359b52e0aeb616375bc511d671"
+        },
+        {
+          "path": "ops/public_lead_resolver.py",
+          "status": "added",
+          "current_main_blob": "eafb0145209143676a3b7bbf7a68a281d9837ff9"
+        },
+        {
+          "path": "tests/test_public_compute_contract.py",
+          "status": "modified",
+          "current_main_blob": "e9aa7e7297bed3c746b43a038713e71bb94964fb"
+        },
+        {
+          "path": "tests/test_public_lead_resolver.py",
+          "status": "added",
+          "current_main_blob": "817e4c2620ac4da48be525f11b769dfd8a26930e"
+        }
+      ],
+      "branch_deleted": false
+    },
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "fix/public-evidence-readiness-after-resolver-20261008",
+      "branch_head_sha": "a30608b37b5ba4364ad8f5750c62ae0a00f61c47",
+      "pinned_compare_base": "c9966637112fec275870e78d467bb500e9d370ac",
+      "ahead": 6,
+      "behind": 200,
+      "status": "RETAIN_NEWER_MAIN_OR_RETIRE_OLD_IMPLEMENTATION",
+      "reason": "Main contains the financial fact/parser/quality/reconciliation, resolver, evidence packet, freshness or shard implementations; branch CI and transport text are older. Existing PUBLIC regression verifies current equivalents.",
+      "changed_files": [
+        {
+          "path": ".github/workflows/public_compute_regression.yml",
+          "status": "modified",
+          "current_main_blob": "6d0b2567edd17ea666dc363cbdc8a55c9e2367b8"
+        },
+        {
+          "path": ".github/workflows/public_research.yml",
+          "status": "modified",
+          "current_main_blob": "fff94acb1d184f7ff5b5c5936e842976ea5174b3"
+        },
+        {
+          "path": "ops/public_company_compute.py",
+          "status": "modified",
+          "current_main_blob": "a4f6630d316db9359b52e0aeb616375bc511d671"
+        },
+        {
+          "path": "ops/public_lead_registry.py",
+          "status": "modified",
+          "current_main_blob": "722d4e593d37144d4970b405783110e20630bc57"
+        },
+        {
+          "path": "tests/test_public_company_compute.py",
+          "status": "added",
+          "current_main_blob": "f5b560c78e9a6d473c0940130aad250a4e5d69d4"
+        },
+        {
+          "path": "tests/test_public_compute_contract.py",
+          "status": "modified",
+          "current_main_blob": "e9aa7e7297bed3c746b43a038713e71bb94964fb"
+        }
+      ],
+      "branch_deleted": false
+    },
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "fix/public-compute-platform-20261008",
+      "branch_head_sha": "c5a35a7ea4e01e201f50b896b0c2c70d9dbc72c4",
+      "pinned_compare_base": "c9966637112fec275870e78d467bb500e9d370ac",
+      "ahead": 15,
+      "behind": 215,
+      "status": "RETAIN_NEWER_MAIN_OR_RETIRE_OLD_IMPLEMENTATION",
+      "reason": "Main contains the financial fact/parser/quality/reconciliation, resolver, evidence packet, freshness or shard implementations; branch CI and transport text are older. Existing PUBLIC regression verifies current equivalents.",
+      "changed_files": [
+        {
+          "path": ".github/workflows/public_compute_regression.yml",
+          "status": "added",
+          "current_main_blob": "6d0b2567edd17ea666dc363cbdc8a55c9e2367b8"
+        },
+        {
+          "path": ".github/workflows/public_research.yml",
+          "status": "modified",
+          "current_main_blob": "fff94acb1d184f7ff5b5c5936e842976ea5174b3"
+        },
+        {
+          "path": "PUBLIC_EXPORT_MANIFEST.json",
+          "status": "modified",
+          "current_main_blob": "c79200e52a673c1c7fca351764218b75f86d69f5"
+        },
+        {
+          "path": "README.md",
+          "status": "modified",
+          "current_main_blob": "e5a6dc0163dbd5c2e2da9ff9bccfd7f08c2a800d"
+        },
+        {
+          "path": "config/public_data_contract.json",
+          "status": "modified",
+          "current_main_blob": "246070062a1ee983f18dc43867559adb0bdabeaa"
+        },
+        {
+          "path": "engine/public_evidence_index.py",
+          "status": "added",
+          "current_main_blob": "2df1a74c71452b74fbcda8fe42280e6c6cc21f2f"
+        },
+        {
+          "path": "engine/public_metrics.py",
+          "status": "added",
+          "current_main_blob": "c48698b846b7b748b138cc5887afde5591a096cd"
+        },
+        {
+          "path": "engine/public_run_snapshot.py",
+          "status": "added",
+          "current_main_blob": "419c9cd9528f7f605fc32023944ad8611e91e81f"
+        },
+        {
+          "path": "tests/test_public_compute_contract.py",
+          "status": "added",
+          "current_main_blob": "e9aa7e7297bed3c746b43a038713e71bb94964fb"
+        },
+        {
+          "path": "tests/test_public_evidence_index.py",
+          "status": "added",
+          "current_main_blob": "8defd73ed8b2366c9d71be7230d1c61f63cdc620"
+        },
+        {
+          "path": "tests/test_public_metrics.py",
+          "status": "added",
+          "current_main_blob": "280681d471b4f67e830df986354f2ecd2bce914d"
+        },
+        {
+          "path": "tests/test_public_run_snapshot.py",
+          "status": "added",
+          "current_main_blob": "c38f2ee0b87937440946bffdaddb360105ae53b0"
+        }
+      ],
+      "branch_deleted": false
+    },
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "fix/public-compute-lifecycle-semantics-20261008",
+      "branch_head_sha": "c39e14291247844ccd4935117e70a1872abf4231",
+      "pinned_compare_base": "c9966637112fec275870e78d467bb500e9d370ac",
+      "ahead": 7,
+      "behind": 202,
+      "status": "SELECTED_REVIEWED_MERGE",
+      "reason": "Merge selected branch ancestry with reviewed resolution: retain stronger current gates, recover the missing memoir replay / lifecycle logic / historical observations; validate without economic promotion.",
+      "changed_files": [
+        {
+          "path": ".github/workflows/public_dynamic_compute_mainline_regression.yml",
+          "status": "modified",
+          "current_main_blob": "c81d836d5d60b73fb71f639c0fe1d2471eb9fb14"
+        },
+        {
+          "path": ".github/workflows/public_research.yml",
+          "status": "modified",
+          "current_main_blob": "fff94acb1d184f7ff5b5c5936e842976ea5174b3"
+        },
+        {
+          "path": "ops/public_company_compute.py",
+          "status": "modified",
+          "current_main_blob": "a4f6630d316db9359b52e0aeb616375bc511d671"
+        },
+        {
+          "path": "ops/public_lead_registry.py",
+          "status": "modified",
+          "current_main_blob": "722d4e593d37144d4970b405783110e20630bc57"
+        },
+        {
+          "path": "tests/test_public_compute_contract.py",
+          "status": "modified",
+          "current_main_blob": "e9aa7e7297bed3c746b43a038713e71bb94964fb"
+        }
+      ],
+      "branch_deleted": false
+    },
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "feat/financial-fact-engine-v2-20261008",
+      "branch_head_sha": "eee5ee90ddc3c06ee1bb339ff35c91b432f3d806",
+      "pinned_compare_base": "c9966637112fec275870e78d467bb500e9d370ac",
+      "ahead": 51,
+      "behind": 196,
+      "status": "RETAIN_NEWER_MAIN_OR_RETIRE_OLD_IMPLEMENTATION",
+      "reason": "Main contains the financial fact/parser/quality/reconciliation, resolver, evidence packet, freshness or shard implementations; branch CI and transport text are older. Existing PUBLIC regression verifies current equivalents.",
+      "changed_files": [
+        {
+          "path": ".github/workflows/public_compute_regression.yml",
+          "status": "modified",
+          "current_main_blob": "6d0b2567edd17ea666dc363cbdc8a55c9e2367b8"
+        },
+        {
+          "path": ".github/workflows/public_research.yml",
+          "status": "modified",
+          "current_main_blob": "fff94acb1d184f7ff5b5c5936e842976ea5174b3"
+        },
+        {
+          "path": "engine/financial_fact_engine_v2.py",
+          "status": "added",
+          "current_main_blob": "cd89892030b5d654f6777d7253fb59814588789b"
+        },
+        {
+          "path": "ops/public_a_statement_fact_v2.py",
+          "status": "added",
+          "current_main_blob": "b98bb25d738118096e9eca438303181a5993d5be"
+        },
+        {
+          "path": "ops/public_fact_pipeline_v2.py",
+          "status": "added",
+          "current_main_blob": "066c1217be137e0294fa3e49c5ee97491d1eae40"
+        },
+        {
+          "path": "ops/public_fact_quality_v2.py",
+          "status": "added",
+          "current_main_blob": "7522e013a4dbef2bddd6969595e6355dd1e3827c"
+        },
+        {
+          "path": "ops/public_fact_reconcile_v2.py",
+          "status": "added",
+          "current_main_blob": "6e715bfde2db25012905523d9e8d2bfae7e36bc6"
+        },
+        {
+          "path": "ops/public_hk_statement_fact_v2.py",
+          "status": "added",
+          "current_main_blob": "d9500ec142380a3246b96c335ff7516a85f19a3e"
+        },
+        {
+          "path": "tests/test_financial_fact_engine_v2.py",
+          "status": "added",
+          "current_main_blob": "1fa920255125e265430302db2dd5dcefd96027d8"
+        },
+        {
+          "path": "tests/test_public_fact_pipeline_v2.py",
+          "status": "added",
+          "current_main_blob": "d1012892bdd3cbf770fe8779279ad7e3ccfd662c"
+        },
+        {
+          "path": "tests/test_public_fact_quality_v2.py",
+          "status": "added",
+          "current_main_blob": "d1ea586ce8ad8b783c439c37c5cc17b4766737cd"
+        },
+        {
+          "path": "tests/test_public_fact_reconcile_v2.py",
+          "status": "added",
+          "current_main_blob": "bad64d339e64281223addf0aac3699404486b75f"
+        },
+        {
+          "path": "tests/test_public_hk_statement_fact_v2.py",
+          "status": "added",
+          "current_main_blob": "f20780cb3e1ff3eed4b7a7cd7335223b6b6eb06b"
+        }
+      ],
+      "branch_deleted": false
+    },
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "security/public-private-pull-only-20261008",
+      "branch_head_sha": "7db06eac668f554969f9e4fb369b9d2866203447",
+      "pinned_compare_base": "c9966637112fec275870e78d467bb500e9d370ac",
+      "ahead": 1,
+      "behind": 134,
+      "status": "RETAIN_NEWER_MAIN_OR_RETIRE_OLD_IMPLEMENTATION",
+      "reason": "Main already has pull-only contracts, physical sink removal and firewall tests; retain current broader regression.",
+      "changed_files": [
+        {
+          "path": ".github/workflows/public_compute_regression.yml",
+          "status": "modified",
+          "current_main_blob": "6d0b2567edd17ea666dc363cbdc8a55c9e2367b8"
+        },
+        {
+          "path": ".github/workflows/public_dynamic_compute_mainline_regression.yml",
+          "status": "modified",
+          "current_main_blob": "c81d836d5d60b73fb71f639c0fe1d2471eb9fb14"
+        },
+        {
+          "path": ".github/workflows/public_research.yml",
+          "status": "modified",
+          "current_main_blob": "fff94acb1d184f7ff5b5c5936e842976ea5174b3"
+        },
+        {
+          "path": "README.md",
+          "status": "modified",
+          "current_main_blob": "e5a6dc0163dbd5c2e2da9ff9bccfd7f08c2a800d"
+        },
+        {
+          "path": "config/public_data_contract.json",
+          "status": "modified",
+          "current_main_blob": "246070062a1ee983f18dc43867559adb0bdabeaa"
+        },
+        {
+          "path": "config/public_shadow_handoff_contract.json",
+          "status": "modified",
+          "current_main_blob": "59911cdb59504f6227fba4475126f9ea4220cdf2"
+        },
+        {
+          "path": "ops/private_sink_atomic_v2.py",
+          "status": "removed",
+          "current_main_blob": null
+        },
+        {
+          "path": "ops/private_sink_v2_status.py",
+          "status": "removed",
+          "current_main_blob": null
+        },
+        {
+          "path": "ops/private_state_sink.py",
+          "status": "removed",
+          "current_main_blob": null
+        },
+        {
+          "path": "tests/test_private_sink_atomic_v2.py",
+          "status": "removed",
+          "current_main_blob": null
+        },
+        {
+          "path": "tests/test_private_state_sink_safety.py",
+          "status": "removed",
+          "current_main_blob": null
+        },
+        {
+          "path": "tests/test_public_compute_contract.py",
+          "status": "modified",
+          "current_main_blob": "e9aa7e7297bed3c746b43a038713e71bb94964fb"
+        },
+        {
+          "path": "tests/test_public_pull_only_boundary.py",
+          "status": "added",
+          "current_main_blob": "ee1b3018c1a2b78102728ee173338e3f6addab8f"
+        }
+      ],
+      "branch_deleted": false
+    },
+    {
+      "repository": "tonyct/holding-strategy-public-runner",
+      "branch": "repair/e36-sharded-public-delivery-20261008",
+      "branch_head_sha": "9e9edba6c57c2e6b770b64db5433544ca00cdf5f",
+      "pinned_compare_base": "c9966637112fec275870e78d467bb500e9d370ac",
+      "ahead": 4,
+      "behind": 137,
+      "status": "RETAIN_NEWER_MAIN_OR_RETIRE_OLD_IMPLEMENTATION",
+      "reason": "Main contains the financial fact/parser/quality/reconciliation, resolver, evidence packet, freshness or shard implementations; branch CI and transport text are older. Existing PUBLIC regression verifies current equivalents.",
+      "changed_files": [
+        {
+          "path": ".github/workflows/public_compute_regression.yml",
+          "status": "modified",
+          "current_main_blob": "6d0b2567edd17ea666dc363cbdc8a55c9e2367b8"
+        },
+        {
+          "path": ".github/workflows/public_research.yml",
+          "status": "modified",
+          "current_main_blob": "fff94acb1d184f7ff5b5c5936e842976ea5174b3"
+        },
+        {
+          "path": "docs/PUBLIC_DELIVERY_SHARDS_V1.md",
+          "status": "added",
+          "current_main_blob": "385cbc718e4735e9f48968e9ad5bf6c25cc25f4f"
+        },
+        {
+          "path": "ops/public_delivery_shards.py",
+          "status": "added",
+          "current_main_blob": "2bcb23cd6fe5a2ae2a76d3abe18d7caf4ec48014"
+        },
+        {
+          "path": "ops/public_historical_ttm_originals.py",
+          "status": "modified",
+          "current_main_blob": "e45953cfeffbfe0c84f91e342c9cf7d46872f077"
+        },
+        {
+          "path": "tests/test_public_delivery_shards.py",
+          "status": "added",
+          "current_main_blob": "6dd44bf3bc88466654f1c01bc024aefe170e00f4"
+        },
+        {
+          "path": "tests/test_public_historical_ttm_originals.py",
+          "status": "modified",
+          "current_main_blob": "11c0c5e7225818ce9ccb49db854ced7149793dc3"
+        }
+      ],
+      "branch_deleted": false
+    }
+  ],
+  "validation": {
+    "local_regression_tests": 131,
+    "result": "PASS",
+    "strict_workflow_yaml": "PASS"
+  },
+  "changes": [
+    "Integrate persistent explicit terminal states and low-information/cross-board retirement.",
+    "Keep official locators and unknown states pending; preserve existing source/review progress.",
+    "Use same terminal classification for company packet pending/terminal counts.",
+    "Add lifecycle regressions to current PUBLIC compute CI."
+  ],
+  "invariants": {
+    "public_only": true,
+    "private_repo_write": false,
+    "private_credentials_required": false,
+    "no_valuation_or_trade_logic": true,
+    "schedules_not_modified": true,
+    "old_branches_deleted": false
+  },
+  "scope": "LOCAL_CODE_TEST_AND_REVIEWED_MERGE_NOT_COLLECTION_OR_RESEARCH_COMPLETION"
+}

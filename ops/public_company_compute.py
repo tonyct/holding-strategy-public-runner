@@ -2,16 +2,14 @@
 import argparse,json
 from datetime import datetime,timezone
 from pathlib import Path
+from ops.public_lead_registry import TERMINAL_STATES
 
 def read(path):
     p=Path(path);return json.loads(p.read_text()) if p.is_file() else {}
 
 def unresolved(state):
-    return state in {
-        "PRIMARY_SOURCE_VERIFICATION_PENDING",
-        "PRIMARY_SOURCE_BYTES_CAPTURED_SEMANTIC_REVIEW_PENDING",
-        "SOURCE_UNAVAILABLE_RETRYABLE",
-    } or str(state or "").endswith("_PENDING")
+    # A locator, missing state or unknown future stage is not a closed issue.
+    return state not in TERMINAL_STATES
 
 def original_state(originals):
     indexed=int(originals.get("indexed",0) or 0)
