@@ -24,7 +24,6 @@ CAPABILITIES = {
         "fields": ["announcement_id", "title", "document_sha256",
                    "pdf_base64", "source_url", "announced_at"],
         "note": "One exact ID from real CNINFO index; bounded original bytes only, not issuer economics or approval"},
-    },
     "official_filings": {
         "adapter": "cninfo_official_pdf", "markets": ["SH", "SZ"],
         "source_options": ["AUTO"],
