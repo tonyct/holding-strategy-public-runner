@@ -30,16 +30,21 @@ def archive(request_path, response_path, receipt_path, *, root=ROOT):
     symbol=request.get("symbol")
     period=request.get("report_period_end")
     rows=response.get("rows")
+    category=request.get("data_type")
+    notice=category=="official_announcement_pdf"
     if (request.get("schema")!="PUBLIC_DATA_GATEWAY_REQUEST/v1"
-            or request.get("data_type")!="official_filings"
+            or category not in ("official_filings","official_announcement_pdf")
             or request.get("operation")!="EXECUTE"
             or not SYMBOL.fullmatch(str(symbol))
-            or not PERIOD.fullmatch(str(period))
+            or (not notice and not PERIOD.fullmatch(str(period)))
+            or (notice and (not re.fullmatch(r"[0-9]{10}",str(request.get("announcement_id","")))
+                            or period is not None))
             or response.get("request")!=request
             or receipt.get("schema")!="PUBLIC_DATA_GATEWAY_RECEIPT/v1"
             or receipt.get("status")!="DELIVERED"
             or receipt.get("request_id")!=request.get("request_id")
             or receipt.get("symbol")!=symbol
+            or receipt.get("data_type")!=category
             or receipt.get("response_sha256")!=_sha(raw)
             or not isinstance(rows,list) or len(rows)!=1):
         raise ValueError("PUBLIC_ORIGINAL_ARCHIVE_REQUEST_RECEIPT_MISMATCH")
@@ -49,7 +54,11 @@ def archive(request_path, response_path, receipt_path, *, root=ROOT):
     if (parsed.scheme!="https"
             or not (host=="cninfo.com.cn" or host.endswith(".cninfo.com.cn"))
             or row.get("source")!="CNINFO_OFFICIAL_PDF"
-            or row.get("requested_report_period_end")!=period
+            or (not notice and row.get("requested_report_period_end")!=period)
+            or (notice and (row.get("announcement_id")!=request["announcement_id"]
+                            or not re.fullmatch(r"20[0-9]{2}-[0-9]{2}-[0-9]{2}",str(row.get("announced_at","")))
+                            or row.get("source_url") !=
+                            "https://static.cninfo.com.cn/finalpage/"+row["announced_at"]+"/"+request["announcement_id"]+".PDF"))
             or row.get("verification_state")!="ORIGINAL_BYTES_CAPTURED_CONTENT_NOT_AUDITED"):
         raise ValueError("PUBLIC_ORIGINAL_ARCHIVE_UNTRUSTED_DOCUMENT")
     try:
@@ -69,13 +78,16 @@ def archive(request_path, response_path, receipt_path, *, root=ROOT):
         reader=PdfReader(io.BytesIO(pdf),strict=True)
         cover="".join((reader.pages[i].extract_text() or "") for i in range(min(2,len(reader.pages))))
         cover=re.sub(r"\s+","",cover)
-        if symbol.split(".")[0] not in cover or period[:4] not in cover:
+        anchor_year=(row["announced_at"][:4] if notice else period[:4])
+        if symbol.split(".")[0] not in cover or anchor_year not in cover:
             raise ValueError("PUBLIC_ORIGINAL_ARCHIVE_ISSUER_PERIOD_MISMATCH")
         pages=len(reader.pages)
     except ValueError:raise
     except Exception as err:
         raise ValueError("PUBLIC_ORIGINAL_ARCHIVE_PDF_PARSE_FAILED") from err
-    path=Path(root)/symbol/period/(digest+".pdf")
+    folder=(Path(root)/symbol/"announcements"/row["announced_at"]
+            if notice else Path(root)/symbol/period)
+    path=folder/(digest+".pdf")
     path.parent.mkdir(parents=True,exist_ok=True)
     if path.exists():
         if _sha(path.read_bytes())!=digest:
@@ -93,6 +105,10 @@ def archive(request_path, response_path, receipt_path, *, root=ROOT):
         "relative_path":path.as_posix(),
         "source_scope":"PUBLIC_ISSUER_FILE_NOT_ECONOMIC_REVIEW",
         "independent_economic_reviewed":False,"formal_l3_pass":False}
+    if notice:
+        manifest["report_period_end"]=None
+        manifest["announcement_id"]=request["announcement_id"]
+        manifest["announced_at"]=row["announced_at"]
     manifest_path=path.with_suffix(".json")
     serialized=(json.dumps(manifest,ensure_ascii=False,sort_keys=True,indent=2)+"\n").encode()
     if manifest_path.exists():
