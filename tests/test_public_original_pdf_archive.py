@@ -95,6 +95,22 @@ class OriginalArchiveTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,"BASE64_IMMUTABLE_CONFLICT"):
                 archive(Path(tmp)/"request.json",Path(tmp)/"raw.json",
                         Path(tmp)/"receipt.json",root=Path(tmp)/"public_originals")
+    def test_checksum_chunk_transport_and_immutability(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            x=self.call(tmp)
+            m=json.loads(Path(x["chunk_manifest_path"]).read_text())
+            self.assertEqual(m["schema"],"PUBLIC_ORIGINAL_BASE64_CHUNKS/v1")
+            self.assertEqual(m["document_sha256"],x["sha256"])
+            self.assertEqual(m["chunk_size"],524288)
+            encoded="".join(Path(part["path"]).read_text().strip()
+                            for part in m["chunks"])
+            self.assertEqual(len(encoded),m["encoded_length"])
+            self.assertEqual(sha(base64.b64decode(encoded,validate=True)),x["sha256"])
+            first=Path(m["chunks"][0]["path"])
+            first.write_text("tampered")
+            with self.assertRaisesRegex(ValueError,"CHUNK_IMMUTABILITY_CONFLICT"):
+                archive(Path(tmp)/"request.json",Path(tmp)/"raw.json",
+                        Path(tmp)/"receipt.json",root=Path(tmp)/"public_originals")
     def test_wrong_pdf_hash_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
             with self.assertRaisesRegex(ValueError,"BYTE_HASH_MISMATCH"):
