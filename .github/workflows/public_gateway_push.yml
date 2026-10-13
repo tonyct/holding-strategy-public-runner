@@ -54,7 +54,7 @@ jobs:
             python -m pip install requests
           elif [ "$TYPE" = "financial_statements" ]; then
             python -m pip install -r engine/requirements.txt akshare
-          elif [ "$TYPE" = "announcement_index" ] || [ "$TYPE" = "official_filings" ]; then
+          elif [ "$TYPE" = "announcement_index" ] || [ "$TYPE" = "official_filings" ] || [ "$TYPE" = "official_announcement_pdf" ]; then
             python -m pip install requests pypdf
           elif [ "$TYPE" = "" ]; then
             echo 'DISCOVERY_ONLY_NO_PROVIDER_NEEDED'
