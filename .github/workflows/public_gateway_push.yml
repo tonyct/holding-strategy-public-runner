@@ -5,7 +5,7 @@ on:
     paths:
       - 'requests/public_gateway/*.json'
 permissions:
-  contents: read
+  contents: write
 jobs:
   gateway:
     runs-on: ubuntu-latest
@@ -55,7 +55,7 @@ jobs:
           elif [ "$TYPE" = "financial_statements" ]; then
             python -m pip install -r engine/requirements.txt akshare
           elif [ "$TYPE" = "announcement_index" ] || [ "$TYPE" = "official_filings" ]; then
-            python -m pip install requests
+            python -m pip install requests pypdf
           elif [ "$TYPE" = "" ]; then
             echo 'DISCOVERY_ONLY_NO_PROVIDER_NEEDED'
           else
@@ -68,6 +68,29 @@ jobs:
           python -m ops.public_data_gateway \
             --request "$(cat /tmp/selected_gateway_request.txt)" \
             --output .gateway/result
+      - name: Archive public official PDF to immutable SHA path
+        shell: bash
+        run: |
+          set -euo pipefail
+          TYPE=$(python -c 'import json,sys;print(json.load(open(sys.argv[1])).get("data_type",""))' "$(cat /tmp/selected_gateway_request.txt)")
+          if [ "$TYPE" = "official_filings" ] && [ -f .gateway/result/RAW_RESPONSE.json ]; then
+            python -m ops.public_original_pdf_archive \
+              --request "$(cat /tmp/selected_gateway_request.txt)" \
+              --response .gateway/result/RAW_RESPONSE.json \
+              --receipt .gateway/result/PUBLIC_GATEWAY_RECEIPT.json \
+              --root public_originals
+            git add -- public_originals/
+            if ! git diff --cached --quiet; then
+              git config user.name "github-actions[bot]"
+              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git commit -m "data(public): archive immutable original issuer PDF"
+              git fetch origin main
+              git rebase origin/main
+              git push origin HEAD:main
+            fi
+          else
+            echo "NO_OFFICIAL_PDF_TO_ARCHIVE"
+          fi
       - name: Upload evidence even for provider GAP
         if: always()
         uses: actions/upload-artifact@v4
