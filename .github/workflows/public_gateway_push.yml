@@ -73,12 +73,20 @@ jobs:
         run: |
           set -euo pipefail
           TYPE=$(python -c 'import json,sys;print(json.load(open(sys.argv[1])).get("data_type",""))' "$(cat /tmp/selected_gateway_request.txt)")
-          if [ "$TYPE" = "official_filings" ] && [ -f .gateway/result/RAW_RESPONSE.json ]; then
-            python -m ops.public_original_pdf_archive \
-              --request "$(cat /tmp/selected_gateway_request.txt)" \
-              --response .gateway/result/RAW_RESPONSE.json \
-              --receipt .gateway/result/PUBLIC_GATEWAY_RECEIPT.json \
-              --root public_originals
+          if { [ "$TYPE" = "official_filings" ] || [ "$TYPE" = "official_announcement_pdf" ]; } && [ -f .gateway/result/RAW_RESPONSE.json ]; then
+            if [ "$TYPE" = "official_filings" ]; then
+              python -m ops.public_original_pdf_archive \
+                --request "$(cat /tmp/selected_gateway_request.txt)" \
+                --response .gateway/result/RAW_RESPONSE.json \
+                --receipt .gateway/result/PUBLIC_GATEWAY_RECEIPT.json \
+                --root public_originals
+            else
+              python -m ops.public_announcement_original_archive \
+                --request "$(cat /tmp/selected_gateway_request.txt)" \
+                --response .gateway/result/RAW_RESPONSE.json \
+                --receipt .gateway/result/PUBLIC_GATEWAY_RECEIPT.json \
+                --root public_originals
+            fi
             git add -- public_originals/
             if ! git diff --cached --quiet; then
               git config user.name "github-actions[bot]"
