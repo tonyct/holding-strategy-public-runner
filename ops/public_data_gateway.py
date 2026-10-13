@@ -60,7 +60,7 @@ def validate(request):
     if not isinstance(request, dict):
         raise ValueError("REQUEST_NOT_OBJECT")
     allowed = {"schema", "request_id", "operation", "symbol", "data_type",
-               "start_date", "end_date", "source", "report_period_end"}
+               "start_date", "end_date", "source", "report_period_end", "announcement_id"}
     if set(request) - allowed or set(request) & FORBIDDEN:
         raise ValueError("REQUEST_EXTRA_OR_PRIVATE_FIELDS")
     if request.get("schema") != SCHEMA or request.get("operation") not in ("DISCOVER", "EXECUTE"):
@@ -107,6 +107,13 @@ def validate(request):
                 raise ValueError("INVALID_TARGET_REPORT_PERIOD")
     elif "report_period_end" in request:
         raise ValueError("REPORT_PERIOD_ONLY_FOR_ORIGINAL_FILINGS")
+    if category == "official_announcement_pdf":
+        if (not isinstance(request.get("announcement_id"),str)
+                or not re.fullmatch(r"[0-9]{10}",request["announcement_id"])
+                or (end-start).days>31):
+            raise ValueError("EXACT_ANNOUNCEMENT_ID_AND_31DAY_WINDOW_REQUIRED")
+    elif "announcement_id" in request:
+        raise ValueError("ANNOUNCEMENT_ID_ONLY_FOR_OFFICIAL_ANNOUNCEMENT")
 
 def execute(request):
     """Execute a bounded public-only provider request; never claim issuer validation."""
