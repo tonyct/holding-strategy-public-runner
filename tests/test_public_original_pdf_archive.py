@@ -65,6 +65,36 @@ class OriginalArchiveTests(unittest.TestCase):
                       Path(tmp)/"receipt.json",root=Path(tmp)/"public_originals")
             self.assertFalse(y["archived"])
             self.assertEqual(y["sha256"],x["sha256"])
+    def test_new_request_id_same_pdf_keeps_original_manifest(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            first=self.call(tmp)
+            base=Path(tmp)
+            req=json.loads((base/"request.json").read_text())
+            req["request_id"]="PUBLIC_TEST_600499_RETRY"
+            (base/"request.json").write_text(json.dumps(req))
+            response=json.loads((base/"raw.json").read_text())
+            response["request"]=req
+            raw=json.dumps(response,ensure_ascii=False).encode()
+            (base/"raw.json").write_bytes(raw)
+            receipt=json.loads((base/"receipt.json").read_text())
+            receipt["request_id"]=req["request_id"]
+            receipt["response_sha256"]=sha(raw)
+            (base/"receipt.json").write_text(json.dumps(receipt))
+            again=archive(base/"request.json",base/"raw.json",
+                base/"receipt.json",root=base/"public_originals")
+            self.assertFalse(again["archived"])
+            self.assertEqual(again["request_id"],"PUBLIC_TEST_600499")
+            self.assertEqual(first["sha256"],again["sha256"])
+    def test_base64_transport_roundtrip_and_tamper_rejected(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            first=self.call(tmp)
+            pdf=Path(first["relative_path"]).read_bytes()
+            path=Path(first["base64_transport_path"])
+            self.assertEqual(base64.b64decode(path.read_bytes(),validate=False),pdf)
+            path.write_text("tampered")
+            with self.assertRaisesRegex(ValueError,"BASE64_IMMUTABLE_CONFLICT"):
+                archive(Path(tmp)/"request.json",Path(tmp)/"raw.json",
+                        Path(tmp)/"receipt.json",root=Path(tmp)/"public_originals")
     def test_wrong_pdf_hash_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
             with self.assertRaisesRegex(ValueError,"BYTE_HASH_MISMATCH"):
