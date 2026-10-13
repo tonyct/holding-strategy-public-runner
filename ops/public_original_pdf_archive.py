@@ -95,11 +95,28 @@ def archive(request_path, response_path, receipt_path, *, root=ROOT):
         "independent_economic_reviewed":False,"formal_l3_pass":False}
     manifest_path=path.with_suffix(".json")
     serialized=(json.dumps(manifest,ensure_ascii=False,sort_keys=True,indent=2)+"\n").encode()
-    if manifest_path.exists() and manifest_path.read_bytes()!=serialized:
-        raise ValueError("PUBLIC_ORIGINAL_ARCHIVE_MANIFEST_CONFLICT")
-    manifest_path.write_bytes(serialized)
+    if manifest_path.exists():
+        retained=json.loads(manifest_path.read_text(encoding="utf-8"))
+        # Repeated requests for the exact immutable issuer bytes are idempotent.
+        # Keep the first dispatch provenance; never rewrite it on retry.
+        for field in manifest:
+            if field != "request_id" and retained.get(field) != manifest[field]:
+                raise ValueError("PUBLIC_ORIGINAL_ARCHIVE_MANIFEST_CONFLICT")
+        manifest=retained
+    else:
+        manifest_path.write_bytes(serialized)
+    # GitHub text-only connectors cannot read binary PDF blobs. Retain a
+    # checksum-bound UTF-8 transport sidecar for PRIVATE original-byte CAS.
+    # It is PUBLIC issuer data, not a valuation or review artifact.
+    transport_path=path.with_suffix(".b64")
+    transport=(base64.b64encode(pdf).decode("ascii")+"\\n").encode("ascii")
+    if transport_path.exists():
+        if transport_path.read_bytes()!=transport:
+            raise ValueError("PUBLIC_ORIGINAL_ARCHIVE_BASE64_IMMUTABLE_CONFLICT")
+    else:
+        transport_path.write_bytes(transport)
     return {"status":"PUBLIC_ORIGINAL_BYTES_STORED_LOCALLY_FOR_GIT_COMMIT",
-            "archived":wrote,**manifest}
+            "archived":wrote,"base64_transport_path":transport_path.as_posix(),**manifest}
 
 
 def main():
