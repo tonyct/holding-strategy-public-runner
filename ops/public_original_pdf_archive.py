@@ -115,8 +115,41 @@ def archive(request_path, response_path, receipt_path, *, root=ROOT):
             raise ValueError("PUBLIC_ORIGINAL_ARCHIVE_BASE64_IMMUTABLE_CONFLICT")
     else:
         transport_path.write_bytes(transport)
+    # GitHub Contents API omits content for blobs above 1 MiB.
+    # Deterministic chunks permit PRIV repos to reconstruct exact original.
+    encoded=base64.b64encode(pdf).decode("ascii")
+    chunk_size=524288  # divisible by 4; base64 concatenation is safe
+    chunk_root=path.parent/(digest+".parts")
+    chunk_root.mkdir(parents=True,exist_ok=True)
+    parts=[]
+    for i,start in enumerate(range(0,len(encoded),chunk_size)):
+        part=encoded[start:start+chunk_size]
+        dest=chunk_root/("%04d.b64"%i)
+        payload=(part+"\n").encode("ascii")
+        if dest.exists():
+            if dest.read_bytes()!=payload:
+                raise ValueError("PUBLIC_ORIGINAL_ARCHIVE_CHUNK_IMMUTABILITY_CONFLICT")
+        else:
+            dest.write_bytes(payload)
+        parts.append({"index":i,"path":dest.as_posix(),
+                      "encoded_sha256":_sha(part.encode("ascii")),
+                      "encoded_byte_length":len(part)})
+    chunk_meta={"schema":"PUBLIC_ORIGINAL_BASE64_CHUNKS/v1",
+                "symbol":symbol,"report_period_end":period,
+                "document_sha256":digest,"byte_count":len(pdf),
+                "encoded_length":len(encoded),"chunk_size":chunk_size,
+                "chunks":parts}
+    chunk_manifest=path.parent/(digest+".parts.json")
+    expected=(json.dumps(chunk_meta,ensure_ascii=False,sort_keys=True,indent=2)+"\n").encode()
+    if chunk_manifest.exists():
+        if chunk_manifest.read_bytes()!=expected:
+            raise ValueError("PUBLIC_ORIGINAL_ARCHIVE_CHUNK_MANIFEST_CONFLICT")
+    else:
+        chunk_manifest.write_bytes(expected)
     return {"status":"PUBLIC_ORIGINAL_BYTES_STORED_LOCALLY_FOR_GIT_COMMIT",
-            "archived":wrote,"base64_transport_path":transport_path.as_posix(),**manifest}
+            "archived":wrote,"base64_transport_path":transport_path.as_posix(),
+            "chunk_manifest_path":chunk_manifest.as_posix(),
+            "chunk_count":len(parts),**manifest}
 
 
 def main():
