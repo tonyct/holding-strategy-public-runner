@@ -65,6 +65,52 @@ class ExtendedTests(unittest.TestCase):
         self.assertEqual(meta["fetched"],1)
         self.assertEqual(hashlib.sha256(base64.b64decode(rows[0]["pdf_base64"])).hexdigest(),
                          rows[0]["document_sha256"])
+    def test_exact_announcement_pdf_real_structure(self):
+        import io
+        from reportlab.pdfgen import canvas
+        o=io.BytesIO(); c=canvas.Canvas(o); c.drawString(40,700,"600499 2026-076 official investment announcement"); c.save()
+        pdf=o.getvalue()
+        class Response:
+            status_code=200
+            headers={}
+            def raise_for_status(self): return None
+            def iter_content(self,n): return iter([pdf])
+        class Session:
+            def __enter__(self): return self
+            def __exit__(self,*a): return False
+            def get(self,*a,**kw):
+                assert kw.get("allow_redirects") is False
+                return Response()
+        req={**REQUEST,"symbol":"600499.SH","data_type":"official_announcement_pdf",
+             "start_date":"2026-09-16","end_date":"2026-09-23",
+             "announcement_id":"1225575032"}
+        validate(req)
+        idx=[{"title":"科达制造股份有限公司关于对外投资的公告",
+              "announced_at":"2026-09-22","announcement_id":"1225575032"}]
+        with patch.object(ext,"_index",return_value=(idx,1)),patch("requests.Session",Session):
+            rows,meta=ext.official_announcement_pdf(req)
+        self.assertEqual(len(rows),1)
+        self.assertEqual(rows[0]["announcement_id"],req["announcement_id"])
+        self.assertEqual(hashlib.sha256(base64.b64decode(rows[0]["pdf_base64"])).hexdigest(),
+                         rows[0]["document_sha256"])
+        self.assertEqual(meta["fetched"],1)
+    def test_announcement_wrong_id_cannot_fallback_to_unrelated_pdf(self):
+        req={**REQUEST,"symbol":"600499.SH","data_type":"official_announcement_pdf",
+             "start_date":"2026-09-16","end_date":"2026-09-23",
+             "announcement_id":"1225575032"}
+        idx=[{"title":"其他公告","announced_at":"2026-09-17","announcement_id":"1225569050"}]
+        with patch.object(ext,"_index",return_value=(idx,1)):
+            rows,meta=ext.official_announcement_pdf(req)
+        self.assertEqual(rows,[])
+        self.assertEqual(meta["gap_reason"],"EXACT_ANNOUNCEMENT_ID_NOT_FOUND")
+    def test_announcement_request_rejects_non10digit_id_and_other_data_type(self):
+        req={**REQUEST,"symbol":"600499.SH","data_type":"official_announcement_pdf",
+             "start_date":"2026-09-16","end_date":"2026-09-23",
+             "announcement_id":"bad"}
+        with self.assertRaises(ValueError): validate(req)
+        with self.assertRaises(ValueError):
+            validate({**REQUEST,"announcement_id":"1225575032"})
+
     def test_private_fields_rejected(self):
         with self.assertRaises(ValueError):
             validate({**REQUEST,"holdings":["001286.SZ"]})
