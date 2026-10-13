@@ -18,6 +18,13 @@ CAPABILITIES = {
         "source_options": ["AUTO", "DIRECT_CNINFO"],
         "fields": ["title", "url", "announced_at", "announcement_id", "adjunct_url"],
         "note": "Official disclosure index, not a downloaded or authenticated issuer document"},
+    "official_announcement_pdf": {
+        "adapter": "cninfo_official_announcement_pdf", "markets": ["SH", "SZ"],
+        "source_options": ["AUTO"],
+        "fields": ["announcement_id", "title", "document_sha256",
+                   "pdf_base64", "source_url", "announced_at"],
+        "note": "One exact ID from real CNINFO index; bounded original bytes only, not issuer economics or approval"},
+    },
     "official_filings": {
         "adapter": "cninfo_official_pdf", "markets": ["SH", "SZ"],
         "source_options": ["AUTO"],
@@ -123,9 +130,68 @@ def official_filings(request):
     return [],{"required":1,"fetched":0,"upstream_total":total,
               "gap_reason":"OFFICIAL_PDF_DOWNLOAD_FAILED","attempts":attempts}
 
+def official_announcement_pdf(request):
+    """Fetch exactly one public issuer announcement discovered by official ID."""
+    import io
+    import requests
+    from datetime import date
+    from pypdf import PdfReader
+    aid=request.get("announcement_id")
+    start=date.fromisoformat(request["start_date"])
+    end=date.fromisoformat(request["end_date"])
+    if not isinstance(aid,str) or not re.fullmatch(r"[0-9]{10}",aid) or (end-start).days>31:
+        raise ValueError("ANNOUNCEMENT_EXACT_ID_OR_WINDOW_REQUIRED")
+    rows,total=_index(request)
+    exact=[r for r in rows if str(r.get("announcement_id"))==aid
+           and isinstance(r.get("title"),str)
+           and re.fullmatch(r"20[0-9]{2}-[0-9]{2}-[0-9]{2}",str(r.get("announced_at","")))]
+    if len(exact)!=1:
+        return [],{"required":1,"fetched":0,"source_used":"DIRECT_CNINFO",
+                  "gap_reason":"EXACT_ANNOUNCEMENT_ID_NOT_FOUND","upstream_total":total}
+    item=exact[0]
+    stamp=item["announced_at"]
+    if not (start<=date.fromisoformat(stamp)<=end):
+        raise ValueError("ANNOUNCEMENT_DATE_OUTSIDE_REQUEST")
+    url="https://static.cninfo.com.cn/finalpage/"+stamp+"/"+aid+".PDF"
+    try:
+        with requests.Session() as session:
+            resp=session.get(url,stream=True,allow_redirects=False,timeout=(5,18),
+                headers={"User-Agent":"PublicCompanyResearch/1.0",
+                         "Referer":"https://www.cninfo.com.cn/"})
+            resp.raise_for_status()
+            if resp.status_code!=200 or resp.headers.get("Location"):
+                raise ValueError("ANNOUNCEMENT_OFFICIAL_REDIRECT_OR_STATUS")
+            buf=bytearray()
+            for chunk in resp.iter_content(65536):
+                buf.extend(chunk)
+                if len(buf)>8*1024*1024:
+                    raise ValueError("ANNOUNCEMENT_PDF_TOO_LARGE")
+        raw=bytes(buf)
+        if (not raw.startswith(b"%PDF-") or b"%%EOF" not in raw[-8192:]):
+            raise ValueError("INVALID_ANNOUNCEMENT_PDF_BYTES")
+        reader=PdfReader(io.BytesIO(raw),strict=True)
+        cover="".join((p.extract_text() or "") for p in reader.pages[:min(2,len(reader.pages))])
+        if request["symbol"].split(".")[0] not in cover:
+            raise ValueError("ANNOUNCEMENT_ISSUER_NOT_IN_COVER")
+        return [{
+            "title":item["title"],"announced_at":stamp,"source_url":url,
+            "source":"CNINFO_OFFICIAL_PDF","document_sha256":hashlib.sha256(raw).hexdigest(),
+            "announcement_id":aid,"byte_count":len(raw),
+            "pdf_base64":base64.b64encode(raw).decode("ascii"),
+            "pdf_pages":len(reader.pages),
+            "verification_state":"ORIGINAL_BYTES_CAPTURED_CONTENT_NOT_AUDITED"}],{
+            "required":1,"fetched":1,"source_used":"CNINFO_OFFICIAL_PDF",
+            "upstream_total":total,"announcement_id":aid}
+    except Exception as exc:
+        return [],{"required":1,"fetched":0,"source_used":"DIRECT_CNINFO",
+                  "gap_reason":"EXACT_OFFICIAL_ANNOUNCEMENT_PDF_DOWNLOAD_FAILED",
+                  "error":type(exc).__name__+":"+str(exc)[:140],
+                  "announcement_id":aid}
+
 def execute_extended(request):
     kind=request["data_type"]
     if kind=="financial_statements":return financial_statements(request)
     if kind=="announcement_index":return announcement_index(request)
     if kind=="official_filings":return official_filings(request)
+    if kind=="official_announcement_pdf":return official_announcement_pdf(request)
     raise ValueError("UNSUPPORTED_DATA_TYPE")
