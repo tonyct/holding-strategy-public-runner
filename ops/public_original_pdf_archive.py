@@ -109,7 +109,7 @@ def archive(request_path, response_path, receipt_path, *, root=ROOT):
     # checksum-bound UTF-8 transport sidecar for PRIVATE original-byte CAS.
     # It is PUBLIC issuer data, not a valuation or review artifact.
     transport_path=path.with_suffix(".b64")
-    transport=(base64.b64encode(pdf).decode("ascii")+"\\n").encode("ascii")
+    transport=(base64.b64encode(pdf).decode("ascii")+"\n").encode("ascii")
     if transport_path.exists():
         if transport_path.read_bytes()!=transport:
             raise ValueError("PUBLIC_ORIGINAL_ARCHIVE_BASE64_IMMUTABLE_CONFLICT")
