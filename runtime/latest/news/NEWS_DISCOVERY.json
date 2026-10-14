@@ -1,11 +1,11 @@
 {
   "schema": "E36_PUBLIC_NEWS_DISCOVERY/v1",
-  "generated_utc": "2026-10-14T15:33:31.168268+00:00",
+  "generated_utc": "2026-10-14T19:45:05.679482+00:00",
   "universe_sha256": "951695d407c5a3ad05838363654aa57d9edf7c51a978e7ca3815dae792abc82c",
   "research_only": true,
   "live_news_coverage_complete": false,
   "may_directly_change_main_or_trade": false,
-  "lead_count": 4,
+  "lead_count": 8,
   "rows": [
     {
       "symbol": "600941.SH",
@@ -46,13 +46,53 @@
       "published_at": "Tue, 13 Oct 2026 00:22:00 GMT",
       "verification_state": "UNVERIFIED_DISCOVERY",
       "may_directly_change_main_or_trade": false
+    },
+    {
+      "symbol": "603993.SH",
+      "source": "PUBLIC_WEB_INDEX",
+      "url": "https://www.cmoc.com/",
+      "title": "CMOC - 洛阳栾川钼业集团股份有限公司",
+      "snippet": "洛阳栾川钼业集团股份有限公司（A股代码：603993，H股代码：03993）属于有色金属矿采选业，主要从事铜、钴、钼、钨、铌、磷等矿产的采、选、冶及金属贸易业务，拥有较为完整的一体化产业链。",
+      "published_at": "Wed, 14 Oct 2026 00:00:00 GMT",
+      "verification_state": "UNVERIFIED_DISCOVERY",
+      "may_directly_change_main_or_trade": false
+    },
+    {
+      "symbol": "603993.SH",
+      "source": "PUBLIC_WEB_INDEX",
+      "url": "https://www.cmoc.com/html/Media/News/",
+      "title": "新闻发布 - 洛阳栾川钼业集团股份有限公司",
+      "snippet": "洛阳栾川钼业集团股份有限公司（A股代码：603993，H股代码：03993）属于有色金属矿采选业，主要从事铜、钴、钼、钨、铌、磷等矿产的采、选、冶及金属贸易业务，拥有较为完整的一体化产业链。公司是全球领先的铜生产商及金属贸易商之一，也是全球前五大钼生产商、最大钨生产商之一，同时也 ...",
+      "published_at": "Mon, 12 Oct 2026 17:13:00 GMT",
+      "verification_state": "UNVERIFIED_DISCOVERY",
+      "may_directly_change_main_or_trade": false
+    },
+    {
+      "symbol": "603993.SH",
+      "source": "PUBLIC_WEB_INDEX",
+      "url": "https://finance.eastmoney.com/a/202610093891269883.html",
+      "title": "洛阳钼业上半年净利增86.27%背后：有色蓝筹价值重估的三重逻辑",
+      "snippet": "从上半年的量价双升，到供应刚性下的铜金双极，再到“622模型”、数字化与ESG构成的系统能力， 洛阳钼业 展现的不仅是有色行业的周期弹性，更 ...",
+      "published_at": "Fri, 09 Oct 2026 16:05:00 GMT",
+      "verification_state": "UNVERIFIED_DISCOVERY",
+      "may_directly_change_main_or_trade": false
+    },
+    {
+      "symbol": "9926.HK",
+      "source": "PUBLIC_WEB_INDEX",
+      "url": "https://zhuanlan.zhihu.com/p/1919540988248040758",
+      "title": "康方生物：中国双抗龙头发展史 - 知乎",
+      "snippet": "康方生物，成立于2012年，是国内知名的临床阶段生物 制药公司，由经验丰富的国际化团队创建，聚焦于肿瘤、 自身免疫 、炎症、 代谢疾病 等重大疾病领域，专注于全球未被满足的临床需求，打造了独有的端对端康方全方位新药研究开发平台。",
+      "published_at": "Thu, 08 Oct 2026 22:26:00 GMT",
+      "verification_state": "UNVERIFIED_DISCOVERY",
+      "may_directly_change_main_or_trade": false
     }
   ],
   "checks": [
     {
       "symbol": "600941.SH",
       "query": "\"中国移动\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-14T15:33:23.373189+00:00",
+      "checked_utc": "2026-10-14T19:44:57.150749+00:00",
       "http_status": 200,
       "status": "INDEXED_LEADS_FOUND",
       "candidates": 4
@@ -60,7 +100,7 @@
     {
       "symbol": "148.HK",
       "query": "\"建滔集团\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-14T15:33:24.165463+00:00",
+      "checked_utc": "2026-10-14T19:44:58.031591+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -68,7 +108,7 @@
     {
       "symbol": "001286.SZ",
       "query": "\"陕西能源\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-14T15:33:24.860520+00:00",
+      "checked_utc": "2026-10-14T19:44:58.756881+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -76,15 +116,15 @@
     {
       "symbol": "603993.SH",
       "query": "\"洛阳钼业\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-14T15:33:25.543201+00:00",
+      "checked_utc": "2026-10-14T19:44:59.482108+00:00",
       "http_status": 200,
-      "status": "SEARCH_RETURNED_NO_RESULTS",
-      "candidates": 0
+      "status": "INDEXED_LEADS_FOUND",
+      "candidates": 3
     },
     {
       "symbol": "2233.HK",
       "query": "\"西部水泥\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-14T15:33:26.258450+00:00",
+      "checked_utc": "2026-10-14T19:45:00.223393+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -92,7 +132,7 @@
     {
       "symbol": "3933.HK",
       "query": "\"联邦制药\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-14T15:33:26.950542+00:00",
+      "checked_utc": "2026-10-14T19:45:00.968180+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -100,15 +140,15 @@
     {
       "symbol": "9926.HK",
       "query": "\"康方生物\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-14T15:33:27.653831+00:00",
+      "checked_utc": "2026-10-14T19:45:01.757055+00:00",
       "http_status": 200,
-      "status": "SEARCH_RETURNED_NO_RESULTS",
-      "candidates": 0
+      "status": "INDEXED_LEADS_FOUND",
+      "candidates": 1
     },
     {
       "symbol": "600499.SH",
       "query": "\"科达制造\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-14T15:33:28.354372+00:00",
+      "checked_utc": "2026-10-14T19:45:02.626085+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -116,7 +156,7 @@
     {
       "symbol": "600795.SH",
       "query": "\"国电电力\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-14T15:33:29.050769+00:00",
+      "checked_utc": "2026-10-14T19:45:03.344912+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -124,7 +164,7 @@
     {
       "symbol": "603871.SH",
       "query": "\"嘉友国际\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-14T15:33:29.743635+00:00",
+      "checked_utc": "2026-10-14T19:45:04.098248+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -132,7 +172,7 @@
     {
       "symbol": "601857.SH",
       "query": "\"中国石油\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-14T15:33:30.458215+00:00",
+      "checked_utc": "2026-10-14T19:45:04.824132+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
