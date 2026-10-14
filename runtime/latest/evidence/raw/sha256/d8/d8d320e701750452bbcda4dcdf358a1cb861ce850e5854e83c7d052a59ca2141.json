@@ -1,0 +1,31 @@
+{
+  "schema": "PUBLIC_LEAD_RESOLUTION_REPORT/v1",
+  "generated_at_utc": "2026-10-14T15:34:33.491176+00:00",
+  "transition_count": 1,
+  "transitions": [
+    {
+      "lead_id": "6bf8f619775b88d73d9e1a069dc0fc021fab9556962b2a100ef28b880538208f",
+      "symbol": "601857.SH",
+      "source": "akshare",
+      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
+      "to": "SOURCE_UNAVAILABLE_RETRYABLE"
+    }
+  ],
+  "counts": {
+    "total": 2011,
+    "pending": 485,
+    "terminal": 1526,
+    "by_state": {
+      "CROSS_BOARD_NOISE": 363,
+      "DUPLICATE_ALREADY_REGISTERED": 7,
+      "PRIMARY_SOURCE_BYTES_CAPTURED_SEMANTIC_REVIEW_PENDING": 7,
+      "PRIMARY_SOURCE_VERIFICATION_PENDING": 424,
+      "RETIRED_LOW_INFORMATION": 1152,
+      "RETIRED_SOURCE_AMBIGUOUS": 4,
+      "SOURCE_UNAVAILABLE_RETRYABLE": 54
+    }
+  },
+  "automatic_fact_promotion": false,
+  "valuation_authorized": false,
+  "automatic_trade_execution": false
+}
