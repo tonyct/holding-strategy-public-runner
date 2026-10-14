@@ -20,10 +20,10 @@ CAPABILITIES = {
         "note": "Official disclosure index, not a downloaded or authenticated issuer document"},
     "official_announcement_pdf": {
         "adapter": "cninfo_official_announcement_pdf", "markets": ["SH", "SZ"],
-        "source_options": ["AUTO"],
+        "source_options": ["AUTO", "SSEINFO"],
         "fields": ["announcement_id", "title", "document_sha256",
                    "pdf_base64", "source_url", "announced_at"],
-        "note": "One exact ID from real CNINFO index; bounded original bytes only, not issuer economics or approval"},
+        "note": "One exact CNINFO ID or SSEINFO attachment ID from a real public listing; bounded original bytes only, not issuer economics or approval"},
     "official_filings": {
         "adapter": "cninfo_official_pdf", "markets": ["SH", "SZ"],
         "source_options": ["AUTO"],
@@ -131,6 +131,9 @@ def official_filings(request):
 
 def official_announcement_pdf(request):
     """Fetch exactly one public issuer announcement discovered by official ID."""
+    if request.get("source") == "SSEINFO":
+        from ops.public_sseinfo_original import fetch
+        return fetch(request)
     import io
     import requests
     from datetime import date

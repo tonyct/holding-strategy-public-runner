@@ -6,6 +6,9 @@ on:
     paths:
       - 'ops/public_data_gateway.py'
       - 'ops/public_gateway_extended.py'
+      - 'ops/public_sseinfo_original.py'
+      - 'ops/public_announcement_original_archive.py'
+      - 'tests/test_public_sseinfo_gateway.py'
       - 'ops/public_gateway_quotes.py'
       - 'ops/public_gateway_extended.py'
       - 'tests/test_public_data_gateway.py'

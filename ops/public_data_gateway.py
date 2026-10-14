@@ -108,7 +108,10 @@ def validate(request):
     elif "report_period_end" in request:
         raise ValueError("REPORT_PERIOD_ONLY_FOR_ORIGINAL_FILINGS")
     if category == "official_announcement_pdf":
-        if (not isinstance(request.get("announcement_id"),str)
+        if request.get("source") == "SSEINFO":
+            from ops.public_sseinfo_original import source_location
+            source_location(request)
+        elif (not isinstance(request.get("announcement_id"),str)
                 or not re.fullmatch(r"[0-9]{10}",request["announcement_id"])
                 or (end-start).days>31):
             raise ValueError("EXACT_ANNOUNCEMENT_ID_AND_31DAY_WINDOW_REQUIRED")

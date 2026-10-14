@@ -18,11 +18,15 @@ def archive(request_path, response_path, receipt_path, *, root="public_originals
         return {"status":"NO_ORIGINAL_DELIVERED","archived":False}
     raw=Path(response_path).read_bytes()
     body=json.loads(raw)
+    sseinfo=q.get("source")=="SSEINFO"
+    if sseinfo:
+        from ops.public_sseinfo_original import source_location
+        expected_url, expected_stamp=source_location(q)
     if (q.get("schema")!="PUBLIC_DATA_GATEWAY_REQUEST/v1"
         or q.get("data_type")!="official_announcement_pdf"
         or q.get("operation")!="EXECUTE"
         or not re.fullmatch(r"\d{6}\.(?:SH|SZ)",str(q.get("symbol")))
-        or not re.fullmatch(r"\d{10}",str(q.get("announcement_id")))
+        or (not sseinfo and not re.fullmatch(r"\d{10}",str(q.get("announcement_id"))))
         or r.get("schema")!="PUBLIC_DATA_GATEWAY_RECEIPT/v1"
         or r.get("status")!="DELIVERED"
         or r.get("request_id")!=q.get("request_id")
@@ -36,10 +40,16 @@ def archive(request_path, response_path, receipt_path, *, root="public_originals
     stamp=str(row.get("announced_at",""))
     aid=q["announcement_id"]
     url=f"https://static.cninfo.com.cn/finalpage/{stamp}/{aid}.PDF"
+    expected_source="CNINFO_OFFICIAL_PDF"
+    if sseinfo:
+        url=expected_url
+        expected_source="SSEINFO_OFFICIAL_ATTACHMENT_PDF"
+        if stamp!=expected_stamp:
+            raise ValueError("PUBLIC_SSEINFO_ATTACHMENT_DATE_MISMATCH")
     if (not re.fullmatch(r"20\d\d-\d\d-\d\d",stamp)
         or row.get("announcement_id")!=aid
         or row.get("source_url")!=url
-        or row.get("source")!="CNINFO_OFFICIAL_PDF"
+        or row.get("source")!=expected_source
         or row.get("verification_state")!="ORIGINAL_BYTES_CAPTURED_CONTENT_NOT_AUDITED"):
         raise ValueError("PUBLIC_ANNOUNCEMENT_SOURCE_NOT_OFFICIAL")
     b64=row.get("pdf_base64")
@@ -53,6 +63,8 @@ def archive(request_path, response_path, receipt_path, *, root="public_originals
         or not pdf.startswith(b"%PDF-") or b"%%EOF" not in pdf[-8192:]):
         raise ValueError("PUBLIC_ANNOUNCEMENT_BYTES_INVALID")
     reader=PdfReader(io.BytesIO(pdf),strict=True)
+    if sseinfo and (len(pdf)>4*1024*1024 or not 1<=len(reader.pages)<=30):
+        raise ValueError("PUBLIC_SSEINFO_ATTACHMENT_SIZE_OR_PAGE_LIMIT")
     cover="".join((p.extract_text() or "") for p in reader.pages[:min(2,len(reader.pages))])
     if q["symbol"].split(".")[0] not in cover:
         raise ValueError("PUBLIC_ANNOUNCEMENT_ISSUER_NOT_CONFIRMED")
