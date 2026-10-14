@@ -1153,11 +1153,6 @@
     ],
     "600499.SH": [
       {
-        "source_id": "600499.SH:2fa710b5efa6eea0",
-        "candidate_count": 0,
-        "field_candidates": []
-      },
-      {
         "source_id": "600499.SH:bb1e447d8d646c07",
         "candidate_count": 0,
         "field_candidates": []
@@ -7254,14 +7249,14 @@
         "source_id": "603993.SH:49df720ea6d9ebbf",
         "candidate_count": 0,
         "field_candidates": []
+      },
+      {
+        "source_id": "603993.SH:f59ab508fa7438d5",
+        "candidate_count": 0,
+        "field_candidates": []
       }
     ],
     "148.HK": [
-      {
-        "source_id": "148.HK:a25ddf787221e4c6",
-        "candidate_count": 0,
-        "field_candidates": []
-      },
       {
         "source_id": "148.HK:ae5fb0ced775809e",
         "candidate_count": 4,
@@ -10678,6 +10673,43 @@
             ]
           }
         ]
+      },
+      {
+        "source_id": "9926.HK:8b0652920dec702a",
+        "candidate_count": 3,
+        "field_candidates": [
+          {
+            "page": 2,
+            "label": "share capital",
+            "literal_excerpt": "or to the date of the Placing Agreement.\n\n The Placing Shares will represent approximately 2.17% of the existing issued share capital\n of the Company as at the date of this announcement and approximately 2.13% of the\n enlarged issued share capital of the Company immediately upon completion of the Placing\n (assuming the maximum number of Placing Shares are placed and there is no change in\n the issued share capital of the Company between the date of this announcement and the\n completion of Placing). The Placing Shares will be allotted and issued under the General\n Mandate, and will not be subject to any additional Shareholders’ approval.\n\n Assuming all the 20,000,000 Placing Shares are subscri",
+            "numbers_as_printed": [
+              "2.17",
+              "2.13",
+              "20,000,000"
+            ]
+          },
+          {
+            "page": 3,
+            "label": "share capital",
+            "literal_excerpt": "s) of the Company as a result of the Placing.\n\nNumber of Placing Shares\n\nAssuming there will be no change in the issued share capital of the Company between the\ndate of this announcement and the completion of Placing, the number of 20,000,000 Placing\nShares under the Placing represents approximately 2.17% of the issued share capital of the\nCompany as at the date of this announcement, and approximately 2.13% of the issued share\ncapital as enlarged by the issue of the Placing Shares. The maximum aggregate nominal\nvalue of the Placing Shares under the Placing will be US$200.0.\n\nPlacing Price\n\nThe Placing Price is HK$97.76 per Placing Share which represents:\n\n(i)  a discount of approximately 6.9",
+            "numbers_as_printed": [
+              "20,000,000",
+              "2.17",
+              "2.13",
+              "200.0",
+              "97.76",
+              "6.90"
+            ]
+          },
+          {
+            "page": 7,
+            "label": "share capital",
+            "literal_excerpt": " upon completion of the Placing (assuming all 20,000,000 Placing Shares are\nplaced and there is no change in the issued share capital of the Company between the date of\nthis announcement and the completion of the Placing) are set out as follows:\n\n                                                                 Immediately upon completion of\n                                                                          the Placing (Assuming all the\n                                   As at the date of this        Placing Shares have been issued\n                                       announcement                  and allotted)\n                                                    Approximate %        ",
+            "numbers_as_printed": [
+              "20,000,000"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -10807,12 +10839,6 @@
       "sha256": "30d4c1325321a12a9e9c731e58e75edfb91cd5a1e31a419b969deac2144209c3",
       "relative_path": "output/originals/a/001286_SZ_1225596737_30d4c1325321.pdf",
       "bytes": 460827
-    },
-    "600499.SH:2fa710b5efa6eea0": {
-      "ticker": "600499.SH",
-      "sha256": "2fa710b5efa6eea09874aa68b678575f7047e4d57a18947f591055e241ea37a2",
-      "relative_path": "output/originals/a/600499_SH_1225446806_2fa710b5efa6.pdf",
-      "bytes": 80142
     },
     "600499.SH:bb1e447d8d646c07": {
       "ticker": "600499.SH",
@@ -11390,11 +11416,11 @@
       "relative_path": "output/originals/a/603993_SH_1225601757_49df720ea6d9.pdf",
       "bytes": 114844
     },
-    "148.HK:a25ddf787221e4c6": {
-      "ticker": "148.HK",
-      "sha256": "a25ddf787221e4c6e11ac0875877e6195e7ff359d07cfcd23871ed85479db1c2",
-      "relative_path": "output/originals/hk/148_HK_12262752_a25ddf787221.pdf",
-      "bytes": 57283
+    "603993.SH:f59ab508fa7438d5": {
+      "ticker": "603993.SH",
+      "sha256": "f59ab508fa7438d5399445fda4eff0f41a132b7b3ffaf1da8513855973fe90cb",
+      "relative_path": "output/originals/a/603993_SH_1225603573_f59ab508fa74.pdf",
+      "bytes": 185324
     },
     "148.HK:ae5fb0ced775809e": {
       "ticker": "148.HK",
@@ -11647,6 +11673,12 @@
       "sha256": "abfb96917aa08edae859dc347ee50fa12ae914ace83b0b75c59c2146007ba218",
       "relative_path": "output/originals/hk/9926_HK_12365602_abfb96917aa0.pdf",
       "bytes": 69765
+    },
+    "9926.HK:8b0652920dec702a": {
+      "ticker": "9926.HK",
+      "sha256": "8b0652920dec702a9fdc0d1d344c5aff98349a7ad8a7805d29e8785b061b97a7",
+      "relative_path": "output/originals/hk/9926_HK_12371792_8b0652920dec.pdf",
+      "bytes": 113667
     }
   },
   "semantic_fact_verified": false
