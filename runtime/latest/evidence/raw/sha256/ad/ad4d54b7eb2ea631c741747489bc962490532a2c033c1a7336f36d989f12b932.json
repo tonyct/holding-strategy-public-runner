@@ -1,0 +1,23 @@
+{
+  "schema": "PUBLIC_LEAD_RESOLUTION_REPORT/v1",
+  "generated_at_utc": "2026-10-15T15:49:03.612653+00:00",
+  "transition_count": 0,
+  "transitions": [],
+  "counts": {
+    "total": 2386,
+    "pending": 571,
+    "terminal": 1815,
+    "by_state": {
+      "CROSS_BOARD_NOISE": 414,
+      "DUPLICATE_ALREADY_REGISTERED": 7,
+      "PRIMARY_SOURCE_BYTES_CAPTURED_SEMANTIC_REVIEW_PENDING": 7,
+      "PRIMARY_SOURCE_VERIFICATION_PENDING": 507,
+      "RETIRED_LOW_INFORMATION": 1390,
+      "RETIRED_SOURCE_AMBIGUOUS": 4,
+      "SOURCE_UNAVAILABLE_RETRYABLE": 57
+    }
+  },
+  "automatic_fact_promotion": false,
+  "valuation_authorized": false,
+  "automatic_trade_execution": false
+}
