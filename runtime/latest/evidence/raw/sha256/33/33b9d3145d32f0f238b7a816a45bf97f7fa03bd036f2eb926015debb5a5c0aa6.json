@@ -1,0 +1,111 @@
+{
+  "schema": "E36_PUBLIC_NEWS_DISCOVERY/v1",
+  "generated_utc": "2026-10-15T19:30:01.615973+00:00",
+  "universe_sha256": "951695d407c5a3ad05838363654aa57d9edf7c51a978e7ca3815dae792abc82c",
+  "research_only": true,
+  "live_news_coverage_complete": false,
+  "may_directly_change_main_or_trade": false,
+  "lead_count": 1,
+  "rows": [
+    {
+      "symbol": "601857.SH",
+      "source": "PUBLIC_WEB_INDEX",
+      "url": "https://www.cnpc.com.cn/cnpc/index.shtml",
+      "title": "中国石油天然气集团有限公司 - CNPC",
+      "snippet": "中国石油集团召开“三基”工作推进会 [ 10/14 ] 从霍尔木兹海峡危机看中国油气产业链韧性... [ 10/14 ] 辽阳石化坚持“两个一以贯之”以高质量党... [ 10/14 ] 我国将开展新一轮“两业融合”试点 [ 10/14 ] “能源革命”纳入总体部署和顶层设计 [ 10/14 ]",
+      "published_at": "Thu, 15 Oct 2026 01:10:00 GMT",
+      "verification_state": "UNVERIFIED_DISCOVERY",
+      "may_directly_change_main_or_trade": false
+    }
+  ],
+  "checks": [
+    {
+      "symbol": "600941.SH",
+      "query": "\"中国移动\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-15T19:29:52.301845+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "148.HK",
+      "query": "\"建滔集团\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-15T19:29:53.561445+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "001286.SZ",
+      "query": "\"陕西能源\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-15T19:29:54.335074+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "603993.SH",
+      "query": "\"洛阳钼业\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-15T19:29:55.094788+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "2233.HK",
+      "query": "\"西部水泥\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-15T19:29:55.845430+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "3933.HK",
+      "query": "\"联邦制药\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-15T19:29:56.628198+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "9926.HK",
+      "query": "\"康方生物\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-15T19:29:57.369864+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "600499.SH",
+      "query": "\"科达制造\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-15T19:29:58.144962+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "600795.SH",
+      "query": "\"国电电力\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-15T19:29:59.014649+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "603871.SH",
+      "query": "\"嘉友国际\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-15T19:29:59.879726+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "601857.SH",
+      "query": "\"中国石油\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-15T19:30:00.660080+00:00",
+      "http_status": 200,
+      "status": "INDEXED_LEADS_FOUND",
+      "candidates": 1
+    }
+  ]
+}
