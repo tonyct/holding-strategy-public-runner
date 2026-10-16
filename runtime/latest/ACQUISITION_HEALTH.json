@@ -1,16 +1,18 @@
 {
   "schema": "E36_PUBLIC_ACQUISITION_HEALTH/v2",
-  "status": "PASS",
+  "status": "DEGRADED",
   "hard_failures": [],
-  "degraded_reasons": [],
+  "degraded_reasons": [
+    "A_SHARE_FINANCIALS_INCOMPLETE"
+  ],
   "semantics": "SOURCE_GAPS_DEGRADE_BUT_DO_NOT_INVALIDATE_AN_INTEGRITY_SAFE_BUNDLE",
   "checks": {
     "a_share_financials": {
-      "ok": true,
-      "status": "CORE_FIELDS_FETCHED_UNVERIFIED",
-      "core_three_statement_count": 7,
+      "ok": false,
+      "status": "DATA_PARTIAL_OR_BLOCKED",
+      "core_three_statement_count": 1,
       "ticker_count": 7,
-      "runner_exit_code": 0
+      "runner_exit_code": 124
     },
     "a_share_announcements": {
       "ok": true,
@@ -27,12 +29,12 @@
       "symbols_checked": 11,
       "symbols_with_posts": 11,
       "lead_count": 219,
-      "qualified_for_shadow_verification": 56,
+      "qualified_for_shadow_verification": 50,
       "market_code_mapping_ok": true
     },
     "news_discovery": {
       "ok": true,
-      "lead_count": 3
+      "lead_count": 12
     },
     "ir_discovery": {
       "ok": true,
@@ -46,14 +48,14 @@
     },
     "dynamic_official_originals": {
       "a_share_fetched": 113,
-      "hk_fetched": 43,
+      "hk_fetched": 45,
       "a_share_complete_symbols": 7,
       "hk_complete_symbols": 4
     },
     "lead_lifecycle": {
-      "total": 2536,
-      "pending": 606,
-      "terminal": 1930,
+      "total": 2637,
+      "pending": 627,
+      "terminal": 2010,
       "transition_count": 0,
       "automatic_fact_promotion": false
     },
