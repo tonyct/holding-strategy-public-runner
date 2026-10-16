@@ -1,13 +1,13 @@
 {
   "schema": "PUBLIC_COMPANY_RESEARCH_COMPUTE/v2",
-  "source_run_id": "38883304538",
-  "computed_at_utc": "2026-10-16T10:11:04.102697+00:00",
+  "source_run_id": "38919220076",
+  "computed_at_utc": "2026-10-16T14:56:31.667917+00:00",
   "packets": {
     "600941.SH": {
       "symbol": "600941.SH",
       "deterministic_metrics": {
         "financials": {
-          "source_file": "a_financials/snapshots/600941_SH_2026-06-30_a1c6b4379cdb39e7.json",
+          "source_file": "a_financials/snapshots/600941_SH_2026-06-30_6c5773bfd21eb26f.json",
           "period_end": "2026-06-30",
           "currency": "CNY",
           "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
@@ -55,8 +55,8 @@
         ]
       },
       "original_text_candidate_source_count": 12,
-      "pending_public_lead_count": 78,
-      "terminal_public_lead_count": 314,
+      "pending_public_lead_count": 79,
+      "terminal_public_lead_count": 319,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -110,8 +110,8 @@
         ]
       },
       "original_text_candidate_source_count": 7,
-      "pending_public_lead_count": 39,
-      "terminal_public_lead_count": 141,
+      "pending_public_lead_count": 40,
+      "terminal_public_lead_count": 144,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -122,7 +122,23 @@
       "symbol": "001286.SZ",
       "deterministic_metrics": {
         "financials": {
-          "source_verification_state": "SOURCE_NOT_AVAILABLE"
+          "source_file": "a_financials/snapshots/001286_SZ_2026-06-30_61988024352dc18d.json",
+          "period_end": "2026-06-30",
+          "currency": "CNY",
+          "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
+          "reported": {
+            "revenue": 10709032685.51,
+            "attributable_net_profit": 1347813394.19,
+            "net_profit": 2241554444.03,
+            "operating_cashflow": 4489391033.81,
+            "total_assets": 76113215475.11,
+            "total_liabilities": 42212885648.11
+          },
+          "derived": {
+            "attributable_net_margin": 0.12585762260429711,
+            "liability_ratio": 0.5546065211489345,
+            "operating_cashflow_to_attributable_profit": 3.33086987646981
+          }
         },
         "quote": {
           "close": 10.21,
@@ -164,7 +180,7 @@
         ]
       },
       "original_text_candidate_source_count": 22,
-      "pending_public_lead_count": 39,
+      "pending_public_lead_count": 40,
       "terminal_public_lead_count": 118,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
@@ -176,7 +192,23 @@
       "symbol": "603993.SH",
       "deterministic_metrics": {
         "financials": {
-          "source_verification_state": "SOURCE_NOT_AVAILABLE"
+          "source_file": "a_financials/snapshots/603993_SH_2026-06-30_25380ad4692186c1.json",
+          "period_end": "2026-06-30",
+          "currency": "CNY",
+          "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
+          "reported": {
+            "revenue": 135319885598.22,
+            "attributable_net_profit": 16152187485.37,
+            "net_profit": 18450206488.19,
+            "operating_cashflow": 16333690735.41,
+            "total_assets": 227735726807.97,
+            "total_liabilities": 118782407889.7
+          },
+          "derived": {
+            "attributable_net_margin": 0.11936299985744643,
+            "liability_ratio": 0.521580032938174,
+            "operating_cashflow_to_attributable_profit": 1.0112370692950658
+          }
         },
         "quote": {
           "close": 15.9,
@@ -216,8 +248,8 @@
         ]
       },
       "original_text_candidate_source_count": 20,
-      "pending_public_lead_count": 104,
-      "terminal_public_lead_count": 390,
+      "pending_public_lead_count": 107,
+      "terminal_public_lead_count": 404,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -399,7 +431,7 @@
       },
       "original_text_candidate_source_count": 12,
       "pending_public_lead_count": 38,
-      "terminal_public_lead_count": 160,
+      "terminal_public_lead_count": 162,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -410,7 +442,23 @@
       "symbol": "600499.SH",
       "deterministic_metrics": {
         "financials": {
-          "source_verification_state": "SOURCE_NOT_AVAILABLE"
+          "source_file": "a_financials/snapshots/600499_SH_2026-06-30_8f64446207641031.json",
+          "period_end": "2026-06-30",
+          "currency": "CNY",
+          "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
+          "reported": {
+            "revenue": 10392409000.0,
+            "attributable_net_profit": 1284420200.0,
+            "net_profit": 1973137400.0,
+            "operating_cashflow": 1365343000.0,
+            "total_assets": 31355939400.0,
+            "total_liabilities": 14399961500.0
+          },
+          "derived": {
+            "attributable_net_margin": 0.12359215269529904,
+            "liability_ratio": 0.4592419100031811,
+            "operating_cashflow_to_attributable_profit": 1.0630033691466392
+          }
         },
         "quote": {
           "close": 10.21,
@@ -453,7 +501,7 @@
       },
       "original_text_candidate_source_count": 22,
       "pending_public_lead_count": 68,
-      "terminal_public_lead_count": 331,
+      "terminal_public_lead_count": 333,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -464,7 +512,23 @@
       "symbol": "600795.SH",
       "deterministic_metrics": {
         "financials": {
-          "source_verification_state": "SOURCE_NOT_AVAILABLE"
+          "source_file": "a_financials/snapshots/600795_SH_2026-06-30_c06a95b139999e8a.json",
+          "period_end": "2026-06-30",
+          "currency": "CNY",
+          "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
+          "reported": {
+            "revenue": 79029113601.09,
+            "attributable_net_profit": 3013976240.14,
+            "net_profit": 5724376082.51,
+            "operating_cashflow": 20516819187.46,
+            "total_assets": 524448464279.76,
+            "total_liabilities": 383367725089.39
+          },
+          "derived": {
+            "attributable_net_margin": 0.038137543277448956,
+            "liability_ratio": 0.730992177879441,
+            "operating_cashflow_to_attributable_profit": 6.807226584675063
+          }
         },
         "quote": {
           "close": 5.39,
@@ -494,8 +558,8 @@
         ]
       },
       "original_text_candidate_source_count": 10,
-      "pending_public_lead_count": 28,
-      "terminal_public_lead_count": 107,
+      "pending_public_lead_count": 29,
+      "terminal_public_lead_count": 108,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -506,7 +570,23 @@
       "symbol": "603871.SH",
       "deterministic_metrics": {
         "financials": {
-          "source_verification_state": "SOURCE_NOT_AVAILABLE"
+          "source_file": "a_financials/snapshots/603871_SH_2026-06-30_f7f3b3b8914081ac.json",
+          "period_end": "2026-06-30",
+          "currency": "CNY",
+          "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
+          "reported": {
+            "revenue": 3966307721.75,
+            "attributable_net_profit": 731143877.34,
+            "net_profit": 731216760.65,
+            "operating_cashflow": 566280374.23,
+            "total_assets": 8830551796.67,
+            "total_liabilities": 2419011300.59
+          },
+          "derived": {
+            "attributable_net_margin": 0.18433866674807758,
+            "liability_ratio": 0.2739365960689126,
+            "operating_cashflow_to_attributable_profit": 0.7745129129579863
+          }
         },
         "quote": {
           "close": 11.73,
@@ -543,7 +623,7 @@
       },
       "original_text_candidate_source_count": 16,
       "pending_public_lead_count": 28,
-      "terminal_public_lead_count": 43,
+      "terminal_public_lead_count": 45,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -554,7 +634,23 @@
       "symbol": "601857.SH",
       "deterministic_metrics": {
         "financials": {
-          "source_verification_state": "SOURCE_NOT_AVAILABLE"
+          "source_file": "a_financials/snapshots/601857_SH_2026-06-30_06b1605459dcc987.json",
+          "period_end": "2026-06-30",
+          "currency": "CNY",
+          "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
+          "reported": {
+            "revenue": 1527491000000.0,
+            "attributable_net_profit": 103934000000.0,
+            "net_profit": 115111000000.0,
+            "operating_cashflow": 251281000000.0,
+            "total_assets": 3024272000000.0,
+            "total_liabilities": 1175918000000.0
+          },
+          "derived": {
+            "attributable_net_margin": 0.0680422994308968,
+            "liability_ratio": 0.38882679864774067,
+            "operating_cashflow_to_attributable_profit": 2.417697769738488
+          }
         },
         "quote": {
           "close": 12.76,
@@ -585,8 +681,8 @@
         ]
       },
       "original_text_candidate_source_count": 11,
-      "pending_public_lead_count": 202,
-      "terminal_public_lead_count": 341,
+      "pending_public_lead_count": 205,
+      "terminal_public_lead_count": 350,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -597,8 +693,8 @@
   "public_only_contract": true,
   "buy_sell_prices_included": false,
   "lead_counts": {
-    "pending": 638,
-    "terminal": 1999
+    "pending": 648,
+    "terminal": 2037
   },
   "automatic_fact_promotion": false,
   "automatic_trade_execution": false
