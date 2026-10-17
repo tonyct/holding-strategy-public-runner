@@ -1,0 +1,111 @@
+{
+  "schema": "E36_PUBLIC_NEWS_DISCOVERY/v1",
+  "generated_utc": "2026-10-17T09:30:30.412072+00:00",
+  "universe_sha256": "951695d407c5a3ad05838363654aa57d9edf7c51a978e7ca3815dae792abc82c",
+  "research_only": true,
+  "live_news_coverage_complete": false,
+  "may_directly_change_main_or_trade": false,
+  "lead_count": 1,
+  "rows": [
+    {
+      "symbol": "600941.SH",
+      "source": "PUBLIC_WEB_INDEX",
+      "url": "https://job.10086.cn/personal/campus/",
+      "title": "校园招聘_中国移动招聘网站 - 10086",
+      "snippet": "新闻中心 | 诚聘英才 | 站点导航 | 数智事业部（九天公司|九天研究院） | 中国移动香港公司 | 政企客户分公司 | 中国移动能力中台 | 数字家庭合作联盟 | 网站地图 | 友情链接 | 打击传销 | 联系我们",
+      "published_at": "Fri, 16 Oct 2026 11:46:00 GMT",
+      "verification_state": "UNVERIFIED_DISCOVERY",
+      "may_directly_change_main_or_trade": false
+    }
+  ],
+  "checks": [
+    {
+      "symbol": "600941.SH",
+      "query": "\"中国移动\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-17T09:30:22.227160+00:00",
+      "http_status": 200,
+      "status": "INDEXED_LEADS_FOUND",
+      "candidates": 1
+    },
+    {
+      "symbol": "148.HK",
+      "query": "\"建滔集团\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-17T09:30:23.075764+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "001286.SZ",
+      "query": "\"陕西能源\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-17T09:30:23.858905+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "603993.SH",
+      "query": "\"洛阳钼业\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-17T09:30:24.568202+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "2233.HK",
+      "query": "\"西部水泥\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-17T09:30:25.282320+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "3933.HK",
+      "query": "\"联邦制药\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-17T09:30:25.999559+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "9926.HK",
+      "query": "\"康方生物\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-17T09:30:26.720733+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "600499.SH",
+      "query": "\"科达制造\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-17T09:30:27.430248+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "600795.SH",
+      "query": "\"国电电力\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-17T09:30:28.207942+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "603871.SH",
+      "query": "\"嘉友国际\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-17T09:30:28.951266+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "601857.SH",
+      "query": "\"中国石油\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-17T09:30:29.692551+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    }
+  ]
+}

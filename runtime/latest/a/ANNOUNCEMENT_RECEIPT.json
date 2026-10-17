@@ -1,7 +1,7 @@
 {
   "schema": "E36_A_ANNOUNCEMENT_INDEX/v1",
   "universe_sha256": "951695d407c5a3ad05838363654aa57d9edf7c51a978e7ca3815dae792abc82c",
-  "run_utc": "2026-10-17T05:03:07.490731+00:00",
+  "run_utc": "2026-10-17T09:29:49.649140+00:00",
   "start": "20260803",
   "end": "20261017",
   "complete_original_pdf_verified": 0,
@@ -28,13 +28,16 @@
       "raw_count": 22,
       "historical_recheck_raw_count": null,
       "source_used": "AKSHARE_CNINFO",
-      "source_attempt_errors": [],
+      "source_attempt_errors": [
+        "AKSHARE:JSONDecodeError:Expecting value: line 1 column 1 (char 0)",
+        "DIRECT_CNINFO_CROSSCHECK:CNInfoError:HTTPError:504 Server Error: Gateway Time-out for url: https://www.cninfo.com.cn/new/hisAnnouncement/query"
+      ],
       "secondary_checked": true,
       "secondary_in_window_items": 22,
       "secondary_initial_gap_count": 22,
-      "direct_cninfo_crosscheck_used": true,
+      "direct_cninfo_crosscheck_used": false,
       "secondary_unresolved_leads": 22,
-      "sha256": "67119bac8362160b7dc47f7560009087023c4a3a07bf4223684f763ba3654576"
+      "sha256": "d5f9efbb3d7a121e0b3d3c66861601ae4733cd36f00aa5c6bfb42a5a98b4a601"
     },
     {
       "symbol": "603993.SH",
@@ -42,14 +45,18 @@
       "items": 20,
       "raw_count": 20,
       "historical_recheck_raw_count": null,
-      "source_used": "AKSHARE_CNINFO",
-      "source_attempt_errors": [],
+      "source_used": "DIRECT_CNINFO",
+      "source_attempt_errors": [
+        "AKSHARE:JSONDecodeError:Expecting value: line 1 column 1 (char 0)",
+        "AKSHARE:JSONDecodeError:Expecting value: line 1 column 1 (char 0)",
+        "AKSHARE:JSONDecodeError:Expecting value: line 1 column 1 (char 0)"
+      ],
       "secondary_checked": true,
       "secondary_in_window_items": 20,
       "secondary_initial_gap_count": 20,
-      "direct_cninfo_crosscheck_used": true,
+      "direct_cninfo_crosscheck_used": false,
       "secondary_unresolved_leads": 20,
-      "sha256": "8e7b681a6d4d886cb0eaa713d0a941a00ed200a20514615ce6b2728190529ef7"
+      "sha256": "45a06aba3f7a53242e09f31b33d3181cb1da029d14c426b14599bc4f698f3cd7"
     },
     {
       "symbol": "600499.SH",
@@ -58,13 +65,16 @@
       "raw_count": 22,
       "historical_recheck_raw_count": null,
       "source_used": "AKSHARE_CNINFO",
-      "source_attempt_errors": [],
+      "source_attempt_errors": [
+        "AKSHARE:JSONDecodeError:Expecting value: line 1 column 1 (char 0)",
+        "AKSHARE:JSONDecodeError:Expecting value: line 1 column 1 (char 0)"
+      ],
       "secondary_checked": true,
       "secondary_in_window_items": 30,
       "secondary_initial_gap_count": 30,
       "direct_cninfo_crosscheck_used": true,
       "secondary_unresolved_leads": 30,
-      "sha256": "1fc281f586bbe8f1a7761df9d69e87f2b4ff6db62db7a604951ed56100db6dc5"
+      "sha256": "552c1fe404c52a5dd838eef2b7ee573c2e4d6e9864e15ebc5acda9b62bf39d1c"
     },
     {
       "symbol": "600795.SH",
@@ -87,14 +97,18 @@
       "items": 16,
       "raw_count": 16,
       "historical_recheck_raw_count": null,
-      "source_used": "AKSHARE_CNINFO",
-      "source_attempt_errors": [],
+      "source_used": "DIRECT_CNINFO",
+      "source_attempt_errors": [
+        "AKSHARE:JSONDecodeError:Expecting value: line 1 column 1 (char 0)",
+        "AKSHARE:JSONDecodeError:Expecting value: line 1 column 1 (char 0)",
+        "AKSHARE:JSONDecodeError:Expecting value: line 1 column 1 (char 0)"
+      ],
       "secondary_checked": true,
       "secondary_in_window_items": 17,
       "secondary_initial_gap_count": 17,
-      "direct_cninfo_crosscheck_used": true,
+      "direct_cninfo_crosscheck_used": false,
       "secondary_unresolved_leads": 17,
-      "sha256": "eb81091d6f40990f23d5a5adfdacbc9c7e3cff7e061e868f95019fffa9c1f813"
+      "sha256": "fca92380baad6be29fcb6516166da02d986fdf91108910f6f46099c069da950b"
     },
     {
       "symbol": "601857.SH",
