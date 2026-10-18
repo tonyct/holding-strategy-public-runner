@@ -1,21 +1,29 @@
 {
   "schema": "PUBLIC_LEAD_RESOLUTION_REPORT/v1",
-  "generated_at_utc": "2026-10-18T20:48:43.106396+00:00",
-  "transition_count": 0,
-  "transitions": [],
+  "generated_at_utc": "2026-10-18T22:41:26.188553+00:00",
+  "transition_count": 1,
+  "transitions": [
+    {
+      "lead_id": "dcdb6bf5ca6440a20d658ddcba636d1a7508fd4e90f8e904f96a97fee4768989",
+      "symbol": "603993.SH",
+      "source": "akshare",
+      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
+      "to": "SOURCE_UNAVAILABLE_RETRYABLE"
+    }
+  ],
   "counts": {
-    "total": 2902,
-    "pending": 705,
-    "terminal": 2197,
+    "total": 2911,
+    "pending": 711,
+    "terminal": 2200,
     "by_state": {
-      "CROSS_BOARD_NOISE": 491,
+      "CROSS_BOARD_NOISE": 493,
       "DUPLICATE_ALREADY_REGISTERED": 7,
       "PRIMARY_SOURCE_BYTES_CAPTURED_SEMANTIC_REVIEW_PENDING": 7,
       "PRIMARY_SOURCE_LOCATOR_AVAILABLE": 2,
-      "PRIMARY_SOURCE_VERIFICATION_PENDING": 641,
-      "RETIRED_LOW_INFORMATION": 1693,
+      "PRIMARY_SOURCE_VERIFICATION_PENDING": 646,
+      "RETIRED_LOW_INFORMATION": 1694,
       "RETIRED_SOURCE_AMBIGUOUS": 4,
-      "SOURCE_UNAVAILABLE_RETRYABLE": 57
+      "SOURCE_UNAVAILABLE_RETRYABLE": 58
     }
   },
   "automatic_fact_promotion": false,
