@@ -1,0 +1,32 @@
+{
+  "historical_simplified_fcf_is_not_owner_cash_flow": true,
+  "no_trade_logic": true,
+  "no_valuation": true,
+  "schema": "PUBLIC_COMPACT_FACT_PACKET/v2",
+  "stocks": {
+    "148.HK": [
+      {
+        "currency": "HKD",
+        "fact_id": "5a80ee3162bd8a0d1ec5ebde91121f84a4a33b90bee7154ea0e9baabc2f13db7",
+        "field": "operating_cash_flow",
+        "period_end": "2025-06-30",
+        "period_start": "2025-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "605969000",
+        "verification_state": "UNVERIFIED"
+      },
+      {
+        "currency": "HKD",
+        "fact_id": "fc27d63d1e97b92b7d96b0572f88878b9878b26877f4714dd5c9f955a53dddad",
+        "field": "operating_cash_flow",
+        "period_end": "2026-06-30",
+        "period_start": "2026-01-01",
+        "period_type": "H1_YTD",
+        "scope": "CONSOLIDATED",
+        "value": "2473724000",
+        "verification_state": "UNVERIFIED"
+      }
+    ]
+  }
+}

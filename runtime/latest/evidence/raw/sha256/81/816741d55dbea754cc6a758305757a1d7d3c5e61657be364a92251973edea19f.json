@@ -1,0 +1,55 @@
+{
+  "facts": [
+    {
+      "currency": "HKD",
+      "fact_id": "fc27d63d1e97b92b7d96b0572f88878b9878b26877f4714dd5c9f955a53dddad",
+      "field": "operating_cash_flow",
+      "kind": "NORMALIZED_CANDIDATE",
+      "period_end": "2026-06-30",
+      "period_start": "2026-01-01",
+      "period_type": "H1_YTD",
+      "schema": "PUBLIC_FINANCIAL_FACT/v2",
+      "scope": "CONSOLIDATED",
+      "semantic_key": "786deda5db907a8350977d7567512a31fb9c56bee7ce4b680e2d11947a10b490",
+      "source": {
+        "column_index": 1,
+        "column_label": "2026",
+        "document_sha256": "6a7a836f630d4139951e82f28bd41588c9124f0d955603c0e589334f39e73378",
+        "line_number": 15,
+        "literal_line": "Net cash from operating activities                                2,473,724       605,969",
+        "page": 8,
+        "unit_label": "HK$’000"
+      },
+      "symbol": "148.HK",
+      "unit_multiplier": "1",
+      "value": "2473724000",
+      "verification_state": "UNVERIFIED"
+    },
+    {
+      "currency": "HKD",
+      "fact_id": "5a80ee3162bd8a0d1ec5ebde91121f84a4a33b90bee7154ea0e9baabc2f13db7",
+      "field": "operating_cash_flow",
+      "kind": "NORMALIZED_CANDIDATE",
+      "period_end": "2025-06-30",
+      "period_start": "2025-01-01",
+      "period_type": "H1_YTD",
+      "schema": "PUBLIC_FINANCIAL_FACT/v2",
+      "scope": "CONSOLIDATED",
+      "semantic_key": "bf8eeae5b18b2d94a5fe80cafa5bbeb0b531bd15dd00b8087061efb0af8a5198",
+      "source": {
+        "column_index": 2,
+        "column_label": "2025",
+        "document_sha256": "6a7a836f630d4139951e82f28bd41588c9124f0d955603c0e589334f39e73378",
+        "line_number": 15,
+        "literal_line": "Net cash from operating activities                                2,473,724       605,969",
+        "page": 8,
+        "unit_label": "HK$’000"
+      },
+      "symbol": "148.HK",
+      "unit_multiplier": "1",
+      "value": "605969000",
+      "verification_state": "UNVERIFIED"
+    }
+  ],
+  "schema": "PUBLIC_FACT_STORE/v2"
+}
