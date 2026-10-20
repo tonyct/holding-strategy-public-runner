@@ -1,43 +1,43 @@
 {
   "schema": "PUBLIC_LEAD_RESOLUTION_REPORT/v1",
-  "generated_at_utc": "2026-10-20T10:30:04.572333+00:00",
+  "generated_at_utc": "2026-10-20T15:27:13.854835+00:00",
   "transition_count": 3,
   "transitions": [
     {
-      "lead_id": "50f5b4d964f9a1036aa0b98ea75f58de13992767265afd522d1dba6670be2cf0",
-      "symbol": "603993.SH",
+      "lead_id": "0a59df4bff5e9cbe5955e023e73eca347e939233f3505465f644f661fe6be1f2",
+      "symbol": "600941.SH",
       "source": "akshare",
       "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
       "to": "SOURCE_UNAVAILABLE_RETRYABLE"
     },
     {
-      "lead_id": "6baeae6a02f8123a054319499428c4cc47e8aa75a91c761c4dc59acca6d221db",
-      "symbol": "603993.SH",
+      "lead_id": "ab6572ecc80e7ec291f260e2c5a6240029f635cfaad53cb94ba8d9316d5fc756",
+      "symbol": "600941.SH",
       "source": "akshare",
       "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
       "to": "SOURCE_UNAVAILABLE_RETRYABLE"
     },
     {
-      "lead_id": "f9f17635c648e6f67fa546acabb81cafd0dd6937cc3ab7454e5eb548f0f8d2cc",
-      "symbol": "603993.SH",
+      "lead_id": "9a5e30bf1ec5ba0cc83237d8b373a39dcddc49a37746d35ca06ee5c2d0c7906c",
+      "symbol": "600941.SH",
       "source": "akshare",
       "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
       "to": "SOURCE_UNAVAILABLE_RETRYABLE"
     }
   ],
   "counts": {
-    "total": 3385,
-    "pending": 809,
-    "terminal": 2576,
+    "total": 3455,
+    "pending": 835,
+    "terminal": 2620,
     "by_state": {
-      "CROSS_BOARD_NOISE": 576,
+      "CROSS_BOARD_NOISE": 593,
       "DUPLICATE_ALREADY_REGISTERED": 8,
       "PRIMARY_SOURCE_BYTES_CAPTURED_SEMANTIC_REVIEW_PENDING": 7,
       "PRIMARY_SOURCE_LOCATOR_AVAILABLE": 3,
-      "PRIMARY_SOURCE_VERIFICATION_PENDING": 740,
-      "RETIRED_LOW_INFORMATION": 1985,
+      "PRIMARY_SOURCE_VERIFICATION_PENDING": 763,
+      "RETIRED_LOW_INFORMATION": 2012,
       "RETIRED_SOURCE_AMBIGUOUS": 4,
-      "SOURCE_UNAVAILABLE_RETRYABLE": 62
+      "SOURCE_UNAVAILABLE_RETRYABLE": 65
     }
   },
   "automatic_fact_promotion": false,
