@@ -1,0 +1,141 @@
+{
+  "schema": "E36_PUBLIC_NEWS_DISCOVERY/v1",
+  "generated_utc": "2026-10-21T20:42:16.639607+00:00",
+  "universe_sha256": "951695d407c5a3ad05838363654aa57d9edf7c51a978e7ca3815dae792abc82c",
+  "research_only": true,
+  "live_news_coverage_complete": false,
+  "may_directly_change_main_or_trade": false,
+  "lead_count": 4,
+  "rows": [
+    {
+      "symbol": "3933.HK",
+      "source": "PUBLIC_WEB_INDEX",
+      "url": "https://www.tul.com.cn/",
+      "title": "联邦制药",
+      "snippet": "联邦制药（股份代号：3933.HK），主要从事药品的研发、生产及销售，是中国领先的综合性制药企业之一，拥有制剂、原料、生物、动保四大业务板块，分别在香港、珠海、中山、江门、巴彦淖尔、横琴、宁波等地建立了生产研发实体，产品涵盖医药中间体、原料 ...",
+      "published_at": "Tue, 20 Oct 2026 17:46:00 GMT",
+      "verification_state": "UNVERIFIED_DISCOVERY",
+      "may_directly_change_main_or_trade": false
+    },
+    {
+      "symbol": "9926.HK",
+      "source": "PUBLIC_WEB_INDEX",
+      "url": "https://www.futunn.com/stock/09926-HK/earnings",
+      "title": "康方生物财报日期，财务报告和业绩会 - 富途牛牛",
+      "snippet": "通过富途牛牛及时了解康方生物的财报日期，财务报告和业绩会详情。查看每股收益、营收和息税前利润的预测和历史数据。",
+      "published_at": "Sat, 17 Oct 2026 10:48:00 GMT",
+      "verification_state": "UNVERIFIED_DISCOVERY",
+      "may_directly_change_main_or_trade": false
+    },
+    {
+      "symbol": "601857.SH",
+      "source": "PUBLIC_WEB_INDEX",
+      "url": "https://www.cnpc.com.cn/cnpc/index.shtml",
+      "title": "中国石油天然气集团有限公司 - CNPC",
+      "snippet": "中国石油天然气集团公司是以油气业务､工程技术服务､石油工程建设､石油装备制造､金融服务､新能源开发等为主营业务的综合性国际能源公司能源公司.",
+      "published_at": "Wed, 21 Oct 2026 04:31:00 GMT",
+      "verification_state": "UNVERIFIED_DISCOVERY",
+      "may_directly_change_main_or_trade": false
+    },
+    {
+      "symbol": "601857.SH",
+      "source": "PUBLIC_WEB_INDEX",
+      "url": "https://money.finance.sina.com.cn/corp/go.php/vMS_MarketHistory/stockid/601857.phtml",
+      "title": "中国石油 12.85 (1.18%)_股票行情_新浪财经_新浪网",
+      "snippet": "新浪财经为您提供中国石油 (601857)股票实时行情走势,实时资金流向,实时新闻资讯,研究报告,股吧互动,交易信息,个股点评,公告,财务指标分析等与中国石油 (601857)股票相关的信息与服务.",
+      "published_at": "Tue, 20 Oct 2026 21:43:00 GMT",
+      "verification_state": "UNVERIFIED_DISCOVERY",
+      "may_directly_change_main_or_trade": false
+    }
+  ],
+  "checks": [
+    {
+      "symbol": "600941.SH",
+      "query": "\"中国移动\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-21T20:42:08.201920+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "148.HK",
+      "query": "\"建滔集团\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-21T20:42:08.997942+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "001286.SZ",
+      "query": "\"陕西能源\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-21T20:42:09.753238+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "603993.SH",
+      "query": "\"洛阳钼业\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-21T20:42:10.613586+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "2233.HK",
+      "query": "\"西部水泥\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-21T20:42:11.352535+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "3933.HK",
+      "query": "\"联邦制药\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-21T20:42:12.130667+00:00",
+      "http_status": 200,
+      "status": "INDEXED_LEADS_FOUND",
+      "candidates": 1
+    },
+    {
+      "symbol": "9926.HK",
+      "query": "\"康方生物\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-21T20:42:12.864746+00:00",
+      "http_status": 200,
+      "status": "INDEXED_LEADS_FOUND",
+      "candidates": 1
+    },
+    {
+      "symbol": "600499.SH",
+      "query": "\"科达制造\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-21T20:42:13.630273+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "600795.SH",
+      "query": "\"国电电力\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-21T20:42:14.383533+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "603871.SH",
+      "query": "\"嘉友国际\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-21T20:42:15.157077+00:00",
+      "http_status": 200,
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
+    },
+    {
+      "symbol": "601857.SH",
+      "query": "\"中国石油\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
+      "checked_utc": "2026-10-21T20:42:15.902710+00:00",
+      "http_status": 200,
+      "status": "INDEXED_LEADS_FOUND",
+      "candidates": 2
+    }
+  ]
+}
