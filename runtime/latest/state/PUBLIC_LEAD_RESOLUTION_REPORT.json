@@ -1,55 +1,19 @@
 {
   "schema": "PUBLIC_LEAD_RESOLUTION_REPORT/v1",
-  "generated_at_utc": "2026-10-23T15:09:44.032308+00:00",
-  "transition_count": 5,
-  "transitions": [
-    {
-      "lead_id": "00752f9e10869ad37852253c2a6575a4bdbfefed8189b9ee89a28f4e29004403",
-      "symbol": "603993.SH",
-      "source": "akshare",
-      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
-      "to": "SOURCE_UNAVAILABLE_RETRYABLE"
-    },
-    {
-      "lead_id": "b3738100fb631a4902d206ff50895dda631e113c2515c1e53d9dc7e4c0efe7db",
-      "symbol": "603993.SH",
-      "source": "akshare",
-      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
-      "to": "SOURCE_UNAVAILABLE_RETRYABLE"
-    },
-    {
-      "lead_id": "b3fa2746aff615ac6c84a9250b24330d2477ea644fd0012bd5d303902a0a5263",
-      "symbol": "603993.SH",
-      "source": "akshare",
-      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
-      "to": "SOURCE_UNAVAILABLE_RETRYABLE"
-    },
-    {
-      "lead_id": "5d4c2e25b382665165327c4c0b5063da367e5a95f1c1ec7851e1749dca8021e7",
-      "symbol": "603993.SH",
-      "source": "akshare",
-      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
-      "to": "SOURCE_UNAVAILABLE_RETRYABLE"
-    },
-    {
-      "lead_id": "f86ee45f4a0149638df3c4a816a18c76de2f3c82b8a50098535345928b6cabb2",
-      "symbol": "603993.SH",
-      "source": "akshare",
-      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
-      "to": "SOURCE_UNAVAILABLE_RETRYABLE"
-    }
-  ],
+  "generated_at_utc": "2026-10-23T19:18:37.793963+00:00",
+  "transition_count": 0,
+  "transitions": [],
   "counts": {
-    "total": 4542,
-    "pending": 1080,
-    "terminal": 3462,
+    "total": 4563,
+    "pending": 1088,
+    "terminal": 3475,
     "by_state": {
-      "CROSS_BOARD_NOISE": 764,
+      "CROSS_BOARD_NOISE": 769,
       "DUPLICATE_ALREADY_REGISTERED": 9,
       "PRIMARY_SOURCE_BYTES_CAPTURED_SEMANTIC_REVIEW_PENDING": 7,
       "PRIMARY_SOURCE_LOCATOR_AVAILABLE": 4,
-      "PRIMARY_SOURCE_VERIFICATION_PENDING": 996,
-      "RETIRED_LOW_INFORMATION": 2681,
+      "PRIMARY_SOURCE_VERIFICATION_PENDING": 1004,
+      "RETIRED_LOW_INFORMATION": 2689,
       "RETIRED_SOURCE_AMBIGUOUS": 4,
       "SOURCE_UNAVAILABLE_RETRYABLE": 77
     }
