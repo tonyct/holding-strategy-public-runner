@@ -1,24 +1,38 @@
 {
   "schema": "PUBLIC_LEAD_RESOLUTION_REPORT/v1",
-  "generated_at_utc": "2026-10-23T10:09:13.013419+00:00",
-  "transition_count": 3,
+  "generated_at_utc": "2026-10-23T15:09:44.032308+00:00",
+  "transition_count": 5,
   "transitions": [
     {
-      "lead_id": "83f0b18085ab246900b8c808855008cefc652e656e94f75cf2d07c10341ff578",
+      "lead_id": "00752f9e10869ad37852253c2a6575a4bdbfefed8189b9ee89a28f4e29004403",
       "symbol": "603993.SH",
       "source": "akshare",
       "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
       "to": "SOURCE_UNAVAILABLE_RETRYABLE"
     },
     {
-      "lead_id": "21294ca9365ca24abea52e18ea5577503eccc5b0657b015e20b0796a7f447ea2",
+      "lead_id": "b3738100fb631a4902d206ff50895dda631e113c2515c1e53d9dc7e4c0efe7db",
       "symbol": "603993.SH",
       "source": "akshare",
       "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
       "to": "SOURCE_UNAVAILABLE_RETRYABLE"
     },
     {
-      "lead_id": "30c14c19b0e5a18613221f22230c19b7a94a8b5c46d38b45691840963f1d13b8",
+      "lead_id": "b3fa2746aff615ac6c84a9250b24330d2477ea644fd0012bd5d303902a0a5263",
+      "symbol": "603993.SH",
+      "source": "akshare",
+      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
+      "to": "SOURCE_UNAVAILABLE_RETRYABLE"
+    },
+    {
+      "lead_id": "5d4c2e25b382665165327c4c0b5063da367e5a95f1c1ec7851e1749dca8021e7",
+      "symbol": "603993.SH",
+      "source": "akshare",
+      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
+      "to": "SOURCE_UNAVAILABLE_RETRYABLE"
+    },
+    {
+      "lead_id": "f86ee45f4a0149638df3c4a816a18c76de2f3c82b8a50098535345928b6cabb2",
       "symbol": "603993.SH",
       "source": "akshare",
       "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
@@ -26,18 +40,18 @@
     }
   ],
   "counts": {
-    "total": 4477,
-    "pending": 1054,
-    "terminal": 3423,
+    "total": 4542,
+    "pending": 1080,
+    "terminal": 3462,
     "by_state": {
-      "CROSS_BOARD_NOISE": 748,
+      "CROSS_BOARD_NOISE": 764,
       "DUPLICATE_ALREADY_REGISTERED": 9,
       "PRIMARY_SOURCE_BYTES_CAPTURED_SEMANTIC_REVIEW_PENDING": 7,
       "PRIMARY_SOURCE_LOCATOR_AVAILABLE": 4,
-      "PRIMARY_SOURCE_VERIFICATION_PENDING": 975,
-      "RETIRED_LOW_INFORMATION": 2658,
+      "PRIMARY_SOURCE_VERIFICATION_PENDING": 996,
+      "RETIRED_LOW_INFORMATION": 2681,
       "RETIRED_SOURCE_AMBIGUOUS": 4,
-      "SOURCE_UNAVAILABLE_RETRYABLE": 72
+      "SOURCE_UNAVAILABLE_RETRYABLE": 77
     }
   },
   "automatic_fact_promotion": false,
