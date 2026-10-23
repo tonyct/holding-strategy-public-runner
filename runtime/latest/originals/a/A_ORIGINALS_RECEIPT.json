@@ -1,7 +1,7 @@
 {
   "schema": "PUBLIC_A_CURRENT_WINDOW_ORIGINALS/v1",
   "universe_sha256": "951695d407c5a3ad05838363654aa57d9edf7c51a978e7ca3815dae792abc82c",
-  "checked_at_utc": "2026-10-22T21:40:09.357555+00:00",
+  "checked_at_utc": "2026-10-23T00:21:45.825532+00:00",
   "symbols": {
     "600941.SH": {
       "indexed": 11,
@@ -1185,10 +1185,21 @@
       "complete": true
     },
     "601857.SH": {
-      "indexed": 11,
-      "attempted": 11,
-      "fetched": 11,
+      "indexed": 12,
+      "attempted": 12,
+      "fetched": 12,
       "files": [
+        {
+          "announcement_id": "1225615898",
+          "date": "2026-10-23",
+          "title": "中国石油天然气股份有限公司关于召开2026年第三季度业绩说明会的公告",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-10-23/1225615898.PDF",
+          "status": "FETCHED_OFFICIAL_ORIGINAL",
+          "sha256": "16af4395accf313cd1545faacdd85d178bcac952c6b2226010024d1f49da40fe",
+          "filename": "601857_SH_1225615898_16af4395accf.pdf",
+          "bytes": 126041,
+          "identity_method": "CNINFO_OFFICIAL_INDEX_STOCKCODE_ANNOUNCEMENTID_DATE"
+        },
         {
           "announcement_id": "1225605125",
           "date": "2026-10-15",
