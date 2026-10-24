@@ -1,13 +1,13 @@
 {
   "schema": "PUBLIC_COMPANY_RESEARCH_COMPUTE/v2",
-  "source_run_id": "40032461649",
-  "computed_at_utc": "2026-10-23T22:21:47.857449+00:00",
+  "source_run_id": "40046650632",
+  "computed_at_utc": "2026-10-24T00:52:48.441768+00:00",
   "packets": {
     "600941.SH": {
       "symbol": "600941.SH",
       "deterministic_metrics": {
         "financials": {
-          "source_file": "a_financials/snapshots/600941_SH_2026-06-30_abd0c60783322860.json",
+          "source_file": "a_financials/snapshots/600941_SH_2026-06-30_3bc3b6db687e8e8a.json",
           "period_end": "2026-06-30",
           "currency": "CNY",
           "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
@@ -54,8 +54,8 @@
         ]
       },
       "original_text_candidate_source_count": 11,
-      "pending_public_lead_count": 172,
-      "terminal_public_lead_count": 608,
+      "pending_public_lead_count": 174,
+      "terminal_public_lead_count": 612,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -108,8 +108,8 @@
         ]
       },
       "original_text_candidate_source_count": 6,
-      "pending_public_lead_count": 56,
-      "terminal_public_lead_count": 189,
+      "pending_public_lead_count": 57,
+      "terminal_public_lead_count": 190,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -120,7 +120,7 @@
       "symbol": "001286.SZ",
       "deterministic_metrics": {
         "financials": {
-          "source_file": "a_financials/snapshots/001286_SZ_2026-06-30_776a30ff5f6eaa70.json",
+          "source_file": "a_financials/snapshots/001286_SZ_2026-06-30_ba7f878143fad8a0.json",
           "period_end": "2026-06-30",
           "currency": "CNY",
           "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
@@ -190,7 +190,7 @@
       "symbol": "603993.SH",
       "deterministic_metrics": {
         "financials": {
-          "source_file": "a_financials/snapshots/603993_SH_2026-06-30_38bde40b795782ec.json",
+          "source_file": "a_financials/snapshots/603993_SH_2026-06-30_43d7f3b0bbbf2d26.json",
           "period_end": "2026-06-30",
           "currency": "CNY",
           "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
@@ -218,11 +218,15 @@
         }
       },
       "official_originals": {
-        "indexed": 21,
-        "fetched": 21,
+        "indexed": 25,
+        "fetched": 25,
         "complete_window": true,
         "coverage_state": "CURRENT_WINDOW_ORIGINALS_COMPLETE",
         "sha256s": [
+          "7aefd17753c3deb418b353644dc38b23f0d7d0182b9eb0f94746df5af4d605cc",
+          "907b6c1ad6df61e9f3f1f2c8eff31c5659eb54a480ad4599b1848f9e88a54c9b",
+          "4f59d295df6619e619147d3f721766c3045372a4da68423812c27b8e4e63ba92",
+          "d732e8422d7002cd8ce34b042dc8d99f31afd54d49eeebcaebc3d0f44d9b1aef",
           "ffd07c33ed8cb25e7cf9b9b44f9cd6ae3f492ce508c4cb0fee4c3b43f4bd15f0",
           "8d2e522f5a072d0326d90b55305bc3863e27701dbf4ac82830871de4ff36c15e",
           "f59ab508fa7438d5399445fda4eff0f41a132b7b3ffaf1da8513855973fe90cb",
@@ -246,9 +250,9 @@
           "a9ae57c8c00ab030db339659107c1327b763ebb8b1585bbc68d45f6ffdf886ef"
         ]
       },
-      "original_text_candidate_source_count": 21,
-      "pending_public_lead_count": 232,
-      "terminal_public_lead_count": 767,
+      "original_text_candidate_source_count": 25,
+      "pending_public_lead_count": 237,
+      "terminal_public_lead_count": 773,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -287,8 +291,8 @@
         }
       },
       "official_originals": {
-        "indexed": 8,
-        "fetched": 8,
+        "indexed": 7,
+        "fetched": 7,
         "complete_window": true,
         "coverage_state": "CURRENT_WINDOW_ORIGINALS_COMPLETE",
         "sha256s": [
@@ -298,11 +302,10 @@
           "ca03a960f343c2173e3235c4a9bc8f224fb873e243d0d4a95d95a343b42a8323",
           "6cb07f674cdbfcda3136327b2f070970d3928f41ac0dfda4085c01aee1798a48",
           "db3ae00e3b5a19d813e64715c0e72587d0988f5173b5b3c4b2f4e160a941a4b5",
-          "e58e5935950e5c2f8cc12f8628dca2b1aa8c7d742a61c0cc9445684fb8f0203b",
-          "43ef097630a34eedbcba64b21dc6efac7479ef44ae762d8085a2aa38af2fcf73"
+          "e58e5935950e5c2f8cc12f8628dca2b1aa8c7d742a61c0cc9445684fb8f0203b"
         ]
       },
-      "original_text_candidate_source_count": 8,
+      "original_text_candidate_source_count": 7,
       "pending_public_lead_count": 10,
       "terminal_public_lead_count": 19,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
@@ -426,7 +429,7 @@
       },
       "original_text_candidate_source_count": 11,
       "pending_public_lead_count": 49,
-      "terminal_public_lead_count": 276,
+      "terminal_public_lead_count": 278,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -437,7 +440,7 @@
       "symbol": "600499.SH",
       "deterministic_metrics": {
         "financials": {
-          "source_file": "a_financials/snapshots/600499_SH_2026-06-30_71f223293ab5d426.json",
+          "source_file": "a_financials/snapshots/600499_SH_2026-06-30_c58cb5a8621f90af.json",
           "period_end": "2026-06-30",
           "currency": "CNY",
           "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
@@ -494,8 +497,8 @@
         ]
       },
       "original_text_candidate_source_count": 21,
-      "pending_public_lead_count": 86,
-      "terminal_public_lead_count": 515,
+      "pending_public_lead_count": 87,
+      "terminal_public_lead_count": 516,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -506,7 +509,7 @@
       "symbol": "600795.SH",
       "deterministic_metrics": {
         "financials": {
-          "source_file": "a_financials/snapshots/600795_SH_2026-06-30_d127fb64bd91ea09.json",
+          "source_file": "a_financials/snapshots/600795_SH_2026-06-30_88fcec98f17e72e0.json",
           "period_end": "2026-06-30",
           "currency": "CNY",
           "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
@@ -553,7 +556,7 @@
         ]
       },
       "original_text_candidate_source_count": 11,
-      "pending_public_lead_count": 47,
+      "pending_public_lead_count": 48,
       "terminal_public_lead_count": 231,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
@@ -565,7 +568,7 @@
       "symbol": "603871.SH",
       "deterministic_metrics": {
         "financials": {
-          "source_file": "a_financials/snapshots/603871_SH_2026-06-30_7281ff612c99f536.json",
+          "source_file": "a_financials/snapshots/603871_SH_2026-06-30_58376e491ec56359.json",
           "period_end": "2026-06-30",
           "currency": "CNY",
           "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
@@ -618,7 +621,7 @@
         ]
       },
       "original_text_candidate_source_count": 17,
-      "pending_public_lead_count": 57,
+      "pending_public_lead_count": 58,
       "terminal_public_lead_count": 67,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
@@ -630,7 +633,7 @@
       "symbol": "601857.SH",
       "deterministic_metrics": {
         "financials": {
-          "source_file": "a_financials/snapshots/601857_SH_2026-06-30_8d2325e28e2c3385.json",
+          "source_file": "a_financials/snapshots/601857_SH_2026-06-30_cb1bc6ef25987ca1.json",
           "period_end": "2026-06-30",
           "currency": "CNY",
           "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
@@ -678,8 +681,8 @@
         ]
       },
       "original_text_candidate_source_count": 12,
-      "pending_public_lead_count": 337,
-      "terminal_public_lead_count": 583,
+      "pending_public_lead_count": 338,
+      "terminal_public_lead_count": 584,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -690,8 +693,8 @@
   "public_only_contract": true,
   "buy_sell_prices_included": false,
   "lead_counts": {
-    "pending": 1113,
-    "terminal": 3462
+    "pending": 1125,
+    "terminal": 3477
   },
   "automatic_fact_promotion": false,
   "automatic_trade_execution": false
