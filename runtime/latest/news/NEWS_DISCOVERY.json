@@ -1,56 +1,25 @@
 {
   "schema": "E36_PUBLIC_NEWS_DISCOVERY/v1",
-  "generated_utc": "2026-10-24T17:02:35.909288+00:00",
+  "generated_utc": "2026-10-24T19:32:36.760849+00:00",
   "universe_sha256": "951695d407c5a3ad05838363654aa57d9edf7c51a978e7ca3815dae792abc82c",
   "research_only": true,
   "live_news_coverage_complete": false,
   "may_directly_change_main_or_trade": false,
-  "lead_count": 3,
-  "rows": [
-    {
-      "symbol": "600941.SH",
-      "source": "PUBLIC_WEB_INDEX",
-      "url": "https://job.10086.cn/",
-      "title": "10086 - 中国移动招聘网站",
-      "snippet": "新闻中心 | 诚聘英才 | 站点导航 | 数智事业部（九天公司|九天研究院） | 中国移动香港公司 | 政企客户分公司 | 中国移动能力中台 | 数字家庭合作联盟 | 网站地图 | 友情链接 | 打击传销 | 联系我们",
-      "published_at": "Sat, 24 Oct 2026 05:10:00 GMT",
-      "verification_state": "UNVERIFIED_DISCOVERY",
-      "may_directly_change_main_or_trade": false
-    },
-    {
-      "symbol": "600941.SH",
-      "source": "PUBLIC_WEB_INDEX",
-      "url": "https://www.chinamobileltd.com/sc/global/home.php",
-      "title": "中国移动有限公司 - China Mobile Limited",
-      "snippet": "2026年中期业绩 公告 (港股) 公告 (A股) 新闻稿 推介材料 网上广播 营运数据2026年三季度单位 (千户) 移动客户数 1,014,055 5G网络客户数 702,282 宽带联网客户数 342,265 物联网卡连接数",
-      "published_at": "Fri, 23 Oct 2026 09:29:00 GMT",
-      "verification_state": "UNVERIFIED_DISCOVERY",
-      "may_directly_change_main_or_trade": false
-    },
-    {
-      "symbol": "600941.SH",
-      "source": "PUBLIC_WEB_INDEX",
-      "url": "https://shop.10086.cn/mall_100_100.html",
-      "title": "网上营业厅 - 中国移动网上商城",
-      "snippet": "新闻中心 | 诚聘英才 | 采购信息 | 企业合作 | 联系我们 | 站点导航 | 友情链接 | 打击传销 掌上营业厅： wap.10086.cn 语音自助服务：10086 短信营业厅：10086 自助终端 营业厅 手机营业厅下载 京ICP备05002571号 中国移动通信版权所有",
-      "published_at": "Sat, 24 Oct 2026 05:32:00 GMT",
-      "verification_state": "UNVERIFIED_DISCOVERY",
-      "may_directly_change_main_or_trade": false
-    }
-  ],
+  "lead_count": 0,
+  "rows": [],
   "checks": [
     {
       "symbol": "600941.SH",
       "query": "\"中国移动\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-24T17:02:27.094247+00:00",
+      "checked_utc": "2026-10-24T19:32:28.833486+00:00",
       "http_status": 200,
-      "status": "INDEXED_LEADS_FOUND",
-      "candidates": 3
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
     },
     {
       "symbol": "148.HK",
       "query": "\"建滔集团\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-24T17:02:27.962482+00:00",
+      "checked_utc": "2026-10-24T19:32:29.639982+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -58,7 +27,7 @@
     {
       "symbol": "001286.SZ",
       "query": "\"陕西能源\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-24T17:02:28.750015+00:00",
+      "checked_utc": "2026-10-24T19:32:30.367187+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -66,7 +35,7 @@
     {
       "symbol": "603993.SH",
       "query": "\"洛阳钼业\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-24T17:02:29.499220+00:00",
+      "checked_utc": "2026-10-24T19:32:31.047232+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -74,7 +43,7 @@
     {
       "symbol": "2233.HK",
       "query": "\"西部水泥\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-24T17:02:30.250416+00:00",
+      "checked_utc": "2026-10-24T19:32:31.840837+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -82,7 +51,7 @@
     {
       "symbol": "3933.HK",
       "query": "\"联邦制药\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-24T17:02:31.088334+00:00",
+      "checked_utc": "2026-10-24T19:32:32.552517+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -90,7 +59,7 @@
     {
       "symbol": "9926.HK",
       "query": "\"康方生物\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-24T17:02:31.851929+00:00",
+      "checked_utc": "2026-10-24T19:32:33.265709+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -98,7 +67,7 @@
     {
       "symbol": "600499.SH",
       "query": "\"科达制造\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-24T17:02:32.598996+00:00",
+      "checked_utc": "2026-10-24T19:32:33.956540+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -106,7 +75,7 @@
     {
       "symbol": "600795.SH",
       "query": "\"国电电力\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-24T17:02:33.472748+00:00",
+      "checked_utc": "2026-10-24T19:32:34.653660+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -114,7 +83,7 @@
     {
       "symbol": "603871.SH",
       "query": "\"嘉友国际\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-24T17:02:34.338573+00:00",
+      "checked_utc": "2026-10-24T19:32:35.385866+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -122,7 +91,7 @@
     {
       "symbol": "601857.SH",
       "query": "\"中国石油\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-10-24T17:02:35.124164+00:00",
+      "checked_utc": "2026-10-24T19:32:36.072159+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
