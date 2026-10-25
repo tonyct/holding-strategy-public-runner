@@ -1,0 +1,195 @@
+{
+  "schema": "E36_external_acquisition_receipt/v2",
+  "universe_version": "PUBLIC_V1_20261006",
+  "universe_sha256": "951695d407c5a3ad05838363654aa57d9edf7c51a978e7ca3815dae792abc82c",
+  "universe_source": "PUBLIC_RESEARCH_COVERAGE_UNIVERSE_NOT_ACCOUNT_HOLDINGS",
+  "universe_active_symbols": [
+    "600941.SH",
+    "148.HK",
+    "001286.SZ",
+    "603993.SH",
+    "2233.HK",
+    "3933.HK",
+    "9926.HK",
+    "600499.SH",
+    "600795.SH",
+    "603871.SH",
+    "601857.SH"
+  ],
+  "active_a_shares": [
+    "600941.SH",
+    "001286.SZ",
+    "603993.SH",
+    "600499.SH",
+    "600795.SH",
+    "603871.SH",
+    "601857.SH"
+  ],
+  "active_hk_shares_not_collected": [
+    "148.HK",
+    "2233.HK",
+    "3933.HK",
+    "9926.HK"
+  ],
+  "change": {
+    "status": "NO_COMPARABLE_PREVIOUS_RECEIPT",
+    "added": [],
+    "removed": [],
+    "retained": []
+  },
+  "run_started_utc": "2026-10-25T20:52:24.474456+00:00",
+  "run_ended_utc": "2026-10-25T20:53:01.113167+00:00",
+  "report_period_end": "2026-06-30",
+  "runner_exit_code": 0,
+  "runner_error": null,
+  "ticker_count": 7,
+  "core_three_statement_count": 7,
+  "complete_original_filing_verified": 0,
+  "research_generation_created": false,
+  "production_integration_verified": false,
+  "tickers": [
+    {
+      "symbol": "600941.SH",
+      "status": "CORE_THREE_STATEMENTS_UNVERIFIED",
+      "snapshot_file": "600941_SH_2026-06-30_cb79c7f5ef0320b1.json",
+      "current_run_snapshot_count": 1,
+      "snapshot_history_count": 1,
+      "retrieved_statements": 3,
+      "snapshot_sha256": "cb79c7f5ef0320b1285556d9e25df44e2f644cf83c35d8ad6f3b4978c6a2414a",
+      "statement_status": {
+        "income": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "balance": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "cashflow": "FETCHED_UNVERIFIED_PRIMARY_FILING"
+      },
+      "source": {
+        "income": "AKSHARE_SINA",
+        "balance": "AKSHARE_SINA",
+        "cashflow": "AKSHARE_SINA"
+      },
+      "quality": "CORE_FIELDS_ONLY_UNVERIFIED_PRIMARY"
+    },
+    {
+      "symbol": "001286.SZ",
+      "status": "CORE_THREE_STATEMENTS_UNVERIFIED",
+      "snapshot_file": "001286_SZ_2026-06-30_316b069a93fcb0fa.json",
+      "current_run_snapshot_count": 1,
+      "snapshot_history_count": 1,
+      "retrieved_statements": 3,
+      "snapshot_sha256": "316b069a93fcb0fa5a8bcf82a3003c706100bc5ef84c370589bbe807d24d7677",
+      "statement_status": {
+        "income": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "balance": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "cashflow": "FETCHED_UNVERIFIED_PRIMARY_FILING"
+      },
+      "source": {
+        "income": "AKSHARE_SINA",
+        "balance": "AKSHARE_SINA",
+        "cashflow": "AKSHARE_SINA"
+      },
+      "quality": "CORE_FIELDS_ONLY_UNVERIFIED_PRIMARY"
+    },
+    {
+      "symbol": "603993.SH",
+      "status": "CORE_THREE_STATEMENTS_UNVERIFIED",
+      "snapshot_file": "603993_SH_2026-06-30_c69fa29fac53a10e.json",
+      "current_run_snapshot_count": 1,
+      "snapshot_history_count": 1,
+      "retrieved_statements": 3,
+      "snapshot_sha256": "c69fa29fac53a10e5c440af4b9136b0865c1fdd6380aa87265666cb3109a607f",
+      "statement_status": {
+        "income": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "balance": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "cashflow": "FETCHED_UNVERIFIED_PRIMARY_FILING"
+      },
+      "source": {
+        "income": "AKSHARE_SINA",
+        "balance": "AKSHARE_SINA",
+        "cashflow": "AKSHARE_SINA"
+      },
+      "quality": "CORE_FIELDS_ONLY_UNVERIFIED_PRIMARY"
+    },
+    {
+      "symbol": "600499.SH",
+      "status": "CORE_THREE_STATEMENTS_UNVERIFIED",
+      "snapshot_file": "600499_SH_2026-06-30_8025550ab8152d3e.json",
+      "current_run_snapshot_count": 1,
+      "snapshot_history_count": 1,
+      "retrieved_statements": 3,
+      "snapshot_sha256": "8025550ab8152d3e6dec3353dcbb68d5d99ec1ade115c5743144719fa4f8d2c7",
+      "statement_status": {
+        "income": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "balance": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "cashflow": "FETCHED_UNVERIFIED_PRIMARY_FILING"
+      },
+      "source": {
+        "income": "AKSHARE_SINA",
+        "balance": "AKSHARE_SINA",
+        "cashflow": "AKSHARE_SINA"
+      },
+      "quality": "CORE_FIELDS_ONLY_UNVERIFIED_PRIMARY"
+    },
+    {
+      "symbol": "600795.SH",
+      "status": "CORE_THREE_STATEMENTS_UNVERIFIED",
+      "snapshot_file": "600795_SH_2026-06-30_4e9531eb72d95a53.json",
+      "current_run_snapshot_count": 1,
+      "snapshot_history_count": 1,
+      "retrieved_statements": 3,
+      "snapshot_sha256": "4e9531eb72d95a53658c4fd1a1d202d7014cb9eccaf8bf870aabf5114d33e037",
+      "statement_status": {
+        "income": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "balance": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "cashflow": "FETCHED_UNVERIFIED_PRIMARY_FILING"
+      },
+      "source": {
+        "income": "AKSHARE_SINA",
+        "balance": "AKSHARE_SINA",
+        "cashflow": "AKSHARE_SINA"
+      },
+      "quality": "CORE_FIELDS_ONLY_UNVERIFIED_PRIMARY"
+    },
+    {
+      "symbol": "603871.SH",
+      "status": "CORE_THREE_STATEMENTS_UNVERIFIED",
+      "snapshot_file": "603871_SH_2026-06-30_d68dd728156103da.json",
+      "current_run_snapshot_count": 1,
+      "snapshot_history_count": 1,
+      "retrieved_statements": 3,
+      "snapshot_sha256": "d68dd728156103dae05f3ded48e78860afd4d808db19cb5b6ace602034d00948",
+      "statement_status": {
+        "income": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "balance": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "cashflow": "FETCHED_UNVERIFIED_PRIMARY_FILING"
+      },
+      "source": {
+        "income": "AKSHARE_SINA",
+        "balance": "AKSHARE_SINA",
+        "cashflow": "AKSHARE_SINA"
+      },
+      "quality": "CORE_FIELDS_ONLY_UNVERIFIED_PRIMARY"
+    },
+    {
+      "symbol": "601857.SH",
+      "status": "CORE_THREE_STATEMENTS_UNVERIFIED",
+      "snapshot_file": "601857_SH_2026-06-30_63f5caa228531f06.json",
+      "current_run_snapshot_count": 1,
+      "snapshot_history_count": 1,
+      "retrieved_statements": 3,
+      "snapshot_sha256": "63f5caa228531f06cafa3c793b511952a6ede6895327baed990404f1bf929ebc",
+      "statement_status": {
+        "income": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "balance": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "cashflow": "FETCHED_UNVERIFIED_PRIMARY_FILING"
+      },
+      "source": {
+        "income": "AKSHARE_SINA",
+        "balance": "AKSHARE_SINA",
+        "cashflow": "AKSHARE_SINA"
+      },
+      "quality": "CORE_FIELDS_ONLY_UNVERIFIED_PRIMARY"
+    }
+  ],
+  "runner_stdout_tail": null,
+  "runner_stderr_tail": null,
+  "status": "CORE_FIELDS_FETCHED_UNVERIFIED"
+}
