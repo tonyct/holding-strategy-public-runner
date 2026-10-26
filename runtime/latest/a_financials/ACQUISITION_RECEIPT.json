@@ -37,13 +37,13 @@
     "removed": [],
     "retained": []
   },
-  "run_started_utc": "2026-10-26T01:46:12.467595+00:00",
-  "run_ended_utc": "2026-10-26T02:01:12.575394+00:00",
+  "run_started_utc": "2026-10-26T07:03:22.972101+00:00",
+  "run_ended_utc": "2026-10-26T07:04:05.902385+00:00",
   "report_period_end": "2026-06-30",
-  "runner_exit_code": 124,
-  "runner_error": "COLLECTOR_TIMEOUT_900S",
+  "runner_exit_code": 0,
+  "runner_error": null,
   "ticker_count": 7,
-  "core_three_statement_count": 1,
+  "core_three_statement_count": 7,
   "complete_original_filing_verified": 0,
   "research_generation_created": false,
   "production_integration_verified": false,
@@ -51,11 +51,11 @@
     {
       "symbol": "600941.SH",
       "status": "CORE_THREE_STATEMENTS_UNVERIFIED",
-      "snapshot_file": "600941_SH_2026-06-30_58183f1b20f6183b.json",
+      "snapshot_file": "600941_SH_2026-06-30_7ae42cacf57f76c4.json",
       "current_run_snapshot_count": 1,
       "snapshot_history_count": 1,
       "retrieved_statements": 3,
-      "snapshot_sha256": "58183f1b20f6183b14b2ae873d0520caa362fe73015b22a8bd302713d0aad756",
+      "snapshot_sha256": "7ae42cacf57f76c47e18ee86e75098796006f933263fdd93afc034af34421265",
       "statement_status": {
         "income": "FETCHED_UNVERIFIED_PRIMARY_FILING",
         "balance": "FETCHED_UNVERIFIED_PRIMARY_FILING",
@@ -70,42 +70,126 @@
     },
     {
       "symbol": "001286.SZ",
-      "status": "MISSING_OR_AMBIGUOUS_CURRENT_RUN_SNAPSHOT",
-      "current_run_snapshot_count": 0,
-      "snapshot_history_count": 0
+      "status": "CORE_THREE_STATEMENTS_UNVERIFIED",
+      "snapshot_file": "001286_SZ_2026-06-30_56f80d3ae05a0df9.json",
+      "current_run_snapshot_count": 1,
+      "snapshot_history_count": 1,
+      "retrieved_statements": 3,
+      "snapshot_sha256": "56f80d3ae05a0df9fba439183e60ddfabaa19a4111089639d53b17ca14d6d4a4",
+      "statement_status": {
+        "income": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "balance": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "cashflow": "FETCHED_UNVERIFIED_PRIMARY_FILING"
+      },
+      "source": {
+        "income": "AKSHARE_SINA",
+        "balance": "AKSHARE_SINA",
+        "cashflow": "AKSHARE_SINA"
+      },
+      "quality": "CORE_FIELDS_ONLY_UNVERIFIED_PRIMARY"
     },
     {
       "symbol": "603993.SH",
-      "status": "MISSING_OR_AMBIGUOUS_CURRENT_RUN_SNAPSHOT",
-      "current_run_snapshot_count": 0,
-      "snapshot_history_count": 0
+      "status": "CORE_THREE_STATEMENTS_UNVERIFIED",
+      "snapshot_file": "603993_SH_2026-06-30_50303357973e5d91.json",
+      "current_run_snapshot_count": 1,
+      "snapshot_history_count": 1,
+      "retrieved_statements": 3,
+      "snapshot_sha256": "50303357973e5d91e9c2f1899c5caf66be089263f5c594d51e1f312d850658c1",
+      "statement_status": {
+        "income": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "balance": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "cashflow": "FETCHED_UNVERIFIED_PRIMARY_FILING"
+      },
+      "source": {
+        "income": "AKSHARE_SINA",
+        "balance": "AKSHARE_SINA",
+        "cashflow": "AKSHARE_SINA"
+      },
+      "quality": "CORE_FIELDS_ONLY_UNVERIFIED_PRIMARY"
     },
     {
       "symbol": "600499.SH",
-      "status": "MISSING_OR_AMBIGUOUS_CURRENT_RUN_SNAPSHOT",
-      "current_run_snapshot_count": 0,
-      "snapshot_history_count": 0
+      "status": "CORE_THREE_STATEMENTS_UNVERIFIED",
+      "snapshot_file": "600499_SH_2026-06-30_0297691c873fbb66.json",
+      "current_run_snapshot_count": 1,
+      "snapshot_history_count": 1,
+      "retrieved_statements": 3,
+      "snapshot_sha256": "0297691c873fbb668759cce65fc74e5c9cafbda593a9a4e12302274444661e8b",
+      "statement_status": {
+        "income": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "balance": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "cashflow": "FETCHED_UNVERIFIED_PRIMARY_FILING"
+      },
+      "source": {
+        "income": "AKSHARE_SINA",
+        "balance": "AKSHARE_SINA",
+        "cashflow": "AKSHARE_SINA"
+      },
+      "quality": "CORE_FIELDS_ONLY_UNVERIFIED_PRIMARY"
     },
     {
       "symbol": "600795.SH",
-      "status": "MISSING_OR_AMBIGUOUS_CURRENT_RUN_SNAPSHOT",
-      "current_run_snapshot_count": 0,
-      "snapshot_history_count": 0
+      "status": "CORE_THREE_STATEMENTS_UNVERIFIED",
+      "snapshot_file": "600795_SH_2026-06-30_61f8015f08018f86.json",
+      "current_run_snapshot_count": 1,
+      "snapshot_history_count": 1,
+      "retrieved_statements": 3,
+      "snapshot_sha256": "61f8015f08018f866bb4c0d41d115df42ab92f35664d910e2aa65cca533beaa9",
+      "statement_status": {
+        "income": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "balance": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "cashflow": "FETCHED_UNVERIFIED_PRIMARY_FILING"
+      },
+      "source": {
+        "income": "AKSHARE_SINA",
+        "balance": "AKSHARE_SINA",
+        "cashflow": "AKSHARE_SINA"
+      },
+      "quality": "CORE_FIELDS_ONLY_UNVERIFIED_PRIMARY"
     },
     {
       "symbol": "603871.SH",
-      "status": "MISSING_OR_AMBIGUOUS_CURRENT_RUN_SNAPSHOT",
-      "current_run_snapshot_count": 0,
-      "snapshot_history_count": 0
+      "status": "CORE_THREE_STATEMENTS_UNVERIFIED",
+      "snapshot_file": "603871_SH_2026-06-30_a9d47c1a294b09e1.json",
+      "current_run_snapshot_count": 1,
+      "snapshot_history_count": 1,
+      "retrieved_statements": 3,
+      "snapshot_sha256": "a9d47c1a294b09e1b82016936effdc987eea52f3c11060334bce3c1db0bc92d9",
+      "statement_status": {
+        "income": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "balance": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "cashflow": "FETCHED_UNVERIFIED_PRIMARY_FILING"
+      },
+      "source": {
+        "income": "AKSHARE_SINA",
+        "balance": "AKSHARE_SINA",
+        "cashflow": "AKSHARE_SINA"
+      },
+      "quality": "CORE_FIELDS_ONLY_UNVERIFIED_PRIMARY"
     },
     {
       "symbol": "601857.SH",
-      "status": "MISSING_OR_AMBIGUOUS_CURRENT_RUN_SNAPSHOT",
-      "current_run_snapshot_count": 0,
-      "snapshot_history_count": 0
+      "status": "CORE_THREE_STATEMENTS_UNVERIFIED",
+      "snapshot_file": "601857_SH_2026-06-30_48a783882b797db3.json",
+      "current_run_snapshot_count": 1,
+      "snapshot_history_count": 1,
+      "retrieved_statements": 3,
+      "snapshot_sha256": "48a783882b797db342908110efe323d2961f2d20d0aed248c4069c7054e2b0b3",
+      "statement_status": {
+        "income": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "balance": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "cashflow": "FETCHED_UNVERIFIED_PRIMARY_FILING"
+      },
+      "source": {
+        "income": "AKSHARE_SINA",
+        "balance": "AKSHARE_SINA",
+        "cashflow": "AKSHARE_SINA"
+      },
+      "quality": "CORE_FIELDS_ONLY_UNVERIFIED_PRIMARY"
     }
   ],
-  "runner_stdout_tail": "",
-  "runner_stderr_tail": "{\"warning\": \"DIRECT_EASTMONEY_MODULE_UNAVAILABLE\", \"fallback\": \"AKSHARE_SINA_AND_EASTMONEY\"}\n",
-  "status": "DATA_PARTIAL_OR_BLOCKED"
+  "runner_stdout_tail": null,
+  "runner_stderr_tail": null,
+  "status": "CORE_FIELDS_FETCHED_UNVERIFIED"
 }

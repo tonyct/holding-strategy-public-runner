@@ -1,14 +1,14 @@
 {
   "schema": "PUBLIC_EVIDENCE_REGISTRY_UPDATE/v1",
-  "source_run_id": "40255766491",
+  "source_run_id": "40283386177",
   "touched": [
     {
       "identity": "ACQUISITION_HEALTH.json",
-      "sha256": "c3b2fafe7a924a2d52358d9bb9f17f090aa5e648037ab63bbe9da948a89ec7b2"
+      "sha256": "ee9c3e5a3193e2aa60a9c61d8e6b68bd8ae54c1f192e5be139167a1cd0a6f621"
     },
     {
       "identity": "PUBLIC_DETERMINISTIC_METRICS.json",
-      "sha256": "68db307089b0cd52015872a9053c026dc4527e0f3edd292480008759f33a7fff"
+      "sha256": "2751bc41f860dd4bada47d370d1b8db9d1f0f1c38411a34ccd7dca86b662207e"
     },
     {
       "identity": "a/001286_SZ_22605e55aa0c.json",
@@ -40,11 +40,11 @@
     },
     {
       "identity": "a/ANNOUNCEMENT_RECEIPT.json",
-      "sha256": "13b80b55ad121f25ea2a5a173bb68d0197be3834842ae0b180773e4b34f6a6bc"
+      "sha256": "883a923805f246d8b524b11c80bb92edadac0037aade37403237e9df581c36be"
     },
     {
       "identity": "a_financials/ACQUISITION_RECEIPT.json",
-      "sha256": "a2d99965c7f5239c7fb6f99bdf4dcedc38666a677e39abc69d2d49126e47fd81"
+      "sha256": "bb41dac343b00aa394d349c95b983e4718a9f0f64bc9e2ade00520e5d36a0998"
     },
     {
       "identity": "a_financials/collector.stderr.log",
@@ -52,27 +52,51 @@
     },
     {
       "identity": "a_financials/collector.stdout.log",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "sha256": "7e88a272c5e2d3b14ef0c8a37027467d343311899bedbb7ffb2be685cc790f4c"
     },
     {
-      "identity": "a_financials/snapshots/600941_SH_2026-06-30_58183f1b20f6183b.json",
-      "sha256": "58183f1b20f6183b14b2ae873d0520caa362fe73015b22a8bd302713d0aad756"
+      "identity": "a_financials/snapshots/001286_SZ_2026-06-30_56f80d3ae05a0df9.json",
+      "sha256": "56f80d3ae05a0df9fba439183e60ddfabaa19a4111089639d53b17ca14d6d4a4"
+    },
+    {
+      "identity": "a_financials/snapshots/600499_SH_2026-06-30_0297691c873fbb66.json",
+      "sha256": "0297691c873fbb668759cce65fc74e5c9cafbda593a9a4e12302274444661e8b"
+    },
+    {
+      "identity": "a_financials/snapshots/600795_SH_2026-06-30_61f8015f08018f86.json",
+      "sha256": "61f8015f08018f866bb4c0d41d115df42ab92f35664d910e2aa65cca533beaa9"
+    },
+    {
+      "identity": "a_financials/snapshots/600941_SH_2026-06-30_7ae42cacf57f76c4.json",
+      "sha256": "7ae42cacf57f76c47e18ee86e75098796006f933263fdd93afc034af34421265"
+    },
+    {
+      "identity": "a_financials/snapshots/601857_SH_2026-06-30_48a783882b797db3.json",
+      "sha256": "48a783882b797db342908110efe323d2961f2d20d0aed248c4069c7054e2b0b3"
+    },
+    {
+      "identity": "a_financials/snapshots/603871_SH_2026-06-30_a9d47c1a294b09e1.json",
+      "sha256": "a9d47c1a294b09e1b82016936effdc987eea52f3c11060334bce3c1db0bc92d9"
+    },
+    {
+      "identity": "a_financials/snapshots/603993_SH_2026-06-30_50303357973e5d91.json",
+      "sha256": "50303357973e5d91e9c2f1899c5caf66be089263f5c594d51e1f312d850658c1"
     },
     {
       "identity": "community/COMMUNITY_DIRECT_DISCOVERY.json",
-      "sha256": "611c18f9bab28908232ba257d59eff260ed4a4311fdb0b392ef267bfcfd5246e"
+      "sha256": "6a39d4066789961a8d81c0177a7054c3fadd211d0ba9ce599bdbf7918483c0f3"
     },
     {
       "identity": "community/COMMUNITY_QUALIFIED_QUEUE.json",
-      "sha256": "b82a121bbaf81e400180610dbd0123b90fb51da66509e073daf71c3eb811daef"
+      "sha256": "6aa362cbf7794a302a9f661ae604531c8a9bd3eba26fb62e141c038fcc019901"
     },
     {
       "identity": "compute/PUBLIC_API_FIRST_ROUTING_V1.json",
-      "sha256": "5e8eee25f177ff94f8bf9394e9ae2c805a4266d781f568b09d2e6a5b6d435cee"
+      "sha256": "33ef161659e299add7fc6cf90d84a42856c0315d2250f871e2d59d5221f820c2"
     },
     {
       "identity": "compute/PUBLIC_API_STANDARDIZED_CANDIDATES_V1.json",
-      "sha256": "7d6718ced1b288e06d51fa37e5d376c2ccdb40b95f3c7f5e0ce889167836e0ff"
+      "sha256": "6745607f6cd7ec1da3111b6d078100a930e7d57615836e04a95c466b21acc7e1"
     },
     {
       "identity": "compute/PUBLIC_COMPACT_FACT_PACKET_V2.json",
@@ -80,7 +104,7 @@
     },
     {
       "identity": "compute/PUBLIC_COMPANY_RESEARCH_COMPUTE.json",
-      "sha256": "d5a3bbc79978f4c18e18372e5f38a87ad03c7d5a1823a0d3815c4b8ac5c5fe79"
+      "sha256": "c1b99cee1be2d105e613d8ebc6f6bad1126904bbbaf3dd69014ee75216abcb5f"
     },
     {
       "identity": "compute/PUBLIC_DELTA_PACKET_V2.json",
@@ -108,7 +132,7 @@
     },
     {
       "identity": "discovery/AKSHARE_DISCOVERY.json",
-      "sha256": "3236d5a13b1fd51b7c7b139c97963c5107c9de596c570c935733172d618370b0"
+      "sha256": "f8018323f13054658f8815a9a38f641f0cbdeb2b91a8b347855474e99131f136"
     },
     {
       "identity": "hk_financials/148_HK_c847290396486277.json",
@@ -128,15 +152,15 @@
     },
     {
       "identity": "hk_financials/HK_FINANCIAL_RECEIPT.json",
-      "sha256": "8cc55c490d8ef943c9fb1866b7c090041d6675b47ac548dd2a9b3dc9ef3e97ac"
+      "sha256": "23bcfe70733fc8d861d6e488a758758d59a3dcde61be2b459244542466b941cd"
     },
     {
       "identity": "ir/IR_DISCOVERY.json",
-      "sha256": "61f6d410a08254801a6df35387dbb93f619b55fe501c95e6f6b3505ba1496987"
+      "sha256": "084b9ba4c5caec2d8b741a85f405053b221e6ba282ef85cccfb369d45070fb26"
     },
     {
       "identity": "news/NEWS_DISCOVERY.json",
-      "sha256": "999182d35a42cf036143efbdb466fb846b01c9df6262c571bc56ea5ddb142492"
+      "sha256": "daed86054d557cf8db9d322ec050ed4b99feeecaea143561e67dead8e68d70b3"
     },
     {
       "identity": "originals/a/001286_SZ_1225471196_ad50bee48012.pdf",
@@ -604,7 +628,7 @@
     },
     {
       "identity": "originals/a/A_ORIGINALS_RECEIPT.json",
-      "sha256": "562988e5355497bc9691075223e8d3d4c4df095fb54328c4ee6dc64ab5daf385"
+      "sha256": "04e134eafea8527abfe47f7ecaecc921982922ba441007e62034e42a1ecce98a"
     },
     {
       "identity": "originals/hk/148_HK_12295771_a9c4d9f695ac.pdf",
@@ -776,7 +800,7 @@
     },
     {
       "identity": "originals/hk/HK_ORIGINALS_RECEIPT.json",
-      "sha256": "71ed950ae2e0588c58cc1be298200e17e93a6a84cde73c3d34be997b42432ea7"
+      "sha256": "458ea1e6f84bf7370f9c2fc062661ef7b4271481dd42cd779a7caa1e300d5ad6"
     },
     {
       "identity": "originals/ttm/107e82da33876289f6752ca4c3c4845c6a042a0e47f10cb44e1c157e733adb5c.pdf",
@@ -872,18 +896,18 @@
     },
     {
       "identity": "quotes/QUOTE_RECEIPT.json",
-      "sha256": "903397d2242685270e47b39967942bb7c80456ee11e1bab941495b37f52e3f5a"
+      "sha256": "f9f2adf3f5753ecee20574a649f6624b810e2615273b4f57dc0690b2128bcead"
     },
     {
       "identity": "state/PUBLIC_LEAD_LIFECYCLE_REGISTRY.json",
-      "sha256": "8b1fed0484a5c7fd60b7af1915d4556f5bbd2987406c95fff913d36e335968eb"
+      "sha256": "da7c6aefb3322bb3fa18fbd982454cba7106764be2fe1d0a76c3df6fb6633afd"
     },
     {
       "identity": "state/PUBLIC_LEAD_RESOLUTION_REPORT.json",
-      "sha256": "13cdcf561e76a3ac0fd1949affa8f343fa435bc21e13a200fc709a9e838e56f4"
+      "sha256": "cba15d58d12426d8ed8ecc98d2f1b67f1c1272b403baf53246c93fa4b7ae66c7"
     }
   ],
-  "new_object_count": 30,
-  "object_count": 3147,
+  "new_object_count": 25,
+  "object_count": 3172,
   "fixed_document_count_assumption": false
 }
