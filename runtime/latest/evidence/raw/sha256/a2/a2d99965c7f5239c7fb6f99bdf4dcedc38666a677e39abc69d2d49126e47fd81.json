@@ -1,0 +1,111 @@
+{
+  "schema": "E36_external_acquisition_receipt/v2",
+  "universe_version": "PUBLIC_V1_20261006",
+  "universe_sha256": "951695d407c5a3ad05838363654aa57d9edf7c51a978e7ca3815dae792abc82c",
+  "universe_source": "PUBLIC_RESEARCH_COVERAGE_UNIVERSE_NOT_ACCOUNT_HOLDINGS",
+  "universe_active_symbols": [
+    "600941.SH",
+    "148.HK",
+    "001286.SZ",
+    "603993.SH",
+    "2233.HK",
+    "3933.HK",
+    "9926.HK",
+    "600499.SH",
+    "600795.SH",
+    "603871.SH",
+    "601857.SH"
+  ],
+  "active_a_shares": [
+    "600941.SH",
+    "001286.SZ",
+    "603993.SH",
+    "600499.SH",
+    "600795.SH",
+    "603871.SH",
+    "601857.SH"
+  ],
+  "active_hk_shares_not_collected": [
+    "148.HK",
+    "2233.HK",
+    "3933.HK",
+    "9926.HK"
+  ],
+  "change": {
+    "status": "NO_COMPARABLE_PREVIOUS_RECEIPT",
+    "added": [],
+    "removed": [],
+    "retained": []
+  },
+  "run_started_utc": "2026-10-26T01:46:12.467595+00:00",
+  "run_ended_utc": "2026-10-26T02:01:12.575394+00:00",
+  "report_period_end": "2026-06-30",
+  "runner_exit_code": 124,
+  "runner_error": "COLLECTOR_TIMEOUT_900S",
+  "ticker_count": 7,
+  "core_three_statement_count": 1,
+  "complete_original_filing_verified": 0,
+  "research_generation_created": false,
+  "production_integration_verified": false,
+  "tickers": [
+    {
+      "symbol": "600941.SH",
+      "status": "CORE_THREE_STATEMENTS_UNVERIFIED",
+      "snapshot_file": "600941_SH_2026-06-30_58183f1b20f6183b.json",
+      "current_run_snapshot_count": 1,
+      "snapshot_history_count": 1,
+      "retrieved_statements": 3,
+      "snapshot_sha256": "58183f1b20f6183b14b2ae873d0520caa362fe73015b22a8bd302713d0aad756",
+      "statement_status": {
+        "income": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "balance": "FETCHED_UNVERIFIED_PRIMARY_FILING",
+        "cashflow": "FETCHED_UNVERIFIED_PRIMARY_FILING"
+      },
+      "source": {
+        "income": "AKSHARE_SINA",
+        "balance": "AKSHARE_SINA",
+        "cashflow": "AKSHARE_SINA"
+      },
+      "quality": "CORE_FIELDS_ONLY_UNVERIFIED_PRIMARY"
+    },
+    {
+      "symbol": "001286.SZ",
+      "status": "MISSING_OR_AMBIGUOUS_CURRENT_RUN_SNAPSHOT",
+      "current_run_snapshot_count": 0,
+      "snapshot_history_count": 0
+    },
+    {
+      "symbol": "603993.SH",
+      "status": "MISSING_OR_AMBIGUOUS_CURRENT_RUN_SNAPSHOT",
+      "current_run_snapshot_count": 0,
+      "snapshot_history_count": 0
+    },
+    {
+      "symbol": "600499.SH",
+      "status": "MISSING_OR_AMBIGUOUS_CURRENT_RUN_SNAPSHOT",
+      "current_run_snapshot_count": 0,
+      "snapshot_history_count": 0
+    },
+    {
+      "symbol": "600795.SH",
+      "status": "MISSING_OR_AMBIGUOUS_CURRENT_RUN_SNAPSHOT",
+      "current_run_snapshot_count": 0,
+      "snapshot_history_count": 0
+    },
+    {
+      "symbol": "603871.SH",
+      "status": "MISSING_OR_AMBIGUOUS_CURRENT_RUN_SNAPSHOT",
+      "current_run_snapshot_count": 0,
+      "snapshot_history_count": 0
+    },
+    {
+      "symbol": "601857.SH",
+      "status": "MISSING_OR_AMBIGUOUS_CURRENT_RUN_SNAPSHOT",
+      "current_run_snapshot_count": 0,
+      "snapshot_history_count": 0
+    }
+  ],
+  "runner_stdout_tail": "",
+  "runner_stderr_tail": "{\"warning\": \"DIRECT_EASTMONEY_MODULE_UNAVAILABLE\", \"fallback\": \"AKSHARE_SINA_AND_EASTMONEY\"}\n",
+  "status": "DATA_PARTIAL_OR_BLOCKED"
+}
