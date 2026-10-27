@@ -1,7 +1,7 @@
 {
   "schema": "E36_A_ANNOUNCEMENT_INDEX/v1",
   "universe_sha256": "951695d407c5a3ad05838363654aa57d9edf7c51a978e7ca3815dae792abc82c",
-  "run_utc": "2026-10-27T16:04:06.791325+00:00",
+  "run_utc": "2026-10-27T20:45:32.166184+00:00",
   "start": "20260813",
   "end": "20261027",
   "complete_original_pdf_verified": 0,
@@ -13,13 +13,15 @@
       "raw_count": 11,
       "historical_recheck_raw_count": null,
       "source_used": "AKSHARE_CNINFO",
-      "source_attempt_errors": [],
+      "source_attempt_errors": [
+        "AKSHARE:JSONDecodeError:Expecting value: line 1 column 1 (char 0)"
+      ],
       "secondary_checked": true,
       "secondary_in_window_items": 11,
       "secondary_initial_gap_count": 11,
       "direct_cninfo_crosscheck_used": true,
       "secondary_unresolved_leads": 11,
-      "sha256": "fd7201ac4eb0a5a07da5cdae9368067405ab336b7cc2f83f5dc486fa310277e0"
+      "sha256": "94dfd1ec204bac884130722a1c04ec96f5b879129c25848515a42418b4cb3383"
     },
     {
       "symbol": "001286.SZ",
