@@ -1,34 +1,19 @@
 {
   "schema": "PUBLIC_LEAD_RESOLUTION_REPORT/v1",
-  "generated_at_utc": "2026-10-27T05:11:11.578456+00:00",
-  "transition_count": 2,
-  "transitions": [
-    {
-      "lead_id": "8e27223d1677f0416b0cae6c7c2cd993b828219afb530a031fb18d0da40b0768",
-      "symbol": "600941.SH",
-      "source": "akshare",
-      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
-      "to": "SOURCE_UNAVAILABLE_RETRYABLE"
-    },
-    {
-      "lead_id": "15c5d1a82bb1904850f3ad9e08356cc7eacf34a7a573bceb7b6df8c414d85174",
-      "symbol": "601857.SH",
-      "source": "akshare",
-      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
-      "to": "SOURCE_UNAVAILABLE_RETRYABLE"
-    }
-  ],
+  "generated_at_utc": "2026-10-27T10:39:58.346408+00:00",
+  "transition_count": 0,
+  "transitions": [],
   "counts": {
-    "total": 5313,
-    "pending": 1289,
-    "terminal": 4024,
+    "total": 5416,
+    "pending": 1297,
+    "terminal": 4119,
     "by_state": {
-      "CROSS_BOARD_NOISE": 936,
+      "CROSS_BOARD_NOISE": 960,
       "DUPLICATE_ALREADY_REGISTERED": 9,
       "PRIMARY_SOURCE_BYTES_CAPTURED_SEMANTIC_REVIEW_PENDING": 7,
       "PRIMARY_SOURCE_LOCATOR_AVAILABLE": 4,
-      "PRIMARY_SOURCE_VERIFICATION_PENDING": 1191,
-      "RETIRED_LOW_INFORMATION": 3071,
+      "PRIMARY_SOURCE_VERIFICATION_PENDING": 1199,
+      "RETIRED_LOW_INFORMATION": 3142,
       "RETIRED_SOURCE_AMBIGUOUS": 4,
       "SOURCE_UNAVAILABLE_RETRYABLE": 91
     }
