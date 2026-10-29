@@ -290,6 +290,93 @@
     },
     {
       "facts": [],
+      "page_count": 11,
+      "semantic_fact_verified": false,
+      "source_sha256": "a0b21db5d6f3a4fe38eab86edbf3bd34e4b9120145c4f2b8f3e8200af0788f89",
+      "symbol": "001286.SZ",
+      "table_candidates": [
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "numeric_cells": [],
+          "page": 2,
+          "row_index": 1,
+          "row_label": "营业收入（元）",
+          "source_sha256": "a0b21db5d6f3a4fe38eab86edbf3bd34e4b9120145c4f2b8f3e8200af0788f89",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "001286.SZ",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "attributable_net_profit"
+          ],
+          "numeric_cells": [],
+          "page": 2,
+          "row_index": 2,
+          "row_label": "归属于上市公司股东\n的净利润（元）",
+          "source_sha256": "a0b21db5d6f3a4fe38eab86edbf3bd34e4b9120145c4f2b8f3e8200af0788f89",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "001286.SZ",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "operating_cash_flow"
+          ],
+          "numeric_cells": [],
+          "page": 2,
+          "row_index": 4,
+          "row_label": "经营活动产生的现金\n流量净额（元）",
+          "source_sha256": "a0b21db5d6f3a4fe38eab86edbf3bd34e4b9120145c4f2b8f3e8200af0788f89",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "001286.SZ",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "numeric_cells": [],
+          "page": 7,
+          "row_index": 2,
+          "row_label": "其中 营业收入\n：",
+          "source_sha256": "a0b21db5d6f3a4fe38eab86edbf3bd34e4b9120145c4f2b8f3e8200af0788f89",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "001286.SZ",
+          "table_index": 1
+        },
+        {
+          "field_candidates": [
+            "attributable_net_profit"
+          ],
+          "numeric_cells": [],
+          "page": 8,
+          "row_index": 22,
+          "row_label": "1 归属于母公司股东的净利润\n.\n（净亏损以“ ”号填列）\n-",
+          "source_sha256": "a0b21db5d6f3a4fe38eab86edbf3bd34e4b9120145c4f2b8f3e8200af0788f89",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "001286.SZ",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "operating_cash_flow"
+          ],
+          "numeric_cells": [],
+          "page": 10,
+          "row_index": 6,
+          "row_label": "经营活动产生的现金流量净额",
+          "source_sha256": "a0b21db5d6f3a4fe38eab86edbf3bd34e4b9120145c4f2b8f3e8200af0788f89",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "001286.SZ",
+          "table_index": 0
+        }
+      ]
+    },
+    {
+      "facts": [],
       "page_count": 4,
       "semantic_fact_verified": false,
       "source_sha256": "5ce9785f36fcdd4c425bba478107b706e73ac694bd1ca4e478086f5ac9c2c505",
@@ -609,6 +696,132 @@
           "row_index": 1,
           "row_label": "营业收入",
           "source_sha256": "c0042cd4836ea80bd92fafaa9d3c7f54dd1a9138daa52aa2adade3260ab22f0b",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "600499.SH",
+          "table_index": 0
+        }
+      ]
+    },
+    {
+      "facts": [],
+      "page_count": 13,
+      "semantic_fact_verified": false,
+      "source_sha256": "ab4c1603ff7061a8454e8836b81226b1aa664ab8d3c4734b4395f4dd9ffd8075",
+      "symbol": "600499.SH",
+      "table_candidates": [
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "numeric_cells": [],
+          "page": 1,
+          "row_index": 1,
+          "row_label": "营业收入",
+          "source_sha256": "ab4c1603ff7061a8454e8836b81226b1aa664ab8d3c4734b4395f4dd9ffd8075",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "600499.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "attributable_net_profit"
+          ],
+          "numeric_cells": [],
+          "page": 1,
+          "row_index": 3,
+          "row_label": "归属于上市公司股东的净利润",
+          "source_sha256": "ab4c1603ff7061a8454e8836b81226b1aa664ab8d3c4734b4395f4dd9ffd8075",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "600499.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "operating_cash_flow"
+          ],
+          "numeric_cells": [],
+          "page": 1,
+          "row_index": 5,
+          "row_label": "经营活动产生的现金流量净额",
+          "source_sha256": "ab4c1603ff7061a8454e8836b81226b1aa664ab8d3c4734b4395f4dd9ffd8075",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "600499.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "attributable_net_profit"
+          ],
+          "numeric_cells": [],
+          "page": 2,
+          "row_index": 3,
+          "row_label": "归属于上市公司股东的净利润 本\n_\n报告期",
+          "source_sha256": "ab4c1603ff7061a8454e8836b81226b1aa664ab8d3c4734b4395f4dd9ffd8075",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "600499.SH",
+          "table_index": 1
+        },
+        {
+          "field_candidates": [
+            "attributable_net_profit"
+          ],
+          "numeric_cells": [],
+          "page": 2,
+          "row_index": 4,
+          "row_label": "归属于上市公司股东的净利润 年\n_\n初至报告期末",
+          "source_sha256": "ab4c1603ff7061a8454e8836b81226b1aa664ab8d3c4734b4395f4dd9ffd8075",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "600499.SH",
+          "table_index": 1
+        },
+        {
+          "field_candidates": [
+            "operating_cash_flow"
+          ],
+          "numeric_cells": [],
+          "page": 3,
+          "row_index": 3,
+          "row_label": "经营活动产生的现金流量净额 年\n_\n初至报告期末",
+          "source_sha256": "ab4c1603ff7061a8454e8836b81226b1aa664ab8d3c4734b4395f4dd9ffd8075",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "600499.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "numeric_cells": [],
+          "page": 9,
+          "row_index": 2,
+          "row_label": "其中 营业收入\n：",
+          "source_sha256": "ab4c1603ff7061a8454e8836b81226b1aa664ab8d3c4734b4395f4dd9ffd8075",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "600499.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "attributable_net_profit"
+          ],
+          "numeric_cells": [],
+          "page": 10,
+          "row_index": 17,
+          "row_label": "1归属于母公司股东的净利润（净亏损以“ ”号填\n. -\n列）",
+          "source_sha256": "ab4c1603ff7061a8454e8836b81226b1aa664ab8d3c4734b4395f4dd9ffd8075",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "600499.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "operating_cash_flow"
+          ],
+          "numeric_cells": [],
+          "page": 12,
+          "row_index": 9,
+          "row_label": "经营活动产生的现金流量净额",
+          "source_sha256": "ab4c1603ff7061a8454e8836b81226b1aa664ab8d3c4734b4395f4dd9ffd8075",
           "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
           "symbol": "600499.SH",
           "table_index": 0
@@ -1079,544 +1292,6 @@
       "source_sha256": "47fe319cc67d01fe51261cf82ab2bc632a1dbdf0bb84076cd4dd3b97b4169bd7",
       "symbol": "600795.SH",
       "table_candidates": []
-    },
-    {
-      "facts": [],
-      "page_count": 12,
-      "semantic_fact_verified": false,
-      "source_sha256": "cac01fa81cc14f12dca42fce4f9efd587d5681bf9a75aae0ecb6d5d95a2b77eb",
-      "symbol": "600941.SH",
-      "table_candidates": [
-        {
-          "field_candidates": [
-            "revenue"
-          ],
-          "numeric_cells": [],
-          "page": 4,
-          "row_index": 2,
-          "row_label": "营业收入",
-          "source_sha256": "cac01fa81cc14f12dca42fce4f9efd587d5681bf9a75aae0ecb6d5d95a2b77eb",
-          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "table_index": 0
-        },
-        {
-          "field_candidates": [
-            "attributable_net_profit"
-          ],
-          "numeric_cells": [],
-          "page": 4,
-          "row_index": 6,
-          "row_label": "归属于母公司股东的净利润",
-          "source_sha256": "cac01fa81cc14f12dca42fce4f9efd587d5681bf9a75aae0ecb6d5d95a2b77eb",
-          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "table_index": 0
-        },
-        {
-          "field_candidates": [
-            "operating_cash_flow"
-          ],
-          "numeric_cells": [],
-          "page": 4,
-          "row_index": 8,
-          "row_label": "经营活动产生的现金流量净额",
-          "source_sha256": "cac01fa81cc14f12dca42fce4f9efd587d5681bf9a75aae0ecb6d5d95a2b77eb",
-          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "table_index": 0
-        },
-        {
-          "field_candidates": [
-            "revenue"
-          ],
-          "literal_excerpt": "    2026 上半年业绩表现      2026 年上半年，公司营业收入达到人民币5,380 亿元，同比下降1.1%，同口径1实现正 增长。其中，主营业务收入2达到人民币4,527 亿元，同比下降3.1%；其他业务收入为人民",
-          "page": 7,
-          "source_sha256": "cac01fa81cc14f12dca42fce4f9efd587d5681bf9a75aae0ecb6d5d95a2b77eb",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 14
-        },
-        {
-          "field_candidates": [
-            "revenue"
-          ],
-          "literal_excerpt": "     2026 年上半年，公司营业收入达到人民币5,380 亿元，同比下降1.1%，同口径1实现正 增长。其中，主营业务收入2达到人民币4,527 亿元，同比下降3.1%；其他业务收入为人民 币854 亿元，同比增长11.2%。算力服务3、智能服务4收入占主营业务收入比达到22.6%，",
-          "page": 7,
-          "source_sha256": "cac01fa81cc14f12dca42fce4f9efd587d5681bf9a75aae0ecb6d5d95a2b77eb",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 15
-        },
-        {
-          "field_candidates": [
-            "attributable_net_profit"
-          ],
-          "literal_excerpt": "同比提升2.2 个百分点。    归属于母公司股东的净利润为人民币789 亿元，同比下降6.3%，同口径实现正增长， 基本每股收益为人民币3.64 元；EBITDA 为人民币1,736 亿元，同比下降6.6%，EBITDA 占",
-          "page": 7,
-          "source_sha256": "cac01fa81cc14f12dca42fce4f9efd587d5681bf9a75aae0ecb6d5d95a2b77eb",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 19
-        },
-        {
-          "field_candidates": [
-            "attributable_net_profit"
-          ],
-          "literal_excerpt": "   归属于母公司股东的净利润为人民币789 亿元，同比下降6.3%，同口径实现正增长， 基本每股收益为人民币3.64 元；EBITDA 为人民币1,736 亿元，同比下降6.6%，EBITDA 占 主营业务收入比为38.4%；盈利能力保持全球一流运营商领先水平。经营现金净流入为人民",
-          "page": 7,
-          "source_sha256": "cac01fa81cc14f12dca42fce4f9efd587d5681bf9a75aae0ecb6d5d95a2b77eb",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 20
-        },
-        {
-          "field_candidates": [
-            "revenue"
-          ],
-          "literal_excerpt": " 1 同口径指剔除增值税税目政策调整影响，下同 2 营业收入=主营业务收入+其他业务收入；主营业务收入包括三项主营业务的收入，即通信服务、算力服 务、智能服务；其他业务收入主要为销售手机等终端产品收入",
-          "page": 7,
-          "source_sha256": "cac01fa81cc14f12dca42fce4f9efd587d5681bf9a75aae0ecb6d5d95a2b77eb",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 51
-        },
-        {
-          "field_candidates": [
-            "revenue"
-          ],
-          "literal_excerpt": "1 同口径指剔除增值税税目政策调整影响，下同 2 营业收入=主营业务收入+其他业务收入；主营业务收入包括三项主营业务的收入，即通信服务、算力服 务、智能服务；其他业务收入主要为销售手机等终端产品收入 3 算力服务包括数据中心、云算服务、云算应用",
-          "page": 7,
-          "source_sha256": "cac01fa81cc14f12dca42fce4f9efd587d5681bf9a75aae0ecb6d5d95a2b77eb",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 52
-        },
-        {
-          "field_candidates": [
-            "operating_cash_flow"
-          ],
-          "numeric_cells": [],
-          "page": 12,
-          "row_index": 1,
-          "row_label": "经营活动产生的现金流量净额",
-          "source_sha256": "cac01fa81cc14f12dca42fce4f9efd587d5681bf9a75aae0ecb6d5d95a2b77eb",
-          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "table_index": 1
-        }
-      ]
-    },
-    {
-      "facts": [],
-      "page_count": 159,
-      "semantic_fact_verified": false,
-      "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-      "symbol": "600941.SH",
-      "table_candidates": [
-        {
-          "field_candidates": [
-            "revenue"
-          ],
-          "literal_excerpt": "中心、云算服务和云算应用的算力服务，以及数据算法、具身智能、数智文化、数智电商和 行业数智服务的智能服务。截至2026 年6 月30 日，公司员工总数达45.7 万人，移动客户 总数达到10.11 亿户，宽带联网客户数达到3.37 亿户。2026 年上半年，营业收入达到人民 币5,380 亿元。",
-          "page": 4,
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 23
-        },
-        {
-          "field_candidates": [
-            "revenue"
-          ],
-          "literal_excerpt": "行业数智服务的智能服务。截至2026 年6 月30 日，公司员工总数达45.7 万人，移动客户 总数达到10.11 亿户，宽带联网客户数达到3.37 亿户。2026 年上半年，营业收入达到人民 币5,380 亿元。 ",
-          "page": 4,
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 24
-        },
-        {
-          "field_candidates": [
-            "revenue"
-          ],
-          "literal_excerpt": "    2026 上半年业绩表现      2026 年上半年，公司营业收入达到人民币5,380 亿元，同比下降1.1%，同口径1实现正 增长。其中，主营业务收入2达到人民币4,527 亿元，同比下降3.1%；其他业务收入为人民",
-          "page": 7,
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 14
-        },
-        {
-          "field_candidates": [
-            "revenue"
-          ],
-          "literal_excerpt": "     2026 年上半年，公司营业收入达到人民币5,380 亿元，同比下降1.1%，同口径1实现正 增长。其中，主营业务收入2达到人民币4,527 亿元，同比下降3.1%；其他业务收入为人民 币854 亿元，同比增长11.2%。算力服务3、智能服务4收入占主营业务收入比达到22.6%，",
-          "page": 7,
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 15
-        },
-        {
-          "field_candidates": [
-            "attributable_net_profit"
-          ],
-          "literal_excerpt": "同比提升2.2 个百分点。    归属于母公司股东的净利润为人民币789 亿元，同比下降6.3%，同口径实现正增长， 基本每股收益为人民币3.64 元；EBITDA5为人民币1,736 亿元，同比下降6.6%，EBITDA 占",
-          "page": 7,
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 19
-        },
-        {
-          "field_candidates": [
-            "attributable_net_profit"
-          ],
-          "literal_excerpt": "   归属于母公司股东的净利润为人民币789 亿元，同比下降6.3%，同口径实现正增长， 基本每股收益为人民币3.64 元；EBITDA5为人民币1,736 亿元，同比下降6.6%，EBITDA 占 主营业务收入比为38.4%；盈利能力保持全球一流运营商领先水平。经营现金净流入为人民",
-          "page": 7,
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 20
-        },
-        {
-          "field_candidates": [
-            "revenue"
-          ],
-          "literal_excerpt": " 1 同口径指剔除增值税税目政策调整影响，下同 2 营业收入=主营业务收入+其他业务收入；主营业务收入包括三项主营业务的收入，即通信服务、算力服 务、智能服务；其他业务收入主要为销售手机等终端产品收入",
-          "page": 7,
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 50
-        },
-        {
-          "field_candidates": [
-            "revenue"
-          ],
-          "literal_excerpt": "1 同口径指剔除增值税税目政策调整影响，下同 2 营业收入=主营业务收入+其他业务收入；主营业务收入包括三项主营业务的收入，即通信服务、算力服 务、智能服务；其他业务收入主要为销售手机等终端产品收入 3 算力服务包括数据中心、云算服务、云算应用",
-          "page": 7,
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 51
-        },
-        {
-          "field_candidates": [
-            "revenue"
-          ],
-          "numeric_cells": [],
-          "page": 11,
-          "row_index": 2,
-          "row_label": "营业收入",
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "table_index": 0
-        },
-        {
-          "field_candidates": [
-            "attributable_net_profit"
-          ],
-          "numeric_cells": [],
-          "page": 11,
-          "row_index": 6,
-          "row_label": "归属于母公司股东的净利润",
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "table_index": 0
-        },
-        {
-          "field_candidates": [
-            "operating_cash_flow"
-          ],
-          "numeric_cells": [],
-          "page": 11,
-          "row_index": 8,
-          "row_label": "经营活动产生的现金流量净额",
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "table_index": 0
-        },
-        {
-          "field_candidates": [
-            "operating_cash_flow"
-          ],
-          "numeric_cells": [],
-          "page": 13,
-          "row_index": 1,
-          "row_label": "经营活动产生的现金流量净额",
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "table_index": 1
-        },
-        {
-          "field_candidates": [
-            "issued_shares"
-          ],
-          "numeric_cells": [],
-          "page": 21,
-          "row_index": 2,
-          "row_label": "三 股份总数\n、",
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "table_index": 0
-        },
-        {
-          "field_candidates": [
-            "revenue"
-          ],
-          "numeric_cells": [],
-          "page": 35,
-          "row_index": 1,
-          "row_label": "一、营业收入",
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "table_index": 0
-        },
-        {
-          "field_candidates": [
-            "attributable_net_profit"
-          ],
-          "numeric_cells": [],
-          "page": 35,
-          "row_index": 30,
-          "row_label": "归属于母公司股东的净利润",
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "table_index": 0
-        },
-        {
-          "field_candidates": [
-            "operating_cash_flow"
-          ],
-          "numeric_cells": [],
-          "page": 37,
-          "row_index": 11,
-          "row_label": "经营活动产生的现金流量净额",
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "table_index": 0
-        },
-        {
-          "field_candidates": [
-            "revenue"
-          ],
-          "literal_excerpt": "  务报表项目的重要性水平。从性质来看，公司主要考虑该事项在性质上是否属于日常活   动、是否显著影响公司的财务状况、经营成果和现金流量；从金额来看，公司主要考虑   该事项金额占资产总额、净资产、营业收入、利润总额等直接相关项目金额的比重。 ",
-          "page": 41,
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 20
-        },
-        {
-          "field_candidates": [
-            "revenue"
-          ],
-          "literal_excerpt": "  动、是否显著影响公司的财务状况、经营成果和现金流量；从金额来看，公司主要考虑   该事项金额占资产总额、净资产、营业收入、利润总额等直接相关项目金额的比重。    本合并财务报表以持续经营为基础编制。",
-          "page": 41,
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 21
-        },
-        {
-          "field_candidates": [
-            "attributable_net_profit"
-          ],
-          "literal_excerpt": "   子公司少数股东分担的当期亏损超过少数股东在该子公司期初股东权益中所享有的份额   的，其余额冲减少数股东权益。本公司向子公司出售资产所发生的未实现内部交易损    益，全额抵销归属于母公司股东的净利润；子公司向本公司出售资产所发生的未实现内    部交易损益，按本公司对该子公司的分配比例在归属于母公司股东的净利润和少数股东",
-          "page": 43,
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 34
-        },
-        {
-          "field_candidates": [
-            "attributable_net_profit"
-          ],
-          "literal_excerpt": "  的，其余额冲减少数股东权益。本公司向子公司出售资产所发生的未实现内部交易损    益，全额抵销归属于母公司股东的净利润；子公司向本公司出售资产所发生的未实现内    部交易损益，按本公司对该子公司的分配比例在归属于母公司股东的净利润和少数股东    损益之间分配抵销。子公司之间出售资产所发生的未实现内部交易损益，按照母公司对",
-          "page": 43,
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 35
-        },
-        {
-          "field_candidates": [
-            "attributable_net_profit"
-          ],
-          "literal_excerpt": "   益，全额抵销归属于母公司股东的净利润；子公司向本公司出售资产所发生的未实现内    部交易损益，按本公司对该子公司的分配比例在归属于母公司股东的净利润和少数股东    损益之间分配抵销。子公司之间出售资产所发生的未实现内部交易损益，按照母公司对    出售方子公司的分配比例在归属于母公司股东的净利润和少数股东损益之间分配抵销。",
-          "page": 43,
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 36
-        },
-        {
-          "field_candidates": [
-            "attributable_net_profit"
-          ],
-          "literal_excerpt": "   部交易损益，按本公司对该子公司的分配比例在归属于母公司股东的净利润和少数股东    损益之间分配抵销。子公司之间出售资产所发生的未实现内部交易损益，按照母公司对    出售方子公司的分配比例在归属于母公司股东的净利润和少数股东损益之间分配抵销。 ",
-          "page": 43,
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 37
-        },
-        {
-          "field_candidates": [
-            "attributable_net_profit"
-          ],
-          "literal_excerpt": "   损益之间分配抵销。子公司之间出售资产所发生的未实现内部交易损益，按照母公司对    出售方子公司的分配比例在归属于母公司股东的净利润和少数股东损益之间分配抵销。     如果以本集团为会计主体与以本公司或子公司为会计主体对同一交易的认定不同时，从",
-          "page": 43,
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 38
-        },
-        {
-          "field_candidates": [
-            "revenue"
-          ],
-          "literal_excerpt": "  在报告期内，由于本集团仅从事通信及信息相关业务，因此本集团整体作为一个经营分   部。由于本集团绝大部分经营业务于中国内地进行，所以没有列示地区数据。本集团位   于中国内地以外的资产及由中国内地以外的活动所产生的营业收入均少于本集团资产及    营业收入的5%。",
-          "page": 68,
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 27
-        },
-        {
-          "field_candidates": [
-            "revenue"
-          ],
-          "literal_excerpt": "  部。由于本集团绝大部分经营业务于中国内地进行，所以没有列示地区数据。本集团位   于中国内地以外的资产及由中国内地以外的活动所产生的营业收入均少于本集团资产及    营业收入的5%。 ",
-          "page": 68,
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 28
-        },
-        {
-          "field_candidates": [
-            "revenue"
-          ],
-          "literal_excerpt": "  于中国内地以外的资产及由中国内地以外的活动所产生的营业收入均少于本集团资产及    营业收入的5%。  (26) 重要会计估计和判断",
-          "page": 68,
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 29
-        },
-        {
-          "field_candidates": [
-            "revenue"
-          ],
-          "numeric_cells": [],
-          "page": 111,
-          "row_index": 0,
-          "row_label": "(a) 营业收入",
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "table_index": 0
-        },
-        {
-          "field_candidates": [
-            "operating_cash_flow"
-          ],
-          "numeric_cells": [],
-          "page": 125,
-          "row_index": 17,
-          "row_label": "经营活动产生的现金流量净额",
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "table_index": 0
-        },
-        {
-          "field_candidates": [
-            "revenue"
-          ],
-          "numeric_cells": [],
-          "page": 136,
-          "row_index": 4,
-          "row_label": "营业收入",
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "table_index": 0
-        },
-        {
-          "field_candidates": [
-            "attributable_net_profit"
-          ],
-          "numeric_cells": [],
-          "page": 136,
-          "row_index": 5,
-          "row_label": "归属于母公司股东的净利润",
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "table_index": 0
-        },
-        {
-          "field_candidates": [
-            "revenue"
-          ],
-          "numeric_cells": [],
-          "page": 136,
-          "row_index": 4,
-          "row_label": "营业收入",
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "table_index": 1
-        },
-        {
-          "field_candidates": [
-            "attributable_net_profit"
-          ],
-          "numeric_cells": [],
-          "page": 136,
-          "row_index": 5,
-          "row_label": "归属于母公司股东的净利润",
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "table_index": 1
-        },
-        {
-          "field_candidates": [
-            "issued_shares"
-          ],
-          "literal_excerpt": "  民币进行折算，折算汇率按照董事会宣派股息之日前一周的中国人民银行公布的港元对    人民币中间价平均值确定。拟宣派的中期股息合计人民币544.26 亿元。若自报告日起至     实施2026 年中期派息的权益分派股权登记日，本公司已发行股份总数发生变化，本公司   拟维持每股派息金额不变，相应调整利润分配总额。于资产负债表日后审议通过派发的",
-          "page": 154,
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 18
-        },
-        {
-          "field_candidates": [
-            "issued_shares"
-          ],
-          "literal_excerpt": "   人民币中间价平均值确定。拟宣派的中期股息合计人民币544.26 亿元。若自报告日起至     实施2026 年中期派息的权益分派股权登记日，本公司已发行股份总数发生变化，本公司   拟维持每股派息金额不变，相应调整利润分配总额。于资产负债表日后审议通过派发的    股息并未在资产负债表日确认为负债。",
-          "page": 154,
-          "source_sha256": "f1f174314b3aa504dcbf726ac218fa62bb072a4bc89e90c350ec3f4841d70eb7",
-          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
-          "symbol": "600941.SH",
-          "text_line": 19
-        }
-      ]
     },
     {
       "facts": [],
@@ -2436,6 +2111,371 @@
     },
     {
       "facts": [],
+      "page_count": 24,
+      "semantic_fact_verified": false,
+      "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+      "symbol": "601857.SH",
+      "table_candidates": [
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "numeric_cells": [],
+          "page": 2,
+          "row_index": 2,
+          "row_label": "营业收入",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "attributable_net_profit"
+          ],
+          "numeric_cells": [],
+          "page": 2,
+          "row_index": 3,
+          "row_label": "归属于母公司股东的净\n利润",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "operating_cash_flow"
+          ],
+          "numeric_cells": [],
+          "page": 2,
+          "row_index": 9,
+          "row_label": "经营活动产生的现金流量净额",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "numeric_cells": [],
+          "page": 2,
+          "row_index": 3,
+          "row_label": "营业收入",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 1
+        },
+        {
+          "field_candidates": [
+            "attributable_net_profit"
+          ],
+          "numeric_cells": [],
+          "page": 2,
+          "row_index": 4,
+          "row_label": "归属于母公司股东的净利\n润",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 1
+        },
+        {
+          "field_candidates": [
+            "operating_cash_flow"
+          ],
+          "numeric_cells": [],
+          "page": 2,
+          "row_index": 11,
+          "row_label": "经营活动产生的现金流量净额",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 1
+        },
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "literal_excerpt": "65.55 美元/桶增长18.5%；国内天然气（含液化天然气〔“LNG”〕，下同）平均销售价格为9.40 美元/千立方英尺，剔除汇率影响后比上年同期增长1.7%。按国际财务报告会计准则，本集团实现 营业收入人民币23,210.64 亿元，比上年同期的人民币21,690.63 亿元增长7.0%；实现归属于母公 司股东的净利润人民币1,557.76 亿元，比上年同期的人民币1,278.33 亿元增长21.9%。",
+          "page": 5,
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "text_line": 31
+        },
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "literal_excerpt": "美元/千立方英尺，剔除汇率影响后比上年同期增长1.7%。按国际财务报告会计准则，本集团实现 营业收入人民币23,210.64 亿元，比上年同期的人民币21,690.63 亿元增长7.0%；实现归属于母公 司股东的净利润人民币1,557.76 亿元，比上年同期的人民币1,278.33 亿元增长21.9%。 ",
+          "page": 5,
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "text_line": 32
+        },
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "literal_excerpt": "百万桶，比2026 年第二季度增长24.2%。2026 年前三季度，本集团风光发电量78.4 亿千瓦时， 比上年同期的57.9 亿千瓦时增长35.5%。建成地热供暖（制冷）面积（含运维）超8,000 万平方 米。油气和新能源分部实现营业收入人民币6,664.94 亿元，比上年同期的人民币6,258.47 亿元增 长6.5%；实现经营利润人民币1,520.23 亿元，比上年同期的人民币1,270.09 亿元增长19.7%，主",
+          "page": 5,
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "text_line": 47
+        },
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "literal_excerpt": "比上年同期的57.9 亿千瓦时增长35.5%。建成地热供暖（制冷）面积（含运维）超8,000 万平方 米。油气和新能源分部实现营业收入人民币6,664.94 亿元，比上年同期的人民币6,258.47 亿元增 长6.5%；实现经营利润人民币1,520.23 亿元，比上年同期的人民币1,270.09 亿元增长19.7%，主 ",
+          "page": 5,
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "TEXT_FALLBACK_COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "text_line": 48
+        },
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "numeric_cells": [],
+          "page": 12,
+          "row_index": 3,
+          "row_label": "营业收入",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "attributable_net_profit"
+          ],
+          "numeric_cells": [],
+          "page": 12,
+          "row_index": 29,
+          "row_label": "归属于母公司股东的净利润",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "numeric_cells": [],
+          "page": 13,
+          "row_index": 3,
+          "row_label": "营业收入",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "attributable_net_profit"
+          ],
+          "numeric_cells": [],
+          "page": 13,
+          "row_index": 29,
+          "row_label": "归属于母公司股东的净利润",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "numeric_cells": [],
+          "page": 14,
+          "row_index": 3,
+          "row_label": "营业收入",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "numeric_cells": [],
+          "page": 15,
+          "row_index": 3,
+          "row_label": "营业收入",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "operating_cash_flow"
+          ],
+          "numeric_cells": [],
+          "page": 16,
+          "row_index": 12,
+          "row_label": "经营活动产生的现金流量净额",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "operating_cash_flow"
+          ],
+          "numeric_cells": [],
+          "page": 17,
+          "row_index": 12,
+          "row_label": "经营活动产生的现金流量净额",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "numeric_cells": [],
+          "page": 18,
+          "row_index": 3,
+          "row_label": "营业收入",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "numeric_cells": [],
+          "page": 19,
+          "row_index": 3,
+          "row_label": "营业收入",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "operating_cash_flow"
+          ],
+          "numeric_cells": [],
+          "page": 21,
+          "row_index": 28,
+          "row_label": "经营活动产生的现金流量净额",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "numeric_cells": [],
+          "page": 23,
+          "row_index": 3,
+          "row_label": "营业收入",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "numeric_cells": [],
+          "page": 23,
+          "row_index": 6,
+          "row_label": "外部营业收入",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "numeric_cells": [],
+          "page": 23,
+          "row_index": 9,
+          "row_label": "外部营业收入",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "numeric_cells": [],
+          "page": 23,
+          "row_index": 12,
+          "row_label": "外部营业收入",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "numeric_cells": [],
+          "page": 23,
+          "row_index": 15,
+          "row_label": "外部营业收入",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "numeric_cells": [],
+          "page": 23,
+          "row_index": 18,
+          "row_label": "外部营业收入",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "numeric_cells": [],
+          "page": 23,
+          "row_index": 20,
+          "row_label": "外部营业收入总额",
+          "source_sha256": "2c175a81074b85e1abbaff10ba7e22dbceacae9737539b138e3ee2e60ae2d9b1",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "601857.SH",
+          "table_index": 0
+        }
+      ]
+    },
+    {
+      "facts": [],
       "page_count": 4,
       "semantic_fact_verified": false,
       "source_sha256": "4a9af6ec85c082135bad3e7b0c7da51fd64463aad358c7c6653c764a2df84e25",
@@ -2707,6 +2747,93 @@
           "row_index": 20,
           "row_label": "经营活动产生的现金流量净额",
           "source_sha256": "459da428b56f0eb92c01a99043cb47319aa1e2974db4d21cf87dc1e42ff5205e",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "603871.SH",
+          "table_index": 0
+        }
+      ]
+    },
+    {
+      "facts": [],
+      "page_count": 12,
+      "semantic_fact_verified": false,
+      "source_sha256": "7ebf9f5c48cb1fb96b629f457477a902471cb7ca4551e28a4fc6dd45287c214f",
+      "symbol": "603871.SH",
+      "table_candidates": [
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "numeric_cells": [],
+          "page": 1,
+          "row_index": 1,
+          "row_label": "营业收入",
+          "source_sha256": "7ebf9f5c48cb1fb96b629f457477a902471cb7ca4551e28a4fc6dd45287c214f",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "603871.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "attributable_net_profit"
+          ],
+          "numeric_cells": [],
+          "page": 1,
+          "row_index": 3,
+          "row_label": "归属于上市公司股东的\n净利润",
+          "source_sha256": "7ebf9f5c48cb1fb96b629f457477a902471cb7ca4551e28a4fc6dd45287c214f",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "603871.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "operating_cash_flow"
+          ],
+          "numeric_cells": [],
+          "page": 1,
+          "row_index": 5,
+          "row_label": "经营活动产生的现金流\n量净额",
+          "source_sha256": "7ebf9f5c48cb1fb96b629f457477a902471cb7ca4551e28a4fc6dd45287c214f",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "603871.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "revenue"
+          ],
+          "numeric_cells": [],
+          "page": 8,
+          "row_index": 2,
+          "row_label": "其中 营业收入\n：",
+          "source_sha256": "7ebf9f5c48cb1fb96b629f457477a902471cb7ca4551e28a4fc6dd45287c214f",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "603871.SH",
+          "table_index": 1
+        },
+        {
+          "field_candidates": [
+            "attributable_net_profit"
+          ],
+          "numeric_cells": [],
+          "page": 9,
+          "row_index": 37,
+          "row_label": "1 归属于母公司股东的净利润（净亏损以“ ”号\n. -\n填列）",
+          "source_sha256": "7ebf9f5c48cb1fb96b629f457477a902471cb7ca4551e28a4fc6dd45287c214f",
+          "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
+          "symbol": "603871.SH",
+          "table_index": 0
+        },
+        {
+          "field_candidates": [
+            "operating_cash_flow"
+          ],
+          "numeric_cells": [],
+          "page": 11,
+          "row_index": 16,
+          "row_label": "经营活动产生的现金流量净额",
+          "source_sha256": "7ebf9f5c48cb1fb96b629f457477a902471cb7ca4551e28a4fc6dd45287c214f",
           "state": "COLUMN_PERIOD_SCOPE_UNIT_UNRESOLVED",
           "symbol": "603871.SH",
           "table_index": 0
