@@ -1,0 +1,32 @@
+{
+  "schema": "PUBLIC_LEAD_RESOLUTION_REPORT/v1",
+  "generated_at_utc": "2026-10-30T18:56:31.414201+00:00",
+  "transition_count": 1,
+  "transitions": [
+    {
+      "lead_id": "02f1f534c2d79392901128fbcfb6a2d06b3e51bed3e74d19997fc7a5cb3ec9c8",
+      "symbol": "601857.SH",
+      "source": "akshare",
+      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
+      "to": "SOURCE_UNAVAILABLE_RETRYABLE"
+    }
+  ],
+  "counts": {
+    "total": 6468,
+    "pending": 1592,
+    "terminal": 4876,
+    "by_state": {
+      "CROSS_BOARD_NOISE": 1162,
+      "DUPLICATE_ALREADY_REGISTERED": 11,
+      "PRIMARY_SOURCE_BYTES_CAPTURED_SEMANTIC_REVIEW_PENDING": 7,
+      "PRIMARY_SOURCE_LOCATOR_AVAILABLE": 6,
+      "PRIMARY_SOURCE_VERIFICATION_PENDING": 1476,
+      "RETIRED_LOW_INFORMATION": 3693,
+      "RETIRED_SOURCE_AMBIGUOUS": 4,
+      "SOURCE_UNAVAILABLE_RETRYABLE": 109
+    }
+  },
+  "automatic_fact_promotion": false,
+  "valuation_authorized": false,
+  "automatic_trade_execution": false
+}
