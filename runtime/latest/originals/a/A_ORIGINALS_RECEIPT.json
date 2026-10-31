@@ -1,7 +1,7 @@
 {
   "schema": "PUBLIC_A_CURRENT_WINDOW_ORIGINALS/v1",
   "universe_sha256": "951695d407c5a3ad05838363654aa57d9edf7c51a978e7ca3815dae792abc82c",
-  "checked_at_utc": "2026-10-31T08:57:01.705868+00:00",
+  "checked_at_utc": "2026-10-31T15:24:22.578456+00:00",
   "symbols": {
     "600941.SH": {
       "indexed": 5,
@@ -69,7 +69,7 @@
     "001286.SZ": {
       "indexed": 26,
       "attempted": 26,
-      "fetched": 26,
+      "fetched": 25,
       "files": [
         {
           "announcement_id": "1225635396",
@@ -318,11 +318,11 @@
           "date": "2026-08-21",
           "title": "2026年半年度非经营性资金占用及其他关联资金往来情况汇总表",
           "url": "https://static.cninfo.com.cn/finalpage/2026-08-21/1225485405.PDF",
-          "status": "FETCHED_OFFICIAL_ORIGINAL",
-          "sha256": "68a2211c0e0c397194a05a50739717c4df65836928b0ff2715c8dfeb0c29ac2b",
-          "filename": "001286_SZ_1225485405_68a2211c0e0c.pdf",
-          "bytes": 8331973,
-          "identity_method": "CNINFO_OFFICIAL_INDEX_STOCKCODE_ANNOUNCEMENTID_DATE"
+          "status": "FETCH_FAILED",
+          "errors": [
+            "ChunkedEncodingError:('Connection broken: IncompleteRead(433905 bytes read, 7898068 more expected)', IncompleteRead(433905 bytes read, 789806",
+            "ChunkedEncodingError:('Connection broken: IncompleteRead(1326826 bytes read, 7005147 more expected)', IncompleteRead(1326826 bytes read, 7005"
+          ]
         },
         {
           "announcement_id": "1225485404",
@@ -358,12 +358,12 @@
           "identity_method": "CNINFO_OFFICIAL_INDEX_STOCKCODE_ANNOUNCEMENTID_DATE"
         }
       ],
-      "complete": true
+      "complete": false
     },
     "603993.SH": {
       "indexed": 22,
       "attempted": 22,
-      "fetched": 22,
+      "fetched": 21,
       "files": [
         {
           "announcement_id": "1225620894",
@@ -579,11 +579,11 @@
           "date": "2026-08-20",
           "title": "洛阳钼业2026年半年度报告",
           "url": "https://static.cninfo.com.cn/finalpage/2026-08-20/1225482748.PDF",
-          "status": "FETCHED_OFFICIAL_ORIGINAL",
-          "sha256": "cac03e4051ba658f80cb46c78465459097f3288193c922338fb824b5c8bcefa2",
-          "filename": "603993_SH_1225482748_cac03e4051ba.pdf",
-          "bytes": 10680952,
-          "identity_method": "CNINFO_OFFICIAL_INDEX_STOCKCODE_ANNOUNCEMENTID_DATE"
+          "status": "FETCH_FAILED",
+          "errors": [
+            "ChunkedEncodingError:('Connection broken: IncompleteRead(7458537 bytes read, 3222415 more expected)', IncompleteRead(7458537 bytes read, 3222",
+            "ChunkedEncodingError:('Connection broken: IncompleteRead(7503235 bytes read, 3177717 more expected)', IncompleteRead(7503235 bytes read, 3177"
+          ]
         },
         {
           "announcement_id": "1225482739",
@@ -608,7 +608,7 @@
           "identity_method": "CNINFO_OFFICIAL_INDEX_STOCKCODE_ANNOUNCEMENTID_DATE"
         }
       ],
-      "complete": true
+      "complete": false
     },
     "600499.SH": {
       "indexed": 20,
@@ -841,7 +841,7 @@
     "600795.SH": {
       "indexed": 17,
       "attempted": 17,
-      "fetched": 17,
+      "fetched": 15,
       "files": [
         {
           "announcement_id": "1225642448",
@@ -859,11 +859,11 @@
           "date": "2026-10-27",
           "title": "关于国电电力发展股份有限公司会计估计变更情况专项说明的专项报告-信会师报字[2026]第ZG12414号",
           "url": "https://static.cninfo.com.cn/finalpage/2026-10-27/1225623613.PDF",
-          "status": "FETCHED_OFFICIAL_ORIGINAL",
-          "sha256": "d289cea4c6348c8f1defd1c9496120d3f7808e77c408593f0420ef486f675d6e",
-          "filename": "600795_SH_1225623613_d289cea4c634.pdf",
-          "bytes": 848594,
-          "identity_method": "CNINFO_OFFICIAL_INDEX_STOCKCODE_ANNOUNCEMENTID_DATE"
+          "status": "FETCH_FAILED",
+          "errors": [
+            "ChunkedEncodingError:('Connection broken: IncompleteRead(261518 bytes read, 587076 more expected)', IncompleteRead(261518 bytes read, 587076 ",
+            "ChunkedEncodingError:('Connection broken: IncompleteRead(814829 bytes read, 33765 more expected)', IncompleteRead(814829 bytes read, 33765 mo"
+          ]
         },
         {
           "announcement_id": "1225623607",
@@ -936,11 +936,11 @@
           "date": "2026-08-18",
           "title": "国电电力八届四十四次董事会决议公告",
           "url": "https://static.cninfo.com.cn/finalpage/2026-08-18/1225477154.PDF",
-          "status": "FETCHED_OFFICIAL_ORIGINAL",
-          "sha256": "148f75fd7a6ddb6afb8a1fbc2c29e49b338a91e923236f6c4d9009615a7faabc",
-          "filename": "600795_SH_1225477154_148f75fd7a6d.pdf",
-          "bytes": 77307,
-          "identity_method": "CNINFO_OFFICIAL_INDEX_STOCKCODE_ANNOUNCEMENTID_DATE"
+          "status": "FETCH_FAILED",
+          "errors": [
+            "ChunkedEncodingError:('Connection broken: IncompleteRead(19855 bytes read, 57452 more expected)', IncompleteRead(19855 bytes read, 57452 more",
+            "ChunkedEncodingError:('Connection broken: IncompleteRead(60550 bytes read, 16757 more expected)', IncompleteRead(60550 bytes read, 16757 more"
+          ]
         },
         {
           "announcement_id": "1225477136",
@@ -1031,7 +1031,7 @@
           "identity_method": "CNINFO_OFFICIAL_INDEX_STOCKCODE_ANNOUNCEMENTID_DATE"
         }
       ],
-      "complete": true
+      "complete": false
     },
     "603871.SH": {
       "indexed": 21,
@@ -1275,18 +1275,18 @@
     "601857.SH": {
       "indexed": 15,
       "attempted": 15,
-      "fetched": 15,
+      "fetched": 14,
       "files": [
         {
           "announcement_id": "1225637509",
           "date": "2026-10-29",
           "title": "中国石油天然气股份有限公司董事、高级管理人员持有公司股份管理规定",
           "url": "https://static.cninfo.com.cn/finalpage/2026-10-29/1225637509.PDF",
-          "status": "FETCHED_OFFICIAL_ORIGINAL",
-          "sha256": "0a9705151d668de204b5bf866b98787cd3744f1344d571c01f5b8c8e62fd3e78",
-          "filename": "601857_SH_1225637509_0a9705151d66.pdf",
-          "bytes": 1749138,
-          "identity_method": "CNINFO_OFFICIAL_INDEX_STOCKCODE_ANNOUNCEMENTID_DATE"
+          "status": "FETCH_FAILED",
+          "errors": [
+            "ChunkedEncodingError:('Connection broken: IncompleteRead(97677 bytes read, 1651461 more expected)', IncompleteRead(97677 bytes read, 1651461 ",
+            "ChunkedEncodingError:('Connection broken: IncompleteRead(334979 bytes read, 1414159 more expected)', IncompleteRead(334979 bytes read, 141415"
+          ]
         },
         {
           "announcement_id": "1225637506",
@@ -1443,7 +1443,7 @@
           "identity_method": "CNINFO_OFFICIAL_INDEX_STOCKCODE_ANNOUNCEMENTID_DATE"
         }
       ],
-      "complete": true
+      "complete": false
     }
   }
 }
