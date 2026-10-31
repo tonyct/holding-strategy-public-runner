@@ -1,0 +1,336 @@
+{
+  "schema": "PUBLIC_DETERMINISTIC_METRICS/v1",
+  "scope": "PUBLIC_RESEARCH_COVERAGE_NOT_ACCOUNT_HOLDINGS",
+  "computed_at_utc": "2026-10-31T02:28:59.982625Z",
+  "active_symbol_count": 11,
+  "stocks": {
+    "600941.SH": {
+      "financials": {
+        "source_file": "a_financials/snapshots/600941_SH_2026-09-30_95e94faac5d52385.json",
+        "period_end": "2026-09-30",
+        "currency": "CNY",
+        "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
+        "reported": {
+          "revenue": 780295000000.0,
+          "attributable_net_profit": 106198000000.0,
+          "net_profit": 106325000000.0,
+          "operating_cashflow": 185290000000.0,
+          "total_assets": 2113824000000.0,
+          "total_liabilities": 713358000000.0
+        },
+        "derived": {
+          "attributable_net_margin": 0.13609980840579525,
+          "liability_ratio": 0.337472750806122,
+          "operating_cashflow_to_attributable_profit": 1.7447597883199306
+        }
+      },
+      "quote": {
+        "close": 102.13,
+        "currency": "CNY",
+        "market_session_date": "2026-10-30",
+        "source_timestamp_utc": "2026-10-30T08:14:34+00:00",
+        "source": "TENCENT_PUBLIC_QUOTES_NON_EXECUTABLE",
+        "execution_eligible": false
+      }
+    },
+    "148.HK": {
+      "financials": {
+        "source_file": "hk_financials/148_HK_c847290396486277.json",
+        "period_end": "2026-06-30",
+        "currency": "UNVERIFIED",
+        "source_verification_state": "RAW_THREE_STATEMENTS_FETCHED_UNVERIFIED",
+        "reported": {
+          "revenue": 25302071390.15,
+          "attributable_net_profit": 2354997761.15,
+          "net_profit": 3220737133.35,
+          "operating_cashflow": 2148552980.2,
+          "total_assets": 114846684118.65,
+          "total_liabilities": 38946954542.5
+        },
+        "derived": {
+          "attributable_net_margin": 0.09307529509488269,
+          "liability_ratio": 0.3391212801778697,
+          "operating_cashflow_to_attributable_profit": 0.9123375892938478
+        }
+      },
+      "quote": {
+        "close": 44.02,
+        "currency": "HKD",
+        "market_session_date": "2026-10-30",
+        "source_timestamp_utc": "2026-10-30T08:08:06+00:00",
+        "source": "YAHOO_DELAYED_MARKET_OBSERVATION_NON_EXECUTABLE",
+        "execution_eligible": false
+      }
+    },
+    "001286.SZ": {
+      "financials": {
+        "source_file": "a_financials/snapshots/001286_SZ_2026-09-30_7b18948b2477ffc9.json",
+        "period_end": "2026-09-30",
+        "currency": "CNY",
+        "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
+        "reported": {
+          "revenue": 16719894549.04,
+          "attributable_net_profit": 1991478145.69,
+          "net_profit": 3400560612.43,
+          "operating_cashflow": 7072072901.33,
+          "total_assets": 79320392083.0,
+          "total_liabilities": 44087001568.05
+        },
+        "derived": {
+          "attributable_net_margin": 0.11910829579988852,
+          "liability_ratio": 0.5558091735340622,
+          "operating_cashflow_to_attributable_profit": 3.5511677176249874
+        }
+      },
+      "quote": {
+        "close": 10.15,
+        "currency": "CNY",
+        "market_session_date": "2026-10-30",
+        "source_timestamp_utc": "2026-10-30T08:14:45+00:00",
+        "source": "TENCENT_PUBLIC_QUOTES_NON_EXECUTABLE",
+        "execution_eligible": false
+      }
+    },
+    "603993.SH": {
+      "financials": {
+        "source_file": "a_financials/snapshots/603993_SH_2026-09-30_a9d1d8da795724cb.json",
+        "period_end": "2026-09-30",
+        "currency": "CNY",
+        "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
+        "reported": {
+          "revenue": 207290422442.21,
+          "attributable_net_profit": 24019512869.56,
+          "net_profit": 27691397323.99,
+          "operating_cashflow": 13472050055.93,
+          "total_assets": 246010188276.35,
+          "total_liabilities": 131242053140.33
+        },
+        "derived": {
+          "attributable_net_margin": 0.11587372241598062,
+          "liability_ratio": 0.533482186489375,
+          "operating_cashflow_to_attributable_profit": 0.5608794037202631
+        }
+      },
+      "quote": {
+        "close": 13.65,
+        "currency": "CNY",
+        "market_session_date": "2026-10-30",
+        "source_timestamp_utc": "2026-10-30T08:14:46+00:00",
+        "source": "TENCENT_PUBLIC_QUOTES_NON_EXECUTABLE",
+        "execution_eligible": false
+      }
+    },
+    "2233.HK": {
+      "financials": {
+        "source_file": "hk_financials/2233_HK_fb7347e28e6bb46a.json",
+        "period_end": "2026-06-30",
+        "currency": "UNVERIFIED",
+        "source_verification_state": "RAW_THREE_STATEMENTS_FETCHED_UNVERIFIED",
+        "reported": {
+          "revenue": 4526885000.0,
+          "attributable_net_profit": 378770000.0,
+          "net_profit": 556591000.0,
+          "operating_cashflow": 702234000.0,
+          "total_assets": 36202965000.0,
+          "total_liabilities": 22191442000.0
+        },
+        "derived": {
+          "attributable_net_margin": 0.08367122204341396,
+          "liability_ratio": 0.6129730534501802,
+          "operating_cashflow_to_attributable_profit": 1.8539852681046545
+        }
+      },
+      "quote": {
+        "close": 1.79,
+        "currency": "HKD",
+        "market_session_date": "2026-10-30",
+        "source_timestamp_utc": "2026-10-30T08:08:06+00:00",
+        "source": "YAHOO_DELAYED_MARKET_OBSERVATION_NON_EXECUTABLE",
+        "execution_eligible": false
+      }
+    },
+    "3933.HK": {
+      "financials": {
+        "source_file": "hk_financials/3933_HK_5b75a34285250b93.json",
+        "period_end": "2026-06-30",
+        "currency": "UNVERIFIED",
+        "source_verification_state": "RAW_THREE_STATEMENTS_FETCHED_UNVERIFIED",
+        "reported": {
+          "revenue": 6165949000.0,
+          "attributable_net_profit": 347644000.0,
+          "net_profit": 344165000.0,
+          "operating_cashflow": 34732000.0,
+          "total_assets": 32112728000.0,
+          "total_liabilities": 14817378000.0
+        },
+        "derived": {
+          "attributable_net_margin": 0.05638126426280853,
+          "liability_ratio": 0.4614176036367885,
+          "operating_cashflow_to_attributable_profit": 0.09990680121043366
+        }
+      },
+      "quote": {
+        "close": 6.83,
+        "currency": "HKD",
+        "market_session_date": "2026-10-30",
+        "source_timestamp_utc": "2026-10-30T08:08:06+00:00",
+        "source": "YAHOO_DELAYED_MARKET_OBSERVATION_NON_EXECUTABLE",
+        "execution_eligible": false
+      }
+    },
+    "9926.HK": {
+      "financials": {
+        "source_file": "hk_financials/9926_HK_7af1e1ecbed16950.json",
+        "period_end": "2026-06-30",
+        "currency": "UNVERIFIED",
+        "source_verification_state": "RAW_THREE_STATEMENTS_FETCHED_UNVERIFIED",
+        "reported": {
+          "revenue": 1868339000.0,
+          "attributable_net_profit": -424220000.0,
+          "net_profit": -447246000.0,
+          "operating_cashflow": 290277000.0,
+          "total_assets": 16218595000.0,
+          "total_liabilities": 7857112000.0
+        },
+        "derived": {
+          "attributable_net_margin": -0.2270572952767137,
+          "liability_ratio": 0.48445084176527003,
+          "operating_cashflow_to_attributable_profit": -0.6842605251991891
+        }
+      },
+      "quote": {
+        "close": 81.5,
+        "currency": "HKD",
+        "market_session_date": "2026-10-30",
+        "source_timestamp_utc": "2026-10-30T08:08:07+00:00",
+        "source": "YAHOO_DELAYED_MARKET_OBSERVATION_NON_EXECUTABLE",
+        "execution_eligible": false
+      }
+    },
+    "600499.SH": {
+      "financials": {
+        "source_file": "a_financials/snapshots/600499_SH_2026-09-30_f0bb318fa1401d6e.json",
+        "period_end": "2026-09-30",
+        "currency": "CNY",
+        "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
+        "reported": {
+          "revenue": 15826567200.0,
+          "attributable_net_profit": 1910975000.0,
+          "net_profit": 2871870400.0,
+          "operating_cashflow": 2200962000.0,
+          "total_assets": 33323510200.0,
+          "total_liabilities": 15675350600.0
+        },
+        "derived": {
+          "attributable_net_margin": 0.12074475632340537,
+          "liability_ratio": 0.470399141804695,
+          "operating_cashflow_to_attributable_profit": 1.1517481913682805
+        }
+      },
+      "quote": {
+        "close": 10.68,
+        "currency": "CNY",
+        "market_session_date": "2026-10-30",
+        "source_timestamp_utc": "2026-10-30T08:14:55+00:00",
+        "source": "TENCENT_PUBLIC_QUOTES_NON_EXECUTABLE",
+        "execution_eligible": false
+      }
+    },
+    "600795.SH": {
+      "financials": {
+        "source_file": "a_financials/snapshots/600795_SH_2026-09-30_eebb26be4d64a80e.json",
+        "period_end": "2026-09-30",
+        "currency": "CNY",
+        "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
+        "reported": {
+          "revenue": 124355198760.12,
+          "attributable_net_profit": 3961334209.67,
+          "net_profit": 7144763620.34,
+          "operating_cashflow": 37652255152.06,
+          "total_assets": 525418148263.92,
+          "total_liabilities": 386460894683.68
+        },
+        "derived": {
+          "attributable_net_margin": 0.03185499479849955,
+          "liability_ratio": 0.7355301600460875,
+          "operating_cashflow_to_attributable_profit": 9.504942819554886
+        }
+      },
+      "quote": {
+        "close": 5.35,
+        "currency": "CNY",
+        "market_session_date": "2026-10-30",
+        "source_timestamp_utc": "2026-10-30T08:14:45+00:00",
+        "source": "TENCENT_PUBLIC_QUOTES_NON_EXECUTABLE",
+        "execution_eligible": false
+      }
+    },
+    "603871.SH": {
+      "financials": {
+        "source_file": "a_financials/snapshots/603871_SH_2026-09-30_9835c28bf0e658ba.json",
+        "period_end": "2026-09-30",
+        "currency": "CNY",
+        "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
+        "reported": {
+          "revenue": 6097213360.62,
+          "attributable_net_profit": 1116980706.16,
+          "net_profit": 1115785380.79,
+          "operating_cashflow": 1492025457.78,
+          "total_assets": 9529764370.32,
+          "total_liabilities": 3191306800.61
+        },
+        "derived": {
+          "attributable_net_margin": 0.18319527956397758,
+          "liability_ratio": 0.33487782872671795,
+          "operating_cashflow_to_attributable_profit": 1.335766544177243
+        }
+      },
+      "quote": {
+        "close": 11.64,
+        "currency": "CNY",
+        "market_session_date": "2026-10-30",
+        "source_timestamp_utc": "2026-10-30T08:14:40+00:00",
+        "source": "TENCENT_PUBLIC_QUOTES_NON_EXECUTABLE",
+        "execution_eligible": false
+      }
+    },
+    "601857.SH": {
+      "financials": {
+        "source_file": "a_financials/snapshots/601857_SH_2026-09-30_fd4a66e71754cd11.json",
+        "period_end": "2026-09-30",
+        "currency": "CNY",
+        "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
+        "reported": {
+          "revenue": 2321064000000.0,
+          "attributable_net_profit": 155773000000.0,
+          "net_profit": 171974000000.0,
+          "operating_cashflow": 373539000000.0,
+          "total_assets": 3106379000000.0,
+          "total_liabilities": 1260406000000.0
+        },
+        "derived": {
+          "attributable_net_margin": 0.06711275518469116,
+          "liability_ratio": 0.40574765667679313,
+          "operating_cashflow_to_attributable_profit": 2.397970123192081
+        }
+      },
+      "quote": {
+        "close": 13.84,
+        "currency": "CNY",
+        "market_session_date": "2026-10-30",
+        "source_timestamp_utc": "2026-10-30T08:14:59+00:00",
+        "source": "TENCENT_PUBLIC_QUOTES_NON_EXECUTABLE",
+        "execution_eligible": false
+      }
+    }
+  },
+  "semantics": {
+    "deterministic_arithmetic_only": true,
+    "source_verification_is_not_upgraded": true,
+    "no_valuation": true,
+    "no_portfolio_logic": true,
+    "no_trade_logic": true
+  },
+  "contains_account_state": false,
+  "contains_portfolio_decision": false
+}
