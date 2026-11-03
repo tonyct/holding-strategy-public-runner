@@ -1,10 +1,10 @@
 {
   "schema": "PUBLIC_RUN_SNAPSHOT/v1",
   "privacy_class": "PUBLIC_MARKET_DATA_ONLY",
-  "created_at_utc": "2026-11-02T23:58:08.632517Z",
-  "source_run_id": "41548737549",
+  "created_at_utc": "2026-11-03T06:55:21.700755Z",
+  "source_run_id": "41592255783",
   "source_run_attempt": "1",
-  "source_commit_sha": "e6f68b79dc754bcd772e2e0a75dcbc3aafb5fcff",
+  "source_commit_sha": "00beae2c0fdf5b6517e0d39ceceb4eaad56c9476",
   "universe_sha256": "951695d407c5a3ad05838363654aa57d9edf7c51a978e7ca3815dae792abc82c",
   "active_symbol_count": 11,
   "active_symbols": [
@@ -21,15 +21,15 @@
     "9926.HK"
   ],
   "acquisition_health": {
-    "sha256": "9f2cac4b70793452ffbd730588a8e9cb91f7405d2dbe0a825b08b870bc841b92",
+    "sha256": "1e02395574a3277922b33edd43c700eee727e2821d0de504ae1dd195e1466e19",
     "status": "PASS"
   },
   "evidence_index": {
-    "sha256": "8ca429eeb87ed519d710762fca11234d34a69f9b62d92c883921f3b1dfdf7516",
-    "artifact_count": 450
+    "sha256": "0fdefcd928505fe8befecad7a8ae58bb6028d8eb40c446af92efe4e986d892e6",
+    "artifact_count": 448
   },
   "deterministic_metrics": {
-    "sha256": "11fcccb3fa235b515fb02a356197482ea660bf9ef894c9dfacf84a548dea13b6",
+    "sha256": "672ea95545ef70e99f6a1645392311be1b4415a5837315df5945ff043d55e586",
     "schema": "PUBLIC_DETERMINISTIC_METRICS/v1"
   },
   "immutable_run_binding": true,
