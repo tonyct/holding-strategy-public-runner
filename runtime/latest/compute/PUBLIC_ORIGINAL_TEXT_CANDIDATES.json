@@ -8399,6 +8399,11 @@
             ]
           }
         ]
+      },
+      {
+        "source_id": "3933.HK:2d772bf6e8b4510e",
+        "candidate_count": 0,
+        "field_candidates": []
       }
     ],
     "9926.HK": [
@@ -9224,6 +9229,77 @@
         "source_id": "9926.HK:d141d8ce93827461",
         "candidate_count": 0,
         "field_candidates": []
+      },
+      {
+        "source_id": "9926.HK:be817c14f0879d1a",
+        "candidate_count": 5,
+        "field_candidates": [
+          {
+            "page": 1,
+            "label": "share capital",
+            "literal_excerpt": "e of Issuer:           Akeso, Inc.\n\nDate Submitted:          04 November 2026\n\n I. Movements in Authorised / Registered Share Capital\n\n1. Class of shares           Ordinary shares                 Type of shares     Not applicable                           Listed on the Exchange (Note 1)  Yes\n\nStock code (if listed)        09926                              Description\n\n                                          Number of authorised/registered shares                  Par value                          Authorised/registered share capital\n\nBalance at close of preceding month                                         5,000,000,000 USD                              0.00001 USD                        ",
+            "numbers_as_printed": [
+              "04",
+              "2026",
+              "1",
+              "1",
+              "09926",
+              "5,000,000,000",
+              "0.00001",
+              "50,000"
+            ]
+          },
+          {
+            "page": 2,
+            "label": "issued shares",
+            "literal_excerpt": "                                                                                               FF301\n\n II. Movements in Issued Shares and/or Treasury Shares and Public Float Sufficiency Confirmation\n\n1. Class of shares           Ordinary shares                 Type of shares     Not applicable                           Listed on the Exchange (Note 1)  Yes\n\nStock code (if listed)        09926                              Description\n                                           Number of issued shares                                                                                Number of treasury shares                     Total number of issued shares                                           ",
+            "numbers_as_printed": [
+              "301",
+              "1",
+              "1",
+              "09926"
+            ]
+          },
+          {
+            "page": 3,
+            "label": "issued shares",
+            "literal_excerpt": "                                                                                   FF301\n\n III. Details of Movements in Issued Shares and/or Treasury Shares\n\n (A). Share Options (under Share Option Schemes of the Issuer)\n\n1. Class of shares           Ordinary shares            Type of shares     Not applicable                  Listed on the Exchange (Note 1)             Yes\n\nStock code (if listed)        09926                        Description\n\n                                                                                                                                                                                The total number of\n                                                      ",
+            "numbers_as_printed": [
+              "301",
+              "1",
+              "1",
+              "09926"
+            ]
+          },
+          {
+            "page": 6,
+            "label": "issued shares",
+            "literal_excerpt": "                        0                                0\n\n\n                                               Increase in issued shares (excluding treasury shares):                           0    Ordinary shares (DD1)\n\n                                                               Decrease in treasury shares:                           0    Ordinary shares (DD2)\n\n\n\n\n\n                                                                      Page 6 of 10                                                                        v 1.2.1",
+            "numbers_as_printed": [
+              "0",
+              "0",
+              "0",
+              "1",
+              "0",
+              "2",
+              "6",
+              "10",
+              "1.2",
+              "1"
+            ]
+          },
+          {
+            "page": 7,
+            "label": "issued shares",
+            "literal_excerpt": "                                                                                         FF301\n (E). Other Movements in Issued Shares and/or Treasury Shares\n\n1. Class of shares           Ordinary shares            Type of shares     Not applicable                  Listed on the Exchange (Note 1)                   Yes\n\nStock code (if listed)        09926                        Description\n\n\n                                                                                                                                                  Increase/ decrease (-) in issued                           Number of shares redeemed or                                                                          ",
+            "numbers_as_printed": [
+              "301",
+              "1",
+              "1",
+              "09926"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -10050,6 +10126,12 @@
       "relative_path": "output/originals/hk/3933_HK_12360434_c4db7f9c2dfa.pdf",
       "bytes": 68103
     },
+    "3933.HK:2d772bf6e8b4510e": {
+      "ticker": "3933.HK",
+      "sha256": "2d772bf6e8b4510ea66fc1c6dbb8033fd363167dc842291eb4336f8d8434df14",
+      "relative_path": "output/originals/hk/3933_HK_12400720_2d772bf6e8b4.pdf",
+      "bytes": 199359
+    },
     "9926.HK:9bdcd97f1904227b": {
       "ticker": "9926.HK",
       "sha256": "9bdcd97f1904227b9e98d3ab24735ed5a9f5a191c81ae5de0bef6730b36e931d",
@@ -10109,6 +10191,12 @@
       "sha256": "d141d8ce93827461f9fe8bbd13a7c5f6d4f800226a70f298fc8658858c8298a5",
       "relative_path": "output/originals/hk/9926_HK_12382417_d141d8ce9382.pdf",
       "bytes": 74581
+    },
+    "9926.HK:be817c14f0879d1a": {
+      "ticker": "9926.HK",
+      "sha256": "be817c14f0879d1a6398b6ac09ce9dadfdd6d5c05253ba8fe8516f91ce228416",
+      "relative_path": "output/originals/hk/9926_HK_12400069_be817c14f087.pdf",
+      "bytes": 72791
     }
   },
   "semantic_fact_verified": false
