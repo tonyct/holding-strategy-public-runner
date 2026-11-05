@@ -1,31 +1,17 @@
 {
   "schema": "PUBLIC_LEAD_RESOLUTION_REPORT/v1",
-  "generated_at_utc": "2026-11-05T09:54:57.936029+00:00",
-  "transition_count": 4,
+  "generated_at_utc": "2026-11-05T18:05:27.881550+00:00",
+  "transition_count": 2,
   "transitions": [
     {
-      "lead_id": "b39c4c816a355210e2f1ede9a9d674655afe51ca94292bab751832f6e4141e60",
+      "lead_id": "6f675ba375961b7a6e5d5b01e37bad12a26fe015cef266eb0d545010260f071d",
       "symbol": "601857.SH",
       "source": "akshare",
       "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
       "to": "SOURCE_UNAVAILABLE_RETRYABLE"
     },
     {
-      "lead_id": "d273c2233a8e1bd970271d60567b8dbf2c8aea2b22ead74c040426a42139de0c",
-      "symbol": "601857.SH",
-      "source": "akshare",
-      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
-      "to": "SOURCE_UNAVAILABLE_RETRYABLE"
-    },
-    {
-      "lead_id": "4f281abdcfc5e0600f8f994f3279239a32f257a9875dd9b6935dd5249e40786e",
-      "symbol": "601857.SH",
-      "source": "akshare",
-      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
-      "to": "SOURCE_UNAVAILABLE_RETRYABLE"
-    },
-    {
-      "lead_id": "15930b67fa261e87cbb9b59ce0db9391d8d3af76f644415cfefacea467e89c97",
+      "lead_id": "1dd801a11cb50c0b1cd2a5add13053e8e6655d0213910c3812507a7857fdff42",
       "symbol": "601857.SH",
       "source": "akshare",
       "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
@@ -33,18 +19,18 @@
     }
   ],
   "counts": {
-    "total": 7796,
-    "pending": 1903,
-    "terminal": 5893,
+    "total": 7879,
+    "pending": 1922,
+    "terminal": 5957,
     "by_state": {
-      "CROSS_BOARD_NOISE": 1374,
+      "CROSS_BOARD_NOISE": 1395,
       "DUPLICATE_ALREADY_REGISTERED": 11,
       "PRIMARY_SOURCE_BYTES_CAPTURED_SEMANTIC_REVIEW_PENDING": 7,
       "PRIMARY_SOURCE_LOCATOR_AVAILABLE": 6,
-      "PRIMARY_SOURCE_VERIFICATION_PENDING": 1770,
-      "RETIRED_LOW_INFORMATION": 4498,
+      "PRIMARY_SOURCE_VERIFICATION_PENDING": 1787,
+      "RETIRED_LOW_INFORMATION": 4541,
       "RETIRED_SOURCE_AMBIGUOUS": 4,
-      "SOURCE_UNAVAILABLE_RETRYABLE": 126
+      "SOURCE_UNAVAILABLE_RETRYABLE": 128
     }
   },
   "automatic_fact_promotion": false,
