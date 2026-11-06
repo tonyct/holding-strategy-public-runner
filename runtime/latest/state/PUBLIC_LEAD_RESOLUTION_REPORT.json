@@ -1,71 +1,29 @@
 {
   "schema": "PUBLIC_LEAD_RESOLUTION_REPORT/v1",
-  "generated_at_utc": "2026-11-06T11:36:03.263842+00:00",
-  "transition_count": 7,
+  "generated_at_utc": "2026-11-06T18:33:26.171711+00:00",
+  "transition_count": 1,
   "transitions": [
     {
-      "lead_id": "bda0876e76cbe4992fb943f192383e4a85b68c85c9d8bc1c3bb3dc60c06f7d5f",
+      "lead_id": "0233f5afbfa995be8786671418dfc428e627c072f343b3b5cfb182644ab37e66",
       "symbol": "600941.SH",
-      "source": "akshare",
-      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
-      "to": "SOURCE_UNAVAILABLE_RETRYABLE"
-    },
-    {
-      "lead_id": "17dbfb6bd59298f90368fd326d154b39513ba849b8adb7187aae3183dce732a6",
-      "symbol": "600941.SH",
-      "source": "akshare",
-      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
-      "to": "SOURCE_UNAVAILABLE_RETRYABLE"
-    },
-    {
-      "lead_id": "8ac7c321c1b9e6c493292d4ff5fe5e637d9bb8095c3535873dfbe6e3b6192502",
-      "symbol": "603993.SH",
-      "source": "akshare",
-      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
-      "to": "SOURCE_UNAVAILABLE_RETRYABLE"
-    },
-    {
-      "lead_id": "96de6b2fbc18bb3b3afee164fe84b34a5cccc639f5a5a7ee1497d9b55f121f2f",
-      "symbol": "603993.SH",
-      "source": "akshare",
-      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
-      "to": "SOURCE_UNAVAILABLE_RETRYABLE"
-    },
-    {
-      "lead_id": "9323aa3cd71ccf7d24e416cf5d672444ed13fcb2e13e1f3c36a6e9f217bb54e3",
-      "symbol": "603993.SH",
-      "source": "akshare",
-      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
-      "to": "SOURCE_UNAVAILABLE_RETRYABLE"
-    },
-    {
-      "lead_id": "9822b73665a0ccac9385ac0c8041459d6283c86b7fde77a96362b9440bdf6232",
-      "symbol": "603993.SH",
-      "source": "akshare",
-      "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
-      "to": "SOURCE_UNAVAILABLE_RETRYABLE"
-    },
-    {
-      "lead_id": "85d8cf928b8fcfbf5f21b9b07559b84e5b74fde812f660f04db07f30e9e7dba8",
-      "symbol": "603993.SH",
       "source": "akshare",
       "from": "PRIMARY_SOURCE_VERIFICATION_PENDING",
       "to": "SOURCE_UNAVAILABLE_RETRYABLE"
     }
   ],
   "counts": {
-    "total": 8146,
-    "pending": 1998,
-    "terminal": 6148,
+    "total": 8202,
+    "pending": 2023,
+    "terminal": 6179,
     "by_state": {
-      "CROSS_BOARD_NOISE": 1436,
+      "CROSS_BOARD_NOISE": 1449,
       "DUPLICATE_ALREADY_REGISTERED": 11,
       "PRIMARY_SOURCE_BYTES_CAPTURED_SEMANTIC_REVIEW_PENDING": 7,
       "PRIMARY_SOURCE_LOCATOR_AVAILABLE": 6,
-      "PRIMARY_SOURCE_VERIFICATION_PENDING": 1856,
-      "RETIRED_LOW_INFORMATION": 4691,
+      "PRIMARY_SOURCE_VERIFICATION_PENDING": 1880,
+      "RETIRED_LOW_INFORMATION": 4709,
       "RETIRED_SOURCE_AMBIGUOUS": 4,
-      "SOURCE_UNAVAILABLE_RETRYABLE": 135
+      "SOURCE_UNAVAILABLE_RETRYABLE": 136
     }
   },
   "automatic_fact_promotion": false,
