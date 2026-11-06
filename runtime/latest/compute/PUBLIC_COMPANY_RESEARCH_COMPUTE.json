@@ -1,13 +1,13 @@
 {
   "schema": "PUBLIC_COMPANY_RESEARCH_COMPUTE/v2",
-  "source_run_id": "42130967549",
-  "computed_at_utc": "2026-11-05T23:43:45.218577+00:00",
+  "source_run_id": "42157947652",
+  "computed_at_utc": "2026-11-06T03:45:52.692327+00:00",
   "packets": {
     "600941.SH": {
       "symbol": "600941.SH",
       "deterministic_metrics": {
         "financials": {
-          "source_file": "a_financials/snapshots/600941_SH_2026-09-30_1b5e2c7b5fa75a9b.json",
+          "source_file": "a_financials/snapshots/600941_SH_2026-09-30_3f15a5ec3d97ae8f.json",
           "period_end": "2026-09-30",
           "currency": "CNY",
           "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
@@ -26,20 +26,21 @@
           }
         },
         "quote": {
-          "close": 100.24,
+          "close": 103.1,
           "currency": "CNY",
-          "market_session_date": "2026-11-05",
-          "source_timestamp_utc": "2026-11-05T08:14:47+00:00",
+          "market_session_date": "2026-11-06",
+          "source_timestamp_utc": "2026-11-06T03:42:48+00:00",
           "source": "TENCENT_PUBLIC_QUOTES_NON_EXECUTABLE",
           "execution_eligible": false
         }
       },
       "official_originals": {
-        "indexed": 5,
-        "fetched": 5,
+        "indexed": 6,
+        "fetched": 6,
         "complete_window": true,
         "coverage_state": "CURRENT_WINDOW_ORIGINALS_COMPLETE",
         "sha256s": [
+          "7c3468c50e88a7698dab77976c3a76dc53c9a621ebd8b6ad1f79c1f770c242d5",
           "bc85cabe73c3b08aed95172cccf1912db1185f51442396d64f72a00b1130b22a",
           "878dee56bd06c0f1ec75d1f35714be8a68a5f7b7040937d5c2cd43a8d9ad8180",
           "ef441d3f9f0ababf5e1a024ce632fd7c61d767b4df852fed3cc181ebfa69f9f5",
@@ -47,9 +48,9 @@
           "8a36257713c981327b38911dd95b5bca3ef74fcfa74c41b7280cfd440e75057c"
         ]
       },
-      "original_text_candidate_source_count": 5,
-      "pending_public_lead_count": 259,
-      "terminal_public_lead_count": 1010,
+      "original_text_candidate_source_count": 6,
+      "pending_public_lead_count": 263,
+      "terminal_public_lead_count": 1028,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -79,10 +80,10 @@
           }
         },
         "quote": {
-          "close": 42.76,
+          "close": 40.2,
           "currency": "HKD",
-          "market_session_date": "2026-11-05",
-          "source_timestamp_utc": "2026-11-05T08:08:15+00:00",
+          "market_session_date": "2026-11-06",
+          "source_timestamp_utc": "2026-11-06T03:28:15+00:00",
           "source": "YAHOO_DELAYED_MARKET_OBSERVATION_NON_EXECUTABLE",
           "execution_eligible": false
         }
@@ -103,8 +104,8 @@
         ]
       },
       "original_text_candidate_source_count": 7,
-      "pending_public_lead_count": 87,
-      "terminal_public_lead_count": 306,
+      "pending_public_lead_count": 88,
+      "terminal_public_lead_count": 312,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -115,7 +116,7 @@
       "symbol": "001286.SZ",
       "deterministic_metrics": {
         "financials": {
-          "source_file": "a_financials/snapshots/001286_SZ_2026-09-30_653e94c39f8f0942.json",
+          "source_file": "a_financials/snapshots/001286_SZ_2026-09-30_06e28381b0108610.json",
           "period_end": "2026-09-30",
           "currency": "CNY",
           "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
@@ -134,10 +135,10 @@
           }
         },
         "quote": {
-          "close": 9.92,
+          "close": 9.93,
           "currency": "CNY",
-          "market_session_date": "2026-11-05",
-          "source_timestamp_utc": "2026-11-05T08:15:00+00:00",
+          "market_session_date": "2026-11-06",
+          "source_timestamp_utc": "2026-11-06T03:43:03+00:00",
           "source": "TENCENT_PUBLIC_QUOTES_NON_EXECUTABLE",
           "execution_eligible": false
         }
@@ -166,8 +167,8 @@
         ]
       },
       "original_text_candidate_source_count": 15,
-      "pending_public_lead_count": 113,
-      "terminal_public_lead_count": 255,
+      "pending_public_lead_count": 115,
+      "terminal_public_lead_count": 259,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -178,7 +179,7 @@
       "symbol": "603993.SH",
       "deterministic_metrics": {
         "financials": {
-          "source_file": "a_financials/snapshots/603993_SH_2026-09-30_1c172183db51c13a.json",
+          "source_file": "a_financials/snapshots/603993_SH_2026-09-30_0c580d6274cf5c15.json",
           "period_end": "2026-09-30",
           "currency": "CNY",
           "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
@@ -197,10 +198,10 @@
           }
         },
         "quote": {
-          "close": 14.01,
+          "close": 13.38,
           "currency": "CNY",
-          "market_session_date": "2026-11-05",
-          "source_timestamp_utc": "2026-11-05T08:14:55+00:00",
+          "market_session_date": "2026-11-06",
+          "source_timestamp_utc": "2026-11-06T03:42:46+00:00",
           "source": "TENCENT_PUBLIC_QUOTES_NON_EXECUTABLE",
           "execution_eligible": false
         }
@@ -229,7 +230,7 @@
       },
       "original_text_candidate_source_count": 14,
       "pending_public_lead_count": 379,
-      "terminal_public_lead_count": 1361,
+      "terminal_public_lead_count": 1380,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -259,10 +260,10 @@
           }
         },
         "quote": {
-          "close": 1.88,
+          "close": 1.87,
           "currency": "HKD",
-          "market_session_date": "2026-11-05",
-          "source_timestamp_utc": "2026-11-05T08:08:15+00:00",
+          "market_session_date": "2026-11-06",
+          "source_timestamp_utc": "2026-11-06T03:25:18+00:00",
           "source": "YAHOO_DELAYED_MARKET_OBSERVATION_NON_EXECUTABLE",
           "execution_eligible": false
         }
@@ -314,20 +315,21 @@
           }
         },
         "quote": {
-          "close": 7.8,
+          "close": 7.915,
           "currency": "HKD",
-          "market_session_date": "2026-11-05",
-          "source_timestamp_utc": "2026-11-05T08:08:15+00:00",
+          "market_session_date": "2026-11-06",
+          "source_timestamp_utc": "2026-11-06T03:28:09+00:00",
           "source": "YAHOO_DELAYED_MARKET_OBSERVATION_NON_EXECUTABLE",
           "execution_eligible": false
         }
       },
       "official_originals": {
-        "indexed": 13,
-        "fetched": 13,
+        "indexed": 14,
+        "fetched": 14,
         "complete_window": true,
         "coverage_state": "CURRENT_WINDOW_ORIGINALS_COMPLETE",
         "sha256s": [
+          "6643394d3e6b56fc7e9650636c979017f12208f2e85daa32a70eab2a5c54a1aa",
           "2d772bf6e8b4510ea66fc1c6dbb8033fd363167dc842291eb4336f8d8434df14",
           "c4db7f9c2dfa971636a1f57c55afd90462f32876e76298c2512fc3134d41120e",
           "0b33b82a4a7b166d63720f1aac747f53c2ae10ad4eb47a59fcd18884f8ddb28b",
@@ -343,9 +345,9 @@
           "25729832f974bd59925f1db127ef9cc7330a189c30e54183f7c220218e1e2082"
         ]
       },
-      "original_text_candidate_source_count": 13,
-      "pending_public_lead_count": 27,
-      "terminal_public_lead_count": 87,
+      "original_text_candidate_source_count": 14,
+      "pending_public_lead_count": 29,
+      "terminal_public_lead_count": 89,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -375,10 +377,10 @@
           }
         },
         "quote": {
-          "close": 87.85,
+          "close": 85.25,
           "currency": "HKD",
-          "market_session_date": "2026-11-05",
-          "source_timestamp_utc": "2026-11-05T08:08:16+00:00",
+          "market_session_date": "2026-11-06",
+          "source_timestamp_utc": "2026-11-06T03:28:15+00:00",
           "source": "YAHOO_DELAYED_MARKET_OBSERVATION_NON_EXECUTABLE",
           "execution_eligible": false
         }
@@ -403,8 +405,8 @@
         ]
       },
       "original_text_candidate_source_count": 11,
-      "pending_public_lead_count": 83,
-      "terminal_public_lead_count": 479,
+      "pending_public_lead_count": 84,
+      "terminal_public_lead_count": 487,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -415,7 +417,7 @@
       "symbol": "600499.SH",
       "deterministic_metrics": {
         "financials": {
-          "source_file": "a_financials/snapshots/600499_SH_2026-09-30_abeead916fd23cdc.json",
+          "source_file": "a_financials/snapshots/600499_SH_2026-09-30_dc81a47825ae8341.json",
           "period_end": "2026-09-30",
           "currency": "CNY",
           "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
@@ -434,10 +436,10 @@
           }
         },
         "quote": {
-          "close": 11.45,
+          "close": 11.44,
           "currency": "CNY",
-          "market_session_date": "2026-11-05",
-          "source_timestamp_utc": "2026-11-05T08:14:42+00:00",
+          "market_session_date": "2026-11-06",
+          "source_timestamp_utc": "2026-11-06T03:43:02+00:00",
           "source": "TENCENT_PUBLIC_QUOTES_NON_EXECUTABLE",
           "execution_eligible": false
         }
@@ -475,7 +477,7 @@
       },
       "original_text_candidate_source_count": 23,
       "pending_public_lead_count": 168,
-      "terminal_public_lead_count": 799,
+      "terminal_public_lead_count": 818,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -486,7 +488,7 @@
       "symbol": "600795.SH",
       "deterministic_metrics": {
         "financials": {
-          "source_file": "a_financials/snapshots/600795_SH_2026-09-30_21e72d3435ab8dde.json",
+          "source_file": "a_financials/snapshots/600795_SH_2026-09-30_481e6737be2a5444.json",
           "period_end": "2026-09-30",
           "currency": "CNY",
           "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
@@ -505,10 +507,10 @@
           }
         },
         "quote": {
-          "close": 5.23,
+          "close": 5.3,
           "currency": "CNY",
-          "market_session_date": "2026-11-05",
-          "source_timestamp_utc": "2026-11-05T08:14:54+00:00",
+          "market_session_date": "2026-11-06",
+          "source_timestamp_utc": "2026-11-06T03:43:05+00:00",
           "source": "TENCENT_PUBLIC_QUOTES_NON_EXECUTABLE",
           "execution_eligible": false
         }
@@ -529,8 +531,8 @@
         ]
       },
       "original_text_candidate_source_count": 7,
-      "pending_public_lead_count": 113,
-      "terminal_public_lead_count": 409,
+      "pending_public_lead_count": 114,
+      "terminal_public_lead_count": 412,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -541,7 +543,7 @@
       "symbol": "603871.SH",
       "deterministic_metrics": {
         "financials": {
-          "source_file": "a_financials/snapshots/603871_SH_2026-09-30_ef6f417713cd1e5a.json",
+          "source_file": "a_financials/snapshots/603871_SH_2026-09-30_a7ba8d7d93902606.json",
           "period_end": "2026-09-30",
           "currency": "CNY",
           "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
@@ -560,10 +562,10 @@
           }
         },
         "quote": {
-          "close": 11.68,
+          "close": 11.69,
           "currency": "CNY",
-          "market_session_date": "2026-11-05",
-          "source_timestamp_utc": "2026-11-05T08:14:48+00:00",
+          "market_session_date": "2026-11-06",
+          "source_timestamp_utc": "2026-11-06T03:43:16+00:00",
           "source": "TENCENT_PUBLIC_QUOTES_NON_EXECUTABLE",
           "execution_eligible": false
         }
@@ -598,8 +600,8 @@
         ]
       },
       "original_text_candidate_source_count": 21,
-      "pending_public_lead_count": 81,
-      "terminal_public_lead_count": 137,
+      "pending_public_lead_count": 84,
+      "terminal_public_lead_count": 140,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -610,7 +612,7 @@
       "symbol": "601857.SH",
       "deterministic_metrics": {
         "financials": {
-          "source_file": "a_financials/snapshots/601857_SH_2026-09-30_baf8ea8316d702ca.json",
+          "source_file": "a_financials/snapshots/601857_SH_2026-09-30_39ea7f01e3d8217a.json",
           "period_end": "2026-09-30",
           "currency": "CNY",
           "source_verification_state": "CORE_THREE_STATEMENTS_UNVERIFIED",
@@ -629,17 +631,17 @@
           }
         },
         "quote": {
-          "close": 12.54,
+          "close": 12.42,
           "currency": "CNY",
-          "market_session_date": "2026-11-05",
-          "source_timestamp_utc": "2026-11-05T08:14:55+00:00",
+          "market_session_date": "2026-11-06",
+          "source_timestamp_utc": "2026-11-06T03:43:04+00:00",
           "source": "TENCENT_PUBLIC_QUOTES_NON_EXECUTABLE",
           "execution_eligible": false
         }
       },
       "official_originals": {
-        "indexed": 14,
-        "fetched": 14,
+        "indexed": 13,
+        "fetched": 13,
         "complete_window": true,
         "coverage_state": "CURRENT_WINDOW_ORIGINALS_COMPLETE",
         "sha256s": [
@@ -655,13 +657,12 @@
           "6b377c8c22ed0e31db2e3d57e32f08507a80c79b0ef53e106783c9880f23ff2c",
           "b0500a5ff967ff108619f5a3e5c76c29c69407c06067bdfc03e2c6d06593d6e5",
           "f61fa86cf84633b034d798079e3872c8b4720221da2618e4554f3d369e492835",
-          "73ff13f8a8d678fddfccec24f2a98e07dcfa8937637a749cf8a7037584e1819b",
-          "2ba8dfefd3838dbb8392162420a234105a239ca7474872defcadf377a465098d"
+          "73ff13f8a8d678fddfccec24f2a98e07dcfa8937637a749cf8a7037584e1819b"
         ]
       },
-      "original_text_candidate_source_count": 14,
-      "pending_public_lead_count": 631,
-      "terminal_public_lead_count": 1100,
+      "original_text_candidate_source_count": 13,
+      "pending_public_lead_count": 640,
+      "terminal_public_lead_count": 1114,
       "research_state": "PUBLIC_EVIDENCE_PACKET_AVAILABLE",
       "decisive_primary_financial_evidence_verified": false,
       "company_research_only": true,
@@ -672,8 +673,8 @@
   "public_only_contract": true,
   "buy_sell_prices_included": false,
   "lead_counts": {
-    "pending": 1955,
-    "terminal": 5967
+    "pending": 1978,
+    "terminal": 6063
   },
   "automatic_fact_promotion": false,
   "automatic_trade_execution": false
