@@ -1,28 +1,17 @@
 {
   "schema": "E36_PUBLIC_NEWS_DISCOVERY/v1",
-  "generated_utc": "2026-11-06T23:33:51.851445+00:00",
+  "generated_utc": "2026-11-07T03:16:13.845423+00:00",
   "universe_sha256": "951695d407c5a3ad05838363654aa57d9edf7c51a978e7ca3815dae792abc82c",
   "research_only": true,
   "live_news_coverage_complete": false,
   "may_directly_change_main_or_trade": false,
-  "lead_count": 1,
-  "rows": [
-    {
-      "symbol": "9926.HK",
-      "source": "PUBLIC_WEB_INDEX",
-      "url": "https://stock.10jqka.com.cn/20261104/c681425715.shtml",
-      "title": "康方生物：深耕源头创新 打通创新药价值兑现全链路",
-      "snippet": "2025年4月份， 康方生物（HK9926） 派安普利单抗获美国FDA批准上市，成为首款由我国公司全过程独立主导，完成研发、临床、生产供药和申报注册，并获得FDA批准的创新生物药。",
-      "published_at": "Wed, 04 Nov 2026 01:29:00 GMT",
-      "verification_state": "UNVERIFIED_DISCOVERY",
-      "may_directly_change_main_or_trade": false
-    }
-  ],
+  "lead_count": 0,
+  "rows": [],
   "checks": [
     {
       "symbol": "600941.SH",
       "query": "\"中国移动\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-11-06T23:33:44.074593+00:00",
+      "checked_utc": "2026-11-07T03:16:05.086006+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -30,7 +19,7 @@
     {
       "symbol": "148.HK",
       "query": "\"建滔集团\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-11-06T23:33:44.800421+00:00",
+      "checked_utc": "2026-11-07T03:16:05.921616+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -38,7 +27,7 @@
     {
       "symbol": "001286.SZ",
       "query": "\"陕西能源\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-11-06T23:33:45.512559+00:00",
+      "checked_utc": "2026-11-07T03:16:06.757399+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -46,7 +35,7 @@
     {
       "symbol": "603993.SH",
       "query": "\"洛阳钼业\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-11-06T23:33:46.287430+00:00",
+      "checked_utc": "2026-11-07T03:16:07.588932+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -54,7 +43,7 @@
     {
       "symbol": "2233.HK",
       "query": "\"西部水泥\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-11-06T23:33:46.963581+00:00",
+      "checked_utc": "2026-11-07T03:16:08.417915+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -62,7 +51,7 @@
     {
       "symbol": "3933.HK",
       "query": "\"联邦制药\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-11-06T23:33:47.646630+00:00",
+      "checked_utc": "2026-11-07T03:16:09.157056+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -70,15 +59,15 @@
     {
       "symbol": "9926.HK",
       "query": "\"康方生物\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-11-06T23:33:48.329606+00:00",
+      "checked_utc": "2026-11-07T03:16:09.944762+00:00",
       "http_status": 200,
-      "status": "INDEXED_LEADS_FOUND",
-      "candidates": 1
+      "status": "SEARCH_RETURNED_NO_RESULTS",
+      "candidates": 0
     },
     {
       "symbol": "600499.SH",
       "query": "\"科达制造\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-11-06T23:33:49.024794+00:00",
+      "checked_utc": "2026-11-07T03:16:10.676241+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -86,7 +75,7 @@
     {
       "symbol": "600795.SH",
       "query": "\"国电电力\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-11-06T23:33:49.706420+00:00",
+      "checked_utc": "2026-11-07T03:16:11.432851+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -94,7 +83,7 @@
     {
       "symbol": "603871.SH",
       "query": "\"嘉友国际\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-11-06T23:33:50.442044+00:00",
+      "checked_utc": "2026-11-07T03:16:12.216825+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
@@ -102,7 +91,7 @@
     {
       "symbol": "601857.SH",
       "query": "\"中国石油\" (公告 OR 业绩 OR 投资 OR 项目 OR 调研 OR 订单 OR 监管 OR 合作)",
-      "checked_utc": "2026-11-06T23:33:51.139018+00:00",
+      "checked_utc": "2026-11-07T03:16:13.135080+00:00",
       "http_status": 200,
       "status": "SEARCH_RETURNED_NO_RESULTS",
       "candidates": 0
